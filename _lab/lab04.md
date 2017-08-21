@@ -2,7 +2,7 @@
 layout: lab
 num: lab04
 ready: true
-desc: "Turtle Graphics: Art compositions with basic shapes and loops"
+desc: "Turtle Graphics: Scene from a forest"
 assigned: 2017-08-23 09:30:00.00-7
 due: 2017-08-30 17:00:00.00-7
 submit_cs_pnum: 
@@ -59,7 +59,7 @@ Once you have implemented the above basic shape primitives, you will use them as
 
 ![forestScene](forestScene.png)
 
-Your drawing does not have to match the above scene exactly but should contain the same elements. To create this scene to will implement additional fucntions to draw a tree, a hut, a forest and a village!
+To create the scene shown above you will implement additional functions to draw a tree, a hut, a forest and a village! 
 
 
 # The programming part
@@ -81,6 +81,8 @@ In this file, put this code (but put your name instead of "your name goes here")
 ```
 # lab04.py, your name goes here
 import turtle
+import math 
+
 
 t = turtle.Turtle()
 
@@ -97,277 +99,119 @@ t.shape("turtle")
 Save this, and run it.   You should see a turtle appear.
 
 
-## Step 3: Create the functions for the two basic shapes (rectangle and triangle)
+## Step 3: Create and implement the functions for the two basic shapes (rectangle and triangle)
 
-
+In your lab04.py file, write the skeleton of <code> drawRectangle() </code> and <code> drawTriangle()</code> as shown below. You will need some of the trigonometric functions provided in that math module to implement <code> drawTriangle()</code>. In order to use that module, add a line to import it at the top of the file. To learn more about the math module refer [the Python documentation on the module](https://docs.python.org/3/library/math.html) and scroll down to the section on trigonometric functions.
 
 ```
-def drawA(width, height):
+import math
+
+def drawRectangle(width, height, tilt, penColor, fillColor):
     """
-    draw the letter A with a given width and height,
-    with the current location being the lower left corner of the A
-    using a turtle called t
+    draw a rectangle with a given width, height, penColor and fillColor,
+    with the current location of the turtle being the 
+    lower left corner, and the bottom side tilted by an angle tilt (specified in degrees)
+    relative to the horizontal axis. Use a turtle called t to create the drawing
     """
 
-    # figure out where we are
-
-    startX = t.xcor()
-    startY = t.ycor()
-
-    # figure out the other points using only what we know,
-    # which is width, height, startX and startY
+    # Insert code to draw the rectangle
     
-    topAX = startX + (width/2)
-    topAY = startY + height
+def drawTriangle(base, height, tilt, penColor, fillColor):
+    """
+    draw a triangle with a given base, height, penColor and fillColor,
+    with the current location of the turtle being the 
+    lower left corner, and the bottom side tilted by an angle tilt (specified in degrees)
+    relative to the horizontal axis. Use a turtle called t to create the drawing
+    """
 
-    bottomRightX = startX + width
-    bottomRightY = startY
+    # Insert code to draw the rectangle
+  
+def testRectangle():
     
-    barLeftX = startX + width/4
-    barLeftY = startY + height/2
+    drawRectangle( 50, 100, 0, "red", "") 
 
-    barRightX = startX + (width/4) + (width/2)
-    barRightY = startY + height/2
-    
-    # draw left hand side of the A (assumes we start at startX,startY)
-    
-    t.goto(topAX,topAY)
-
-    # draw the right side of the A
-
-    t.goto(bottomRightX, bottomRightY)
-
-    # draw bar across the middle
-    
-    t.up()
-    t.goto(barLeftX,barLeftY)
-    t.down()
-    t.goto(barRightX,barRightY)
-
-    # leave turtle at lower right hand corner of letter
-    
-    t.up()
-    t.goto(bottomRightX,bottomRightY)
+    # Move the turtle right by 200 units without leaving a trail
+    t.seth(0)   # Set the absolute heading of the turtle to 0 degrees (pointing east)
+    t.up()     
+    t.forward(200) # Move the turtle forward by 200 units 
     t.down()
 
-drawA(50,100)
+    drawRectangle( 50, 100, 20, "green", "yellow") 
 
-```
+    # Move the turtle right by 200 units without leaving a trail
+    t.seth(0)   # Set the absolute heading of the turtle to 0 degrees (pointing east)
+    t.up()     
+    t.forward(200) 
+    t.down()
 
-## Step 4: Make sure first letter function is reusable
-
-Now, we want to make sure your function is general enough to be able to draw your letter:
-
-* at different places on the screen
-* at different heights and widths
-
-To make sure that you can draw your first letter at two different places, change the function call
-at the bottom of the file from something like this:
-
-```
-drawA(50,100)
-```
-
-to something like this, that draws an A of width 50 and height 100, picks up the pen and moves to a new location,
-and then draws the A again with a different width and height.
-
-```
-drawA(50,100)
-
-# a new line
-t.up()
-t.goto(-200,-200)
-t.down()
-
-drawA(40,80)
-```
-
-If your code is written in a general way, i.e. the `drawA` routine works ONLY with the `startX`, `startY`, `width`, and `height` values, both letters should look good.  If one of them looks incorrect, then see if you can determine what is wrong with your code.
-
-When you see two good drawings of your first letter, you are ready for the next step.
-
-## Step 5: Add the function for the next letter or number
-
-Now we are going to add another function just like the first, right under it.
-
-Keep the code that has the actual function calls *at the bottom* of the file.  The order should be:
-
-* First, the code that imports and sets up the turtle, i.e.
-   ```
-   import turtle
-   t = turtle.Turtle()
-   t.shape("turtle")
    
-   ```
-* Second, the functions definitions for `drawA`, `drawX`, etc., e.g.
-   ```
-   def drawA(width,height):
-   
-      startX = t.xcor()
-      startY = t.ycor()
-      
-      # etc..
-   
-   def drawX(width,height):
-      
-      # code for drawX is here, indented...
-     
-   ```
-   
-* Then, last, the section of code with function calls that draw your letters
 
-   ```
-   drawA(50,100)
-   
-   # a new line
-   t.up()
-   t.goto(-200,-200)
-   t.down()
-
-   drawA(40,80)
-   # etc ...
-   
-   ```
-   
-Try running the code again after adding the function definition for your new letter (e.g. `def drawX(width,height): ...`.  Make sure you don't get any error messages&mdash;if you do, fix those before continuing.
-
-Then, we'll try adding in code to call the function for your second letter, for example `drawX(100,200)`.    We probably want to move the turtle over a bit before drawing the second letter.  We can do that with with `t.forward()` or another `t.goto()` with some numbers, as shown in the two options below.  
-
-<table>
-<tr>
-<th>
-Before
-</th>
-<th markdown="1">
-After (using `t.forward()`)
-</th>
-<th markdown="1">
-After (using `t.goto()`)
-</th>
-</tr>
-
-<tr>
-<td markdown="1">
-
+testRectangle()
 ```
-drawA(50,100)
 
-# a new line
-t.up()
-t.goto(-200,-200)
-t.down()
+* Read the test code provided in testRectangle(). Refer to the [turtle documentation](https://docs.python.org/3.6/library/turtle.html) to understand any commands that may be new to you. In particular, note that you can use the t.forward() command to move the turle forward relative to its current location in the direction that it is currently pointing. Similarly, the commands t.left() and t.right() rotate the turtle in the anticlockwise or clockwise directions respectively. These are commands that you may use as alternatives to the goto() command in your implementation of the drawRectangle() and drawTriangle() functions. 
 
-drawA(40,80)
-```
-</td>
+* On a piece of paper draw the output that you expect to get for a correct implementaion of the drawRectangle() function, when the above code is executed. You may refer to the drawings and information on the top of this page.
 
-<td markdown="1">
+* Implement the drawRectangle() function and run your code until you get the expected output for the provided test code.
 
-```
-drawA(50,100)
+* Add more test cases to the testRectangle() function until you arrive at a general enough implementation
 
-# a bit of space
-t.up()
-t.forward(10)
-t.down()
+* Repeat the above process to implememt and test your drawTriangle() function. 
 
-drawX(50,100)
+With these basic primitives, you are now ready to make something more interesting! Refer back to the forest scene that you are working towards. Which functions do you think you should implement next? Try to write the definitions of these functions before reading the next section.
 
-# a new line
-t.up()
-t.goto(-200,-200)
-t.down()
+## Step 4: Draw a tree
 
-drawA(40,80)
+If you are thinking that the next logical thing to create is a tree or a hut, then you have grasped the objective of this lab (.. don't worry if you thought something different). The important idea is to recognize that the forest scene is essentially made up of trees and huts. By creating these new elements, creating the forest boils down to making repreated calls to these functions and moving the turtle to a new spot in between function calls. We recommend you start with the tree because it has a more regular structure. 
 
-# a bit of space
-t.up()
-t.forward(10)
-t.down()
-
-drawX(50,100)
-
-```
-</td>
-<td markdown="1">
-
-```
-drawA(50,100)
-
-# a bit of space
-t.up()
-t.goto(60,0)
-t.down()
-
-drawX(50,100)
+To make sure that you can draw your tree at two different places, draw a tree with width 50 and height 100, then pick up the pen and move it to a new location, and then draw a bigger tree and a smaller tree at two different locations
 
 
-# a new line
-t.up()
-t.goto(-200,-200)
-t.down()
+If see two proportioned trees that correspond to the specified width and height, you are ready for the next step.
 
-drawA(40,80)
+## Step 5: Draw a row of trees
 
+## Step 6: Take a detour into random numbers
 
-# a bit of space
-t.up()
-t.goto(-150,-200)
-t.down()
+## Step 7: Draw a hut 
 
-drawX(50,100)
-
-```
-</td>
-</tr>
-</table>
+## Step 8: Put it all together
 
 
-## Step 6: Continue adding letters and numbers one by one
-
-Continue adding letters and numbers one by one until you have two rows at different sizes, just like in the example.
 
 When you are finished, ask a TA or instructor to look it over and give you some feedback on it.  
 
 It should be structured in a way that there is 
 
-1. A single file called `lab01.py`
-2. Code at the top of the `lab01.py` file that sets up a turtle
-3. Next, function defintions for each of the letters and digits that you draw, each of which takes `width` and `height` as parameters, e.g.
-   ```
-   def drawP(width,height):
-      ...
-   
-   def drawC(width,height):
-      ...
-   def draw2(width,height):
-      ...
-      # etc
-   ```
+1. A single file called `lab04.py`
+2. Code at the top of the `lab04.py` file that sets up a turtle
+3. Next, function defintions for each of the basic shapes
+
 4. Finally, code that calls those functions to draw your initials and graduation year all in a line
 5. And then, code that draws all those letters and digits <strong>a second time, at a different size</strong> by <em>calling your functions again</em>.
 
 If you code meets all those criteria, you should be in good shape to submit it.
 
 
-## Step 7: Submitting via submit.cs
+## Step 9: Submitting via submit.cs
 
-Note that this week, although we are using submit.cs, it is NOT the case that the grade you get from submit.cs is your final grade for the assignment.    The grade on submit.cs is just a PART of your grade--you will get 10 points for basically submitting *anything* that is a valid Python program that has the name lab01.py.   However, the other 90 points for this lab will come from an instructor or TA doing a manual inspection of your code to see if it complies with the requirements listed above.      
+Note that this week, although we are using submit.cs, it is NOT the case that the grade you get from submit.cs is your final grade for the assignment.   The grade on submit.cs is just a PART of your grade--you will get 10 points for basically submitting *anything* that is a valid Python program that has the name lab01.py.   However, the other 90 points for this lab will come from an instructor or TA doing a manual inspection of your code to see if it complies with the requirements listed above.      
 
 If you want reassurance that your code is in good shape, you may ask a TA or instructor to look it over during office hours or lab.
 
 To submit your code, use:
 
-### Navigate to the page for submitting lab00
+### Navigate to the page for submitting lab04
 
-The page for submitting lab00 is here: <https://submit.cs.ucsb.edu/form/project/{{page.submit_cs_pnum}}/submission>
+The page for submitting lab04 is here: <https://submit.cs.ucsb.edu/form/project/{{page.submit_cs_pnum}}/submission>
 
-Navigate to that page, and upload your `hello.py` file.
+Navigate to that page, and upload your `lab04.py` file.
 
 If you are working on the ECI/CSIL/lab linux systems, you can also submit at the command line with this command:
 
 ```
-~submit/submit ~/cs8/lab01/lab01.py
+~submit/submit ~/cs8/lab04/lab04.py
 ```
 
 It will ask for your email address: use your full umail address (e.g. `cgaucho@umail.ucsb.edu`).  For password, use the password that you enter for the submit.cs system.    You may save these credentials if you don't want to have to type them in every time.
@@ -381,3 +225,4 @@ Refresh that page, and you should get one that indicates with either red, or gre
 
 If you got all green, and 10 points, then your submission was accepted---but to emphasize, for this week, the other 90 points will be assigned by a human grader.   You'll be notified of that grade [via Gauchospace](https://gauchospace.ucsb.edu).
 
+Created by Diba Mirza
