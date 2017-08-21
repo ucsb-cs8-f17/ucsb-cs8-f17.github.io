@@ -11,7 +11,7 @@ submit_cs_pnum:
 Goal
 ====
 
-The goal of this exercise is to write two functions to draw basic shapes using turle graphics. You will then use these primitives to create a forest scene. The key idea to learn how to use functions as building blocks in your code, and apply repetition and randomization in your code.
+The goal of this exercise is to write two functions to draw basic shapes using turle graphics. You will then use these primitives to create a forest scene. The key idea to learn how to use functions as building blocks, and apply repetition and randomization in your code to create interesting outcomes.
 
 
 What you'll be drawing
