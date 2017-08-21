@@ -11,29 +11,29 @@ submit_cs_pnum:
 Goal
 ====
 
-The goal of this exercise is to write four functions to draw basic shapes using turle graphics. You will then use these primitives to create more complex graphics compositions by completing a few guided exercises and writing two functions from scratch. The key idea to learn how to using functions as building blocks in your code, and the use of loops to create more complex compositions.
+The goal of this exercise is to write two functions to draw basic shapes using turle graphics. You will then use these primitives to create a forest scene. The key idea to learn how to use functions as building blocks in your code, and apply repetition and randomization in your code.
 
 
 What you'll be drawing
 ----------------------
 
-You'll be writing functions to produce two basic shapes: a rectangle and a triangle. In order to use these shape primitives to create more complex drawings, each function takes parameters that specify the size, orientation, pen color, and fill color of that shape. The function definitions for the two basic shapes are:
+You'll be writing functions to produce two basic shapes: a rectangle and a triangle. Each function takes parameters that specify the size, orientation, pen color, and fill color of that shape. This will allow us to create more interesting drawings later on. The function definitions are given below:
 
 -   `drawRectangle(width, height, tilt, penColor, fillColor)`
 -   `drawTriangle(base, height, tilt, penColor, fillColor)`
 
 
-Below is the output produced when each function is callled with specific parameter values.
+The output produced when each function is callled with specific parameter values is shown in the following figure.
 
 ![basicShapes](basicShapes.png)
 
-The above drawings are produced by calling either <code>drawRectangle()</code> or <code>drawTriangle()</code>. In each drawing, the initial location and heading of the turtle right before the corresponding function is called is shown by the turtle stamp. For example the top left drawing is the output of the following function call:
+The above drawings are the result of calling either <code>drawRectangle()</code> or <code>drawTriangle()</code>. In each drawing, the turtle stamp shoes the initial location and heading of the turtle right before the corresponding function is called. For example the top left drawing is the output of the following line of code, when the turtle is at the top left corner:
 
 ```
 drawRectangle( width = 50, height = 100, tilt = 0, penColor = "red", fillColor = "")
 ```
 
-The subsequent three drawings on the same row are the output of repeatedly moving the turtle to the right, and calling the <code>drawRectangle()</code> function with the same width and height as before, changing the tilt, penColor and fillColor. The exact function calls and parameter values to produce these drawings are given below:
+The subsequent three drawings on the same row are the output of repeatedly moving the turtle to the right, and calling the <code>drawRectangle()</code> function changing the tilt, penColor and fillColor. The function calls and parameter values to produce these drawings are given below:
 
 
 ```
@@ -59,7 +59,7 @@ Once you have implemented the above basic shape primitives, you will use them as
 
 ![forestScene](forestScene.png)
 
-To create the scene shown above you will implement additional functions to draw a tree, a hut, a forest and a village! 
+To create this scene you will implement additional functions to draw a tree, a hut, a forest and a village! 
 
 
 # The programming part
