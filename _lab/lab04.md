@@ -97,25 +97,9 @@ t.shape("turtle")
 Save this, and run it.   You should see a turtle appear.
 
 
-## Step 3: Create a function for your first letter
+## Step 3: Create the functions for the two basic shapes (rectangle and triangle)
 
-Next, you are going to define a function to draw your first letter.
 
-Name this function `drawX`, where `X` is the letter you are drawing
-for your first initial. (For example, `drawA`, `drawB`, etc.)
-
-As a model, use the code below for the drawA function.  This goes
-right after the code you just put into the `lab01.py` file.
-
-For your draw function, adapt this code, using the points you defined on the
-[ic00](/hwk/ic00/) worksheet, and change the code that connects the
-points with lines as needed.
-
-After entering the function definition, at the bottom try a sample
-function call with some width and height (e.g. `drawA(50,100)`).  The
-function call should NOT be indented, just as shown in the example below.
-
-Try running it and see if the letter looks ok.  Make changes until you see that it can draw the letter properly.
 
 ```
 def drawA(width, height):
