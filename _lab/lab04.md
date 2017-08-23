@@ -163,7 +163,19 @@ With these basic primitives, you are now ready to make something more interestin
 
 ## Step 4: Draw a tree
 
-If you are thinking that the next logical thing to create is a tree or a hut, then you have grasped the objective of this lab (.. don't worry if you thought something different). The important idea is to recognize that the forest scene is essentially made up of trees and huts. By creating these new elements, creating the forest boils down to making repreated calls to these functions and moving the turtle to a new spot in between function calls. We recommend you start with the tree because it has a more regular structure. 
+Now that we have our basic shapes (the rectangle and the triangle), we are in a position to create the essential elements of our forest scene in code - functions to draw a tree and a hut. Once we do that, drawing the forest boils down to making repeated calls to these two functions and moving the turtle to a new spot in between function calls. We'll start with the tree because it has a more regular structure. 
+
+Define a 'drawTree()' function to draw a tree.  A general 'drawTree()' function should allow the user to specify the height and color of the tree. With that in mind, the definition of the 'drawTree()' function is given below. 
+
+```
+def drawTree(height, color):
+    ''' This function draws a tree with a specific height and color. The bark of the tree is always brown, and all other parameters such as the width of the tree or the length of the bark should be chosen so that the tree is well proportioned. The tree top is composed of three triangles stacked on top of each other
+    '''
+
+```
+
+
+
 
 To make sure that you can draw your tree at two different places, draw a tree with width 50 and height 100, then pick up the pen and move it to a new location, and then draw a bigger tree and a smaller tree at two different locations
 
