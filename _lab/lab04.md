@@ -11,7 +11,7 @@ submit_cs_pnum:
 Goal
 ====
 
-The goal of this exercise is to write two functions to draw basic shapes using turle graphics. You will then use these primitives to create a forest scene. The key idea to learn how to use functions as building blocks, and apply repetition and randomization in your code to create interesting outcomes.
+The goal of this exercise is to draw a forest scene from basic shape primitives that you will implement using turtle graphics. The key idea to learn how to use functions as building blocks in more complex compositions. You will also learn about using repetition and randomization in your code to create interesting outcomes.
 
 
 What you'll be drawing
@@ -169,7 +169,9 @@ Define a 'drawTree()' function to draw a tree.  A general 'drawTree()' function 
 
 ```
 def drawTree(height, color):
-    ''' This function draws a tree with a specific height and color. The bark of the tree is always brown, and all other parameters such as the width of the tree or the length of the bark should be chosen so that the tree is well proportioned. The tree top is composed of three triangles stacked on top of each other
+    
+    ''' 
+    This function draws a tree with a specific height and color. The bark of the tree is always brown, and all other parameters such as the width of the tree or the length of the bark should be chosen so that the tree is well proportioned. The tree top is composed of three triangles stacked on top of each other
     '''
 
 ```
