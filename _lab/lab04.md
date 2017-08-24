@@ -188,7 +188,7 @@ def testdrawTree():
 ```
 The above code helps you visually inspect if the your tree is of the specified height by drawing it alongside a rectangle of the same height. When you run this code with a correct implementation of drawTree() should see that the top of the tree coincides with the top side of the rectangle as shown in the following output:
 
-![testTree](testTree.PNG)
+![testTree](testTree.PNG){:height="200px"}
 
 Note that there are quite a few details about the tree that are left for you to decide. For example, you should decide on the width of the tree, the width of the bark and the height of the brown bark - all of which should be relative to the height of the tree. Now, implement your drawTree() function and draw at least two trees at different locations to test if you are able to well-proportioned trees of different heights.
 
