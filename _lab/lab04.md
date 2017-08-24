@@ -194,7 +194,7 @@ Note that there are aspects of the tree that are not specified for you such as t
 
 Now go ahead and implement your drawTree() function. Add more code to the testdrawTree() function to draw at least two well-proportioned trees of different heights at two different locations.  
 
-## Step 5: Draw a row of trees - repetion made easy with loops
+## Step 5: Draw a row of trees - repetition made easy with loops
 
 We would now like to go from drawing one tree to many trees. One way of doing this is to simply repeat the lines of code to move the turtle to a specific spot and draw one tree. For example, the following code draws three trees of the same height in a row:
 
