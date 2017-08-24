@@ -99,7 +99,7 @@ t.shape("turtle")
 Save this, and run it.   You should see a turtle appear.
 
 
-## Step 3: Create and implement the functions for the two basic shapes (rectangle and triangle)
+## Step 3: Create and implement the functions for the basic shapes - rectangle and triangle
 
 In your lab04.py file, write the skeleton of <code> drawRectangle() </code> and <code> drawTriangle()</code> as shown below. You will need some of the trigonometric functions provided in that math module to implement <code> drawTriangle()</code>. In order to use that module, add a line to import it at the top of the file. To learn more about the math module refer [the Python documentation on the module](https://docs.python.org/3/library/math.html) and scroll down to the section on trigonometric functions.
 
@@ -165,7 +165,7 @@ With these basic primitives, you are now ready to make something more interestin
 
 Now that we have our basic shapes (the rectangle and the triangle), we are in a position to create the essential elements of our forest scene in code - functions to draw a tree and a hut. Once we do that, drawing the forest boils down to making repeated calls to these two functions and moving the turtle to a new spot in between function calls. We'll start with the tree because it has a more regular structure. 
 
-Define a 'drawTree()' function to draw a tree.  A general 'drawTree()' function should allow the user to specify the height and color of the tree. With that in mind, the definition of the 'drawTree()' function is given below. 
+Define a 'drawTree()' function to draw a tree.  A general 'drawTree()' function should allow the user to specify the height and color of the tree as captured in the following function definition.  
 
 ```
 def drawTree(height, color):
@@ -190,11 +190,35 @@ The above code helps you visually inspect if the your tree is of the specified h
 
 ![testTree](testTree.PNG){:height="200px"}
 
-Note that there are quite a few details about the tree that are left for you to decide. For example, you should decide on the width of the tree, the width of the bark and the height of the brown bark - all of which should be relative to the height of the tree. Now, implement your drawTree() function and draw at least two trees at different locations to test if you are able to well-proportioned trees of different heights.
+Note that there are aspects of the tree that are not specified for you such as the width of the tree, the width and height of the bark, and the spacing between the three triangles that make up the tree top. You should make decisions on these aspects relative to the height of the tree so that a taller tree is wider and has a thicker and taller bark.
 
+Now go ahead and implement your drawTree() function. Add more code to the testdrawTree() function to draw at least two well-proportioned trees of different heights at two different locations.  
 
-## Step 5: Draw a row of trees
+## Step 5: Draw a row of trees - repetion made easy with loops
 
+We would now like to go from drawing one tree to many trees. One way of doing this is to simply repeat the lines of code to move the turtle to a specific spot and draw one tree. For example, the following code draws three trees of the same height in a row:
+
+```
+# Move the turtle to location (-200, -100) and draw a tree  
+t.up()
+t.goto(-200, -100)  
+t.down()
+drawTree(200, "green")
+
+# Move the turtle to location (400, -100) and draw another tree
+t.up()
+t.goto(400, -100)  
+t.down()
+drawTree(200, "green")
+
+# Move the turtle to location (800, -100) and draw the third tree
+t.up()
+t.goto(800, 100)  
+t.down()
+drawTree(200, "green")
+
+```
+Inspecting the code above you will find that we are simply repeating the first four lines of code, slightly modifying the t.goto() statement each time. 
 ## Step 6: Take a detour into random numbers
 
 ## Step 7: Draw a hut 
