@@ -242,7 +242,7 @@ The for loop runs the block of code inside it three times. Run it and you'll fin
 
 ## Step 6: Take a detour into random numbers
 
-Drawing all your trees in one straight line is a good first attempt but its not very realistic. Instead we would like to place them at random locations that are rough in a straight line. We will use the python random module to add an artistic touch to our drawings.
+Drawing all your trees in one straight line is a good first attempt but its not very realistic. Instead your next goal is to draw your trees at random locations that are roughly in a straight line. We will use the [python random module](https://docs.python.org/3/library/random.html) to add an artistic touch to our drawings.
 
 
 ## Step 7: Draw a hut 
