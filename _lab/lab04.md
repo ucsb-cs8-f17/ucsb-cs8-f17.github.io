@@ -196,7 +196,15 @@ Now go ahead and implement your drawTree() function. Add more code to the testdr
 
 ## Step 5: Draw a row of trees - repetition made easy with loops
 
-We would now like to go from drawing one tree to many trees. One way of doing this is to simply repeat the lines of code to move the turtle to a specific spot and draw one tree. For example, the following code draws three trees of the same height in a row:
+We would now like to go from drawing one tree to many trees, which will essentially become our forest. To begin define the function `drawForest()` as below:
+
+```
+def drawForest():
+    ''' 
+    Draws a collection of trees placed at random locations within a rectangular region
+    '''
+```
+Start by drawing three trees of the same height in a row. One way of doing is this is to repeat a block of code to move the turtle to a specific spot and then call the drawTree() function as shown below:
 
 ```
 # Move the turtle to location (-200, -100) and draw a tree  
@@ -205,20 +213,33 @@ t.goto(-200, -100)
 t.down()
 drawTree(200, "green")
 
-# Move the turtle to location (400, -100) and draw another tree
+# Move the turtle to location (0, -100) and draw another tree
 t.up()
-t.goto(400, -100)  
+t.goto(0, -100)  
 t.down()
 drawTree(200, "green")
 
-# Move the turtle to location (800, -100) and draw the third tree
+# Move the turtle to location (200, -100) and draw the third tree
 t.up()
-t.goto(800, 100)  
+t.goto(200, 100)  
 t.down()
 drawTree(200, "green")
 
 ```
-Inspecting the code above you will find that we are simply repeating the first four lines of code, slightly modifying the t.goto() statement each time. 
+However a better way of doing the same thing is to use a for loop as demonstrated below:
+
+```
+for i in range(3):
+    t.up()
+    t.goto(400, -100)  
+    t.down()
+    drawTree(200, "green")
+```
+
+The for loop runs the block of code inside it three times. Run it and you'll find that the turtle draws all the three instances of the tree at the same spot. Modify exactly one of the lines to get the same output as the version above it. You should get an output similar to the one below:
+
+![manyTrees](manyTrees.PNG){:height="200px"}
+
 ## Step 6: Take a detour into random numbers
 
 ## Step 7: Draw a hut 
