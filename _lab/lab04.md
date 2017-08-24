@@ -171,18 +171,27 @@ Define a 'drawTree()' function to draw a tree.  A general 'drawTree()' function 
 def drawTree(height, color):
     
     ''' 
-    This function draws a tree with a specific height and color. The bark of the tree is always brown, and all other parameters such as the width of the tree or the length of the bark should be chosen so that the tree is well proportioned. The tree top is composed of three triangles stacked on top of each other
+    This function draws a tree with a specific height and color, with the bottom of the bark at the current location of the turtle. The bark of the tree is always brown. All other parameters such as the width of the tree and the length of the bark are chosen so that the tree is well proportioned. The tree top is composed of three triangles stacked on top of each other.
     '''
 
 ```
 
+Copy the above code and place it right after your implementation for `drawTriangle`. Now write a function `testdrawTree()` with some test code to test your implentation of `drawTree()`. Below is some initial test code:
 
+```
+def testdrawTree():
+    t.up()
+    t.goto(0,-400)
+    t.down()
+    drawRectangle(200, 200, 0 , "red","")
+    drawTree(200, "green")
+```
+The above code helps you visually inspect if the your tree is of the specified height by drawing it alongside a rectangle of the same height. When you run this code with a correct implementation of drawTree() should see that the top of the tree coincides with the top side of the rectangle as shown in the following output:
 
+![testTree](testTree.png)
 
-To make sure that you can draw your tree at two different places, draw a tree with width 50 and height 100, then pick up the pen and move it to a new location, and then draw a bigger tree and a smaller tree at two different locations
+Note that there are quite a few details about the tree that are left for you to decide. For example, you should decide on the width of the tree, the width of the bark and the height of the brown bark - all of which should be relative to the height of the tree. Now, implement your drawTree() function and draw at least two trees at different locations to test if you are able to well-proportioned trees of different heights.
 
-
-If see two proportioned trees that correspond to the specified width and height, you are ready for the next step.
 
 ## Step 5: Draw a row of trees
 
