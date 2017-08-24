@@ -25,7 +25,7 @@ You'll be writing functions to produce two basic shapes: a rectangle and a trian
 
 The output produced when each function is callled with specific parameter values is shown in the following figure.
 
-![basicShapes](basicShapes.png){:height="200px"}
+![basicShapes](basicShapes.png){:height="400px"}
 
 The above drawings are the result of calling either <code>drawRectangle()</code> or <code>drawTriangle()</code>. In each drawing, the turtle stamp shoes the initial location and heading of the turtle right before the corresponding function is called. For example the top left drawing is the output of the following line of code, when the turtle is at the top left corner:
 
@@ -57,7 +57,7 @@ Similarly, the drawings on the next row are the result of repeatedly calling **<
 
 Once you have implemented the above basic shape primitives, you will use them as building blocks to create the following forest scene!
 
-![forestScene](forestScene.png){:height="200px"}
+![forestScene](forestScene.png){:height="400px"}
 
 To create this scene you will implement additional functions to draw a tree, a hut, a forest and a village! 
 
