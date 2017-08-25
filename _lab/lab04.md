@@ -135,7 +135,7 @@ def drawRectangle(width, height, tilt, penColor, fillColor):
     
 def drawTriangle(base, height, tilt, penColor, fillColor):
     """
-    Draw a triangle with a given base, height, penColor and fillColor,
+    Draw an isoceles triangle with a given base, height, penColor and fillColor,
     with the current location of the turtle being the 
     lower left corner, and the bottom side tilted by an angle tilt (specified in degrees)
     relative to the horizontal axis. Use a turtle called t to create the drawing
