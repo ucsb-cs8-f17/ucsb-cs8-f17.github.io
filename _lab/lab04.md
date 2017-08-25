@@ -213,7 +213,7 @@ def testdrawTree():
     drawRectangle(200, 200, 0 , "red","")
     drawTree(200, "green")
 ```
-The above code helps you visually inspect if the your tree is of the specified height by drawing it alongside a rectangle of the same height. When you run this code with a correct implementation of drawTree() should see that the top of the tree touches the top of the rectangle as shown in the following output:
+The above code helps you visually inspect if the your tree is of the specified height by drawing it alongside a rectangle of the same height. When you run this code with a correct implementation of drawTree() should see that the top of the tree touches the top of the rectangle as shown in the following output :
 
 ![testTree](testTree.png){:height="200px"}
 
