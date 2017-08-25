@@ -64,22 +64,22 @@ To create this scene you will implement additional functions to draw a tree, a h
 
 # The programming part
 
-## Step 1: Create a lab04 directory under your cs8 directory
+## Step 1: Create a {{page.num}} directory under your cs8 directory
 
 
-Create a directory called `~/cs8/lab04` for a file
-we are going to call `lab04.py`.
+Create a directory called `~/cs8/{{page.num}}` for a file
+we are going to call `{{page.num}}.py`.
 
 If you don't recall the commands, you may refer to any of the previous labs
 
-## Step 2: Open `idle3` and create `lab04.py`
+## Step 2: Open `idle3` and create `{{page.num}}.py`
 
 Open up `idle3` and select the menu option `File => New File` to create a new file.
 
 In this file, put this code (but put your name instead of "your name goes here")
 
 ```
-# lab04.py, your name goes here
+# {{page.num}}.py, your name goes here
 import turtle
 import math 
 
@@ -101,7 +101,7 @@ Save this, and run it.   You should see a turtle appear.
 
 ## Step 3: Create and implement the functions for the basic shapes - rectangle and triangle
 
-In your lab04.py file, write the skeleton of <code> drawRectangle() </code> and <code> drawTriangle()</code> as shown below. You will need some of the trigonometric functions provided in that math module to implement <code> drawTriangle()</code>. In order to use that module, add a line to import it at the top of the file. To learn more about the math module refer [the Python documentation on the module](https://docs.python.org/3/library/math.html) and scroll down to the section on trigonometric functions.
+In your {{page.num}}.py file, write the skeleton of <code> drawRectangle() </code> and <code> drawTriangle()</code> as shown below. You will need some of the trigonometric functions provided in that math module to implement <code> drawTriangle()</code>. In order to use that module, add a line to import it at the top of the file. To learn more about the math module refer [the Python documentation on the module](https://docs.python.org/3/library/math.html) and scroll down to the section on trigonometric functions.
 
 ```
 import math
@@ -345,8 +345,8 @@ When you are finished, ask a TA or instructor to look it over and give you some 
 
 It should be structured in a way that there is 
 
-1. A single file called `lab04.py`
-2. Code at the top of the `lab04.py` file that sets up a turtle
+1. A single file called `{{page.num}}.py`
+2. Code at the top of the `{{page.num}}.py` file that sets up a turtle
 3. Next, function defintions for each of the basic shapes, test code for the basic shapes, drawTree(), testdrawTree(), drawForest(), drawHut(), and drawVillage()
 4. Finally, code that calls those functions to draw the forest scene
 
@@ -362,22 +362,22 @@ If you want reassurance that your code is in good shape, you may ask a TA or ins
 
 To submit your code, use:
 
-### Navigate to the page for submitting lab04
+### Navigate to the page for submitting {{page.num}}
 
-The page for submitting lab04 is here: <https://submit.cs.ucsb.edu/form/project/{{page.submit_cs_pnum}}/submission>
+The page for submitting {{page.num}} is here: <https://submit.cs.ucsb.edu/form/project/{{page.submit_cs_pnum}}/submission>
 
-Navigate to that page, and upload your `lab04.py` file.
+Navigate to that page, and upload your `{{page.num}}.py` file.
 
 If you are working on the ECI/CSIL/lab linux systems, you can also submit at the command line with this command:
 
 ```
-~submit/submit ~/cs8/lab04/lab04.py
+~submit/submit ~/cs8/{{page.num}}/{{page.num}}.py
 ```
 
 It will ask for your email address: use your full umail address (e.g. `cgaucho@umail.ucsb.edu`).  For password, use the password that you enter for the submit.cs system.    You may save these credentials if you don't want to have to type them in every time.
 
 
-Note that if you try to upload a file with a name that does not match EXACTLY the name `lab04.py`, the system will not allow you to do it. 
+Note that if you try to upload a file with a name that does not match EXACTLY the name `{{page.num}}.py`, the system will not allow you to do it. 
 
 Once you upload it, you should get a page that shows your submission is pending.
 
