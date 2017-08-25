@@ -127,7 +127,8 @@ def drawRectangle(width, height, tilt, penColor, fillColor):
     """
     Draw a rectangle with a given width, height, penColor and fillColor,
     with the current location of the turtle being the 
-    lower left corner, and the bottom side tilted by an angle tilt (specified in degrees) relative to the horizontal axis. Use a turtle called t to create the drawing
+    lower left corner, and the bottom side tilted by an angle tilt (specified in degrees) 
+    relative to the horizontal axis. Use a turtle called t to create the drawing
     """
 
     # Insert code to draw the rectangle
@@ -195,7 +196,8 @@ def drawTree(height, color):
     
     ''' 
     This function draws a tree with a specific height and color, with the bottom of the bark at the current location of the turtle. 
-    The bark of the tree is always brown. All other parameters such as the width of the tree and the width and height of the bark are chosen so that the tree is well proportioned. 
+    The bark of the tree is always brown. 
+    All other parameters such as the width of the tree and the width and height of the bark are chosen so that the tree is well proportioned. 
     The tree top is composed of three triangles with the specified color, stacked on top of each other.
     '''
 
