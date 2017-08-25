@@ -1,11 +1,11 @@
 ---
 layout: lab
-num: lab05
+num: lab04
 ready: true
 desc: "Turtle Graphics: Scene from a forest"
-assigned: 2017-08-25 11:00:00.00-7
-due: 2017-09-01 16:50:00.00-7
-submit_cs_pnum: 775
+assigned: 2017-08-23 09:30:00.00-7
+due: 2017-08-30 17:00:00.00-7
+submit_cs_pnum: 
 ---
 
 Goal
@@ -72,47 +72,28 @@ we are going to call `{{page.num}}.py`.
 
 If you don't recall the commands, you may refer to any of the previous labs
 
-## Step 2: Open `idle3` and create <tt>{{page.num}}.py</tt>
+## Step 2: Open `idle3` and create `{{page.num}}.py`
 
 Open up `idle3` and select the menu option `File => New File` to create a new file.
 
 In this file, put this code (but put your name instead of "your name goes here")
 
-<pre>
+```
 # {{page.num}}.py, your name goes here
 import turtle
 import math 
 
-if __name__=="__main__":
-  t = turtle.Turtle()
 
-</pre>
+t = turtle.Turtle()
 
-The `if` test for `__name__=="__main__":` is where everthing in your program
-should go <em>except for</em>:
-
-* `import` statements
-* function definitions
-
-I realize it's a strange looking line of code&mdash;if you haven't already
-seen it before in lecture or another lab, you can find an explanation of it
-here: [All about `if __name__=="__main__":`](https://ucsb-cs8.github.io/ptopics/main_blocks/).
+```
 
 You can name your turtle anything you like; I used `t` because it's short to type.
 
-Optionally, you can make your turtle look like a turtle by putting this line in your `__main__` block also:
+Optionally, you can make your turtle look like a turtle by typing this:
 
 ```
-  t.shape("turtle")
-```
-
-So the whole main block looks like this:
-
-```
-if __name__=="__main__":
-  t = turtle.Turtle()
-  t.shape("turtle")
-
+t.shape("turtle")
 ```
 
 Save this, and run it.   You should see a turtle appear.
@@ -120,7 +101,7 @@ Save this, and run it.   You should see a turtle appear.
 
 ## Step 3: Create and implement the functions for the basic shapes - rectangle and triangle
 
-In your <tt>{{page.num}}.py</tt> file, write the skeleton of <code> drawRectangle() </code> and <code> drawTriangle()</code> as shown below. You will need some of the trigonometric functions provided in that math module to implement <code> drawTriangle()</code>. In order to use that module, add a line to import it at the top of the file. To learn more about the math module refer [the Python documentation on the module](https://docs.python.org/3/library/math.html) and scroll down to the section on trigonometric functions.
+In your {{page.num}}.py file, write the skeleton of <code> drawRectangle() </code> and <code> drawTriangle()</code> as shown below. You will need some of the trigonometric functions provided in that math module to implement <code> drawTriangle()</code>. In order to use that module, add a line to import it at the top of the file. To learn more about the math module refer [the Python documentation on the module](https://docs.python.org/3/library/math.html) and scroll down to the section on trigonometric functions.
 
 ```
 import math
@@ -207,7 +188,7 @@ def testdrawTree():
 ```
 The above code helps you visually inspect if the your tree is of the specified height by drawing it alongside a rectangle of the same height. When you run this code with a correct implementation of drawTree() should see that the top of the tree coincides with the top side of the rectangle as shown in the following output:
 
-![testTree](testTree.png){:height="200px"}
+![testTree](testTree.PNG){:height="200px"}
 
 Note that there are aspects of the tree that are not specified for you such as the width of the tree, the width and height of the bark, and the spacing between the three triangles that make up the tree top. You should make decisions on these aspects relative to the height of the tree so that a taller tree is wider and has a thicker and taller bark.
 
@@ -257,7 +238,7 @@ for i in range(3):
 
 The for loop runs the block of code inside it three times. Run it and you'll find that the turtle draws all the three instances of the tree at the same spot. Modify exactly one of the lines to get the same output as the version above it. You should get an output similar to the one below:
 
-![manyTrees](manyTrees.png){:height="200px"}
+![manyTrees](manyTrees.PNG){:height="200px"}
 
 ## Step 6: Take a detour into random numbers
 
@@ -289,11 +270,11 @@ randomPlay()
 
 When you run the above code, you will find a very regular arrangement of triangles along a circle as shown below. Read the code to understand why its producing this output. Note that both the location and tilt of each triangle is dependent on the value of our loop variable (i). 
 
-![circleOfTris](circleOfTris.png){:height="200px"}
+![circleOfTris](circleOfTris.PNG){:height="200px"}
 
 We will now introduce the use of random numbers into this code by selecting the tilt of each triangle to be a random number between 0 and 90 degrees. To do this replace the line `tilt = 10*i` by `tilt = random.randint(0, 90)`. Then run the code. You should see a drawing similar to the one below, although not exactly the same!
 
-![randTilt](randTilt.png){:height="200px"}
+![randTilt](randTilt.PNG){:height="200px"}
 
 We will next use the random module to randomize two other aspects of our drawing: the location of each triangle and its color. Previously, we drew all our triangles along a circle of radius 200. This time we will introduce a small random perturbation in that value by adding a random number between -50 and 50 to the radius in every iteration of the for loop. The line of code that does that is:
 
@@ -332,7 +313,7 @@ def randomPlay():
 ``` 
 The output of the code is shown in the figure below. Try changing the limits to the random.randint() function and rerun the code, and observe the outcome. Notice how you can control the level of randomness in your drawings using this simple strategy.
 
-![randLoc](randLoc.png){:height="200px"}
+![randLoc](randLoc.PNG){:height="200px"}
 
 Apply what you have learned in this section to complete your `drawForest()` function. Your forest should contain anywhere between 10 and 15 trees of different sizes and different shades of green placed randomly along a horizontal line.
 
@@ -364,10 +345,10 @@ When you are finished, ask a TA or instructor to look it over and give you some 
 
 It should be structured in a way that there is 
 
-1. A single file called <tt>{{page.num}}.py</tt>
-2. Code at the top of the <tt>{{page.num}}.py</tt> file that sets up a turtle
-3. Next, function defintions for each of the basic shapes, test code for the basic shapes, `drawTree()`, `testdrawTree()`, `drawForest()`, `drawHut()`, and `drawVillage()`
-4. Finally, code that calls those functions to draw the forest scene.  That code should be in a block that starts with `if __name__=="__main__":` as explained later in the lab.
+1. A single file called `{{page.num}}.py`
+2. Code at the top of the `{{page.num}}.py` file that sets up a turtle
+3. Next, function defintions for each of the basic shapes, test code for the basic shapes, drawTree(), testdrawTree(), drawForest(), drawHut(), and drawVillage()
+4. Finally, code that calls those functions to draw the forest scene
 
 
 If your code meets all those criteria, you should be in good shape to submit it.
@@ -375,18 +356,9 @@ If your code meets all those criteria, you should be in good shape to submit it.
 
 ## Step 9: Submitting via submit.cs
 
-Note that this week, although we are using submit.cs, it is NOT the case that the grade you get from submit.cs is your final grade for the assignment.
+Note that this week, although we are using submit.cs, it is NOT the case that the grade you get from submit.cs is your final grade for the assignment.   The grade on submit.cs is just a PART of your grade--you will get 10 points for basically submitting *anything* that is a valid Python program that has the name lab01.py.   However, the other 90 points for this lab will come from an instructor or TA doing a manual inspection of your code to see if it complies with the requirements listed above.      
 
-The grade on submit.cs is just a PART of your grade--you will get 10
-points for basically submitting *anything* that is a valid Python
-program that has the name <tt>{{page.num}}.py</tt>.
-
-However, the other 90 points for this lab will come from an instructor
-or TA doing a manual inspection of your code to see if it complies
-with the requirements listed above.
-
-If you want reassurance that your code is in good shape, you may ask a
-TA or instructor to look it over during office hours or lab.
+If you want reassurance that your code is in good shape, you may ask a TA or instructor to look it over during office hours or lab.
 
 To submit your code, use:
 
