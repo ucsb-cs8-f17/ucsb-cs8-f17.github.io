@@ -317,7 +317,7 @@ The output of the code is shown in the figure below. Try changing the limits to 
 
 Apply what you have learned in this section to complete your `drawForest()` function. Your forest should contain anywhere between 10 and 15 trees of different sizes and different shades of green placed randomly along a horizontal line.
 
-## Step 7: Draw a hut, then a row of huts
+## Step 7: Draw a hut, then a village
 
 Define a function to draw a hut with fixed dimensions, composed of only rectangles. 
 
