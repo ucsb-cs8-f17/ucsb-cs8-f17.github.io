@@ -270,7 +270,7 @@ randomPlay()
 
 When you run the above code, you will find a very regular arrangement of triangles along a circle as shown below. Read the code to understand why its producing this output. Note that both the location and tilt of each triangle is dependent on the value of our loop variable (i). 
 
-![circleOfTris](circleofTris.PNG){:height="200px"}
+![circleOfTris](circleOfTris.PNG){:height="200px"}
 
 We will now introduce the use of random numbers into this code by selecting the tilt of each triangle to be a random number between 0 and 90 degrees. To do this replace the line `tilt = 10*i` by `tilt = random.randint(0, 90)`. Then run the code. You should see a drawing similar to the one below, although not exactly the same!
 
@@ -348,7 +348,7 @@ It should be structured in a way that there is
 1. A single file called `lab04.py`
 2. Code at the top of the `lab04.py` file that sets up a turtle
 3. Next, function defintions for each of the basic shapes, test code for the basic shapes, drawTree(), testdrawTree(), drawForest(), drawHut(), and drawVillage()
-4. Finally, code that calls those functions to draw a forest and a village
+4. Finally, code that calls those functions to draw the forest scene
 
 
 If your code meets all those criteria, you should be in good shape to submit it.
