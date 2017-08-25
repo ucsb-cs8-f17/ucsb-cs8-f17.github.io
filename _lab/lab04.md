@@ -215,7 +215,7 @@ def testdrawTree():
 ```
 The above code helps you visually inspect if the your tree is of the specified height by drawing it alongside a rectangle of the same height. When you run this code with a correct implementation of drawTree() should see that the top of the tree touches the top of the rectangle as shown in the following output :
 
-![testTree](testTree.png){:height="200px"}
+![testTree](testTree2.png){:height="200px"}
 
 Note that there are aspects of the tree that are not specified for you such as its width, the width and height of the bark, and the spacing between the three triangles that make up the tree top. You should make decisions on these aspects relative to the height of the tree so that a taller tree has a thicker and taller bark.
 
