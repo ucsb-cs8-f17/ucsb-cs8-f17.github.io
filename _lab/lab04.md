@@ -194,7 +194,9 @@ Define a 'drawTree()' function to draw a tree.  A general 'drawTree()' function 
 def drawTree(height, color):
     
     ''' 
-    This function draws a tree with a specific height and color, with the bottom of the bark at the current location of the turtle. The bark of the tree is always brown. All other parameters such as the width of the tree and the width and height of the bark are chosen so that the tree is well proportioned. The tree top is composed of three triangles with the specified color, stacked on top of each other.
+    This function draws a tree with a specific height and color, with the bottom of the bark at the current location of the turtle. 
+    The bark of the tree is always brown. All other parameters such as the width of the tree and the width and height of the bark are chosen so that the tree is well proportioned. 
+    The tree top is composed of three triangles with the specified color, stacked on top of each other.
     '''
 
 ```
