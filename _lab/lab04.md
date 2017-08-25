@@ -82,7 +82,7 @@ import turtle
 import math 
 
 if __name__=="__main__":
-  t = turtle.Turtle()
+    t = turtle.Turtle()
 
 </pre>
 
@@ -101,15 +101,15 @@ You can name your turtle anything you like; I used `t` because it's short to typ
 Optionally, you can make your turtle look like a turtle by putting this line in your `__main__` block also:
 
 ```
-  t.shape("turtle")
+    t.shape("turtle")
 ```
 
 So the whole main block looks like this:
 
 ```
 if __name__=="__main__":
-  t = turtle.Turtle()
-  t.shape("turtle")
+    t = turtle.Turtle()
+    t.shape("turtle")
 
 ```
 
@@ -335,6 +335,11 @@ def randomPlay():
         tilt = 0
         color = random.choice(shadesOfGreen)
         drawTriangle(50, 50, tilt, "black", color)
+
+if __name__=="__main__":
+    t = turtle.Turtle()
+    t.shape("turtle")
+    randomPlay()
 ``` 
 The output of the code is shown in the figure below. Try changing the parameters passed to random.randint() and rerun the code to observe its effect on the drawing. Notice how you can control the level of randomness in your drawings.
 
