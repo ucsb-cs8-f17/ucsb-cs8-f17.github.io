@@ -242,27 +242,116 @@ The for loop runs the block of code inside it three times. Run it and you'll fin
 
 ## Step 6: Take a detour into random numbers
 
-Drawing all your trees in one straight line is a good first attempt but its not very realistic. Instead your next goal is to draw your trees at random locations that are roughly in a straight line. We will use the [python random module](https://docs.python.org/3/library/random.html) to add an artistic touch to our drawings.
+In this step you will use the [python random module](https://docs.python.org/3/library/random.html) to add an artistic touch to your drawings.
+Although drawing all the trees in a straight line is a good first attempt at creating the forest, its not very realistic. So, your next goal is to place the trees at random locations that are roughly along a horizontal line. As a warm up try out the exercises below that demonstrate the use of the random module with the `drawTriangle()` function that you implemented earlier. 
 
 
-## Step 7: Draw a hut 
+Start by writing a simple for loop to draw triangles along a circle. This code does not involve randomization.
+
+```
+
+def randomPlay():
+    '''
+    Experiments with the random module
+    '''
+    t.pensize(10)
+    for i in range(36):
+        t.up()
+        radius = 200
+        x = radius*math.cos(i*10*math.pi/180)
+        y = radius*math.sin(i*10*math.pi/180)
+        t.goto(x,y)
+        t.down()
+        tilt = 10*i
+        drawTriangle(50, 50, tilt, "black", "red")
+
+randomPlay()
+```
+
+When you run the above code, you will find a very regular arrangement of triangles along a circle as shown below. Read the code to understand why its producing this output. Note that both the location and tilt of each triangle is dependent on the value of our loop variable (i). 
+
+![circleOfTris](circleofTris.PNG){:height="200px"}
+
+We will now introduce the use of random numbers into this code by selecting the tilt of each triangle to be a random number between 0 and 90 degrees. To do this replace the line `tilt = 10*i` by `tilt = random.randint(0, 90)`. Then run the code. You should see a drawing similar to the one below, although not exactly the same!
+
+![randTilt](randTilt.PNG){:height="200px"}
+
+We will next use the random module to randomize two other aspects of our drawing: the location of each triangle and its color. Previously, we drew all our triangles along a circle of radius 200. This time we will introduce a small random perturbation in that value by adding a random number between -50 and 50 to the radius in every iteration of the for loop. The line of code that does that is:
+
+```
+ radius = 200 + random.randint(-50, 50)
+
+```
+
+The second modification we will make is to select the color of each triangle at random from a list of colors. The following two lines of code defines our color choices and then selects one color from this list at random.
+
+```
+shadesOfGreen =["#006400", "#556b2f", "#8fbc8f", "#2e8b57", "#3cb371", "#20b2aa", "#32cd32"] 
+color = random.choice(shadesOfGreen)
+```
+
+The list `shadesOfGreen` defines a list of color codes for different shades of green. The next line selects one of the elements of this list at random. The following code incorporates these new elements.
+
+```
+def randomPlay():
+    '''
+    Experiments with the random module
+    '''
+    shadesOfGreen =["#006400", "#556b2f", "#8fbc8f", "#2e8b57", "#3cb371", "#20b2aa", "#32cd32"] 
+    
+    t.pensize(10)
+    for i in range(36):
+        t.up()
+        radius = 200 + random.randint(-50, 50)
+        x = radius*math.cos(i*10*math.pi/180)
+        y = radius*math.sin(i*10*math.pi/180)
+        t.goto(x,y)
+        t.down()
+        tilt = 0
+        color = random.choice(shadesOfGreen)
+        drawTriangle(50, 50, tilt, "black", color)
+``` 
+The output of the code is shown in the figure below. Try changing the limits to the random.randint() function and rerun the code, and observe the outcome. Notice how you can control the level of randomness in your drawings using this simple strategy.
+
+![randLoc](randLoc.PNG){:height="200px"}
+
+Apply what you have learned in this section to complete your `drawForest()` function. Your forest should contain anywhere between 10 and 15 trees of different sizes and different shades of green placed randomly along a horizontal line.
+
+## Step 7: Draw a hut, then a row of huts
+
+Define a function to draw a hut with fixed dimensions, composed of only rectangles. 
+
+```
+def drawHut():
+    '''
+    Draw a brown hut of fixed dimensions purely composed of rectangles
+    Use the random module to enhance your drawing by introducing irregularilities in a controlled way
+    '''
+
+
+def drawVillage():
+    '''
+    Draw a sequence of five huts, placed randomly along a horizontal line
+    '''
+
+```
+
+When testing these functions, comment out all calls to previous functions. This will help you focus on the elements of interest in your drawing.
 
 ## Step 8: Put it all together
 
-
-
+Finally, put all the elements that you have implemented to draw the final scene. 
 When you are finished, ask a TA or instructor to look it over and give you some feedback on it.  
 
 It should be structured in a way that there is 
 
 1. A single file called `lab04.py`
 2. Code at the top of the `lab04.py` file that sets up a turtle
-3. Next, function defintions for each of the basic shapes
+3. Next, function defintions for each of the basic shapes, test code for the basic shapes, drawTree(), testdrawTree(), drawForest(), drawHut(), and drawVillage()
+4. Finally, code that calls those functions to draw a forest and a village
 
-4. Finally, code that calls those functions to draw your initials and graduation year all in a line
-5. And then, code that draws all those letters and digits <strong>a second time, at a different size</strong> by <em>calling your functions again</em>.
 
-If you code meets all those criteria, you should be in good shape to submit it.
+If your code meets all those criteria, you should be in good shape to submit it.
 
 
 ## Step 9: Submitting via submit.cs
@@ -288,7 +377,7 @@ If you are working on the ECI/CSIL/lab linux systems, you can also submit at the
 It will ask for your email address: use your full umail address (e.g. `cgaucho@umail.ucsb.edu`).  For password, use the password that you enter for the submit.cs system.    You may save these credentials if you don't want to have to type them in every time.
 
 
-Note that if you try to upload a file with a name that does not match EXACTLY the name `lab01.py`, the system will not allow you to do it. 
+Note that if you try to upload a file with a name that does not match EXACTLY the name `lab04.py`, the system will not allow you to do it. 
 
 Once you upload it, you should get a page that shows your submission is pending.
 
