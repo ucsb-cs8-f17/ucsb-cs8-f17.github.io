@@ -11,16 +11,16 @@ submit_cs_pnum: 775
 Goal
 ====
 
-The goal of this exercise is to draw a forest scene from basic shape primitives that you will implement using turtle graphics. The key idea to learn how to use functions as building blocks in more complex compositions. You will also learn about using repetition and randomization to create interesting outcomes in your code.
+The goal of this exercise is to draw a forest scene from basic shape primitives that you will implement using turtle graphics. The key idea to learn how to use functions as building blocks in more complex compositions. You will apply the concepts of "code reuse", "modularity" and "encapsulation" to create code that is easy to debug, maintain and extend. You will also learn about using repetition and randomization to create interesting outcomes in your code.
 
 
 What you'll be drawing
 ----------------------
 
-You'll be writing functions to produce two basic shapes: a rectangle and a triangle. Each function takes parameters that specify the size, orientation, pen color, and fill color of that shape. This will allow you to create more interesting drawings later on. The function definitions for the basic shapes are given below:
+You'll be writing functions to produce two basic shapes: a rectangle and a triangle. Each function takes parameters that specify the size, pen color, and fill color of that shape. The function to draw a rectangle takes an additional parameter to specify the tilt of the rectangle. This will allow you to create more interesting drawings later on. The function definitions for the basic shapes are given below:
 
 -   `drawRectangle(width, height, tilt, penColor, fillColor)`
--   `drawTriangle(base, height, tilt, penColor, fillColor)`
+-   `drawTriangle(base, height,  penColor, fillColor)`
 
 
 The output produced when each function is callled with specific parameter values is shown in the following figure.
