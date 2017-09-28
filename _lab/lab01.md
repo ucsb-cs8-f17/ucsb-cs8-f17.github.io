@@ -162,7 +162,7 @@ We will now update our `drawRectangle_1` to draw a rectangle with a green bounda
   t.color("green", "yellow") # Sets the pen color to green and fill color to yellow
 ``` 
 
-The first parameter is the pen color and the second is the fill color. To actually fill the rectangle with the specified color, you must precede the code that draws the rectangle with t.begin_fill() and follow it with t.end_fill(). Below is the complete code. Save and run it.
+The first parameter is the pen color and the second is the fill color. To actually fill the rectangle with the specified color, you must precede the code that draws the rectangle with t.begin_fill() and follow it with t.end_fill(). Below is the complete code. Save and run it. 
 
 ```
 def drawRectangle_1():
@@ -182,45 +182,93 @@ def drawRectangle_1():
     t.left(90)       # Make sure the turtle is oriented back to its initial orientation
     t.end_fill()
 ```
-You will soon discover that there are many different ways to solve any problem. Computer Scientists almost always care about *correct* solutions that run the fastest on any computer (which is the field of algorithms), and expressing those solutions in the simplest and most understandable way in code (good programming chops).
 
-Below is an alternate implementation for drawing a rectangle. The algorithm is slightly different: It first computes the absolute location of the 4 corners of the rectangle and then commands the turtle to go to the four locations in a specific order. To move the turtle to any location (x,y), we will use a new turtle method: t.goto(x, y). Here is one possible implementation of this algorithm. Inorder to we will name our function draw:
+Save and run it. Then call the function from the Python shell as follows:
+
+```
+>>> drawRectangle_1()
+```
+
+This is just one possible solution. As you continue through this course, you will soon discover that there are many different ways to solve any problem. Computer Scientists almost always care about *correct* solutions that run the fastest on any computer - in fact there is a whole field within CS dedicated to finding such solutions - its the field of algorithms. Good programmers take a lot of care to express their algorithms in code in the simplest and most understandable way. We will strive towards this goal in general. For now, our goal is to come up with correct solutions.
+
+Below is an alternate implementation for drawing a rectangle. The algorithm is slightly different: It first computes the absolute location of the 4 corners of the rectangle and then commands the turtle to go to the four locations in a specific order. To move the turtle to any location (x,y), we will use a new turtle method: t.goto(x, y). Here is one possible implementation of this algorithm. Name this function drawRectangle_2(). Place it below the code for drawRectangle_1().
 
 ```
 def drawRectangle_2():
     """
     draw a rectangle with width 50, height 100, tilt 0, pen color green and fill color yellow . Use a turtle called t to create the drawing
     """
-    t.color("green", "yellow")
 
-    xleft = t.
-    t.seth(0)        # Set the initial orientation of the turtle to 0 degrees
-    t.begin_fill()   
-    t.forward(50)    # Move the turtle forward by 50 units in the direction that it was pointing
-    t.left(90)       # Turn the turtle left by 90 degrees relative to the direction it was pointing
-    t.forward(100)   # Move the turtle forward by 100 units
-    t.left(90)
-    t.forward(50)
-    t.left(90)
-    t.forward(100)
-    t.left(90)       # Make sure the turtle is oriented back to its initial orientation
+    # Calculate the coordinates for the four corners of the rectangle
+
+    x1 = t.xcor()
+    y1 = t.ycor()
+
+    x2 = x1 + 50
+    y2 = y1
+
+    x3 = x2
+    y3 = y2 + 100
+
+    x4 = x1
+    y4 = y1 + 100
+
+    
+    t.color("green", "yellow") # set the pen and fill colors
+    t.begin_fill()
+    
+    # Command the turtle to visit the four corners in order
+    t.goto(x2, y2)
+    t.goto(x3, y3)
+    t.goto(x4, y4)
+    t.goto(x1, y1)
+    
     t.end_fill()
 
 
 ```
 
+Save and run it. Then call the function from the Python shell as follows:
+
+```
+>>> drawRectangle_2()
+```
+
+Here is yet another implementation for the same algorithm used in drawRectangle_2() (You guessed correctly - a single algorithm can be implemented in different ways in code)
+
+```
+def drawRectangle_3():
+    """
+    draw a rectangle with width 50, height 100, tilt 0, pen color green and fill color yellow . Use a turtle called t to create the drawing
+    """
+
+    # Calculate the coordinates for the four corners of the rectangle
+
+    x1 = jane.xcor()
+    y1 = jane.ycor()
+
+    fourCorners = [(x1 + 50, y1), (x1 + 50, y1 + 100), (x1, y1 + 100), (x1, y1)]
+    
+    jane.color("green", "yellow")
+    jane.begin_fill()
+    
+    jane.goto(fourCorners[0][0], fourCorners[0][1])
+    jane.goto(fourCorners[1][0], fourCorners[1][1])
+    jane.goto(fourCorners[2][0], fourCorners[2][1])
+    jane.goto(fourCorners[3][0], fourCorners[3][1])
+
+    jane.end_fill()
 
 
-
-
-
+```
+The main difference between this version and the previous one is that we are expressing the coordinates for the four corners of the rectangle as a list of tuples.
 
 
 Refer to the [turtle documentation](https://docs.python.org/3.6/library/turtle.html) to understand all the commands we have used so far and possible alternatives to them (like t.goto())
 
-## Step 4: Make sure your drawRectangle() function is reusable
+## Step 4: Implement a drawRectangle() function that is reusable
 
-Now, we want to make sure your function is general enough to be able to draw a rectangle:
+Now, we want to make sure that we implement a function for drawing a rectangle that is general enough:
 
 * at different heights, widths and orientation
 * with different pen and fill color
@@ -234,21 +282,22 @@ def drawRectangle(width, height, tilt, penColor, fillColor):
     draw a rectangle with a given width, height, penColor and fillColor,
     with the current location of the turtle being the 
     lower left corner, and the bottom side tilted by an angle tilt (specified in degrees)
-    relative to the horizontal axis. Use a turtle called t to create the drawing
+    relative to the horizontal axis. After the rectangle is drawn, the turtle should return to its original position with an orientation of 0 degrees with respect to the X-axix. Use a turtle called t to create the drawing
     """
 
     # Insert code to draw the rectangle
 
+drawRectangle(50, 100, 0, "red","")
 ```
 
-Add the five parameters to the version of the function we wrote earlier and modify the code to make it generic. 
+Write the above code below the previous function definitions. You may use the code for any of the previous versions as a starting point, although one of those versions is easier to extend to case where you want to draw a rectangle at given orientation. So, think through your algorithm for the general case and select the starting implementation that is the easiest to build on.
 
 
 Next we want to draw two rectangles at different locations. To make sure that you can do that change the function call
 at the bottom of the file from something like this:
 
 ```
-drawRectangle()
+drawRectangle( 50, 100, 0, "red", "") 
 ```
 
 to something like this, that draws a rectangle with a given size and color,  picks up the pen and moves to a new location,
@@ -265,11 +314,11 @@ t.up()
 t.forward(200)
 t.down()
 
-drawRectangle( 20, 40, 20, "green", "yellow") 
+drawRectangle( 100, 150, 22, "green", "yellow")  
 
 ```
 
-Save and run your code to make sure you see two distinct rectangles. If one of them looks incorrect, then see if you can determine what is wrong with your code. We are now going to move to the next step that involves drawing triangles. To keep avoid drawing unnecessary rectangles while writing your drawTriangle function, place the code above in a function called `test_drawRectangle()`. That way the rectangles are drawn only when you call that function. Here is the final code:
+Save and run your code to make sure you see two distinct rectangles. If one of them looks incorrect, then see if you can determine what is wrong with your code. `test_drawRectangle()`. That way the rectangles are drawn only when you call that function. Here is the final code:
 
 ```
 
@@ -280,18 +329,23 @@ def testRectangle():
     t.seth(0)   # Set the absolute heading of the turtle to 0 degrees (pointing east)
 
 
-    # Move the turtle right by 200 units without leaving a trail
+    # Move the turtle right by 200 units without leaving a trail 
     t.up()     
     t.forward(200)  
     t.down()
 
-    drawRectangle( 20, 40, 20, "green", "yellow") 
+    drawRectangle( 100, 150, 22, "green", "yellow") 
    
 
 testRectangle()  # call the testRectangle function to draw rectangles of different sizes and colors
 
 ```
 
+When you run the code you should see the following output, with the rectangles very close but not touching: 
+
+![twoRects](twoRects.png){:height="400px"}
+
+If you get the above output, then you are ready to move to the next step.
 
 ## Step 5: Add the function to draw an isosceles triangle
 
@@ -375,34 +429,6 @@ def testTriangle():
     # Insert code to test your  drawTriangle function
 
 ```
-
-
-## Step 6: Continue adding letters and numbers one by one
-
-Continue adding letters and numbers one by one until you have two rows at different sizes, just like in the example.
-
-When you are finished, ask a TA or instructor to look it over and give you some feedback on it.  
-
-It should be structured in a way that there is 
-
-1. A single file called `lab01.py`
-2. Code at the top of the `lab01.py` file that sets up a turtle
-3. Next, function defintions for each of the letters and digits that you draw, each of which takes `width` and `height` as parameters, e.g.
-   ```
-   def drawP(width,height):
-      ...
-   
-   def drawC(width,height):
-      ...
-   def draw2(width,height):
-      ...
-      # etc
-   ```
-4. Finally, code that calls those functions to draw your initials and graduation year all in a line
-5. And then, code that draws all those letters and digits <strong>a second time, at a different size</strong> by <em>calling your functions again</em>.
-
-If you code meets all those criteria, you should be in good shape to submit it.
-
 
 ## Step 7: Submitting via submit.cs
 
