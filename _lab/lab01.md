@@ -1,10 +1,10 @@
 ---
 layout: lab
 num: lab01
-ready: true
-desc: "Turtle Graphics: your initials and graduation year"
-assigned: 2017-08-10 09:30:00.00-7
-due: 2017-08-16 17:00:00.00-7
+ready: false
+desc: "Turtle Graphics: Basic shapes"
+assigned: 2017-10-10 09:30:00.00-7
+due: 2017-10-17 16:50:00.00-7
 submit_cs_pnum: 768
 ---
 
@@ -18,43 +18,49 @@ that use Turtle Graphics to make particular shapes.
 (You'll understand the reasons its "between three and six" in a
 minute.)
 
+
 What you'll be drawing
 ----------------------
 
-You'll be drawing functions to produce your initials, and the year you expect to graduate from UCSB.    For example, if your name is Pat Brady and you expect to graduate in 2021, you'll write these five functions:
+You'll be writing functions to produce two basic shapes: a rectangle and a triangle. Each function takes parameters that specify the size, pen color, and fill color of that shape. The drawRectangle function additionally allows us to specifiy the tilt of the rectangle relative to the x-axis in degrees. The function definitions are given below:
 
--   `drawP(width, height)`
--   `drawB(width, height)`
--   `draw2(width, height)`
--   `draw0(width, height)`
--   `draw1(width, height)`
+-   `drawRectangle(width, height, tilt, penColor, fillColor)`
+-   `drawTriangle(base, height,  penColor, fillColor)`
 
-You'll use the `draw2` function twice, since the `2` appears twice in `2021`
 
-If your name is Chris Carillo, and you are graduating in 2020, you'll only
-need three functions:
+The output produced when each function is callled with specific parameter values is shown in the following figure.
 
--   `drawC(width, height)`
--   `draw2(width, height)`
--   `draw0(width, height)`
+![basicShapes](basicShapes.png){:height="400px"}
 
-As you can figure out by now, "Phill Conrad" graduating in 2017 would
-need six functions.
+The above drawings are the result of calling either <code>drawRectangle()</code> or <code>drawTriangle()</code>. In each drawing, the turtle stamp shoes the initial location and heading of the turtle right before the corresponding function is called. For example the top left drawing is the output of the following line of code, when the turtle is at the top left corner:
 
-Of course, there is nothing stopping you from making more functions
-if you want to, just for practice.  (And I encourage you to do so!)
+```
+drawRectangle( width = 50, height = 100, tilt = 0, penColor = "red", fillColor = "")
+```
 
-You'll also include function calls that use your functions to put your
-initials and graduation year across the screen twice at two different sizes:
-once at the top, and once at the bottom, like this:
+The subsequent three drawings on the same row are the output of repeatedly moving the turtle to the right, and calling the <code>drawRectangle()</code> function changing the tilt, penColor and fillColor. The function calls and parameter values to produce these drawings are given below:
 
-![PC1985](PC1985_600.png)
 
-Your first step is to plan our your letters.
+```
+drawRectangle( width = 50, height = 100, tilt = 20, penColor = "green", fillColor = "yellow")
+...
+drawRectangle( width = 50, height = 100, tilt = 60, penColor = "blue", fillColor = "blue")
+...
+drawRectangle( width = 50, height = 100, tilt = 90, penColor = "red", fillColor = "red")
 
-To do that, we have a worksheet, [IC00](/hwk/ic00/) for you to complete.
+```
 
-Start on that first, then refresh this page for more instructions.
+Similarly, the drawings on the next row are the result of repeatedly calling **<code>drawTriangle()</code>** with the following parameter values:
+
+|   <code>base</code>   |  <code>height</code>     |   <code>penColor</code> |  <code>fillColor</code> |   
+|-----------------------|-------------------------| ------------------------| ----------------------- |
+|   50                  |   100                   |  <code> "red" </code>  |  <code> ""</code>       |
+|   50                  |   100/2                   |  <code> "green" </code>|  <code> "yellow"</code> |
+|   50                  |   100/4                   |  <code> "red"</code>   |  <code> "red"</code>    |
+|   50                  |   100/8                   |  <code> "blue"</code>  |  <code> "blue"</code>   |
+
+
+In a later lab, we will use these functions to create more interesting drawings. 
 
 # The programming part
 
@@ -107,249 +113,268 @@ Optionally, you can make your turtle look like a turtle by typing this:
 t.shape("turtle")
 ```
 
-Save this, and run it.   You should see a turtle appear.
+And you can set your turtle to move at the fastest possible speed on the screen - which will help make your drawings as quickly as possible.
+
+```
+t.speed(0)
+```
+Also, you can change the pen width to make your drawings look more prominent
+
+```
+t.width(4)
+```
+
+Save this, and run it.   You should see a turtle appear. The turtle is not moving because we haven't given it instructions to move. 
 
 
-## Step 3: Create a function for your first letter
+## Step 3: Create a function for drawing a rectangle
 
-Next, you are going to define a function to draw your first letter.
+Next, you are going to define a function to draw a rectangle. Your final function will be names drawRectangle() but before you implement that we will implement a couple of different versions of that function with simpler specifications. 
 
-Name this function `drawX`, where `X` is the letter you are drawing
-for your first initial. (For example, `drawA`, `drawB`, etc.)
+Below is the first version of the function. It doesn't take any parameters, instead it draws a rectangle with a fixed width (50), a fixed height (100), a fixed orientation (0 degrees with respect to the x-axis). To write the code we should first come up with a plan, a sequence of steps or algorithm (CS speak). Here is a very simple algorithm: Orient the turtle to point right at 0 degrees with respect to the x-axis. Move the turtle forward by 50 units, turn the turtle left by 90 degrees, move the turtle forward by 100 units, turn left 90 degrees, move forward by 50 units, turn left by 90, move forward by 100...(we are repeating ourselves, but that's fine for now. In later labs we will express the same algorithm in a more concise way). Here is the code that does what we just described: 
 
-As a model, use the code below for the drawA function.  This goes
-right after the code you just put into the `lab01.py` file.
+```
+def drawRectangle_1():
+    """
+    draw a rectangle with width 50 and height 100. Use a turtle called t to create the drawing
+    """
+    t.seth(0)        # Set the initial orientation of the turtle to 0 degrees
+    t.forward(50)    # Move the turtle forward by 50 units in the direction that it was pointing
+    t.left(90)       # Turn the turtle left by 90 degrees relative to the direction it was pointing
+    t.forward(100)   # Move the turtle forward by 100 units
+    t.left(90)
+    t.forward(50)
+    t.left(90)
+    t.forward(100)
+    t.left(90)       # Make sure the turtle is oriented back to its initial orientation
+    
+```
 
-For your draw function, adapt this code, using the points you defined on the
-[ic00](/hwk/ic00/) worksheet, and change the code that connects the
-points with lines as needed.
-
-After entering the function definition, at the bottom try a sample
-function call with some width and height (e.g. `drawA(50,100)`).  The
+Put this code right after the code you wrote earlier in the <tt>{{page.num}}.py</tt> file. After entering the function definition, at the bottom try a sample
+function call (`drawRectangle_1()`).  The
 function call should NOT be indented, just as shown in the example below.
 
-Try running it and see if the letter looks ok.  Make changes until you see that it can draw the letter properly.
+Try running it and see if the rectangle looks ok.  Change the first line: `t.seth(0)` to `t.seth(90)`. Save and run your code again. What changed? 
+
+We will now update our `drawRectangle_1` to draw a rectangle with a green boundary and yellow interior. To do that write the following statement before the very first line in the body of the function:
 
 ```
-def drawA(width, height):
+  t.color("green", "yellow") # Sets the pen color to green and fill color to yellow
+``` 
+
+The first parameter is the pen color and the second is the fill color. To actually fill the rectangle with the specified color, you must precede the code that draws the rectangle with t.begin_fill() and follow it with t.end_fill(). Below is the complete code. Save and run it.
+
+```
+def drawRectangle_1():
     """
-    draw the letter A with a given width and height,
-    with the current location being the lower left corner of the A
-    using a turtle called t
+    draw a rectangle with width 50, height 100, tilt 0, pen color green and fill color yellow. Use a turtle called t to create the drawing
     """
+    t.color("green", "yellow")
+    t.seth(0)        # Set the initial orientation of the turtle to 0 degrees
+    t.begin_fill()   
+    t.forward(50)    # Move the turtle forward by 50 units in the direction that it was pointing
+    t.left(90)       # Turn the turtle left by 90 degrees relative to the direction it was pointing
+    t.forward(100)   # Move the turtle forward by 100 units
+    t.left(90)
+    t.forward(50)
+    t.left(90)
+    t.forward(100)
+    t.left(90)       # Make sure the turtle is oriented back to its initial orientation
+    t.end_fill()
+```
+You will soon discover that there are many different ways to solve any problem. Computer Scientists almost always care about *correct* solutions that run the fastest on any computer (which is the field of algorithms), and expressing those solutions in the simplest and most understandable way in code (good programming chops).
 
-    # figure out where we are
+Below is an alternate implementation for drawing a rectangle. The algorithm is slightly different: It first computes the absolute location of the 4 corners of the rectangle and then commands the turtle to go to the four locations in a specific order. To move the turtle to any location (x,y), we will use a new turtle method: t.goto(x, y). Here is one possible implementation of this algorithm. Inorder to we will name our function draw:
 
-    startX = t.xcor()
-    startY = t.ycor()
+```
+def drawRectangle_2():
+    """
+    draw a rectangle with width 50, height 100, tilt 0, pen color green and fill color yellow . Use a turtle called t to create the drawing
+    """
+    t.color("green", "yellow")
 
-    # figure out the other points using only what we know,
-    # which is width, height, startX and startY
-    
-    topAX = startX + (width/2)
-    topAY = startY + height
+    xleft = t.
+    t.seth(0)        # Set the initial orientation of the turtle to 0 degrees
+    t.begin_fill()   
+    t.forward(50)    # Move the turtle forward by 50 units in the direction that it was pointing
+    t.left(90)       # Turn the turtle left by 90 degrees relative to the direction it was pointing
+    t.forward(100)   # Move the turtle forward by 100 units
+    t.left(90)
+    t.forward(50)
+    t.left(90)
+    t.forward(100)
+    t.left(90)       # Make sure the turtle is oriented back to its initial orientation
+    t.end_fill()
 
-    bottomRightX = startX + width
-    bottomRightY = startY
-    
-    barLeftX = startX + width/4
-    barLeftY = startY + height/2
-
-    barRightX = startX + (width/4) + (width/2)
-    barRightY = startY + height/2
-    
-    # draw left hand side of the A (assumes we start at startX,startY)
-    
-    t.goto(topAX,topAY)
-
-    # draw the right side of the A
-
-    t.goto(bottomRightX, bottomRightY)
-
-    # draw bar across the middle
-    
-    t.up()
-    t.goto(barLeftX,barLeftY)
-    t.down()
-    t.goto(barRightX,barRightY)
-
-    # leave turtle at lower right hand corner of letter
-    
-    t.up()
-    t.goto(bottomRightX,bottomRightY)
-    t.down()
-
-drawA(50,100)
 
 ```
 
-## Step 4: Make sure first letter function is reusable
 
-Now, we want to make sure your function is general enough to be able to draw your letter:
 
-* at different places on the screen
-* at different heights and widths
 
-To make sure that you can draw your first letter at two different places, change the function call
+
+
+
+
+Refer to the [turtle documentation](https://docs.python.org/3.6/library/turtle.html) to understand all the commands we have used so far and possible alternatives to them (like t.goto())
+
+## Step 4: Make sure your drawRectangle() function is reusable
+
+Now, we want to make sure your function is general enough to be able to draw a rectangle:
+
+* at different heights, widths and orientation
+* with different pen and fill color
+
+
+What you need to do is to write the final version of this function that takes 5 parameters as shown below:
+
+```
+def drawRectangle(width, height, tilt, penColor, fillColor):
+    """
+    draw a rectangle with a given width, height, penColor and fillColor,
+    with the current location of the turtle being the 
+    lower left corner, and the bottom side tilted by an angle tilt (specified in degrees)
+    relative to the horizontal axis. Use a turtle called t to create the drawing
+    """
+
+    # Insert code to draw the rectangle
+
+```
+
+Add the five parameters to the version of the function we wrote earlier and modify the code to make it generic. 
+
+
+Next we want to draw two rectangles at different locations. To make sure that you can do that change the function call
 at the bottom of the file from something like this:
 
 ```
-drawA(50,100)
+drawRectangle()
 ```
 
-to something like this, that draws an A of width 50 and height 100, picks up the pen and moves to a new location,
-and then draws the A again with a different width and height.
+to something like this, that draws a rectangle with a given size and color,  picks up the pen and moves to a new location,
+and then draws another rectangle with a different size and color.
 
 ```
-drawA(50,100)
+drawRectangle( 50, 100, 0, "red", "") 
 
-# a new line
-t.up()
-t.goto(-200,-200)
+
+t.seth(0)   # Set the absolute heading of the turtle to 0 degrees (pointing east)
+
+# Move the turtle right by 200 units without leaving a trail
+t.up()     
+t.forward(200)
 t.down()
 
-drawA(40,80)
+drawRectangle( 20, 40, 20, "green", "yellow") 
+
 ```
 
-If your code is written in a general way, i.e. the `drawA` routine works ONLY with the `startX`, `startY`, `width`, and `height` values, both letters should look good.  If one of them looks incorrect, then see if you can determine what is wrong with your code.
+Save and run your code to make sure you see two distinct rectangles. If one of them looks incorrect, then see if you can determine what is wrong with your code. We are now going to move to the next step that involves drawing triangles. To keep avoid drawing unnecessary rectangles while writing your drawTriangle function, place the code above in a function called `test_drawRectangle()`. That way the rectangles are drawn only when you call that function. Here is the final code:
 
-When you see two good drawings of your first letter, you are ready for the next step.
+```
 
-## Step 5: Add the function for the next letter or number
+def testRectangle():
+    
+    drawRectangle( 50, 100, 0, "red", "") 
 
-Now we are going to add another function just like the first, right under it.
+    t.seth(0)   # Set the absolute heading of the turtle to 0 degrees (pointing east)
+
+
+    # Move the turtle right by 200 units without leaving a trail
+    t.up()     
+    t.forward(200)  
+    t.down()
+
+    drawRectangle( 20, 40, 20, "green", "yellow") 
+   
+
+testRectangle()  # call the testRectangle function to draw rectangles of different sizes and colors
+
+```
+
+
+## Step 5: Add the function to draw an isosceles triangle
+
+Now we are going to add another function to draw an [isosceles triangle](https://en.wikipedia.org/wiki/Isosceles_triangle) with the base of the triangle along the x-axis as shown in the figure on top of this page. Place your function definition right below that of drawRectangle(). For this function, you will need some of the trigonometric functions provided in the math module. In order to use that module, add a line to import it at the top of the file. To learn more about the math module refer [the Python documentation on the module](https://docs.python.org/3/library/math.html) and scroll down to the section on trigonometric functions.
 
 Keep the code that has the actual function calls *at the bottom* of the file.  The order should be:
 
 * First, the code that imports and sets up the turtle, i.e.
-   ```
+
+```
    import turtle
+   import math
    t = turtle.Turtle()
    t.shape("turtle")
+   t.speed(0)
+   t.width(4)
    
-   ```
-* Second, the functions definitions for `drawA`, `drawX`, etc., e.g.
-   ```
-   def drawA(width,height):
-   
-      startX = t.xcor()
-      startY = t.ycor()
-      
+```
+
+* Second, the functions definitions for `drawRectangle`, `drawTriangle`, etc., e.g.
+
+```
+   def drawRectangle(width, height, tilt, penColor, fillColor):
+      t.color(penColor, fillColor)
+     
       # etc..
    
-   def drawX(width,height):
+   def drawTriangle(width, height, penColor, fillColor):
       
-      # code for drawX is here, indented...
+      # code for drawTriangle is here, indented...
      
-   ```
-   
-* Then, last, the section of code with function calls that draw your letters
+```
+* Third, the function definitions for your test functions
 
-   ```
-   drawA(50,100)
-   
-   # a new line
-   t.up()
-   t.goto(-200,-200)
-   t.down()
+```
 
-   drawA(40,80)
+def testRectangle():
+    
+    # code to draw two or more non overlapping rectangles at different locations
+
+
+def testTriangle():
+    
+    # code to draw two or more non overlapping isosceles triangles at different locations
+
+```
+
+* Then, last, the section of code that calls the test functions 
+
+```
+  # testRectangle()   # You may comment out this line when testing your drawTriangle() function
+   testTriangle()
    # etc ...
    
-   ```
+```
    
-Try running the code again after adding the function definition for your new letter (e.g. `def drawX(width,height): ...`.  Make sure you don't get any error messages&mdash;if you do, fix those before continuing.
 
-Then, we'll try adding in code to call the function for your second letter, for example `drawX(100,200)`.    We probably want to move the turtle over a bit before drawing the second letter.  We can do that with with `t.forward()` or another `t.goto()` with some numbers, as shown in the two options below.  
+Remember, before implementing a new function, you need to come up with a plan that you can eventually turn into an algorithm (a sequence of steps to achieve the task you set out to do)
 
-<table>
-<tr>
-<th>
-Before
-</th>
-<th markdown="1">
-After (using `t.forward()`)
-</th>
-<th markdown="1">
-After (using `t.goto()`)
-</th>
-</tr>
+Complete this worksheet to plan for your triangle
 
-<tr>
-<td markdown="1">
+Implement your drawTriangle function and write test code in testTriangle to draw at least two non-overlapping triangles of different sizes, then at the very bottom call your test function.
+
 
 ```
-drawA(50,100)
 
-# a new line
-t.up()
-t.goto(-200,-200)
-t.down()
+    
+def drawTriangle(base, height, tilt, penColor, fillColor):
+    """
+    draw a triangle with a given base, height, penColor and fillColor,
+    with the current location of the turtle being the 
+    lower left corner, and the bottom side tilted by an angle tilt (specified in degrees)
+    relative to the horizontal axis. Use a turtle called t to create the drawing
+    """
 
-drawA(40,80)
-```
-</td>
+    # Insert code to draw the triangle
 
-<td markdown="1">
-
-```
-drawA(50,100)
-
-# a bit of space
-t.up()
-t.forward(10)
-t.down()
-
-drawX(50,100)
-
-# a new line
-t.up()
-t.goto(-200,-200)
-t.down()
-
-drawA(40,80)
-
-# a bit of space
-t.up()
-t.forward(10)
-t.down()
-
-drawX(50,100)
+def testTriangle():
+    """ Draw at least two non overlapping triangles with different sizes and colors
+    """
+    # Insert code to test your  drawTriangle function
 
 ```
-</td>
-<td markdown="1">
-
-```
-drawA(50,100)
-
-# a bit of space
-t.up()
-t.goto(60,0)
-t.down()
-
-drawX(50,100)
-
-
-# a new line
-t.up()
-t.goto(-200,-200)
-t.down()
-
-drawA(40,80)
-
-
-# a bit of space
-t.up()
-t.goto(-150,-200)
-t.down()
-
-drawX(50,100)
-
-```
-</td>
-</tr>
-</table>
 
 
 ## Step 6: Continue adding letters and numbers one by one
@@ -395,9 +420,8 @@ Navigate to that page, and upload your `hello.py` file.
 
 If you are working on the ECI/CSIL/lab linux systems, you can also submit at the command line with this command:
 
-```
-~submit/submit ~/cs8/lab01/lab01.py
-```
+
+<tt>~submit/submit -p {{page.submit_cs_pnum}} ~/cs8/lab01/lab01.py</tt>
 
 It will ask for your email address: use your full umail address (e.g. `cgaucho@umail.ucsb.edu`).  For password, use the password that you enter for the submit.cs system.    You may save these credentials if you don't want to have to type them in every time.
 

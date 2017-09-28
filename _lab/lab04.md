@@ -1,33 +1,33 @@
 ---
 layout: lab
-num: lab04
-ready: true
+num: lab05
+ready: false
 desc: "Turtle Graphics: Scene from a forest"
-assigned: 2017-08-25 11:00:00.00-7
-due: 2017-09-01 16:50:00.00-7
-submit_cs_pnum: 775
+assigned: 2017-10-24 11:00:00.00-7
+due: 2017-11-01 16:50:00.00-7
+submit_cs_pnum: 774
 ---
 
 Goal
 ====
 
-The goal of this exercise is to draw a forest scene from basic shape primitives that you will implement using turtle graphics. The key idea to learn how to use functions as building blocks in more complex compositions. You will apply the concepts of "code reuse", "modularity" and "encapsulation" to create code that is easy to debug, maintain and extend. You will also learn about using repetition and randomization to create interesting outcomes in your code.
+The goal of this exercise is to draw a forest scene from basic shape primitives that you will implement using turtle graphics. The key idea to learn how to use functions as building blocks in more complex compositions. You will also learn about using repetition and randomization in your code to create interesting outcomes.
 
 
 What you'll be drawing
 ----------------------
 
-You'll be writing functions to produce two basic shapes: a rectangle and a triangle. Each function takes parameters that specify the size, pen color, and fill color of that shape. The function to draw a rectangle takes an additional parameter to specify the tilt of the rectangle. This will allow you to create more interesting drawings later on. The function definitions for the basic shapes are given below:
+You'll be writing functions to produce two basic shapes: a rectangle and a triangle. Each function takes parameters that specify the size, orientation, pen color, and fill color of that shape. This will allow us to create more interesting drawings later on. The function definitions are given below:
 
 -   `drawRectangle(width, height, tilt, penColor, fillColor)`
--   `drawTriangle(base, height,  penColor, fillColor)`
+-   `drawTriangle(base, height, tilt, penColor, fillColor)`
 
 
 The output produced when each function is callled with specific parameter values is shown in the following figure.
 
 ![basicShapes](basicShapes.png){:height="400px"}
 
-The above drawings are the result of calling either <code>drawRectangle()</code> or <code>drawTriangle()</code>. In each drawing, the turtle stamp shows the initial location and heading of the turtle right before the corresponding function is called. For example the top left drawing is the output of the following line of code, when the turtle is at the top left corner of the canvas:
+The above drawings are the result of calling either <code>drawRectangle()</code> or <code>drawTriangle()</code>. In each drawing, the turtle stamp shoes the initial location and heading of the turtle right before the corresponding function is called. For example the top left drawing is the output of the following line of code, when the turtle is at the top left corner:
 
 ```
 drawRectangle( width = 50, height = 100, tilt = 0, penColor = "red", fillColor = "")
@@ -45,25 +45,27 @@ drawRectangle( width = 50, height = 100, tilt = 90, penColor = "red", fillColor 
 
 ```
 
-Similarly, the drawings on the next row are the output of repeatedly calling **<code>drawTriangle()</code>** with the following parameter values:
+Similarly, the drawings on the next row are the result of repeatedly calling **<code>drawTriangle()</code>** with the following parameter values:
 
-|   <code>base</code>   |  <code>height</code>    |   <code>tilt</code>   |   <code>penColor</code> |  <code>fillColor</code> |   
-|-----------------------|-------------------------|-----------------------| ------------------------| ----------------------- |
-|   50                  |   100                   |   0                   |   <code> "red" </code>  |  <code> ""</code>       |
-|   50                  |   100                   |   20                  |   <code> "green" </code>|  <code> "yellow"</code> |
-|   50                  |   100                   |   60                  |   <code> "red"</code>   |  <code> "red"</code>    |
-|   50                  |   100                   |   90                  |   <code> "blue"</code>  |  <code> "blue"</code>   |
+|   <code>base</code>   |  <code>height</code>     |   <code>penColor</code> |  <code>fillColor</code> |   
+|-----------------------|-------------------------| ------------------------| ----------------------- |
+|   50                  |   100                   |  <code> "red" </code>  |  <code> ""</code>       |
+|   50                  |   100                   |  <code> "green" </code>|  <code> "yellow"</code> |
+|   50                  |   100                   |  <code> "red"</code>   |  <code> "red"</code>    |
+|   50                  |   100                   |  <code> "blue"</code>  |  <code> "blue"</code>   |
 
 
-Once you have implemented the functions for the basic shapes, you will use them as building blocks to create the following forest scene!
+Once you have implemented the above basic shape primitives, you will use them as building blocks to create the following forest scene!
 
 ![forestScene](forestScene.png){:height="400px"}
 
-This scene requires that you implement additional functions to draw a tree, a hut, a forest and a village! 
+To create this scene you will implement additional functions to draw a tree, a hut, a forest and a village! 
+
 
 # The programming part
 
 ## Step 1: Create a {{page.num}} directory under your cs8 directory
+
 
 Create a directory called `~/cs8/{{page.num}}` for a file
 we are going to call `{{page.num}}.py`.
@@ -82,7 +84,7 @@ import turtle
 import math 
 
 if __name__=="__main__":
-    t = turtle.Turtle()
+  t = turtle.Turtle()
 
 </pre>
 
@@ -101,33 +103,33 @@ You can name your turtle anything you like; I used `t` because it's short to typ
 Optionally, you can make your turtle look like a turtle by putting this line in your `__main__` block also:
 
 ```
-    t.shape("turtle")
+  t.shape("turtle")
 ```
 
 So the whole main block looks like this:
 
 ```
 if __name__=="__main__":
-    t = turtle.Turtle()
-    t.shape("turtle")
+  t = turtle.Turtle()
+  t.shape("turtle")
 
 ```
 
-Save this, and run it.  You should see a turtle appear.
+Save this, and run it.   You should see a turtle appear.
 
 
-## Step 3: Create and implement the functions to draw two basic shapes - rectangle and triangle
+## Step 3: Create and implement the functions for the basic shapes - rectangle and triangle
 
-In your <tt>{{page.num}}.py</tt> file, write the skeleton of <code> drawRectangle() </code> and <code> drawTriangle()</code> as shown below. You will need some of the trigonometric functions provided in the math module to implement <code> drawTriangle()</code>. In order to use that module, add a line to import it at the top of the file. To learn more about the math module refer [the Python documentation on the math module](https://docs.python.org/3/library/math.html) and scroll down to the section on trigonometric functions.
+In your <tt>{{page.num}}.py</tt> file, write the skeleton of <code> drawRectangle() </code> and <code> drawTriangle()</code> as shown below. You will need some of the trigonometric functions provided in that math module to implement <code> drawTriangle()</code>. In order to use that module, add a line to import it at the top of the file. To learn more about the math module refer [the Python documentation on the module](https://docs.python.org/3/library/math.html) and scroll down to the section on trigonometric functions.
 
 ```
 import math
 
 def drawRectangle(width, height, tilt, penColor, fillColor):
     """
-    Draw a rectangle with a given width, height, penColor and fillColor,
+    draw a rectangle with a given width, height, penColor and fillColor,
     with the current location of the turtle being the 
-    lower left corner, and the bottom side tilted by an angle tilt (specified in degrees) 
+    lower left corner, and the bottom side tilted by an angle tilt (specified in degrees)
     relative to the horizontal axis. Use a turtle called t to create the drawing
     """
 
@@ -135,7 +137,7 @@ def drawRectangle(width, height, tilt, penColor, fillColor):
     
 def drawTriangle(base, height, tilt, penColor, fillColor):
     """
-    Draw an isoceles triangle with a given base, height, penColor and fillColor,
+    draw a triangle with a given base, height, penColor and fillColor,
     with the current location of the turtle being the 
     lower left corner, and the bottom side tilted by an angle tilt (specified in degrees)
     relative to the horizontal axis. Use a turtle called t to create the drawing
@@ -161,44 +163,34 @@ def testRectangle():
     t.forward(200) 
     t.down()
 
-    # Insert more code to test your drawRectangle() function
    
-def testTriangle():
-    # Insert code to test your drawTriangle() function
 
-if __name__=="__main__":
-    t = turtle.Turtle()
-    t.shape("turtle")
-    testRectangle()  
-
+testRectangle()
 ```
 
-* Read the test code provided in `testRectangle()`. Refer to the [turtle documentation](https://docs.python.org/3.6/library/turtle.html) to understand any commands that may be new to you. In particular, note that you can use the t.forward() command to move the turle forward relative to its current location in the direction that it is currently pointing. Similarly, the commands t.left() and t.right() rotate the turtle in the anticlockwise and clockwise directions respectively. These are commands that you can use instead of t.goto() in your implementation of the drawRectangle() and drawTriangle(). 
+* Read the test code provided in testRectangle(). Refer to the [turtle documentation](https://docs.python.org/3.6/library/turtle.html) to understand any commands that may be new to you. In particular, note that you can use the t.forward() command to move the turle forward relative to its current location in the direction that it is currently pointing. Similarly, the commands t.left() and t.right() rotate the turtle in the anticlockwise or clockwise directions respectively. These are commands that you may use as alternatives to the goto() command in your implementation of the drawRectangle() and drawTriangle() functions. 
 
-* On a piece of paper draw the output that you expect to get after running `testRectangle()`, assuming a correct implementaion of drawRectangle(). Refer to the drawings and information on the top of this page for expected outputs.
+* On a piece of paper draw the output that you expect to get for a correct implementaion of the drawRectangle() function, when the above code is executed. You may refer to the drawings and information on the top of this page.
 
 * Implement the drawRectangle() function and run your code until you get the expected output for the provided test code.
 
-* Add more test cases to the testRectangle() function until you are convinced that you have a general enough implementation of drawRectangle()
+* Add more test cases to the testRectangle() function until you arrive at a general enough implementation
 
 * Repeat the above process to implememt and test your drawTriangle() function. 
 
-With these basic primitives, you are now ready to make something more interesting! Refer to the forest scene that you are working towards. Which functions do you think you should implement next? Write the definitions of these functions before reading the next section.
+With these basic primitives, you are now ready to make something more interesting! Refer back to the forest scene that you are working towards. Which functions do you think you should implement next? Try to write the definitions of these functions before reading the next section.
 
 ## Step 4: Draw a tree
 
-You are now in a position to create the essential elements of the forest scene in code - functions to draw a tree and a hut. Once you do that, drawing the forest boils down to making repeated calls to these two functions and moving the turtle to a new spot in between function calls. We'll start with the tree because it has a more regular structure. 
+Now that we have our basic shapes (the rectangle and the triangle), we are in a position to create the essential elements of our forest scene in code - functions to draw a tree and a hut. Once we do that, drawing the forest boils down to making repeated calls to these two functions and moving the turtle to a new spot in between function calls. We'll start with the tree because it has a more regular structure. 
 
-Define a 'drawTree()' function to draw a tree.  A general 'drawTree()' function should allow the user to specify the width, height and color of the tree as captured in the following function definition.  
+Define a 'drawTree()' function to draw a tree.  A general 'drawTree()' function should allow the user to specify the height and color of the tree as captured in the following function definition.  
 
 ```
 def drawTree(height, color):
     
     ''' 
-    This function draws a tree with a specific height and color, with the bottom of the bark at the current location of the turtle. 
-    The bark of the tree is always brown. 
-    All other parameters such as the width of the tree and the width and height of the bark are chosen so that the tree is well proportioned. 
-    The tree top is composed of three triangles with the specified color, stacked on top of each other.
+    This function draws a tree with a specific height and color, with the bottom of the bark at the current location of the turtle. The bark of the tree is always brown. All other parameters such as the width of the tree and the length of the bark are chosen so that the tree is well proportioned. The tree top is composed of three triangles stacked on top of each other.
     '''
 
 ```
@@ -213,17 +205,17 @@ def testdrawTree():
     drawRectangle(200, 200, 0 , "red","")
     drawTree(200, "green")
 ```
-The above code helps you visually inspect if the your tree is of the specified height by drawing it alongside a rectangle of the same height. When you run this code with a correct implementation of drawTree() should see that the top of the tree touches the top of the rectangle as shown in the following output :
+The above code helps you visually inspect if the your tree is of the specified height by drawing it alongside a rectangle of the same height. When you run this code with a correct implementation of drawTree() should see that the top of the tree coincides with the top side of the rectangle as shown in the following output:
 
 ![testTree](testTree.png){:height="200px"}
 
-Note that there are aspects of the tree that are not specified for you such as its width, the width and height of the bark, and the spacing between the three triangles that make up the tree top. You should make decisions on these aspects relative to the height of the tree so that a taller tree has a thicker and taller bark.
+Note that there are aspects of the tree that are not specified for you such as the width of the tree, the width and height of the bark, and the spacing between the three triangles that make up the tree top. You should make decisions on these aspects relative to the height of the tree so that a taller tree is wider and has a thicker and taller bark.
 
 Now go ahead and implement your drawTree() function. Add more code to the testdrawTree() function to draw at least two well-proportioned trees of different heights at two different locations.  
 
-## Step 5: Draw a row of trees 
+## Step 5: Draw a row of trees - repetition made easy with loops
 
-We would now like to go from drawing one tree to many trees, which will essentially become our forest. In this step you will learn how repetition of code is made easy with loops. To begin define the function `drawForest()` as below:
+We would now like to go from drawing one tree to many trees, which will essentially become our forest. To begin define the function `drawForest()` as below:
 
 ```
 def drawForest():
@@ -231,7 +223,7 @@ def drawForest():
     Draws a collection of trees placed at random locations within a rectangular region
     '''
 ```
-Start by drawing three trees of the same height in a row. One way of doing this is to repeat a block of code to move the turtle to a specific spot and draws a tree as shown below:
+Start by drawing three trees of the same height in a row. One way of doing is this is to repeat a block of code to move the turtle to a specific spot and then call the drawTree() function as shown below:
 
 ```
 # Move the turtle to location (-200, -100) and draw a tree  
@@ -263,16 +255,17 @@ for i in range(3):
     drawTree(200, "green")
 ```
 
-The for loop runs the block of code inside it three times. But this code has a bug. Run it and you'll find that the turtle draws all the three instances of the tree at the same spot. Modify exactly one of the lines to get the same output as the version above it. You should get an output similar to the one below:
+The for loop runs the block of code inside it three times. Run it and you'll find that the turtle draws all the three instances of the tree at the same spot. Modify exactly one of the lines to get the same output as the version above it. You should get an output similar to the one below:
 
 ![manyTrees](manyTrees.png){:height="200px"}
 
 ## Step 6: Take a detour into random numbers
 
 In this step you will use the [python random module](https://docs.python.org/3/library/random.html) to add an artistic touch to your drawings.
-Drawing all the trees in a straight line is a good first attempt at creating the forest but its not very realistic. So, your next goal is to place the trees at random locations that are roughly along a horizontal line. As a warm up try out the exercises below that demonstrate the use of the random module with the `drawTriangle()` function. 
+Although drawing all the trees in a straight line is a good first attempt at creating the forest, its not very realistic. So, your next goal is to place the trees at random locations that are roughly along a horizontal line. As a warm up try out the exercises below that demonstrate the use of the random module with the `drawTriangle()` function that you implemented earlier. 
 
-Start by writing a simple for loop to draw triangles along a circle. This code does not involve any randomization.
+
+Start by writing a simple for loop to draw triangles along a circle. This code does not involve randomization.
 
 ```
 
@@ -291,35 +284,32 @@ def randomPlay():
         tilt = 10*i
         drawTriangle(50, 50, tilt, "black", "red")
 
-if __name__=="__main__":
-    t = turtle.Turtle()
-    t.shape("turtle")
-    randomPlay()
+randomPlay()
 ```
 
 When you run the above code, you will find a very regular arrangement of triangles along a circle as shown below. Read the code to understand why its producing this output. Note that both the location and tilt of each triangle is dependent on the value of our loop variable (i). 
 
 ![circleOfTris](circleOfTris.png){:height="200px"}
 
-We will now randomize the tilt of each triangle to be a random number between 0 and 90 degrees. To do this, replace the line `tilt = 10*i` by `tilt = random.randint(0, 90)`. Then run the code. You should see a drawing similar to the one below, although it won't be exactly the same!
+We will now introduce the use of random numbers into this code by selecting the tilt of each triangle to be a random number between 0 and 90 degrees. To do this replace the line `tilt = 10*i` by `tilt = random.randint(0, 90)`. Then run the code. You should see a drawing similar to the one below, although not exactly the same!
 
 ![randTilt](randTilt.png){:height="200px"}
 
-Let's use the random module to randomize two other aspects of our drawing: the location of each triangle and its color. Previously, we drew all our triangles along a circle of radius 200. This time we will perturb the location of each triangle by adding a random number between -50 and 50 to its distance from the origin in every iteration of the for loop. The line of code that does that is:
+We will next use the random module to randomize two other aspects of our drawing: the location of each triangle and its color. Previously, we drew all our triangles along a circle of radius 200. This time we will introduce a small random perturbation in that value by adding a random number between -50 and 50 to the radius in every iteration of the for loop. The line of code that does that is:
 
 ```
  radius = 200 + random.randint(-50, 50)
 
 ```
 
-The second modification we will make is to select the color of each triangle randomly from a list of colors. The following lines of code define our color choices as a list and select one color from that list at random.
+The second modification we will make is to select the color of each triangle at random from a list of colors. The following two lines of code defines our color choices and then selects one color from this list at random.
 
 ```
 shadesOfGreen =["#006400", "#556b2f", "#8fbc8f", "#2e8b57", "#3cb371", "#20b2aa", "#32cd32"] 
 color = random.choice(shadesOfGreen)
 ```
 
-As the name suggests, `shadesOfGreen` is a list of color codes for different shades of green. The following code incorporates these new elements to randomize the location and color of the triangles in our drawings.
+The list `shadesOfGreen` defines a list of color codes for different shades of green. The next line selects one of the elements of this list at random. The following code incorporates these new elements.
 
 ```
 def randomPlay():
@@ -339,13 +329,8 @@ def randomPlay():
         tilt = 0
         color = random.choice(shadesOfGreen)
         drawTriangle(50, 50, tilt, "black", color)
-
-if __name__=="__main__":
-    t = turtle.Turtle()
-    t.shape("turtle")
-    randomPlay()
 ``` 
-The output of the code is shown in the figure below. Try changing the parameters passed to random.randint() and rerun the code to observe its effect on the drawing. Notice how you can control the level of randomness in your drawings.
+The output of the code is shown in the figure below. Try changing the limits to the random.randint() function and rerun the code, and observe the outcome. Notice how you can control the level of randomness in your drawings using this simple strategy.
 
 ![randLoc](randLoc.png){:height="200px"}
 
@@ -359,7 +344,7 @@ Define a function to draw a hut with fixed dimensions, composed of only rectangl
 def drawHut():
     '''
     Draw a brown hut of fixed dimensions purely composed of rectangles
-    Use the random module to enhance your drawing by introducing irregularilities in a controlled way.
+    Use the random module to enhance your drawing by introducing irregularilities in a controlled way
     '''
 
 
@@ -370,7 +355,7 @@ def drawVillage():
 
 ```
 
-When testing these functions, comment out all calls to previous functions. This will help you focus on the elements of interest in your code.
+When testing these functions, comment out all calls to previous functions. This will help you focus on the elements of interest in your drawing.
 
 ## Step 8: Put it all together
 

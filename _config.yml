@@ -21,24 +21,22 @@ legacy_wiki_name: "8wiki"
 
 
 start_week: 1
-start_date: 2017-08-06 00:00:00.00-7:00
-num_weeks: 6
-extra_exam_week: false
+start_date: 2017-10-01 00:00:00.00-7:00
+num_weeks: 10 
+extra_exam_week: true 
 sections: "11am,&nbsp;12:30pm,&nbsp;2pm&nbsp;or&nbsp;3:30pm"
 
 cal_dates: >
   [
-  {"label":"First day of session B", "date":"2017-08-07" },
-  {"label":"Solar Eclipse peaks at 10:18am", "date":"2017-08-21"},
-  {"label":"Last day to Add","date":"2017-08-11" },
-  {"label":"Last day to Add with code","date":"2017-08-17" },
-  {"label":"Drop w/ Full Refund","date":"2017-08-11" },
-  {"label":"Drop Deadline (no W grade)","date":"2017-08-22" },
-  {"label":"Univ Holiday", "date":"2017-09-04" },
-  {"label":"Grade Option Change Deadline", "date":"2017-09-05" },    
-  {"label":"Last day of session", "date":"2017-09-16" }			
+  {"label":"First day of instruction", "date":"2017-10-02" },
+  {"label":"Last day to Add","date":"2017-10-04" },
+  {"label":"Last day to Add with code","date":"2017-10-18" },
+  {"label":"Drop w/ Full Refund","date":"2017-10-04" },
+  {"label":"Drop Deadline (no W grade)","date":"2017-10-18" },
+  {"label":"Univ Holiday", "date":"2017-10-19" },
+  {"label":"Grade Option Change Deadline", "date":"2017-11-17" },    
+  {"label":"Last day of instructions", "date":"2017-12-08" }      
   ]
-
 
 
 kramdown:
