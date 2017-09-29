@@ -177,6 +177,7 @@ As a reminder:
 * `cd cs8` changes into the cs8 directory under the current directory
 * `cd ~/cs8` changes into the cs8 directory under your home directory <em>regardless of the current working directory (because `~` is a shortcut for the absolute path of
    your home directory.)
+* `cd ..` will move you up one directory from your current directory. 
 * `mkdir lab02` will create a lab02 directory under your current working directory
 * `ls` lists the files in your current directory
 
