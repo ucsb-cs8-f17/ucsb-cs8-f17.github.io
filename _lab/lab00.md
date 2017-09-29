@@ -45,11 +45,11 @@ If you ever forget the password to your ECI/CSIL account, you can reset it here:
 
 If your account doesn't work, ask a TA for assistance.
 
-Phelps 3525 is only available during your weekly scheduled discussion section and during Summer 2017, on Tuesdays 1-3:30pm, and Wednesdays 3-5pm.  
+Phelps 3525 is only available during your weekly scheduled discussion section and during Fall 2017, on Tuesdays 1-3:30pm, and Wednesdays 3-5pm.  
 
 At other times during the week, you can work in CSIL, the &quot;Computer Science Instructional Lab&quot;.
 
-The CSIL lab, by the way, is on the ground floor of Harold Frank Hall.  The glass front doors of Harold Frank Hall look out towards the ocean.  Stand just outside those doors with your back towards the ocean.   The doors to the CSIL lab are just on your right.  (If you can't look over your shoulder and see an great big tree, with the ocean just behind it, you are on the wrong side of the building.)   Hours vary--its open almost all the time during the regular school year, but limited hours in summer.
+The CSIL lab, by the way, is on the ground floor of Harold Frank Hall.  The glass front doors of Harold Frank Hall look out towards the ocean.  Stand just outside those doors with your back towards the ocean.   The doors to the CSIL lab are just on your right.  (If you can't look over your shoulder and see an great big tree, with the ocean just behind it, you are on the wrong side of the building.)   Hours vary--its open almost all the time during the regular school year
 
 ## Step 2: Bring up a "terminal" 
  

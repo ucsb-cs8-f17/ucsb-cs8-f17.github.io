@@ -244,20 +244,20 @@ def drawRectangle_3():
 
     # Calculate the coordinates for the four corners of the rectangle
 
-    x1 = jane.xcor()
-    y1 = jane.ycor()
+    x1 = t.xcor()
+    y1 = t.ycor()
 
     fourCorners = [(x1 + 50, y1), (x1 + 50, y1 + 100), (x1, y1 + 100), (x1, y1)]
     
-    jane.color("green", "yellow")
-    jane.begin_fill()
+    t.color("green", "yellow")
+    t.begin_fill()
     
-    jane.goto(fourCorners[0][0], fourCorners[0][1])
-    jane.goto(fourCorners[1][0], fourCorners[1][1])
-    jane.goto(fourCorners[2][0], fourCorners[2][1])
-    jane.goto(fourCorners[3][0], fourCorners[3][1])
+    t.goto(fourCorners[0][0], fourCorners[0][1])
+    t.goto(fourCorners[1][0], fourCorners[1][1])
+    t.goto(fourCorners[2][0], fourCorners[2][1])
+    t.goto(fourCorners[3][0], fourCorners[3][1])
 
-    jane.end_fill()
+    t.end_fill()
 
 
 ```
@@ -318,11 +318,11 @@ drawRectangle( 100, 150, 22, "green", "yellow")
 
 ```
 
-Save and run your code to make sure you see two distinct rectangles. If one of them looks incorrect, then see if you can determine what is wrong with your code. `test_drawRectangle()`. That way the rectangles are drawn only when you call that function. Here is the final code:
+Save and run your code to make sure you see two distinct rectangles. If one of them looks incorrect, then see if you can determine what is wrong with your code. Now place the above code within the function `drawTwoRectangles()`. That way the rectangles are drawn only when you call that function. Here is the final code:
 
 ```
 
-def testRectangle():
+def drawTwoRectangles():
     
     drawRectangle( 50, 100, 0, "red", "") 
 
@@ -337,7 +337,7 @@ def testRectangle():
     drawRectangle( 100, 150, 22, "green", "yellow") 
    
 
-testRectangle()  # call the testRectangle function to draw rectangles of different sizes and colors
+drawTwoRectangles()  # call the function to draw two rectangles of different sizes and colors
 
 ```
 
@@ -349,7 +349,7 @@ If you get the above output, then you are ready to move to the next step.
 
 ## Step 5: Add the function to draw an isosceles triangle
 
-Now we are going to add another function to draw an [isosceles triangle](https://en.wikipedia.org/wiki/Isosceles_triangle) with the base of the triangle along the x-axis as shown in the figure on top of this page. Place your function definition right below that of drawRectangle(). For this function, you will need some of the trigonometric functions provided in the math module. In order to use that module, add a line to import it at the top of the file. To learn more about the math module refer [the Python documentation on the module](https://docs.python.org/3/library/math.html) and scroll down to the section on trigonometric functions.
+Now we are going to add two other functions: drawTriangle() and drawTwoTriangles(). The first  function should draw an [isosceles triangle](https://en.wikipedia.org/wiki/Isosceles_triangle) given the base, height, pen color and fill color. The base of the triangle should be along the x-axis as shown in the figure on top of this page. For the drawTriangle function, you will need the trigonometric functiosn in the Python math module. Add a line to import the math module at the top of the file.
 
 Keep the code that has the actual function calls *at the bottom* of the file.  The order should be:
 
@@ -373,62 +373,83 @@ Keep the code that has the actual function calls *at the bottom* of the file.  T
      
       # etc..
    
-   def drawTriangle(width, height, penColor, fillColor):
-      
-      # code for drawTriangle is here, indented...
+   def drawTwoRectangles():
+      # Code for drawing two rectangles is here
+
+   def drawTriangle(base, height, penColor, fillColor):
+      # Code for drawTriangle is here, indented...
+
+   def drawTwoTriangles():
+      # Code to draw two isosceles triangles of different sizes and colors
      
-```
-* Third, the function definitions for your test functions
-
-```
-
-def testRectangle():
-    
-    # code to draw two or more non overlapping rectangles at different locations
-
-
-def testTriangle():
-    
-    # code to draw two or more non overlapping isosceles triangles at different locations
-
 ```
 
 * Then, last, the section of code that calls the test functions 
 
 ```
-  # testRectangle()   # You may comment out this line when testing your drawTriangle() function
-   testTriangle()
+   drawTwoRectangles()   # You may comment out this line when testing your drawTriangle() function
+   drawTwoTriangles()
    # etc ...
    
 ```
    
 
-Remember, before implementing a new function, you need to come up with a plan that you can eventually turn into an algorithm (a sequence of steps to achieve the task you set out to do)
+Remember, before implementing a new function, you need to come up with a plan that you can eventually turn into an algorithm (a sequence of steps to achieve the task you set out to do). Here is one possible algorithm for the drawTriangle function:
 
-Complete this worksheet to plan for your triangle
 
-Implement your drawTriangle function and write test code in testTriangle to draw at least two non-overlapping triangles of different sizes, then at the very bottom call your test function.
+1. Orient the turtle at 0 degrees with respect to the x-axis
+2. Move forward by the number of units specified by the parameter "base"
+3. Turn left by some angle that you must calculate in advance
+4. Move forward by the number of units corresponding to the length of one of the sides of the isosceles triangle that is not the base. You will have to calculate this as well.
+5. Turn left by some angle that you need to calculate
+6. Move forward by the same amount that you calculated in step 4, which should bring you back to your initial position.
+7. Orient the turtle at 0 degrees with respect to the x-axis
 
+You can choose to go with the above algorithm or come up with your own. The above algorithm can be implemented in code using a series of t.forward() and t.left() commands. You may find this easier compared to an algorithm where you calculate the absolute coordinates of the three corners of the triangle and then use a series of goto statements. The difficulty there is just in the trignometry part and not necessarily the code. Feel free to use any algorithm that appeals to you.
+
+
+No matter which algorithm you choose, you will need to plan ahead. For example, if you choose to go with the algorithm we have provided, you have to calculate the turn angles in steps 3 and 5, as well as length of the equal sides of the isosceles triangle. Use [Google](www.google.com) to check your trignometric formulas and use the [the Python documentation on the math module](https://docs.python.org/3/library/math.html) to find the trigonometric functions that Python provides you. Scroll down to the section on trigonometric functions. This will allow you to translate your equations to Python expressions and assignment statements. 
+
+For example, recollect the Right Triangle shown below with base 'b' and height 'a', and the length of the longest side denoted as 'c':
+
+![RightTriangle](rightTriangle.png){:height="100px"}
+
+
+You may remember from high school math that the length of the longest side 'c' can be computed using the Pythogorean theorm as follows:
+
+![Equation](Equation.png){:height="100px"}
+
+The above is a mathematical fact expressed as an equation. You can use this formula to *compute* the length of the longest side given the other two sides 'a' and 'b' in your Python program and assign the resulting value to a variable named 'c'. The line of Python code that does that is as follows:
+
+```
+c = math.sqrt(a**2 + b**2)     
+
+``` 
+In the above code, to the right of the '=' sign is a Python expression that computes something. The result of the computation is assigned to the variable 'c' on the left. So while in a math equation its okay to switch out the expression on the left and right hand side of the equation, doing so in Python would cause an error in your program. Be sure you understand the difference between the equation and the Python assignment statement. Ask a TA/tutor for further clarification :)
+
+
+Now go ahead and write the code for your drawTriangle function:
 
 ```
 
     
-def drawTriangle(base, height, tilt, penColor, fillColor):
+def drawTriangle(base, height, penColor, fillColor):
     """
     draw a triangle with a given base, height, penColor and fillColor,
     with the current location of the turtle being the 
-    lower left corner, and the bottom side tilted by an angle tilt (specified in degrees)
-    relative to the horizontal axis. Use a turtle called t to create the drawing
+    lower left corner. The base of the triangle should be at 0 degrees with respect to the x-axis. Do not assume anything about the initial orientation of the turtle. The final orientation of the turtle should be 0 degrees with respect to the x-axis. Use a turtle called t to create the drawing
     """
 
     # Insert code to draw the triangle
 
-def testTriangle():
-    """ Draw at least two non overlapping triangles with different sizes and colors
+def drawTwoTriangles():
+    """ Draws two non overlapping triangles with different sizes and colors
     """
-    # Insert code to test your  drawTriangle function
+    
 
 ```
+
+
 
 ## Step 7: Submitting via submit.cs
 
@@ -438,11 +459,11 @@ If you want reassurance that your code is in good shape, you may ask a TA or ins
 
 To submit your code, use:
 
-### Navigate to the page for submitting lab00
+### Navigate to the page for submitting lab01
 
-The page for submitting lab00 is here: <https://submit.cs.ucsb.edu/form/project/{{page.submit_cs_pnum}}/submission>
+The page for submitting lab01 is here: <https://submit.cs.ucsb.edu/form/project/{{page.submit_cs_pnum}}/submission>
 
-Navigate to that page, and upload your `hello.py` file.
+Navigate to that page, and upload your `lab01.py` file.
 
 If you are working on the ECI/CSIL/lab linux systems, you can also submit at the command line with this command:
 
