@@ -156,13 +156,13 @@ function call should NOT be indented, just as shown in the example below.
 
 Try running it and see if the rectangle looks ok.  Change the first line: `t.seth(0)` to `t.seth(90)`. Save and run your code again. What changed? 
 
-We will now update our `drawRectangle_1` to draw a rectangle with a green boundary and yellow interior. To do that write the following statement before the very first line in the body of the function:
+We will now update our `drawRectangle_1()` to draw a rectangle with a green boundary and yellow interior. To do that write the following statement before the very first line in the body of the function:
 
 ```
   t.color("green", "yellow") # Sets the pen color to green and fill color to yellow
 ``` 
 
-The first parameter is the pen color and the second is the fill color. To actually fill the rectangle with the specified color, you must precede the code that draws the rectangle with t.begin_fill() and follow it with t.end_fill(). Below is the complete code. Save and run it. 
+The first parameter is the pen color and the second is the fill color. To actually fill the rectangle with the specified color, you must precede the code that draws the rectangle with `t.begin_fill()` and follow it with `t.end_fill()`. Below is the complete code. Save and run it. 
 
 ```
 def drawRectangle_1():
@@ -191,7 +191,7 @@ Save and run it. Then call the function from the Python shell as follows:
 
 This is just one possible solution. As you continue through this course, you will soon discover that there are many different ways to solve any problem. Computer Scientists almost always care about *correct* solutions that run the fastest on any computer - in fact there is a whole field within CS dedicated to finding such solutions - its the field of algorithms. Good programmers take a lot of care to express their algorithms in code in the simplest and most understandable way. We will strive towards this goal in general. For now, our goal is to come up with correct solutions.
 
-Below is an alternate implementation for drawing a rectangle. The algorithm is slightly different: It first computes the absolute location of the 4 corners of the rectangle and then commands the turtle to go to the four locations in a specific order. To move the turtle to any location (x,y), we will use a new turtle method: t.goto(x, y). Here is one possible implementation of this algorithm. Name this function drawRectangle_2(). Place it below the code for drawRectangle_1().
+Below is an alternate implementation for drawing a rectangle. The algorithm is slightly different: It first computes the absolute location of the 4 corners of the rectangle and then commands the turtle to go to the four locations in a specific order. To move the turtle to any location (x,y), we will use a new turtle method: `t.goto(x, y)`. Here is one possible implementation of this algorithm. Name this function: drawRectangle_2. Place it below the code for `drawRectangle_1()`.
 
 ```
 def drawRectangle_2():
@@ -234,7 +234,9 @@ Save and run it. Then call the function from the Python shell as follows:
 >>> drawRectangle_2()
 ```
 
-Here is yet another implementation for the same algorithm used in drawRectangle_2() (You guessed correctly - a single algorithm can be implemented in different ways in code)
+You should see an identical rectangle as the one drawn by `drawRectangle_1()`.
+
+Here is yet another implementation for the same algorithm used in `drawRectangle_2()` (You guessed correctly - a single algorithm can be implemented in different ways in code)
 
 ```
 def drawRectangle_3():
@@ -264,7 +266,7 @@ def drawRectangle_3():
 The main difference between this version and the previous one is that we are expressing the coordinates for the four corners of the rectangle as a list of tuples. If you don't understand the syntax, its because we haven't covered it in class yet. Don't worry about it, just save and run and call this function to see that it produces the same exact result as the other two.
 
 
-Refer to the [turtle documentation](https://docs.python.org/3.6/library/turtle.html) to understand all the commands we have used so far and possible alternatives to them (like t.goto())
+Refer to the [turtle documentation](https://docs.python.org/3.6/library/turtle.html) to understand all the commands we have used so far and possible alternatives to them (like `t.goto()`)
 
 ## Step 4: Implement a drawRectangle() function that is reusable
 
@@ -282,12 +284,13 @@ def drawRectangle(width, height, tilt, penColor, fillColor):
     draw a rectangle with a given width, height, penColor and fillColor,
     with the current location of the turtle being the 
     lower left corner, and the bottom side tilted by an angle tilt (specified in degrees)
-    relative to the horizontal axis. After the rectangle is drawn, the turtle should return to its original position with an orientation of 0 degrees with respect to the X-axix. Use a turtle called t to create the drawing
+    relative to the horizontal axis. After the rectangle is drawn, the turtle should return to its original position with an orientation of 0 degrees with respect to the x-axis.
+    Use a turtle called t to create the drawing
     """
 
     # Insert code to draw the rectangle
 
-drawRectangle(50, 100, 0, "red","")
+    drawRectangle(50, 100, 0, "red","")
 ```
 
 Write the above code below the previous function definitions. You may use the code for any of the previous versions as a starting point, although one of those versions is easier to extend to case where you want to draw a rectangle at given orientation. So, think through your algorithm for the general case and select the starting implementation that is the easiest to build on.
@@ -311,7 +314,7 @@ t.seth(0)   # Set the absolute heading of the turtle to 0 degrees (pointing east
 
 # Move the turtle right by 200 units without leaving a trail
 t.up()     
-t.forward(200)
+t.forward(100)
 t.down()
 
 drawRectangle( 100, 150, 22, "green", "yellow")  
@@ -331,7 +334,7 @@ def drawTwoRectangles():
 
     # Move the turtle right by 200 units without leaving a trail 
     t.up()     
-    t.forward(200)  
+    t.forward(100)  
     t.down()
 
     drawRectangle( 100, 150, 22, "green", "yellow") 
@@ -412,7 +415,7 @@ Remember, before implementing a new function, you need to come up with a plan th
 6. Move forward by the same amount that you calculated in step 4, which should bring you back to your initial position.
 7. Orient the turtle at 0 degrees with respect to the x-axis
 
-You can choose to go with the above algorithm or come up with your own. The above algorithm can be implemented in code using a series of t.forward() and t.left() commands. You may find this easier compared to an algorithm where you calculate the absolute coordinates of the three corners of the triangle and then use a series of goto statements. The difficulty there is just in the trignometry part and not necessarily the code. Feel free to use any algorithm that appeals to you.
+You can choose to go with the above algorithm or come up with your own. The above algorithm can be implemented in code using a series of `t.forward()` and `t.left()` commands. You may find this easier compared to an algorithm where you calculate the absolute coordinates of the three corners of the triangle and then use a series of goto statements. The difficulty there is just in the trignometry part and not necessarily the code. Feel free to use any algorithm that appeals to you.
 
 
 No matter which algorithm you choose, you will need to plan ahead. For example, if you choose to go with the algorithm we have provided, you have to calculate the turn angles in steps 3 and 5, as well as length of the equal sides of the isosceles triangle. Use [Google](www.google.com) to check your trignometric formulas and use the [the Python documentation on the math module](https://docs.python.org/3/library/math.html) to find the trigonometric functions that Python provides you. Scroll down to the section on trigonometric functions. This will allow you to translate your equations to Python expressions and assignment statements. 
@@ -443,7 +446,10 @@ def drawTriangle(base, height, penColor, fillColor):
     """
     draw a triangle with a given base, height, penColor and fillColor,
     with the current location of the turtle being the 
-    lower left corner. The base of the triangle should be at 0 degrees with respect to the x-axis. Do not assume anything about the initial orientation of the turtle. The final orientation of the turtle should be 0 degrees with respect to the x-axis. Use a turtle called t to create the drawing
+    lower left corner. The base of the triangle should be at 0 degrees with respect to the x-axis. 
+    Do not assume anything about the initial orientation of the turtle. 
+    The final orientation of the turtle should be 0 degrees with respect to the x-axis. 
+    Use a turtle called t to create the drawing
     """
 
     # Insert code to draw the triangle
