@@ -261,7 +261,7 @@ def drawRectangle_3():
 
 
 ```
-The main difference between this version and the previous one is that we are expressing the coordinates for the four corners of the rectangle as a list of tuples.
+The main difference between this version and the previous one is that we are expressing the coordinates for the four corners of the rectangle as a list of tuples. If you don't understand the syntax, its because we haven't covered it in class yet. Don't worry about it, just save and run and call this function to see that it produces the same exact result as the other two.
 
 
 Refer to the [turtle documentation](https://docs.python.org/3.6/library/turtle.html) to understand all the commands we have used so far and possible alternatives to them (like t.goto())
@@ -343,7 +343,7 @@ drawTwoRectangles()  # call the function to draw two rectangles of different siz
 
 When you run the code you should see the following output, with the rectangles very close but not touching: 
 
-![twoRects](twoRects.png){:height="400px"}
+![twoRects](twoRects.png){:height="200px"}
 
 If you get the above output, then you are ready to move to the next step.
 
@@ -368,11 +368,18 @@ Keep the code that has the actual function calls *at the bottom* of the file.  T
 * Second, the functions definitions for `drawRectangle`, `drawTriangle`, etc., e.g.
 
 ```
+   def drawRectangle_1():
+      # code for the first version of drawing a rectangle
+
+   def drawRectangle_2():
+      # code for the second version
+
+   def drawRectangle_3():
+      # code for the third version
+
    def drawRectangle(width, height, tilt, penColor, fillColor):
-      t.color(penColor, fillColor)
-     
-      # etc..
-   
+      # code for the final version of drawing a rectangle 
+ 
    def drawTwoRectangles():
       # Code for drawing two rectangles is here
 
@@ -412,23 +419,22 @@ No matter which algorithm you choose, you will need to plan ahead. For example, 
 
 For example, recollect the Right Triangle shown below with base 'b' and height 'a', and the length of the longest side denoted as 'c':
 
-![RightTriangle](rightTriangle.png){:height="100px"}
+![RightTriangle](rightTriangle.png){:height="200px"}
 
 
 You may remember from high school math that the length of the longest side 'c' can be computed using the Pythogorean theorm as follows:
 
-![Equation](Equation.png){:height="100px"}
+![Equation](Equation.png){:height="50px"}
 
 The above is a mathematical fact expressed as an equation. You can use this formula to *compute* the length of the longest side given the other two sides 'a' and 'b' in your Python program and assign the resulting value to a variable named 'c'. The line of Python code that does that is as follows:
 
 ```
 c = math.sqrt(a**2 + b**2)     
-
 ``` 
-In the above code, to the right of the '=' sign is a Python expression that computes something. The result of the computation is assigned to the variable 'c' on the left. So while in a math equation its okay to switch out the expression on the left and right hand side of the equation, doing so in Python would cause an error in your program. Be sure you understand the difference between the equation and the Python assignment statement. Ask a TA/tutor for further clarification :)
+In the above code, to the right of the <code>=</code> sign is a Python expression that computes something. The result of the computation is assigned to the variable 'c' on the left. So while in a math equation its okay to switch out the expressions on the left and right hand side of the equation, doing so in Python would result in a error. Be sure you understand the difference between equations and Python assignment statements. Ask a TA/tutor for further clarification if you need to.
 
 
-Now go ahead and write the code for your drawTriangle function:
+Now go ahead place the following code below your other functions and the fill in the code for the drawTriangle() function:
 
 ```
 
@@ -449,6 +455,46 @@ def drawTwoTriangles():
 
 ```
 
+## Step 6: Checking your code before submission
+
+When you are finished with the lab, ask a TA, tutor or instructor to look it over and give you some feedback on it.  
+
+It should be structured in a way that there is 
+
+1. A single file called `lab01.py`
+2. Code at the top of the `lab01.py` file that sets up a turtle
+3. Next, function defintions: 
+   def drawRectangle_1():
+      
+      ...
+
+   def drawRectangle_2():
+      
+      ...
+
+   def drawRectangle_3():
+      
+      ...
+
+   def drawRectangle(width, height, tilt, penColor, fillColor):
+      
+      ...
+ 
+   def drawTwoRectangles():
+      
+      ...
+
+   def drawTriangle(base, height, penColor, fillColor):
+      
+      ...
+
+   def drawTwoTriangles():
+      
+      ...
+     
+4. Finally, code that calls those functions to draw two non overlapping rectangles and two triangles as specified before
+
+If you code meets all those criteria, you should be in good shape to submit it.
 
 
 ## Step 7: Submitting via submit.cs
