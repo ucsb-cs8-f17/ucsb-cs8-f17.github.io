@@ -2,415 +2,871 @@
 layout: lab
 num: lab04
 ready: false
-desc: "Turtle Graphics: Scene from a forest"
-assigned: 2017-10-24 11:00:00.00-7
-due: 2017-11-01 16:50:00.00-7
-submit_cs_pnum: 774
+desc: "input, scripts, command line arguments"
+assigned: 2017-10-17 11:00:00.00-7
+due: 2017-10-24 17:00:00.00-7
+submit_cs_pnum: 828 
+submmit_cs_class: 93
 ---
 
-Goal
-====
+## This lab may be done solo, or in pairs
 
-The goal of this exercise is to draw a forest scene from basic shape primitives that you will implement using turtle graphics. The key idea to learn how to use functions as building blocks in more complex compositions. You will also learn about using repetition and randomization in your code to create interesting outcomes.
+Please decide before you begin whether you want to work solo or in a pair.
 
+You are free to choose either, but if you choose to work in a pair, please:
 
-What you'll be drawing
-----------------------
+1. Register for the lab as a pair on submit.cs right from the start
 
-You'll be writing functions to produce two basic shapes: a rectangle and a triangle. Each function takes parameters that specify the size, orientation, pen color, and fill color of that shape. This will allow us to create more interesting drawings later on. The function definitions are given below:
+   (Note that you have to register as a pair on submit.cs
+   for *each* lab separately; pair
+   assigments do not carry over from one lab to the next)
 
--   `drawRectangle(width, height, tilt, penColor, fillColor)`
--   `drawTriangle(base, height, tilt, penColor, fillColor)`
+2. Once you register as a pair, please ONLY work when you are together with your pair.
 
+   If you cannot make that committment, then please, both of you
+   just do the work as
+   as a solo programmer.
 
-The output produced when each function is callled with specific parameter values is shown in the following figure.
+In particular, the following is NOT OK:
 
-![basicShapes](basicShapes.png){:height="400px"}
+* Chris and Pat form a pair.
 
-The above drawings are the result of calling either <code>drawRectangle()</code> or <code>drawTriangle()</code>. In each drawing, the turtle stamp shoes the initial location and heading of the turtle right before the corresponding function is called. For example the top left drawing is the output of the following line of code, when the turtle is at the top left corner:
+* Chris works on the lab alone on Monday night.  Chris uploads the
+   submission to submit.cs
+   
+* Pat downloads the joint submission on Tuesday night and works alone
+   on it to finish it up.
 
-```
-drawRectangle( width = 50, height = 100, tilt = 0, penColor = "red", fillColor = "")
-```
-
-The subsequent three drawings on the same row are the output of repeatedly moving the turtle to the right, and calling the <code>drawRectangle()</code> function changing the tilt, penColor and fillColor. The function calls and parameter values to produce these drawings are given below:
-
-
-```
-drawRectangle( width = 50, height = 100, tilt = 20, penColor = "green", fillColor = "yellow")
-...
-drawRectangle( width = 50, height = 100, tilt = 60, penColor = "blue", fillColor = "blue")
-...
-drawRectangle( width = 50, height = 100, tilt = 90, penColor = "red", fillColor = "red")
-
-```
-
-Similarly, the drawings on the next row are the result of repeatedly calling **<code>drawTriangle()</code>** with the following parameter values:
-
-|   <code>base</code>   |  <code>height</code>     |   <code>penColor</code> |  <code>fillColor</code> |   
-|-----------------------|-------------------------| ------------------------| ----------------------- |
-|   50                  |   100                   |  <code> "red" </code>  |  <code> ""</code>       |
-|   50                  |   100                   |  <code> "green" </code>|  <code> "yellow"</code> |
-|   50                  |   100                   |  <code> "red"</code>   |  <code> "red"</code>    |
-|   50                  |   100                   |  <code> "blue"</code>  |  <code> "blue"</code>   |
+That is a joint effort, but it is NOT pair programming.
 
 
-Once you have implemented the above basic shape primitives, you will use them as building blocks to create the following forest scene!
+## What this lab is about
 
-![forestScene](forestScene.png){:height="400px"}
+In this lab, we begin to move in the direction of writing real Python programs
+that resemble the ones created by professional software developers to
+solve real world problems.
 
-To create this scene you will implement additional functions to draw a tree, a hut, a forest and a village! 
+Our first programs will still be very simple, and will not necessarily
+<em>seem</em> very authentic.  They will do very simple tasks that, quite
+honestly, can be done more easily with a simple calculator, for example.
 
+I'll ask you to trust me that we are taking small steps that will get
+larger as we move forward.
 
-# The programming part
-
-## Step 1: Create a {{page.num}} directory under your cs8 directory
-
-
-Create a directory called `~/cs8/{{page.num}}` for a file
-we are going to call `{{page.num}}.py`.
-
-If you don't recall the commands, you may refer to any of the previous labs
-
-## Step 2: Open `idle3` and create <tt>{{page.num}}.py</tt>
-
-Open up `idle3` and select the menu option `File => New File` to create a new file.
-
-In this file, put this code (but put your name instead of "your name goes here")
-
-<pre>
-# {{page.num}}.py, your name goes here
-import turtle
-import math 
-
-if __name__=="__main__":
-  t = turtle.Turtle()
-
-</pre>
-
-The `if` test for `__name__=="__main__":` is where everthing in your program
-should go <em>except for</em>:
-
-* `import` statements
-* function definitions
-
-I realize it's a strange looking line of code&mdash;if you haven't already
-seen it before in lecture or another lab, you can find an explanation of it
-here: [All about `if __name__=="__main__":`](https://ucsb-cs8.github.io/ptopics/main_blocks/).
-
-You can name your turtle anything you like; I used `t` because it's short to type.
-
-Optionally, you can make your turtle look like a turtle by putting this line in your `__main__` block also:
-
-```
-  t.shape("turtle")
-```
-
-So the whole main block looks like this:
-
-```
-if __name__=="__main__":
-  t = turtle.Turtle()
-  t.shape("turtle")
-
-```
-
-Save this, and run it.   You should see a turtle appear.
+More specifically, in this lab, we want to learn four things:
 
 
-## Step 3: Create and implement the functions for the basic shapes - rectangle and triangle
+1. Reusing a file we've already created by importing it as a module.
+2. Writing an interactive program using `input` and `print`
+3. Using the `if __name__=="__main__":` idiom so our programs can serve
+   more than one purpose.
+4. Using command line arguments (e.g. `sys.argv`)
 
-In your <tt>{{page.num}}.py</tt> file, write the skeleton of <code> drawRectangle() </code> and <code> drawTriangle()</code> as shown below. You will need some of the trigonometric functions provided in that math module to implement <code> drawTriangle()</code>. In order to use that module, add a line to import it at the top of the file. To learn more about the math module refer [the Python documentation on the module](https://docs.python.org/3/library/math.html) and scroll down to the section on trigonometric functions.
+Here's a bit more detail about each of these:
 
-```
-import math
+1.  Reusing a file we've already created by importing it as a module.
 
-def drawRectangle(width, height, tilt, penColor, fillColor):
-    """
-    draw a rectangle with a given width, height, penColor and fillColor,
-    with the current location of the turtle being the 
-    lower left corner, and the bottom side tilted by an angle tilt (specified in degrees)
-    relative to the horizontal axis. Use a turtle called t to create the drawing
-    """
+   Up until now, when we typed `import` we were always importing something
+   that was part of the Python standard library, for example:
 
-    # Insert code to draw the rectangle
-    
-def drawTriangle(base, height, tilt, penColor, fillColor):
-    """
-    draw a triangle with a given base, height, penColor and fillColor,
-    with the current location of the turtle being the 
-    lower left corner, and the bottom side tilted by an angle tilt (specified in degrees)
-    relative to the horizontal axis. Use a turtle called t to create the drawing
-    """
+   ```
+   import math
+   import pytest
+   ```
+   etc.
 
-    # Insert code to draw the rectangle
-  
-def testRectangle():
-    
-    drawRectangle( 50, 100, 0, "red", "") 
+   However, it is not only possible, but <em>very</em> common, for
+   programmers to <em>create their own modules</em> and import them.
 
-    # Move the turtle right by 200 units without leaving a trail
-    t.seth(0)   # Set the absolute heading of the turtle to 0 degrees (pointing east)
-    t.up()     
-    t.forward(200) # Move the turtle forward by 200 units 
-    t.down()
+   In fact, in this lab, we are going to take the functions you wrote
+   for [lab01](/lab/lab01) in the file `convert.py` and import those
+   so that they can be reused in this lab.  Since those functions already
+   have test cases, and those test cases are passing, we have confidence
+   that we can build software on top of those functions.
 
-    drawRectangle( 50, 100, 20, "green", "yellow") 
+2. Writing an interactive program using `input` and `print`.
 
-    # Move the turtle right by 200 units without leaving a trail
-    t.seth(0)   # Set the absolute heading of the turtle to 0 degrees (pointing east)
-    t.up()     
-    t.forward(200) 
-    t.down()
+   Up until now, we've provided input to our functions in one of two ways:
 
+   *   Hard coded values.
+
+       For example, in lab03, we used hard coded function calls such
+       as `drawRectangle( 50, 100, 0, "red", "")`.  We call the values `100` and `50` "hard
+       coded", because they are the same every time we run the
+       program.
+
+   *   Typing function calls directly at the Python Prompt (`>>>`).
+
+       For example, in lab01, we typed things like `fToC(32)` at the
+       `>>>` prompt and looked to see what was returned by the
+       function.  We could change the value passed to the `fToC`
+       function by putting different argument values inside the
+       parentheses.
+
+   Most real world users of software don't work with a system such
+   as the Python prompt.  In real software input values are usually provided
+   through a mobile app, a web form, a graphical user interface (GUI).
+
+   In old-school console apps, though, which is what intro students usually
+   learn first, there are two ways of providing input.
+
+   The first of these is using something like the `input` function
+   which was covered in Chapter 3 of the textbook.  We also asked you about it
+   on [Homework Assignment h04](/hwk/h04/)&mdash;in this lab, we'll put that
+   knowledge to work.
+
+   I mentioned on [Homework Assignment h04](/hwk/h04/), that while the author
+   suggest the use of the `eval` function for getting non-string input
+   from the user, I <em>strongly recommend</em> against getting into this
+   habit.   We'll explore better ways of doing that in this lab.
+
+   (Using any kind of `eval` function on user input, whether in Python
+   or any other language, is a very risky practice, and a classic
+   vector for malware to infect your system.  And, its not even the
+   best approach.  Just say no to `eval` unless you REALLY know what you
+   are doing.)
+
+3. The use of command line arguments via `sys.argv`
+
+   I said above that there two "old school console app" ways of getting
+   input.  The way that most Unix commands get their input is through
+   command line arguments.  You may not have thought much about it, but
+   every time you use a command such as any of these, you are running
+   a program:
+
+   * `cd cs8`
+   * `mkdir {{page.num}}`
+   * `python3 -m pytest {{page.num}}.py`
+
+   The first thing on the line, e.g. `cd`, `mkdir`, or `python3`, is the name
+   of the program you are running.  The rest of it is provided as input
+   to the program.   We'll learn how you can do the same thing in your own
+   Python code.
    
 
-testRectangle()
-```
+4. The use of the `if __name__=="__main__":` idiom in Python.
 
-* Read the test code provided in testRectangle(). Refer to the [turtle documentation](https://docs.python.org/3.6/library/turtle.html) to understand any commands that may be new to you. In particular, note that you can use the t.forward() command to move the turle forward relative to its current location in the direction that it is currently pointing. Similarly, the commands t.left() and t.right() rotate the turtle in the anticlockwise or clockwise directions respectively. These are commands that you may use as alternatives to the goto() command in your implementation of the drawRectangle() and drawTriangle() functions. 
+   This is an issue that can be a little confusing for students, but
+   it really is quite simple.  This little strange looking piece of code
+   allows us to use any Python file for two different purposes:
 
-* On a piece of paper draw the output that you expect to get for a correct implementaion of the drawRectangle() function, when the above code is executed. You may refer to the drawings and information on the top of this page.
+   * It does one thing when we <strong>run</strong> it
+   * It can do something else entirely, when we <strong><tt>import</tt></strong>
 
-* Implement the drawRectangle() function and run your code until you get the expected output for the provided test code.
-
-* Add more test cases to the testRectangle() function until you arrive at a general enough implementation
-
-* Repeat the above process to implememt and test your drawTriangle() function. 
-
-With these basic primitives, you are now ready to make something more interesting! Refer back to the forest scene that you are working towards. Which functions do you think you should implement next? Try to write the definitions of these functions before reading the next section.
-
-## Step 4: Draw a tree
-
-Now that we have our basic shapes (the rectangle and the triangle), we are in a position to create the essential elements of our forest scene in code - functions to draw a tree and a hut. Once we do that, drawing the forest boils down to making repeated calls to these two functions and moving the turtle to a new spot in between function calls. We'll start with the tree because it has a more regular structure. 
-
-Define a 'drawTree()' function to draw a tree.  A general 'drawTree()' function should allow the user to specify the height and color of the tree as captured in the following function definition.  
-
-```
-def drawTree(height, color):
-    
-    ''' 
-    This function draws a tree with a specific height and color, with the bottom of the bark at the current location of the turtle. The bark of the tree is always brown. All other parameters such as the width of the tree and the length of the bark are chosen so that the tree is well proportioned. The tree top is composed of three triangles stacked on top of each other.
-    '''
-
-```
-
-Copy the above code and place it right after your implementation for `drawTriangle`. Now write a function `testdrawTree()` with some test code to test your implentation of `drawTree()`. Below is some initial test code:
-
-```
-def testdrawTree():
-    t.up()
-    t.goto(0,-400)
-    t.down()
-    drawRectangle(200, 200, 0 , "red","")
-    drawTree(200, "green")
-```
-The above code helps you visually inspect if the your tree is of the specified height by drawing it alongside a rectangle of the same height. When you run this code with a correct implementation of drawTree() should see that the top of the tree coincides with the top side of the rectangle as shown in the following output:
-
-![testTree](testTree.png){:height="200px"}
-
-Note that there are aspects of the tree that are not specified for you such as the width of the tree, the width and height of the bark, and the spacing between the three triangles that make up the tree top. You should make decisions on these aspects relative to the height of the tree so that a taller tree is wider and has a thicker and taller bark.
-
-Now go ahead and implement your drawTree() function. Add more code to the testdrawTree() function to draw at least two well-proportioned trees of different heights at two different locations.  
-
-## Step 5: Draw a row of trees - repetition made easy with loops
-
-We would now like to go from drawing one tree to many trees, which will essentially become our forest. To begin define the function `drawForest()` as below:
-
-```
-def drawForest():
-    ''' 
-    Draws a collection of trees placed at random locations within a rectangular region
-    '''
-```
-Start by drawing three trees of the same height in a row. One way of doing is this is to repeat a block of code to move the turtle to a specific spot and then call the drawTree() function as shown below:
-
-```
-# Move the turtle to location (-200, -100) and draw a tree  
-t.up()
-t.goto(-200, -100)  
-t.down()
-drawTree(200, "green")
-
-# Move the turtle to location (0, -100) and draw another tree
-t.up()
-t.goto(0, -100)  
-t.down()
-drawTree(200, "green")
-
-# Move the turtle to location (200, -100) and draw the third tree
-t.up()
-t.goto(200, 100)  
-t.down()
-drawTree(200, "green")
-
-```
-However a better way of doing the same thing is to use a for loop as demonstrated below:
-
-```
-for i in range(3):
-    t.up()
-    t.goto(400, -100)  
-    t.down()
-    drawTree(200, "green")
-```
-
-The for loop runs the block of code inside it three times. Run it and you'll find that the turtle draws all the three instances of the tree at the same spot. Modify exactly one of the lines to get the same output as the version above it. You should get an output similar to the one below:
-
-![manyTrees](manyTrees.png){:height="200px"}
-
-## Step 6: Take a detour into random numbers
-
-In this step you will use the [python random module](https://docs.python.org/3/library/random.html) to add an artistic touch to your drawings.
-Although drawing all the trees in a straight line is a good first attempt at creating the forest, its not very realistic. So, your next goal is to place the trees at random locations that are roughly along a horizontal line. As a warm up try out the exercises below that demonstrate the use of the random module with the `drawTriangle()` function that you implemented earlier. 
+  It's a very simple, yet  powerful feature, and we'll explore why its a
+  really good habit to develop in your Python coding.
 
 
-Start by writing a simple for loop to draw triangles along a circle. This code does not involve randomization.
+5. The use of the shebang to run Python programs as standalone programs.
 
-```
+   In the real world, when folks run a program, they run it to get something
+   done.
 
-def randomPlay():
-    '''
-    Experiments with the random module
-    '''
-    t.pensize(10)
-    for i in range(36):
-        t.up()
-        radius = 200
-        x = radius*math.cos(i*10*math.pi/180)
-        y = radius*math.sin(i*10*math.pi/180)
-        t.goto(x,y)
-        t.down()
-        tilt = 10*i
-        drawTriangle(50, 50, tilt, "black", "red")
+   For example, earlier this week, I wrote a script that takes a class roster and
+   creates a randomized seating chart for giving an exam.
 
-randomPlay()
-```
+   Suppose another faculty member is teaching and wants to use
+   my script.  What they care about is running the program and getting the
+   result.  They really don't care whether its written in Python, or FORTRAN,
+   or Java.   They just want to run it and get the output.
 
-When you run the above code, you will find a very regular arrangement of triangles along a circle as shown below. Read the code to understand why its producing this output. Note that both the location and tilt of each triangle is dependent on the value of our loop variable (i). 
+   On Unix/Linux and on MacOS, there is a easy technique called the "shebang" that we can use to turn
+   any Python file into a "standalone program" that can be run at the
+   terminal prompt.
 
-![circleOfTris](circleOfTris.png){:height="200px"}
+   (Note: This shebang thing isn't applicable to old school Windows systems,
+   though Windows 10 users probably can do it if they install the new 
+   [Windows 10's bash shell](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/).  Getting that to work is left
+   as an exercise to the student though.  In any case, for Windows users,
+   I <em>strongly encourage you to do
+   this particular lab on CSIL</em>, through MobaXTerm if needed.)
 
-We will now introduce the use of random numbers into this code by selecting the tilt of each triangle to be a random number between 0 and 90 degrees. To do this replace the line `tilt = 10*i` by `tilt = random.randint(0, 90)`. Then run the code. You should see a drawing similar to the one below, although not exactly the same!
+Ok, we are ready to get started.
 
-![randTilt](randTilt.png){:height="200px"}
 
-We will next use the random module to randomize two other aspects of our drawing: the location of each triangle and its color. Previously, we drew all our triangles along a circle of radius 200. This time we will introduce a small random perturbation in that value by adding a random number between -50 and 50 to the radius in every iteration of the for loop. The line of code that does that is:
+## Step 0: (OPTIONAL) Register your pair (if working in a pair)
+
+If you are solo programming, skip to step 1.
+
+To register your pair in submit.cs, navigate to the page for this assignment:
+
+<https://submit.cs.ucsb.edu/class/93>
+
+You should see a {{page.num}} link.  Click that.
+
+Then, you  should see a “Join Group” button. Click this button.  
+
+The subsequent page will allow you to accept and reject invitations from your classmates, as well invite one of your classmates by their umail address to join your pair.
+
+<strong>NOTE:</strong> Only UCSB <strong>umail</strong> addresses will work, since those are the email addresses linked to submit.cs accounts.
+
+While multiple students can invite you to join a pair, the system only permits you to have one outstanding invitation at a time. You must revoke an invitation if you would like to invite someone else.
+
+Once grouped together, both the members of a pair will be able to see all the submissions made by each partner in the pair (but only for that project), regardless of when the submission was made. 
+
+Additional notes on pairs:
+
+* Pairs exist only within the context of a specific programming assignment&mdash;you can be in a different group/pair for each programming assignment.
+
+Once you've registered, you are ready to move on to the next step.
+
+
+## Step 1: Make a `~/cs8/{{page.num}}` folder
+
+The easiest way to create this is to do the following, which
+will work from any directory:
+
+`mkdir -p ~/cs8/{{page.num}}`
+
+That form of the `mkdir` command, with the `-p` has these advantages:
+
+*  It creates the entire path of directories in case any of the intermediate
+   ones don't exist (that is, it will create a `~/cs8` directory too if it
+   isn't there yet).
+
+*  If the directory being create already exists, it won't complain
+
+*  Since the directory being created starts with `~`, it's an absolute
+   path.  That is, it is a specfic path all the way from the
+   root directory (`/`), through any intermediate directories
+   all the way down to the `{{page.num}}` directory
+     
+   Because it is an absolute path, this command <em>does the right thing,
+   regardless of what your current working directory happens to be.</em>
+
+   That is an important point, and worth making sure you understand before
+   your next exam. (That's a hint.)
+
+Ok, once you've created this directory, to get yourself into it, type:
+
+`cd ~/cs8/{{page.num}}`
+
+Again, since that's an absolute path, it works from any directory.
+
+## Step 2: Create a file called `{{page.num}}.py` in your `~/cs8/{{page.num}}` directory
+
+To start out {{page.num}}, write the line:
 
 ```
- radius = 200 + random.randint(-50, 50)
+import convert
+```
+
+That line is going to import the convert.py file that we wrote in lab01.
+
+Of course, that will only work if the convert.py file is in our current
+working directory. So, next, we'll get that file where it should be.
+
+First, though, use the "Save" command to save your {{page.num}}.py file.
+
+## Step 3: Copy 'convert.py' from your `lab01` directory to your `{{page.num}}` directory
+
+I realize that you may be working on the same computer, or a different one from the one where you did lab01.  And, it's also possible that you didn't put your `convert.py` file in the "right place", i.e. in your `~/cs8/lab01` folder.
+
+No worries.  We are going to proceed as follows:
+
+* First, we'll make sure you *have* a `~/cs8/lab01` on the computer where you are working.
+* Next, we'll make sure that that directory contains a good copy of your `convert.py` file from lab01
+* Finally, we'll go back to our `~/cs8/{{page.num}}` directory, and use a Unix command to copy the `convert.py` file over to that directory.
+
+(NOTE: It may be tempting to just click and drag the file, using your
+mouse to do the copying, and skip all command line stuff.  I
+don't recommend that, because the process of copying files from
+one Unix/Linux directory to another is likely to be on the next
+exam in this course.  So it might be a good idea to actually
+practice these steps.  Entirely up to you.)
+
+Alright, let's dive in.  First, try this:
+
+```
+cd ~/cs8/lab01
+```
+
+If it didn't work, because that directory doesn't exist on this computer,
+or in this account, then create it like this, and try the cd command again:
+
+```
+mkdir -p ~/cs8/lab01
+cd ~/cs8/lab01
+```
+
+(For an explanation of the `-p` flag, see the discussion earlier in this lab.)
+
+Then, use the `ls` command to see if the file `convert.py` is in that directory:
+
+```
+ls
+```
+
+If the file is NOT THERE, then:
+
+* Use your web browser to login to submit.cs
+* Navigate to the page for lab01
+* Find your last submission
+* Download the file and save it into your directory.
+
+<div style="width:80%; margin-left:auto; margin-right:auto; background-color: #efe; border: 5px inset #3f3;" markdown="1">
+
+### It's not working&mdash;what do I do?
+
+A situation in which this will NOT work is if you are logged into CSIL via MobaXTerm, or `ssh -X` on MacOS.  
+
+In this case, your web browser downloads the file to your computer's
+hard drive, not to your CSIL directory.
+
+There are two work arounds:
+
+(1) Just copy paste the contents from the web page into a new file.
+
+(2) Bring up a web browser running on CSIL by typing either `firefox` or `google-chrome` in at the CSIL prompt. Note: This method is not fun.   It typically runs very slowly, and you may see lots of error messages on the screen, and it will take a long time.  But eventually the Chrome or Firefox browser should appear.  It will hopefully work well enough for you to log into submit.cs and download your convert.py file into your ~/cs8/lab01 directory.
+
+</div>
+
+Ok, assuming the `convert.py file is there, you can use one of these two commands to look at its contents.  We want to make sure that is looks like the "finished product" from your 
+
+* `cat convert.py`
+* `more convert.py`
+
+Try both of those now.  You should see that `convert.py` file is your finished
+product from lab01.
+
+Note that the `cat convert.py` file lists the entire contents of the file.  The thing is, if the file is long, it just spews out the entire thing all at once. 
+
+The command `more convert.py` file *also* lists the contents of the file, but if the file is longer than a single screen of text, it gives it to us one screen full at a time, with the word `More` at the bottom of the screen.  We can press either Enter, or the space bar, to go through the file one line or one screen full at a time.  Try it a few times.
+
+(There are other keys you can press as well, including `q` to quit in the middle of the file, as well as keys to search for particular text, and many other fun goodies.  To learn more about more, see [this tutorial](https://shapeshed.com/unix-more/) and this [wikipedia article](https://en.wikipedia.org/wiki/More_(command))).
+
+Assuming that file is where it should be, i.e. in
+the directory `~/cs8/lab01`, we can now go back to your `~/cs8/{{page.num}}` directory with a cd command:
+
+```
+cd ~/cs8/{{page.num}}
+```
+
+Now, copy the `convert.py` file into your current directory with this command. This is the unix `cp` command which stands for "copy":
+
+```
+cp ~/cs8/lab01/convert.py ~/cs8/{{page.num}}
+```
+
+After running this command, use `ls` to see if the `convert.py` file is there:
+
+```
+ls
+```
+
+If so, you are almost ready for the next step.
+
+Before you go on though, a reminder that you can make a preliminary submission to submit.cs anytime you are "done for the day" (i.e. if you aren't completely finished with the lab, and are planning to come back to it later.)
+
+The benefit is that this provides a way to move your files between CSIL and your own computer, and/or to share files between pair partners.
+
+It's also a way you can put code in a place where the instructors can see it in case you want to ask a question on Piazza via private instructor note.  Upload your code first, then ask the question, and include the URL of the submission on submit.cs.  While you can only see your own submissions on submit.cs (and those of your pair partner, not no one elses), instructors have access to see all submissions for the class.
+
+To make a submission now, you can visit this page:
+
+<https://submit.cs.ucsb.edu/form/project/{{page.submit_cs_pnum}}/submission>
+
+* Navigate to that page, and upload your `{{page.num}}.py` AND your `convert.py` file.
+* YOU MUST UPLOAD BOTH.
+
+Or, if you are working on the ECI/CSIL/lab linux systems, you can also submit at the command line with this command, provided you are in the correct folder/diretory:
+
+<tt>~submit/submit -p {{page.submit_cs_pnum}} {{page.num}}.py convert.py</tt>
+
+
+
+## Step 4: Go back to your `{{page.num}}.py` and run it
+
+If you've followed the instructions up to this point,
+your `{{page.num}}.py` file
+(which should be located in your `~/cs8/{{page.num}}` folder) only has these contents:
+
+```
+import convert
+```
+
+That should be enough that we can run the file and see one of two things:
+
+What we want to see:
+
+```
+>>> 
+================= RESTART: /Users/pconrad/cs8/{{page.num}}/{{page.num}}.py =================
+>>>
+```
+
+If that's what you see, good!  Move on to step 5.
+
+What we don't want to see:
+
+```
+>>> 
+================= RESTART: /Users/pconrad/cs8/{{page.num}}/{{page.num}}.py =================
+
+Traceback (most recent call last):
+  File "/Users/pconrad/cs8/{{page.num}}/{{page.num}}.py", line 1, in <module>
+    import convert
+ImportError: No module named convert
+>>> 
+```
+
+If you see the second thing (the error message), it suggests that you ran `idle3` from some directory other than your `~/cs8/{{page.num}}` directory where your `convert.py` program is located.
+
+If you see the error, do this to get back on track (otherwise, just go on to th next step):
+
+* Quit `idle3`
+* make sure that your `{{page.num}}.py` and your `convert.py` are both in your `~/cs8/{{page.num}}` folder
+* make sure that `~/cs8/{{page.num}}` is your current working directory (use `pwd` to check that)
+* Start `idle3` again.
+
+
+## Step 5: Learning about the `__name__=="__main__"` block
+
+Ok, now we are ready to put some code in our {{page.num}}.py.
+
+This is an important step to work through slowly and carefully, to get
+the learning&mdash;not just to get the result.    There isn't much code
+to write here, but there is a lot of important reading, and if you gloss over
+it, you'll have trouble later.
+
+The first thing we are going to put in there is this funny looking code right
+here.  Just copy this in there for now, and I'll explain it in a moment.
+
+(I've repeated the `import convert` that was already there, just for context.)
+
+```
+import convert
+
+print("This is outside the main block of {{page.num}}.py")
+
+if __name__=="__main__":
+   print("This is the main block of {{page.num}}.py")
+
 
 ```
 
-The second modification we will make is to select the color of each triangle at random from a list of colors. The following two lines of code defines our color choices and then selects one color from this list at random.
+Note: make sure you type that line with the `if`  <em>exactly</em> as shown:
+* The variable `__name__` must be exactly two underscore characters, followed by exactly this: `name`, followed by exactly two underscore characters. 
+* The string `"__main__"` must be exactly two underscore characters, followed by exactly this: `main`, followed by exactly two underscore characters.
+* It must be exactly two equals signs: `==`
+* The only part that can vary is whether you use single or double quotes. `'__main__'` or `"__main__"` are both ok.
+
+# What the heck does `__name__=="__main__"` mean?
+
+The if test is checking whether a funny looking variable, `__name__` is equal to some other funny looking string `"__main__"`.  But why?
+
+Basically, this funny variable equals this funny string whenever you run a Python program <em>directly</em>, as opposed to <em>importing it</em>.
+
+We can see the effect by doing the following.  Let's load up your `convert.py` file in idle, and put this code at the very bottom of the file:
 
 ```
-shadesOfGreen =["#006400", "#556b2f", "#8fbc8f", "#2e8b57", "#3cb371", "#20b2aa", "#32cd32"] 
-color = random.choice(shadesOfGreen)
+print("This is outside the main block of convert.py")
+
+if __name__=="__main__":
+   print("This is main block of convert.py")
 ```
 
-The list `shadesOfGreen` defines a list of color codes for different shades of green. The next line selects one of the elements of this list at random. The following code incorporates these new elements.
+Then, try choosing the "Run Module" command from the menu in idle, from the window where your file `convert.py` is open. You should see this:
 
 ```
-def randomPlay():
-    '''
-    Experiments with the random module
-    '''
-    shadesOfGreen =["#006400", "#556b2f", "#8fbc8f", "#2e8b57", "#3cb371", "#20b2aa", "#32cd32"] 
-    
-    t.pensize(10)
-    for i in range(36):
-        t.up()
-        radius = 200 + random.randint(-50, 50)
-        x = radius*math.cos(i*10*math.pi/180)
-        y = radius*math.sin(i*10*math.pi/180)
-        t.goto(x,y)
-        t.down()
-        tilt = 0
-        color = random.choice(shadesOfGreen)
-        drawTriangle(50, 50, tilt, "black", color)
-``` 
-The output of the code is shown in the figure below. Try changing the limits to the random.randint() function and rerun the code, and observe the outcome. Notice how you can control the level of randomness in your drawings using this simple strategy.
+>>> 
+================ RESTART: /Users/pconrad/cs8/{{page.num}}/convert.py ================
+This is outside the main block of convert.py
+This is main block of convert.py
+>>>
+```
 
-![randLoc](randLoc.png){:height="200px"}
-
-Apply what you have learned in this section to complete your `drawForest()` function. Your forest should contain anywhere between 10 and 15 trees of different sizes and different shades of green placed randomly along a horizontal line.
-
-## Step 7: Draw a hut, then a village
-
-Define a function to draw a hut with fixed dimensions, composed of only rectangles. 
+Then, run your `{{page.num}}.py` file using "Run Module".  You should see this:
 
 ```
-def drawHut():
-    '''
-    Draw a brown hut of fixed dimensions purely composed of rectangles
-    Use the random module to enhance your drawing by introducing irregularilities in a controlled way
-    '''
-
-
-def drawVillage():
-    '''
-    Draw a sequence of five huts, placed randomly along a horizontal line
-    '''
+================= RESTART: /Users/pconrad/cs8/{{page.num}}/{{page.num}}.py =================
+This is outside the main block of convert.py
+This is outside the main block of {{page.num}}.py
+This is the main block of {{page.num}}.py
+>>> 
 
 ```
 
-When testing these functions, comment out all calls to previous functions. This will help you focus on the elements of interest in your drawing.
+Ok, what just happened?  Here's what:
 
-## Step 8: Put it all together
+* When you ran `convert.py` you saw the output of both lines of code: the one that was outside the `__name__=="__main__"` block, and the one inside the block.  That's because when you run the file directly, you see both.
 
-Finally, put all the elements that you have implemented to draw the final scene. 
-When you are finished, ask a TA or instructor to look it over and give you some feedback on it.  
+* When you ran `{{page.num}}.py`, you saw the output of both lines of code in `{{page.num}}.py`, but you <em>also saw the line from outside the `__name__=="__main__"` block in `convert.py`</em>.
 
-It should be structured in a way that there is 
+* You saw some output from `convert.py` when you ran `{{page.num}}.py` because you did `import convert`.
 
-1. A single file called <tt>{{page.num}}.py</tt>
-2. Code at the top of the <tt>{{page.num}}.py</tt> file that sets up a turtle
-3. Next, function defintions for each of the basic shapes, test code for the basic shapes, `drawTree()`, `testdrawTree()`, `drawForest()`, `drawHut()`, and `drawVillage()`
-4. Finally, code that calls those functions to draw the forest scene.  That code should be in a block that starts with `if __name__=="__main__":` as explained later in the lab.
+* But you ONLY saw the output from code that was OUTSIDE the `__name__=="__main__"` block.
 
+* Code that is INSIDE a `__name__=="__main__"` block does NOT GET RUN when a file is imported.
 
-If your code meets all those criteria, you should be in good shape to submit it.
+* All other code IS executed both when a file is run, and when a file is imported.
 
+With this as background, we can now clearly state the purpose of a `__name__=="__main__"` block:
 
-## Step 9: Submitting via submit.cs
+<div style="width:80%; margin-left:auto; margin-right:auto; background-color: #efe; border: 5px inset #3f3;" markdown="1">
 
-Note that this week, although we are using submit.cs, it is NOT the case that the grade you get from submit.cs is your final grade for the assignment.
+## What is a `__name__=="__main__"` block for?
 
-The grade on submit.cs is just a PART of your grade--you will get 10
-points for basically submitting *anything* that is a valid Python
-program that has the name <tt>{{page.num}}.py</tt>.
+It is good practice in Python to put ALL code other than function definitions
+and initial assignments of global variables into a `__name__=="__main__"`
+block.
 
-However, the other 90 points for this lab will come from an instructor
-or TA doing a manual inspection of your code to see if it complies
-with the requirements listed above.
+That is, the main code for a Python program that does the work should ideally
+always be in a  `__name__=="__main__"` block.
 
-If you want reassurance that your code is in good shape, you may ask a
-TA or instructor to look it over during office hours or lab.
+That allows us to <em>reuse</em> all of the other function definitions in our program
+by <em>`import`ing them into another program</em> without any unwanted
+side effects.
 
-To submit your code, use:
+</div>
 
-### Navigate to the page for submitting {{page.num}}
+## Step 6: Remove the print statements outside the main block
 
-The page for submitting {{page.num}} is here: <https://submit.cs.ucsb.edu/form/project/{{page.submit_cs_pnum}}/submission>
+So, our next step will be to remove the print statements in `convert.py`
+and `{{page.num}}.py` that are outside the `__name__=="__main__"` block.  (We only put those in temporarily in this step so that you could understand how the
+`__name__=="__main__"` block works.)
 
-Navigate to that page, and upload your `{{page.num}}.py` file.
+Specifically,
+remove these lines:
 
-If you are working on the ECI/CSIL/lab linux systems, you can also submit at the command line with this command:
+From {{page.num}}.py, delete this line:
 
 ```
-~submit/submit ~/cs8/{{page.num}}/{{page.num}}.py
+print("This is outside the main block of {{page.num}}.py")
 ```
 
-It will ask for your email address: use your full umail address (e.g. `cgaucho@umail.ucsb.edu`).  For password, use the password that you enter for the submit.cs system.    You may save these credentials if you don't want to have to type them in every time.
+From convert.py, delete this line:
+
+```
+print("This is outside the main block of convert.py")
+```
+
+Run your two files again, and see if your results match those shown below.
+
+Note that when switching between two file windows in `idle3` you must actully click <em>inside</em> the window in `idle3` before you run&mdash;just bringing the window to the front isn't enough (you might still running `convert.py` when you think you are running `{{page.num}}.py`, or vice-versa.)
+
+For `convert.py`:
+
+```
+================ RESTART: /Users/pconrad/cs8/{{page.num}}/convert.py ================
+This is main block of convert.py
+>>> 
+```
+
+For `{{page.num}}.py`:
+
+```
+================= RESTART: /Users/pconrad/cs8/{{page.num}}/{{page.num}}.py =================
+This is the main block of {{page.num}}.py
+>>> 
+```
+
+If so, you are ready for the next step.
+
+## Step 7: Using the `input` function 
+
+Now, we'll show how your program can have a conversation with the
+user.
+
+Enter this into the main block of your `{{page.num}}.py` file, as shown below:
+
+```
+
+if __name__=="__main__":
+   print("This is the main block of {{page.num}}.py")
+
+   fTempStr = input("Please enter a Fahrenheit temperature: ")
+   print("You entered: ",fTempStr)
+
+```
+
+Run the program.  You should see something like this:
+
+```
+>>> 
+================= RESTART: /Users/pconrad/cs8/{{page.num}}/{{page.num}}.py =================
+This is the main block of {{page.num}}.py
+Please enter a Fahrenheit temperature:
+```
+
+Enter a temperature, e.g. `45` and press enter.  It should then look like this:
+
+```
+>>> 
+================= RESTART: /Users/pconrad/cs8/{{page.num}}/{{page.num}}.py =================
+This is the main block of {{page.num}}.py
+Please enter a Fahrenheit temperature: 45
+You entered:  45
+>>>
+```
+
+Try this again, but this time enter something else.  You should see that whatever you type in gets echoed back.
+
+When that's working, we'll try the next step, which is to convert the user input into a number.
+
+## Step 8: Converting `input` data to a number
+
+As you know from the reading in Chapter 3, and [Homework H04](/hwk/h04/), the `input` function returns string data (Python type `str`).  If we want to use this as a number, we need to do a conversion.  The textbook suggest using `eval`. DON'T DO THAT.  Here's what do to instead:
+
+```
+if __name__=="__main__":
+   print("This is the main block of {{page.num}}.py")
+
+   fTempStr = input("Please enter a Fahrenheit temperature: ")
+   print("You entered: ",fTempStr)
+
+   fTemp = float(fTempStr)
+   cTemp = convert.fToC(fTemp)
+
+   print("{} degrees F = {} degrees C".format(fTemp,cTemp))
+
+```
+
+Try this code, and try entering a few values for the Fahrenheit temperature.
+
+First try some legit numbers.  For example:
+
+```
+>>> 
+================= RESTART: /Users/pconrad/cs8/{{page.num}}/{{page.num}}.py =================
+This is the main block of {{page.num}}.py
+Please enter a Fahrenheit temperature: 68
+You entered:  68
+68.0 degrees F = 20.0 degrees C
+>>>
+```
+
+Well, that's nice!  But what if we put in something invalid, for example "potato":
+
+```
+>>> 
+================= RESTART: /Users/pconrad/cs8/{{page.num}}/{{page.num}}.py =================
+This is the main block of {{page.num}}.py
+Please enter a Fahrenheit temperature: potato
+You entered:  potato
+Traceback (most recent call last):
+  File "/Users/pconrad/cs8/{{page.num}}/{{page.num}}.py", line 10, in <module>
+    fTemp = float(fTempStr)
+ValueError: could not convert string to float: 'potato'
+>>>
+```
+
+Well, that's unfortunate.  But, no worries: we can take care of it.
+
+We'll do that in the next step.
+
+# Step 9: Gracefully handling errors
+
+Change these three lines of code:
+
+```
+   fTemp = float(fTempStr)
+   cTemp = convert.fToC(fTemp)
+
+   print("{} degrees F = {} degrees C".format(fTemp,cTemp))
+
+```
+
+Into these line of code:
+
+```
+
+   try:
+      fTemp = float(fTempStr)
+      cTemp = convert.fToC(fTemp)
+      print("{} degrees F = {} degrees C".format(fTemp,cTemp))
+   except ValueError:
+      print("Sorry, I could not convert {} to a number".format(fTempStr))
+
+```
+
+Now, try again with both the valid and invalid input.  For valid input
+such as 68 there should be no difference.  But for invalid, input
+we should now see something like this:
+
+```
+>>> 
+================= RESTART: /Users/pconrad/cs8/{{page.num}}/{{page.num}}.py =================
+This is the main block of {{page.num}}.py
+Please enter a Fahrenheit temperature: potato
+You entered:  potato
+Sorry, I could not convert potato to a number
+>>> 
+```
+
+Ok, this is great!  But we can still do more!
+
+## Step 9: Adding a shebang
+
+Ok, now we are going to add another strange bit of code to our file.
+
+The following line must be the VERY first line of the file, before
+any imports, any other comments, any blank lines, and it must be truly
+EXACTLY as shown.  Put this at the very top of your `{{page.num}}.py` file.
+
+```
+#!/usr/bin/env python3
+```
+
+Be sure to SAVE this change after making it in the `idle3` file window.
+
+This is a bit of magic sauce that allows us to run the program directly
+from the shell.  It is called a "shebang", and you can read more about it
+here, including why it's called a "shebang":
+
+* <https://ucsb-cs8.github.io/topics/shebang/>
+
+This ONLY works on Linux and MacOS, so if you are working
+on Windows, you need to do this part on CSIL if you want to see it work.
+
+Bring up a terminal window. If your terminal window is running idle3,
+you can use the special trick of pressing CTRL-Z, then `bg` followed
+by enter to get your cursor back.
+
+Then use `pwd` to make sure you are in `~/cs8/{{page.num}}`.  If not, put yourself
+there.  Make sure, also, that you can see the `{{page.num}}.py` file (use `ls` to
+list the files.)
+
+If you can, then use this Unix command.  This makes your `{{page.num}}.py` executable:
+
+```
+chmod u+x {{page.num}}.py
+```
+
+Finally, type this at the Unix prompt (make sure you saved the file in `idle3` first):
+
+```
+./{{page.num}}.py
+```
+
+You should see the following:
 
 
-Note that if you try to upload a file with a name that does not match EXACTLY the name `{{page.num}}.py`, the system will not allow you to do it. 
+```
+[your unix prompt here]$ ./{{page.num}}.py
+This is the main block of {{page.num}}.py
+Please enter a Fahrenheit temperature: 68
+You entered:  68
+68.0 degrees F = 20.0 degrees C
+[your unix prompt here]$
+```
 
-Once you upload it, you should get a page that shows your submission is pending.
+Whoa!  You just ran a Python program that:
 
-Refresh that page, and you should get one that indicates with either red, or green, whether the test cases for your code passed or failed.
+* you ran at the command line, as if it were a unix command
+* that you wrote yourself (granted, with some guidance)
+* that reused a imported module that you wrote last week
+* that asked for input, and printed a result
+* and the fact that it happens to be a Python program is completely obscured from the user running the program.
 
-If you got all green, and 10 points, then your submission was accepted---but to emphasize, for this week, the other 90 points will be assigned by a human grader.   You'll be notified of that grade [via Gauchospace](https://gauchospace.ucsb.edu).
+This is where it actually starts to look like "real programming".
 
-Created by Diba Mirza
+But wait, it gets even better.   We still have one more trick.
+
+## Step 10: Command line arguments with `sys.arg`
+
+Wouldn't it be cool if instead of having to type `./{{page.num}}.py` on one line
+and then typing in temperature after we are prompted, if we could just
+type:
+
+```
+./{{page.num}}.py 68
+```
+
+And it would just print the result?
+
+Well, we can.  Here's how:
+
+First, add this import near the top of the file, right before or after
+your `import convert` (but not the *very* top, because the shebang has to
+be the first line in the file.)
+
+```
+import sys
+```
+
+Replace this line of code:
+
+```
+  fTempStr = input("Please enter a Fahrenheit temperature: ")
+```
+
+With this:
+
+```
+  if len(sys.argv) >= 2:
+     fTempStr = sys.argv[1]
+  else:
+     fTempStr = input("Please enter a Fahrenheit temperature: ")
+```
+
+Save this change. Now try this at the linux shell prompt:
+
+```
+./{{page.num}}.py 68
+```
+
+Then try this at the linux shell prompt:
+
+```
+./{{page.num}}.py
+```
+
+What you should see is a result like that shown below:
+
+```
+[your unix prompt here] $ ./{{page.num}}.py 68
+This is the main block of {{page.num}}.py
+You entered:  68
+68.0 degrees F = 20.0 degrees C
+[your unix prompt here] $ ./{{page.num}}.py
+This is the main block of {{page.num}}.py
+Please enter a Fahrenheit temperature: 32
+You entered:  32
+32.0 degrees F = 0.0 degrees C
+[your unix prompt here] $ 
+
+```
+
+If your output looks similar, you are almost done.  A bit of reading
+in Step 11, then submit at Step 12.
+
+## Step 11: Taking stock of what we've done.
+
+Ok!  That's a lot of stuff.  
+
+This lab was pretty "cookbook"&mdash;for the most part, you were led by the hand through it.
+
+If you did it all correctly, you should be able to submit your convert.py and {{page.num}}.py files to submit.cs, and get a perfect score right away.
+
+If you don't get a perfect score, it's likely either because:
+
+* (a) there may have been still some unresolved problem from your lab01 submission, or
+* (b) there might be some very small formatting error in one of the strings (e.g. you wrote `"This is the main blerg of {{page.num}}.py"` instead of `"This is the main block of {{page.num}}.py"`
+
+But most likely, you'll get a perfect score on the first try.
+
+
+Now: you will have a follow up lab where you'll be asked to do all of the same things you did in this lab, but <em>without</em> the detailed instructions.  You'll need to refer back to this lab and <em>understand</em> what you did.
+
+So, please make sure that you read back through this, and if any part of it doesn't make sense to you, <em>ask questions.</em>
+
+
+## Step 12: See perfect score on submit.cs; profit.
+
+To submit your file to submit.cs, you can visit this page:
+
+<https://submit.cs.ucsb.edu/form/project/{{page.submit_cs_pnum}}/submission>
+
+* Navigate to that page, and upload your `{{page.num}}.py` AND your `convert.py` file.
+* YOU MUST UPLOAD BOTH.
+
+Or, if you are working on the ECI/CSIL/lab linux systems, you can also submit at the command line with this command, provided you are in the correct folder/diretory:
+
+<tt>~submit/submit -p {{page.submit_cs_pnum}} {{page.num}}.py convert.py</tt>
+
+
+
+At this point, you should see that you have a perfect 100 points on submit.cs, and
+you are finished with the lab!
+

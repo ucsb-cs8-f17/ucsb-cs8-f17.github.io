@@ -2,534 +2,523 @@
 layout: lab
 num: lab01
 ready: false
-desc: "Turtle Graphics: Basic shapes"
+desc: "FtoC and CtoF with test cases"
 assigned: 2017-10-10 09:30:00.00-7
-due: 2017-10-17 16:50:00.00-7
-submit_cs_pnum: 768
+due: 2017-10-17 14:00:00.00-7
+submit_cs_pnum: 825
 ---
 
-Goal
-====
+In this lab, you'll practice:
 
-The goal of this exercise is to practice with Turtle Graphics in
-Python by producing somewhere between two and four Python functions
-that use Turtle Graphics to make particular shapes.
-
-(You'll understand the reasons its "between three and six" in a
-minute.)
+* Creating a file that has some functions in it
+* Testing those functions interactively at the Python prompt
+* Creating a file of automatic test cases for those functions
+* Running those test cases
+* Submitting your functions and test cases to submit.cs for grading
 
 
-What you'll be drawing
-----------------------
+# Step 0: Install pytest for your account (or on your machine)
 
-You'll be writing functions to produce two basic shapes: a rectangle and a triangle. Each function takes parameters that specify the size, pen color, and fill color of that shape. The drawRectangle function additionally allows us to specifiy the tilt of the rectangle relative to the x-axis in degrees. The function definitions are given below:
+This lab is one that you may find you need to do on the CSIL machines.
 
--   `drawRectangle(width, height, tilt, penColor, fillColor)`
--   `drawTriangle(base, height,  penColor, fillColor)`
+It is probably the case that `pytest` is not installed for your version
+of Python3.  You can check by typing `python3` at the Terminal prompt
+to get to the Python Shell Prompt `>>>`, and then typing `import pytest`.
 
-
-The output produced when each function is callled with specific parameter values is shown in the following figure.
-
-![basicShapes](basicShapes.png){:height="400px"}
-
-The above drawings are the result of calling either <code>drawRectangle()</code> or <code>drawTriangle()</code>. In each drawing, the turtle stamp shoes the initial location and heading of the turtle right before the corresponding function is called. For example the top left drawing is the output of the following line of code, when the turtle is at the top left corner:
+If you get an error message like this one, then pytest is not installed.
 
 ```
-drawRectangle( width = 50, height = 100, tilt = 0, penColor = "red", fillColor = "")
+[cgaucho@csil-12 ~]$ python3
+Python 3.4.3 (default, Aug 9 2016, 15:36:17) [GCC 5.3.1 20160406 (Red Hat 5.3.1-6)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import pytest
+Traceback (most recent call last):
+File "", line 1, in ImportError: No module named 'pytest'
+>>>
+[cgaucho@csil-12 ~]$ pip3 install --user pytest
 ```
 
-The subsequent three drawings on the same row are the output of repeatedly moving the turtle to the right, and calling the <code>drawRectangle()</code> function changing the tilt, penColor and fillColor. The function calls and parameter values to produce these drawings are given below:
-
-
-```
-drawRectangle( width = 50, height = 100, tilt = 20, penColor = "green", fillColor = "yellow")
-...
-drawRectangle( width = 50, height = 100, tilt = 60, penColor = "blue", fillColor = "blue")
-...
-drawRectangle( width = 50, height = 100, tilt = 90, penColor = "red", fillColor = "red")
-
-```
-
-Similarly, the drawings on the next row are the result of repeatedly calling **<code>drawTriangle()</code>** with the following parameter values:
-
-|   <code>base</code>   |  <code>height</code>     |   <code>penColor</code> |  <code>fillColor</code> |   
-|-----------------------|-------------------------| ------------------------| ----------------------- |
-|   50                  |   100                   |  <code> "red" </code>  |  <code> ""</code>       |
-|   50                  |   100/2                   |  <code> "green" </code>|  <code> "yellow"</code> |
-|   50                  |   100/4                   |  <code> "red"</code>   |  <code> "red"</code>    |
-|   50                  |   100/8                   |  <code> "blue"</code>  |  <code> "blue"</code>   |
-
-
-In a later lab, we will use these functions to create more interesting drawings. 
-
-# The programming part
-
-## Step 1: Create a lab01 directory under your cs8 directory
-
-In [lab00](/lab/lab00) you created a directory `~/cs8/lab00` and, if
-you followed the instructions to the letter, your `hello.py` file
-is located in that directory.
-
-You should now create a directory called `~/cs8/lab01` for a file
-we are going to call `lab01.py`.
-
-To do that, use the commands below.
-
-(Just like last week, your prompt may not be exactly like the one shown here.  Instead of `-bash-4.2$ `, you might have something like `[cgaucho@cstl-15 ~]$ `.    The `cgaucho` here is your username, the `cstl-15` is where you are logged in, and the `~` is your current directory.    Don't be distracted by this detail.)
-
-
-<pre>-bash-4.2$ <strong>cd</strong>
--bash-4.2$ <strong>pwd</strong>
-/<em>cs</em>/<em>student</em>/<em>yourusername</em>
--bash-4.2$ <strong>cd cs8</strong>
--bash-4.2$ <strong>pwd</strong>
-/<em>cs</em>/<em>student</em>/<em>yourusername</em>/cs8
--bash-4.2$ <strong>mkdir lab01</strong>
--bash-4.2$ <strong>cd lab01</strong>
--bash-4.2$ <strong>pwd</strong>
-/<em>cs</em>/<em>student</em>/<em>yourusername</em>/cs8/lab01
--bash-4.2$
-</pre>
-
-## Step 2: Open `idle3` and create `lab01.py`
-
-Open up `idle3` and select the menu option `File => New File` to create a new file.
-
-In this file, put this code (but put your name instead of "your name goes here")
-
-```
-# lab01.py, your name goes here
-import turtle
-
-t = turtle.Turtle()
-
-```
-
-You can name your turtle anything you like; I used `t` because it's short to type.
-
-Optionally, you can make your turtle look like a turtle by typing this:
-
-```
-t.shape("turtle")
-```
-
-And you can set your turtle to move at the fastest possible speed on the screen - which will help make your drawings as quickly as possible.
-
-```
-t.speed(0)
-```
-Also, you can change the pen width to make your drawings look more prominent
-
-```
-t.width(4)
-```
-
-Save this, and run it.   You should see a turtle appear. The turtle is not moving because we haven't given it instructions to move. 
-
-
-## Step 3: Create a function for drawing a rectangle
-
-Next, you are going to define a function to draw a rectangle. Your final function will be names drawRectangle() but before you implement that we will implement a couple of different versions of that function with simpler specifications. 
-
-Below is the first version of the function. It doesn't take any parameters, instead it draws a rectangle with a fixed width (50), a fixed height (100), a fixed orientation (0 degrees with respect to the x-axis). To write the code we should first come up with a plan, a sequence of steps or algorithm (CS speak). Here is a very simple algorithm: Orient the turtle to point right at 0 degrees with respect to the x-axis. Move the turtle forward by 50 units, turn the turtle left by 90 degrees, move the turtle forward by 100 units, turn left 90 degrees, move forward by 50 units, turn left by 90, move forward by 100...(we are repeating ourselves, but that's fine for now. In later labs we will express the same algorithm in a more concise way). Here is the code that does what we just described: 
-
-```
-def drawRectangle_1():
-    """
-    draw a rectangle with width 50 and height 100. Use a turtle called t to create the drawing
-    """
-    t.seth(0)        # Set the initial orientation of the turtle to 0 degrees
-    t.forward(50)    # Move the turtle forward by 50 units in the direction that it was pointing
-    t.left(90)       # Turn the turtle left by 90 degrees relative to the direction it was pointing
-    t.forward(100)   # Move the turtle forward by 100 units
-    t.left(90)
-    t.forward(50)
-    t.left(90)
-    t.forward(100)
-    t.left(90)       # Make sure the turtle is oriented back to its initial orientation
-    
-```
-
-Put this code right after the code you wrote earlier in the <tt>{{page.num}}.py</tt> file. After entering the function definition, at the bottom try a sample
-function call (`drawRectangle_1()`).  The
-function call should NOT be indented, just as shown in the example below.
-
-Try running it and see if the rectangle looks ok.  Change the first line: `t.seth(0)` to `t.seth(90)`. Save and run your code again. What changed? 
-
-We will now update our `drawRectangle_1()` to draw a rectangle with a green boundary and yellow interior. To do that write the following statement before the very first line in the body of the function:
-
-```
-  t.color("green", "yellow") # Sets the pen color to green and fill color to yellow
-``` 
-
-The first parameter is the pen color and the second is the fill color. To actually fill the rectangle with the specified color, you must precede the code that draws the rectangle with `t.begin_fill()` and follow it with `t.end_fill()`. Below is the complete code. Save and run it. 
-
-```
-def drawRectangle_1():
-    """
-    draw a rectangle with width 50, height 100, tilt 0, pen color green and fill color yellow. Use a turtle called t to create the drawing
-    """
-    t.color("green", "yellow")
-    t.seth(0)        # Set the initial orientation of the turtle to 0 degrees
-    t.begin_fill()   
-    t.forward(50)    # Move the turtle forward by 50 units in the direction that it was pointing
-    t.left(90)       # Turn the turtle left by 90 degrees relative to the direction it was pointing
-    t.forward(100)   # Move the turtle forward by 100 units
-    t.left(90)
-    t.forward(50)
-    t.left(90)
-    t.forward(100)
-    t.left(90)       # Make sure the turtle is oriented back to its initial orientation
-    t.end_fill()
-```
-
-Save and run it. Then call the function from the Python shell as follows:
-
-```
->>> drawRectangle_1()
-```
-
-This is just one possible solution. As you continue through this course, you will soon discover that there are many different ways to solve any problem. Computer Scientists almost always care about *correct* solutions that run the fastest on any computer - in fact there is a whole field within CS dedicated to finding such solutions - its the field of algorithms. Good programmers take a lot of care to express their algorithms in code in the simplest and most understandable way. We will strive towards this goal in general. For now, our goal is to come up with correct solutions.
-
-Below is an alternate implementation for drawing a rectangle. The algorithm is slightly different: It first computes the absolute location of the 4 corners of the rectangle and then commands the turtle to go to the four locations in a specific order. To move the turtle to any location (x,y), we will use a new turtle method: `t.goto(x, y)`. Here is one possible implementation of this algorithm. Name this function: drawRectangle_2. Place it below the code for `drawRectangle_1()`.
-
-```
-def drawRectangle_2():
-    """
-    draw a rectangle with width 50, height 100, tilt 0, pen color green and fill color yellow . Use a turtle called t to create the drawing
-    """
-
-    # Calculate the coordinates for the four corners of the rectangle
-
-    x1 = t.xcor()
-    y1 = t.ycor()
-
-    x2 = x1 + 50
-    y2 = y1
-
-    x3 = x2
-    y3 = y2 + 100
-
-    x4 = x1
-    y4 = y1 + 100
-
-    
-    t.color("green", "yellow") # set the pen and fill colors
-    t.begin_fill()
-    
-    # Command the turtle to visit the four corners in order
-    t.goto(x2, y2)
-    t.goto(x3, y3)
-    t.goto(x4, y4)
-    t.goto(x1, y1)
-    
-    t.end_fill()
+To install it, type this command into the terminal session
+(the Unix Terminal prompt) to install pytest for your CSIL account:
 
 
 ```
-
-Save and run it. Then call the function from the Python shell as follows:
-
-```
->>> drawRectangle_2()
+pip3 install --user pytest
 ```
 
-You should see an identical rectangle as the one drawn by `drawRectangle_1()`.
-
-Here is yet another implementation for the same algorithm used in `drawRectangle_2()` (You guessed correctly - a single algorithm can be implemented in different ways in code)
-
-```
-def drawRectangle_3():
-    """
-    draw a rectangle with width 50, height 100, tilt 0, pen color green and fill color yellow . Use a turtle called t to create the drawing
-    """
-
-    # Calculate the coordinates for the four corners of the rectangle
-
-    x1 = t.xcor()
-    y1 = t.ycor()
-
-    fourCorners = [(x1 + 50, y1), (x1 + 50, y1 + 100), (x1, y1 + 100), (x1, y1)]
-    
-    t.color("green", "yellow")
-    t.begin_fill()
-    
-    t.goto(fourCorners[0][0], fourCorners[0][1])
-    t.goto(fourCorners[1][0], fourCorners[1][1])
-    t.goto(fourCorners[2][0], fourCorners[2][1])
-    t.goto(fourCorners[3][0], fourCorners[3][1])
-
-    t.end_fill()
-
-
-```
-The main difference between this version and the previous one is that we are expressing the coordinates for the four corners of the rectangle as a list of tuples. If you don't understand the syntax, its because we haven't covered it in class yet. Don't worry about it, just save and run and call this function to see that it produces the same exact result as the other two.
-
-
-Refer to the [turtle documentation](https://docs.python.org/3.6/library/turtle.html) to understand all the commands we have used so far and possible alternatives to them (like `t.goto()`)
-
-## Step 4: Implement a drawRectangle() function that is reusable
-
-Now, we want to make sure that we implement a function for drawing a rectangle that is general enough:
-
-* at different heights, widths and orientation
-* with different pen and fill color
-
-
-What you need to do is to write the final version of this function that takes 5 parameters as shown below:
-
-```
-def drawRectangle(width, height, tilt, penColor, fillColor):
-    """
-    draw a rectangle with a given width, height, penColor and fillColor,
-    with the current location of the turtle being the 
-    lower left corner, and the bottom side tilted by an angle tilt (specified in degrees)
-    relative to the horizontal axis. After the rectangle is drawn, the turtle should return to its original position with an orientation of 0 degrees with respect to the x-axis.
-    Use a turtle called t to create the drawing
-    """
-
-    # Insert code to draw the rectangle
-
-    drawRectangle(50, 100, 0, "red","")
-```
-
-Write the above code below the previous function definitions. You may use the code for any of the previous versions as a starting point, although one of those versions is easier to extend to case where you want to draw a rectangle at given orientation. So, think through your algorithm for the general case and select the starting implementation that is the easiest to build on.
-
-
-Next we want to draw two rectangles at different locations. To make sure that you can do that change the function call
-at the bottom of the file from something like this:
-
-```
-drawRectangle( 50, 100, 0, "red", "") 
-```
-
-to something like this, that draws a rectangle with a given size and color,  picks up the pen and moves to a new location,
-and then draws another rectangle with a different size and color.
-
-```
-drawRectangle( 50, 100, 0, "red", "") 
-
-
-t.seth(0)   # Set the absolute heading of the turtle to 0 degrees (pointing east)
-
-# Move the turtle right by 200 units without leaving a trail
-t.up()     
-t.forward(100)
-t.down()
-
-drawRectangle( 100, 150, 22, "green", "yellow")  
-
-```
-
-Save and run your code to make sure you see two distinct rectangles. If one of them looks incorrect, then see if you can determine what is wrong with your code. Now place the above code within the function `drawTwoRectangles()`. That way the rectangles are drawn only when you call that function. Here is the final code:
-
-```
-
-def drawTwoRectangles():
-    
-    drawRectangle( 50, 100, 0, "red", "") 
-
-    t.seth(0)   # Set the absolute heading of the turtle to 0 degrees (pointing east)
-
-
-    # Move the turtle right by 200 units without leaving a trail 
-    t.up()     
-    t.forward(100)  
-    t.down()
-
-    drawRectangle( 100, 150, 22, "green", "yellow") 
-   
-
-drawTwoRectangles()  # call the function to draw two rectangles of different sizes and colors
-
-```
-
-When you run the code you should see the following output, with the rectangles very close but not touching: 
-
-![twoRects](twoRects.png){:height="200px"}
-
-If you get the above output, then you are ready to move to the next step.
-
-## Step 5: Add the function to draw an isosceles triangle
-
-Now we are going to add two other functions: drawTriangle() and drawTwoTriangles(). The first  function should draw an [isosceles triangle](https://en.wikipedia.org/wiki/Isosceles_triangle) given the base, height, pen color and fill color. The base of the triangle should be along the x-axis as shown in the figure on top of this page. For the drawTriangle function, you will need the trigonometric functiosn in the Python math module. Add a line to import the math module at the top of the file.
-
-Keep the code that has the actual function calls *at the bottom* of the file.  The order should be:
-
-* First, the code that imports and sets up the turtle, i.e.
-
-```
-   import turtle
-   import math
-   t = turtle.Turtle()
-   t.shape("turtle")
-   t.speed(0)
-   t.width(4)
-   
-```
-
-* Second, the functions definitions for `drawRectangle`, `drawTriangle`, etc., e.g.
-
-```
-   def drawRectangle_1():
-      # code for the first version of drawing a rectangle
-
-   def drawRectangle_2():
-      # code for the second version
-
-   def drawRectangle_3():
-      # code for the third version
-
-   def drawRectangle(width, height, tilt, penColor, fillColor):
-      # code for the final version of drawing a rectangle 
+To install pytest on Windows, see [this tutorial](http://meingraffiti.blogspot.com/2015/09/installing-pytest-on-windows-platform.html)
  
-   def drawTwoRectangles():
-      # Code for drawing two rectangles is here
+You can also *try* this command on Mac.  It might work, or it
+might not.  If it does&mdash;great, then you can do this lab on your own
+machine.  If not, then you'll need to do it on CSIL.
 
-   def drawTriangle(base, height, penColor, fillColor):
-      # Code for drawTriangle is here, indented...
-
-   def drawTwoTriangles():
-      # Code to draw two isosceles triangles of different sizes and colors
-     
-```
-
-* Then, last, the section of code that calls the test functions 
+The output should look something like this:
 
 ```
-   drawTwoRectangles()   # You may comment out this line when testing your drawTriangle() function
-   drawTwoTriangles()
-   # etc ...
-   
+[cgaucho@csil-12 ~]$ pip3 install --user pytest
+You are using pip version 7.1.0, however version 9.0.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+Collecting pytest
+  Downloading pytest-3.2.1-py2.py3-none-any.whl (186kB) 100% 188kB 1.5MB/s
+Collecting py>=1.4.33 (from pytest)
+  Downloading py-1.4.34-py2.py3-none-any.whl (84kB) 100% 86kB 2.0MB/s
+Requirement already satisfied (use --upgrade to upgrade): setuptools in /usr/lib/python3.4/site-packages (from pytest)
+Installing collected packages: py, pytest
+Successfully installed py pytest
+[cgaucho@csil-12 ~]$
 ```
-   
 
-Remember, before implementing a new function, you need to come up with a plan that you can eventually turn into an algorithm (a sequence of steps to achieve the task you set out to do). Here is one possible algorithm for the drawTriangle function:
+To tell whether it worked or not, try the `import pytest` command again:
 
-
-1. Orient the turtle at 0 degrees with respect to the x-axis
-2. Move forward by the number of units specified by the parameter "base"
-3. Turn left by some angle that you must calculate in advance
-4. Move forward by the number of units corresponding to the length of one of the sides of the isosceles triangle that is not the base. You will have to calculate this as well.
-5. Turn left by some angle that you need to calculate
-6. Move forward by the same amount that you calculated in step 4, which should bring you back to your initial position.
-7. Orient the turtle at 0 degrees with respect to the x-axis
-
-You can choose to go with the above algorithm or come up with your own. The above algorithm can be implemented in code using a series of `t.forward()` and `t.left()` commands. You may find this easier compared to an algorithm where you calculate the absolute coordinates of the three corners of the triangle and then use a series of goto statements. The difficulty there is just in the trignometry part and not necessarily the code. Feel free to use any algorithm that appeals to you.
-
-
-No matter which algorithm you choose, you will need to plan ahead. For example, if you choose to go with the algorithm we have provided, you have to calculate the turn angles in steps 3 and 5, as well as length of the equal sides of the isosceles triangle. Use [Google](www.google.com) to check your trignometric formulas and use the [the Python documentation on the math module](https://docs.python.org/3/library/math.html) to find the trigonometric functions that Python provides you. Scroll down to the section on trigonometric functions. This will allow you to translate your equations to Python expressions and assignment statements. 
-
-For example, recollect the Right Triangle shown below with base 'b' and height 'a', and the length of the longest side denoted as 'c':
-
-![RightTriangle](rightTriangle.png){:height="200px"}
-
-
-You may remember from high school math that the length of the longest side 'c' can be computed using the Pythogorean theorm as follows:
-
-![Equation](Equation.png){:height="50px"}
-
-The above is a mathematical fact expressed as an equation. You can use this formula to *compute* the length of the longest side given the other two sides 'a' and 'b' in your Python program and assign the resulting value to a variable named 'c'. The line of Python code that does that is as follows:
 
 ```
-c = math.sqrt(a**2 + b**2)     
+[cgaucho@csil-12 ~]$ python3
+Python 3.4.3 (default, Aug 9 2016, 15:36:17) [GCC 5.3.1 20160406 (Red Hat 5.3.1-6)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import pytest
+>>>
+```
+
+The lack of an error message (just another `>>>` prompt) means "it worked!".
+We are going to use the Python prompt in the next step anyway, so just stay
+at the Python prompt.  (Or if you need to get out of Python, use CTRL-D to return
+to the Unix shell prompt.)
+
+# Step 1: Warmup--experiencing floating point inaccuracy
+
+If you are not already at the Python prompt, bring up a terminal window, and just type `python3`.  This should give you the Python Shell Prompt (`>>>`) where you can type in some expressions and see the resulting values.
+
+Type in the `import math`, followed by `math.sqrt(2)`.  It should look like this:
+
+```
+>>> import math
+>>> math.sqrt(2)
+1.4142135623730951
+>>> 
+```
+
+The value we get back is the square root of 2, which is an irrational number&mdash;its decimal representation goes on forever.  Unfortunately, real world computing devices typically store numbers with a finite number of decimal places&dagger;.   So, the representation we see for the square root of two, $$ \sqrt{2} $$ is, in fact an approximation.
+
+<div style="font-size:80%">
+(&dagger;&nbsp;Technically, "binary places", or "binary digits" rather than "decimal places". For purposes of this discussion it amounts to the same thing.  Also, some computer systems do work with "symbolic" representations of numeric quantities e.g retaning $$ \sqrt{2} $$ or $$\pi$$ as symbolic values rather than as numerical approximations. On those systems, you can exact results, without losing precision, at the expense of speed.  We won't discuss that kind of software in this course.)
+</div>
+
+
+We can see this if we multiply `math.sqrt(2)` by itself.  Try it:
+
+```
+>>> math.sqrt(2) * math.sqrt(2)
+2.0000000000000004
+>>> 
+```
+
+See that pesky `4` digit in the ten quadrillionths place?   My goodness, we are really, really close to 2.0, but if we ask whether the values are equal, Python says no:
+
+```
+>>> math.sqrt(2) * math.sqrt(2)== 2.0
+False
+```
+
+In fact, Python is very clear about the difference between `2.0` and `math.sqrt(2) * math.sqrt(2)`, and can even tell us 
+how big that difference is.  The `4` digit is only the tip of the very, very, very small iceberg:
+
+```
+>>> math.sqrt(2) * math.sqrt(2)- 2.0
+4.440892098500626e-16
+>>> 
+```
+
+This fact is going to be annoying to us many times.   One consequence is that <strong>when we test software involving floating point numbers, we must allow for some inaccuracy</strong>.   This "allowable inaccuracy" is sometimes called the <em>tolerance</em>, and it might be a small value such as `0.001` (1x10<sup>-3</sup>, or `0.000001` (1x10<sup>-6</sup>).
+
+In Python, we can write `0.001` as `1e-03`, and `0.000001` as `1e-06`.  (The lowercase `e` is the way that Python represents scientific notation.)
+
+You can see that Python, by default, formats numbers in this notation once the fifth decimal place is reached:
+
+```
+>>> 0.01
+0.01
+>>> 0.0001
+0.0001
+>>> 0.00001
+1e-05
+>>> 0.000001
+1e-06
+>>>
+```
+
+
+We'll come back to that idea later in this lab.
+
+As a reminder, CTRL-D gets you out of the Python Shell Prompt (`>>>`)
+and returns you to the Unix shell prompt.
+
+
+# Step 1: Make a `~/cs8/{{page.num}}` folder
+
+In the previous lab, you should already have created the 
+`~/cs8/lab00` You are now going to create folder
+`~/cs8/{{page.num}}` for the files for this lab.
+
+In general, its probably a good idea to keep your work for this class
+under `~/cs8`, in folders called `lab00`, `lab01`, `lab02` etc.
+
+This isn't exactly *required* (no-one is going to check), but it's
+probably a good habit to develop.  Here's why: all the rest of the
+instructions will be written based on the assumption that you did
+things this way.  And if you continue to take CS courses at UCSB,
+you'll often find that's the case from one course to the next.
+
+So, I'd strongly encourage you to do it.
+
+As a reminder:
+
+* `cd` returns you to your home directory (e.g. `/cs/student/cgaucho/`)
+* `pwd` prints your current working directory
+* `cd cs8` changes into the cs8 directory under the current directory
+* `cd ~/cs8` changes into the cs8 directory under your home directory <em>regardless of the current working directory (because `~` is a shortcut for the absolute path of
+   your home directory.)
+* `cd ..` will move you up one directory from your current directory. 
+* `mkdir {{page.num}}` will create a {{page.num}} directory under your current working directory
+* `ls` lists the files in your current directory
+
+With that information, you should be able to determine how to
+create a `~/cs8/{{page.num}}` directory, and make that directory your current
+working directory (the one that comes up when you type `pwd`.)  Do that now.
+
+Then, you are ready for the next step.
+
+# Step 2: Create a file called `convert.py` in your `~/cs8/{{page.num}}` directory
+
+The contents of `convert.py` should be as shown below.  This contains
+two Python function definitions that, at the moment are incorrect.
+
+Choose "File => New File" in IDLE to bring up an "untitled" window, then copy and paste this code into that window.
+
+Note that the formulas for converting between Celsius and Fahrenheit are incorrect.  That's deliberate, so just go with it for now.  We'll fix those at a later step.
+
+```
+def fToC(fTemp):
+    return fTemp - 32  # TODO: Fix this line of code
+
+def cToF(cTemp):
+    return cTemp + 32 # TODO: Fix this line of code
 ``` 
-In the above code, to the right of the <code>=</code> sign is a Python expression that computes something. The result of the computation is assigned to the variable 'c' on the left. So while in a math equation its okay to switch out the expressions on the left and right hand side of the equation, doing so in Python would result in a error. Be sure you understand the difference between equations and Python assignment statements. Ask a TA/tutor for further clarification if you need to.
+      
+# Step 3: Test your code by hand
 
+To test this code, we'll first do what many programmers do: test the code by hand.  
 
-Now go ahead place the following code below your other functions and the fill in the code for the drawTriangle() function:
+That is, we'll run the file in IDLE, and then enter some function calls in the Python shell to see what results we get.  These two functions are supposed to convert between Fahrenheit where water freezes at 32 degrees, and Celsius where it freezes at 0 degrees.  Let's see if they work properly.
+
+Use the Run Module command to run the code, and then try entering these function calls at the Python Shell prompt.  You should see output similar to what is shown below:
+
+```
+>>> fToC(32)
+0
+>>> cToF(0)
+32
+>>> 
+```
+
+As you can see, for those two particular values, the function appears to return the correct answer&mdash;32 degrees fahrenheit is indeed 0 degrees celsius, and 0 degrees celsius is indeed 32 degrees fahrenheit.  
+
+So clearly, testing with a single value is not enough.  Indeed, if we test with another well known value, 212 Fahrenheit and 100 Celsius (the boiling point of water), we see that the output is incorrect:
+
+```
+>>> fToC(212)
+180
+>>> cToF(100)
+132
+>>> 
+```
+
+One of the problems with testing by hand is that it is tedious, and folks have a tendency to skip it.  So, experienced programmers have learned that its generally a better idea to automate the process of testing.     We'll learn how to do that next.   We'll see that when we set up these four tests, two of them will pass, and two of them will fail.
+
+# Step 4: Setting up automated tests
+
+Add this line at the top of your convert.py file:
+
+```
+import pytest
+```
+
+Then, add the following code to your `convert.py` file after the function definitions for `ftoC` and `cToF` that defines four automated tests:
+
+```
+def test_fToC_freezing():
+   assert fToC(32.0)==pytest.approx(0.0) 
+
+def test_cToF_freezing():
+   assert cToF(0.0)==pytest.approx(32.0) 
+
+def test_fToC_boiling():
+   assert fToC(212.0)==pytest.approx(100.0) 
+
+def test_cToF_boiling():
+   assert cToF(100.0)==pytest.approx(212.0) 
+```
+
+These are automated tests that use a module known as `pytest`.  When defining tests using the `pytest` module, we typically define functions that:
+
+* have names that start with `test_` or end with `_test`
+* end with exactly one `assert` statement&mdash;that is, the keyword `assert` followed by a boolean expresssion.  
+
+If the expresssion after `assert` is true, the test passes, otherwise it fails
+
+We are using `pytext.approx()` here because any time you are testing with floating point numbers, we have to be aware that there may be some inaccuracy, as we discussed earlier.  
+
+(Recall our discussion of what happens when you multiple `math.sqrt(2.0)` by itself.  Here, its probably overkill since we aren't using any irrational numbers, but it is still safer to always use some way of approximating equality when dealing with floating point.)
+
+You can click the plus to open a dropdown showing what your entire file should look like at this point:
+
+<div id="info" data-role="collapsible" data-collapsed="true" markdown="1">
+
+## Contents of `convert.py` so far
+
+```
+import pytest
+
+def fToC(fTemp):
+    return fTemp - 32
+
+def cToF(cTemp):
+    return cTemp + 32
+    
+def test_fToC_freezing():
+   assert fToC(32.0)==pytest.approx(0.0) 
+
+def test_cToF_freezing():
+   assert cToF(0.0)==pytest.approx(32.0) 
+
+def test_fToC_boiling():
+   assert fToC(212.0)==pytest.approx(100.0) 
+
+def test_cToF_boiling():
+   assert cToF(100.0)==pytest.approx(212.0) 
 
 ```
 
-    
-def drawTriangle(base, height, penColor, fillColor):
-    """
-    draw a triangle with a given base, height, penColor and fillColor,
-    with the current location of the turtle being the 
-    lower left corner. The base of the triangle should be at 0 degrees with respect to the x-axis. 
-    Do not assume anything about the initial orientation of the turtle. 
-    The final orientation of the turtle should be 0 degrees with respect to the x-axis. 
-    Use a turtle called t to create the drawing
-    """
 
-    # Insert code to draw the triangle
+</div>
 
-def drawTwoTriangles():
-    """ Draws two non overlapping triangles with different sizes and colors
-    """
-    
+After entering this, save the file and use "Run Module" to make sure there are no error messages (red output in the Python Shell Window.).  If not, then you are ready for the next step.
+            
+# Step 5: Running the test cases
+        
+Running the test cases requires us to go <em>outside of IDLE</em> back to the terminal shell prompt.  
+
+Your current directory needs to be the same one that your convert.py file is stored in.    That should be `~/cs8/{{page.num}}`, but if it isn't, then fix things so that the `convert.py` file is in that directory, and you are in that directory.   If you need help, ask for assistance.
+
+You should be able to type the `ls` command  (or on Windows, `dir`) at the terminal shell prompt and see the `convert.py` file listed:
 
 ```
+your-prompt-here $ ls
+convert.py
+your-prompt-here $ 
+```
 
-## Step 6: Checking your code before submission
+When that's the case, try this command:
 
-When you are finished with the lab, ask a TA, tutor or instructor to look it over and give you some feedback on it.  
+```
+python3 -m pytest convert.py
+```
 
-It should be structured in a way that there is 
+You should see output like this.  It may be a little overwhelming at first, but don't let it intimidate you. Once you know what you are looking for, it is very easy to read.    After the output, there is a guide to understanding it.
 
-1. A single file called `lab01.py`
-2. Code at the top of the `lab01.py` file that sets up a turtle
-3. Next, function defintions: 
-   def drawRectangle_1():
-      
-      ...
 
-   def drawRectangle_2():
-      
-      ...
+```text
+169-231-175-204:lab01 pconrad$ python3 -m pytest convert.py
+==================================== test session starts ====================================
+platform darwin -- Python 3.6.2, pytest-3.2.1, py-1.4.34, pluggy-0.4.0
+rootdir: /Users/pconrad/github/ucsb-cs8/Lecture5_0816/lab01, inifile:
+collected 4 items                                                                            
 
-   def drawRectangle_3():
-      
-      ...
+convert.py ..FF
 
-   def drawRectangle(width, height, tilt, penColor, fillColor):
-      
-      ...
+========================================= FAILURES ==========================================
+_____________________________________ test_fToC_boiling _____________________________________
+
+    def test_fToC_boiling():
+>      assert fToC(212.0)==pytest.approx(100.0)
+E      assert 180.0 == 100.0 ± 1.0e-04
+E       +  where 180.0 = fToC(212.0)
+E       +  and   100.0 ± 1.0e-04 = <function approx at 0x1026c40d0>(100.0)
+E       +    where <function approx at 0x1026c40d0> = pytest.approx
+
+convert.py:16: AssertionError
+_____________________________________ test_cToF_boiling _____________________________________
+
+    def test_cToF_boiling():
+>      assert cToF(100.0)==pytest.approx(212.0)
+E      assert 132.0 == 212.0 ± 2.1e-04
+E       +  where 132.0 = cToF(100.0)
+E       +  and   212.0 ± 2.1e-04 = <function approx at 0x1026c40d0>(212.0)
+E       +    where <function approx at 0x1026c40d0> = pytest.approx
+
+convert.py:19: AssertionError
+============================ 2 failed, 2 passed in 0.03 seconds =============================
+169-231-175-204:lab01 pconrad$ 
+```
+
+Ok, let's now break down this output.
+
+# Step 6: Understanding the output of pytest
+
+Here's how to understand `pytest` output. 
+
+1. <b>Get the big picture first from the <tt>convert.py ..FF</tt> line</b>. 
+
+   Look for a line near the beginning that has the name of your file, followed by a list of either dots, 
+   letter 'E' or letter 'F' characters, like this one:
+
+   ```
+   convert.py ..FF
+   ```
+   
+   In this case, the `.` characters are tests that passed.  If you have four tests, the ideal thing you'd want to see is <tt>convert.py&nbsp;....</tt> which means that four tests for <tt>convert.py</tt> all passed. 
+   
+   Instead, here, we see `..FF`, which means we had two test failures.   Later in the output, we'll see more detail about
+   each of those failures.
+   
+2. <b>Understand the overall structure of the output.</b>
+
+   The rest of the output will be divided into sections, one for each
+   failure.  Here is what it look like with the
+   details taken out so that you can see the big picture more easily:
+   
+
+   ```text
+   ==================================== test session starts ====================================
+   (blah blah here that you can ignore)
+   
+   convert.py ..FF
+   ========================================= FAILURES ==========================================
+   _____________________________________ test_fToC_boiling _____________________________________
+
+   ...
+   (details about the first test case failure are here)
+   ...
+   
+   _____________________________________ test_cToF_boiling _____________________________________
+
+   ...
+   (details about the second test case failure are here)
+   ...
+   
+   ========================= 2 failed, 2 passed in 0.03 seconds =============================
+   ```
+   
+   Note that the last line gives us a nice summary: `2 failed, 2 passed in 0.03 seconds`.   We now know that 
+   we need to focus on the two failures.   And the headers tell us which test cases failed, namely `test_fToC_boiling`
+   and `test_cToF_boiling`.   So let's focus on those next, by first looking in detail at the first one:
  
-   def drawTwoRectangles():
-      
-      ...
+3. <b>Focus in on the first test case failure.</b>
+ 
+   Let's focus just on the detailed output for the first test case failure,
+   `test_fToC_boiling`.  What does all of the detailed output mean?
 
-   def drawTriangle(base, height, penColor, fillColor):
-      
-      ...
+   <style>
+   div.explain-pytest table * td:first-of-type { width: 35em; font-size: 90%; }
+   </style>
+   
+   In general, its a breakdown of why the assertion turned out to be false, showing every step in the calculation.  Let's break it down one line at a time:
+   
+   <div class="explain-pytest">
+   
+   | line of output | meaning |
+   |----------------|----------|
+   | `def test_fToC_boiling():` |  first line of the failing test case |
+   |`E      assert 180.0 == 100.0 ± 1.0e-04` | This is the assertion that turned out not to be true |
+   |`E       +  where 180.0 = fToC(212.0)` | This tells us why `180.0` was on the left hand side of the `==`.  It was the result of computing `ftoC(212.0)` |
+   |`E       +  and   100.0 ± 1.0e-04 = <function approx at 0x1026c40d0>(100.0)` | This tells us why `100.0 ± 1.0e-04` was on the right hand side of the `==`.  It shows the expected value (`100.0`) and the tolerance (` ± 1.0e-04`).
+   |`E       +    where <function approx at 0x1026c40d0> = pytest.approx` | This tells us that `pytest.approx` was used to calculate the tolerance. |
+   | &nbsp; | &nbsp; |
+   |`convert.py:16: AssertionError` | This shows which line in the file `convert.py` had the failed assertion, namely, line 16.  That helps us find the error faster if we are dealing with a large file of code.|
+   
+   </div>
 
-   def drawTwoTriangles():
-      
-      ...
-     
-4. Finally, code that calls those functions to draw two non overlapping rectangles and two triangles as specified before
+   If we look at this, we can see that amidst all of the clutter is the
+   crucial fact that `fToC(212.0)` returned `180.0` when what we were
+   expecting was `100.0`, with a tolerance of `± 1.0e-04`.
+            
+# Step 7: Fixing the code
 
-If you code meets all those criteria, you should be in good shape to submit it.
+So, if you have failing test cases, the thing to do is fix the code so
+that the test cases pass.
+
+To do that you'll need to correct the forumla.
+
+Keep in mind that in Python:
+
+* The `*` symbol is used for multiplication.  In algebra, we can write
+  `1.8x` to mean `1.8` multiplied by `x`, however, this does not work
+  in Python.  In Python you must write `1.8 * x` if you want to
+  multiply the variable `x` by 1.8.
+
+* The `+` and `-` symbols are used for addition and subtraction
+
+* The `/` symbol is used for division, e.g '9/5' means nine
+  divided by five.  
+
+Also, the order of operations in Python is that multiplication and
+division are done before addition and subtraction. Some examples: 
+
+* If `x` is 5, then `x + 2 * 3` gives us 11, not 21.  The
+  multiplication is perfomed before the addition.
+
+* If `x` is 16, then `x - 6 / 2` gives us 13, not 5.  The division is
+  performed before the subtraction.
+
+* If you want to force the addition or subtraction to be done first,
+  you must use parentheses, e. g. `(x + 2) * 3` or `(x - 6) / 2`
+
+When you replace `return ftemp - 32.0` with the correct formula for
+converting a Fahrenheit temperature to Celsius, you should leave out
+the comment that says `# TODO: Fix this line of code `.
+
+You'll also want to replace the similar line in the cToF function.
+
+When you have the test cases passing, try running the pytest command again&mdash;remembering that:
+
+* it <b>must be done from the terminal shell</b>, NOT the Python shell.
+* the current working directory of that terminal session must be
+   the directory/folder where your `convert.py` file is located
+
+```
+python3 -m pytest convert.py
+```
+
+When you see four passing tests, your output will look like this. Also, the last line will be a pleasant shade of green instead of an angry looking red.
+
+```
+169-231-175-204:lab01 pconrad$ python3 -m pytest convert.py
+======================== test session starts =========================
+platform darwin -- Python 3.6.2, pytest-3.2.1, py-1.4.34, pluggy-0.4.0
+rootdir: /Users/pconrad/github/ucsb-cs8/Lecture5_0816/lab01, inifile:
+collected 4 items                                                     
+
+convert.py ....
+
+====================== 4 passed in 0.01 seconds ======================
+169-231-175-204:lab01 pconrad$ 
+```
+
+At that point, you are ready to submit your work to submit.cs
+
+# Step 8: Submit your `convert.py` file to submit.cs
+
+To submit your file to submit.cs, you can visit this page:
+
+<https://submit.cs.ucsb.edu/form/project/{{page.submit_cs_pnum}}/submission>
+
+Navigate to that page, and upload your `convert.py` file.
+
+Or, if you are working on the ECI/CSIL/lab linux systems, you can also submit at the command line with this command, provided you are in the correct folder/diretory:
 
 
-## Step 7: Submitting via submit.cs
-
-Note that this week, although we are using submit.cs, it is NOT the case that the grade you get from submit.cs is your final grade for the assignment.    The grade on submit.cs is just a PART of your grade--you will get 10 points for basically submitting *anything* that is a valid Python program that has the name lab01.py.   However, the other 90 points for this lab will come from an instructor or TA doing a manual inspection of your code to see if it complies with the requirements listed above.      
-
-If you want reassurance that your code is in good shape, you may ask a TA or instructor to look it over during office hours or lab.
-
-To submit your code, use:
-
-### Navigate to the page for submitting lab01
-
-The page for submitting lab01 is here: <https://submit.cs.ucsb.edu/form/project/{{page.submit_cs_pnum}}/submission>
-
-Navigate to that page, and upload your `lab01.py` file.
-
-If you are working on the ECI/CSIL/lab linux systems, you can also submit at the command line with this command:
+<tt>~submit/submit -p {{page.submit_cs_pnum}} convert.py</tt>
 
 
-<tt>~submit/submit -p {{page.submit_cs_pnum}} ~/cs8/lab01/lab01.py</tt>
+The first time you use this method, it will ask for your email address: use your full umail address (e.g. `cgaucho@umail.ucsb.edu`).  For password, use the password that you enter for the submit.cs system.    You may save these credentials if you don't want to have to type them in every time.
 
-It will ask for your email address: use your full umail address (e.g. `cgaucho@umail.ucsb.edu`).  For password, use the password that you enter for the submit.cs system.    You may save these credentials if you don't want to have to type them in every time.
-
-
-Note that if you try to upload a file with a name that does not match EXACTLY the name `lab01.py`, the system will not allow you to do it. 
-
-Once you upload it, you should get a page that shows your submission is pending.
-
-Refresh that page, and you should get one that indicates with either red, or green, whether the test cases for your code passed or failed.
-
-If you got all green, and 10 points, then your submission was accepted---but to emphasize, for this week, the other 90 points will be assigned by a human grader.   You'll be notified of that grade [via Gauchospace](https://gauchospace.ucsb.edu).
 

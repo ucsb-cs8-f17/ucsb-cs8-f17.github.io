@@ -4,7 +4,7 @@ num: lab00
 ready: true
 desc: "Getting Started"
 assigned: 2017-10-03 8:00:00.00-7
-due: 2017-10-07 17:00:00.00-7
+due: 2017-10-06 17:00:00.00-7
 submit_cs_pnum: 824
 ---
 
@@ -130,7 +130,7 @@ your desktop&mdash;it should be near the upper left hand corner of the
 screen.  When you double click on this icon, it will bring up your
 home directory. You should see inside a folder called cs8. If you
 double click on that, you should see inside of it, a folder called
-lab00.
+{{page.num}}.
 
 Note that you could also use mouse clicks and menu options to create
 these folders, instead of the command line. If you have trouble with
@@ -220,9 +220,9 @@ Otherwise, to create your submit.cs account, please take the following steps:
 
 At that point, you should be good to go.
 
-### Navigate to the page for submitting lab00
+### Navigate to the page for submitting your assignment
 
-The page for submitting lab00 is here: <https://submit.cs.ucsb.edu/form/project/{{page.submit_cs_pnum}}/submission>
+The page for submitting {{page.num}} is here: <https://submit.cs.ucsb.edu/form/project/{{page.submit_cs_pnum}}/submission>
 
 Navigate to that page, and upload your `hello.py` file.
 
@@ -232,7 +232,7 @@ Once you upload it, you should get a page that shows your submission is pending.
 
 Refresh that page, and you should get one that indicates with either red, or green, whether the test cases for your code passed or failed.
 
-If you got all green, and 100 points, then you passed, and you are finished with lab00!
+If you got all green, and 100 points, then you passed, and you are finished with {{{{page.num}}!
 
 ## Final Step:  Log Out
 

@@ -20,6 +20,7 @@ title: CS8, Fall 2017, dmirza
 </div>
 
 
+
 <div data-role="collapsible" data-collapsed="false">
 <h2 id="homework">Homework:</h2>
 {% include hwk_table.html %}

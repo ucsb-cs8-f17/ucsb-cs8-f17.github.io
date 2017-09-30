@@ -2,523 +2,443 @@
 layout: lab
 num: lab02
 ready: false
-desc: "FtoC and CtoF with test cases"
-assigned: 2017-10-17 09:30:00.00-7
-due: 2017-10-23 16:45:00.00-7
-submit_cs_pnum: 770
+desc: "More functions with test cases"
+assigned: 2017-10-10 09:30:00.00-7
+due: 2017-10-17 14:00:00.00-7
+submit_cs_pnum: 826
 ---
 
-In this lab, you'll practice:
+In this lab, you'll get more practice with
 
-* Creating a file that has some functions in it
-* Testing those functions interactively at the Python prompt
-* Creating a file of automatic test cases for those functions
-* Running those test cases
+* Writing functions
+* Testing function with pytest
 * Submitting your functions and test cases to submit.cs for grading
 
+You will also work with a pair partner for the first time.
 
-# Step 0: Install pytest for your account (or on your machine)
+<div style="margin: 1em; padding: 1em; border: 1em inset red; font-size:120%; text-align:center;" markdown="1">
 
-This lab is one that you may find you need to do on the CSIL machines.
+Pair programming for this lab is required, not optional.
 
-It is probably the case that `pytest` is not installed for your version
-of Python3.  You can check by typing `python3` at the Terminal prompt
-to get to the Python Shell Prompt `>>>`, and then typing `import pytest`.
+If you do not have a pair partner, please do not start this lab, 
+unless you have prior permission from the instructor.
 
-If you get an error message like this one, then pytest is not installed.
+</div>
+
+# Step 0: Locate a pair partner with whom you are going to work
+
+First, please fill out the handout, [IC01](/hwk/ic01/).   
+
+Then, if you have already identified a pair partner to work with:
+   * Compare answers and ensure that you are compatible as pair partners.
+   * If so, register your pair on submit.cs
+   
+If you have not identified a pair partner, GO TO PHELPS 3526 where you will
+be able to find others who also are partnerless.
+
+DO NOT SIT DOWN AT A COMPUTER TO WORK ON THIS LAB UNTIL YOU HAVE A PAIR PARTNER.
+
+Once you do, you may continue.
+
+# Step 1: Register your pair on the submit.cs system
+
+To register your pair in submit.cs, navigate to the page for this assignment:
+
+<https://submit.cs.ucsb.edu/class/85>
+
+You should see a {{page.num}} link.  Click that.
+
+Then, you  should see a “Join Group” button. Click this button.  
+
+The subsequent page will allow you to accept and reject invitations from your classmates, as well invite one of your classmates by their umail address to join your pair.
+
+<strong>NOTE:</strong> Only UCSB <strong>umail</strong> addresses will work, since those are the email addresses linked to submit.cs accounts.
+
+While multiple students can invite you to join a pair, the system only permits you to have one outstanding invitation at a time. You must revoke an invitation if you would like to invite someone else.
+
+Once grouped together, both the members of a pair will be able to see all the submissions made by each partner in the pair (but only for that project), regardless of when the submission was made. 
+
+Additional notes on pairs:
+
+* Pairs exist only within the context of a specific programming assignment&mdash;you can be in a different group/pair for each programming assignment.
+
+Once you've registered, you are ready to move on to the next step.
+
+# Step 2: Fill out the last part of IC01 together, and turn it in.
+
+The last part of [IC01](/hwk/ic01/).    is to be filled out after you've paired with someone.  It indicates when the two of you commit to working together, and gives you access to each others contact information.    After its scanned and uploaded to Gradescope, you'll have access to your working agreement in terms of when you can meet to work on the assignment (if that becomes necessary).
+
+# Step 3: Review the ideas of Pair Programming, and "Falco's Strong Style Pairing" 
+
+* Review with each other how Pair Programming is supposed to work.
+* Make an agreement to be respectful and work together to maximize your learning benefit
+* Decide whether you are going to use classic pair programming, or strong-style pairing (as discussed in lecture).
+   * I recommend that you <em>try</em> strong-style pairing for at least some of your pairing experience. 
+   * But ultimately, the two of you need to find the style that works best.
+* Decide how often you are going to switch roles.
+   * Many pairs find that once per "step" in the lab is good.
+   * Others set a timer for 10, 15, or 20 minutes.
+
+Then, choose an initial driver and navigator, and have the driver log into their account.
+
+# Step 4: Verify that pytest is working on the machine where you plan to work.
+
+You may choose to work on your own machine, or on a CSIL machine.  Either
+way, you will need `pytest` installed.  
+
+As in lab01, we check whether pytest is installed by doing the `import pytest` command
+at the Python shell prompt.  If it returns no error message, then `pytest`
+is installed.  If you get an error, refer back to
+[lab01](/lab/lab01/) for instructions on installing it.
 
 ```
 [cgaucho@csil-12 ~]$ python3
 Python 3.4.3 (default, Aug 9 2016, 15:36:17) [GCC 5.3.1 20160406 (Red Hat 5.3.1-6)] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>> import pytest
-Traceback (most recent call last):
-File "", line 1, in ImportError: No module named 'pytest'
->>>
-[cgaucho@csil-12 ~]$ pip3 install --user pytest
-```
-
-To install it, type this command into the terminal session
-(the Unix Terminal prompt) to install pytest for your CSIL account:
-
-
-```
-pip3 install --user pytest
-```
-
-To install pytest on Windows, see [this tutorial](http://meingraffiti.blogspot.com/2015/09/installing-pytest-on-windows-platform.html)
- 
-You can also *try* this command on Mac.  It might work, or it
-might not.  If it does&mdash;great, then you can do this lab on your own
-machine.  If not, then you'll need to do it on CSIL.
-
-The output should look something like this:
-
-```
-[cgaucho@csil-12 ~]$ pip3 install --user pytest
-You are using pip version 7.1.0, however version 9.0.1 is available.
-You should consider upgrading via the 'pip install --upgrade pip' command.
-Collecting pytest
-  Downloading pytest-3.2.1-py2.py3-none-any.whl (186kB) 100% 188kB 1.5MB/s
-Collecting py>=1.4.33 (from pytest)
-  Downloading py-1.4.34-py2.py3-none-any.whl (84kB) 100% 86kB 2.0MB/s
-Requirement already satisfied (use --upgrade to upgrade): setuptools in /usr/lib/python3.4/site-packages (from pytest)
-Installing collected packages: py, pytest
-Successfully installed py pytest
-[cgaucho@csil-12 ~]$
-```
-
-To tell whether it worked or not, try the `import pytest` command again:
-
-
-```
-[cgaucho@csil-12 ~]$ python3
-Python 3.4.3 (default, Aug 9 2016, 15:36:17) [GCC 5.3.1 20160406 (Red Hat 5.3.1-6)] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>> import pytest
 >>>
 ```
 
-The lack of an error message (just another `>>>` prompt) means "it worked!".
-We are going to use the Python prompt in the next step anyway, so just stay
-at the Python prompt.  (Or if you need to get out of Python, use CTRL-D to return
-to the Unix shell prompt.)
+# Step 5: Make a `~/cs8/{{page.num}}` folder
 
-# Step 1: Warmup--experiencing floating point inaccuracy
+The easiest way to create this is to do the following, which
+will work from any directory:
 
-If you are not already at the Python prompt, bring up a terminal window, and just type `python3`.  This should give you the Python Shell Prompt (`>>>`) where you can type in some expressions and see the resulting values.
+`mkdir -p ~/cs8/{{page.num}}`
 
-Type in the `import math`, followed by `math.sqrt(2)`.  It should look like this:
+That form of the `mkdir` command, with the `-p` has the advantage that
 
-```
->>> import math
->>> math.sqrt(2)
-1.4142135623730951
->>> 
-```
+* It creates the entire path of directories in case any of the intermediate
+   ones don't exist (that is, it will create a `~/cs8` directory too if it
+   isn't there yet)
+* If the directory being create already exists, it won't complain
+* Since the directory being created starts with `~`, it's an absolute
+   path, and thus the command works regardless of the current directory.
 
-The value we get back is the square root of 2, which is an irrational number&mdash;its decimal representation goes on forever.  Unfortunately, real world computing devices typically store numbers with a finite number of decimal places&dagger;.   So, the representation we see for the square root of two, $$ \sqrt{2} $$ is, in fact an approximation.
+Then, to get yourself into that directory, type:
 
-<div style="font-size:80%">
-(&dagger;&nbsp;Technically, "binary places", or "binary digits" rather than "decimal places". For purposes of this discussion it amounts to the same thing.  Also, some computer systems do work with "symbolic" representations of numeric quantities e.g retaning $$ \sqrt{2} $$ or $$\pi$$ as symbolic values rather than as numerical approximations. On those systems, you can exact results, without losing precision, at the expense of speed.  We won't discuss that kind of software in this course.)
-</div>
+`cd ~/cs8/{{page.num}}`
 
+Again, since that's an absolute path, it works from any directory.
 
-We can see this if we multiply `math.sqrt(2)` by itself.  Try it:
+# Step 6: Create a file called `{{page.num}}.py` in your `~/cs8/{{page.num}}` directory
 
-```
->>> math.sqrt(2) * math.sqrt(2)
-2.0000000000000004
->>> 
-```
-
-See that pesky `4` digit in the ten quadrillionths place?   My goodness, we are really, really close to 2.0, but if we ask whether the values are equal, Python says no:
-
-```
->>> math.sqrt(2) * math.sqrt(2)== 2.0
-False
-```
-
-In fact, Python is very clear about the difference between `2.0` and `math.sqrt(2) * math.sqrt(2)`, and can even tell us 
-how big that difference is.  The `4` digit is only the tip of the very, very, very small iceberg:
-
-```
->>> math.sqrt(2) * math.sqrt(2)- 2.0
-4.440892098500626e-16
->>> 
-```
-
-This fact is going to be annoying to us many times.   One consequence is that <strong>when we test software involving floating point numbers, we must allow for some inaccuracy</strong>.   This "allowable inaccuracy" is sometimes called the <em>tolerance</em>, and it might be a small value such as `0.001` (1x10<sup>-3</sup>, or `0.000001` (1x10<sup>-6</sup>).
-
-In Python, we can write `0.001` as `1e-03`, and `0.000001` as `1e-06`.  (The lowercase `e` is the way that Python represents scientific notation.)
-
-You can see that Python, by default, formats numbers in this notation once the fifth decimal place is reached:
-
-```
->>> 0.01
-0.01
->>> 0.0001
-0.0001
->>> 0.00001
-1e-05
->>> 0.000001
-1e-06
->>>
-```
-
-
-We'll come back to that idea later in this lab.
-
-As a reminder, CTRL-D gets you out of the Python Shell Prompt (`>>>`)
-and returns you to the Unix shell prompt.
-
-
-# Step 1: Make a `~/cs8/lab02` folder
-
-In previous labs, you should already have created folders
-`~/cs8/lab00` and `~/cs8/lab01`.  You are now going to create folder
-`~/cs8/lab02` for the files for this lab.
-
-In general, its probably a good idea to keep your work for this class
-under `~/cs8`, in folders called `lab00`, `lab01`, `lab02` etc.
-
-This isn't exactly *required* (no-one is going to check), but it's
-probably a good habit to develop.  Here's why: all the rest of the
-instructions will be written based on the assumption that you did
-things this way.  And if you continue to take CS courses at UCSB,
-you'll often find that's the case from one course to the next.
-
-So, I'd strongly encourage you to do it.
-
-As a reminder:
-
-* `cd` returns you to your home directory (e.g. `/cs/student/cgaucho/`)
-* `pwd` prints your current working directory
-* `cd cs8` changes into the cs8 directory under the current directory
-* `cd ~/cs8` changes into the cs8 directory under your home directory <em>regardless of the current working directory (because `~` is a shortcut for the absolute path of
-   your home directory.)
-* `cd ..` will move you up one directory from your current directory. 
-* `mkdir lab02` will create a lab02 directory under your current working directory
-* `ls` lists the files in your current directory
-
-With that information, you should be able to determine how to
-create a `~/cs8/lab02` directory, and make that directory your current
-working directory (the one that comes up when you type `pwd`.)  Do that now.
-
-Then, you are ready for the next step.
-
-# Step 2: Create a file called `convert.py` in your `~/cs8/lab02` directory
-
-The contents of `convert.py` should be as shown below.  This contains
-two Python function definitions that, at the moment are incorrect.
-
-Choose "File => New File" in IDLE to bring up an "untitled" window, then copy and paste this code into that window.
-
-Note that the formulas for converting between Celsius and Fahrenheit are incorrect.  That's deliberate, so just go with it for now.  We'll fix those at a later step.
-
-```
-def fToC(fTemp):
-    return fTemp - 32  # TODO: Fix this line of code
-
-def cToF(cTemp):
-    return cTemp + 32 # TODO: Fix this line of code
-``` 
-      
-# Step 3: Test your code by hand
-
-To test this code, we'll first do what many programmers do: test the code by hand.  
-
-That is, we'll run the file in IDLE, and then enter some function calls in the Python shell to see what results we get.  These two functions are supposed to convert between Fahrenheit where water freezes at 32 degrees, and Celsius where it freezes at 0 degrees.  Let's see if they work properly.
-
-Use the Run Module command to run the code, and then try entering these function calls at the Python Shell prompt.  You should see output similar to what is shown below:
-
-```
->>> fToC(32)
-0
->>> cToF(0)
-32
->>> 
-```
-
-As you can see, for those two particular values, the function appears to return the correct answer&mdash;32 degrees fahrenheit is indeed 0 degrees celsius, and 0 degrees celsius is indeed 32 degrees fahrenheit.  
-
-So clearly, testing with a single value is not enough.  Indeed, if we test with another well known value, 212 Fahrenheit and 100 Celsius (the boiling point of water), we see that the output is incorrect:
-
-```
->>> fToC(212)
-180
->>> cToF(100)
-132
->>> 
-```
-
-One of the problems with testing by hand is that it is tedious, and folks have a tendency to skip it.  So, experienced programmers have learned that its generally a better idea to automate the process of testing.     We'll learn how to do that next.   We'll see that when we set up these four tests, two of them will pass, and two of them will fail.
-
-# Step 4: Setting up automated tests
-
-Add this line at the top of your convert.py file:
+To start out {{page.num}}, write the line:
 
 ```
 import pytest
 ```
 
-Then, add the following code to your `convert.py` file after the function definitions for `ftoC` and `cToF` that defines four automated tests:
+Then, copy this function definition into your
+{{page.num}}.py file.
 
 ```
-def test_fToC_freezing():
-   assert fToC(32.0)==pytest.approx(0.0) 
+def perimRect(length,width):
+   """
+   Compute perimiter of rectangle
+   """
+   return -42.0 # stub  @@@ replace this stub with the correct code @@@
 
-def test_cToF_freezing():
-   assert cToF(0.0)==pytest.approx(32.0) 
-
-def test_fToC_boiling():
-   assert fToC(212.0)==pytest.approx(100.0) 
-
-def test_cToF_boiling():
-   assert cToF(100.0)==pytest.approx(212.0) 
+   
 ```
 
-These are automated tests that use a module known as `pytest`.  When defining tests using the `pytest` module, we typically define functions that:
+Then, copy these function definitions into your file.  These are a special kind of function called a <em>test case</em>.  These particular test cases are written in the style used by the <em>pytest</em> testing framework, and they follow these rules:
 
-* have names that start with `test_` or end with `_test`
-* end with exactly one `assert` statement&mdash;that is, the keyword `assert` followed by a boolean expresssion.  
-
-If the expresssion after `assert` is true, the test passes, otherwise it fails
-
-We are using `pytext.approx()` here because any time you are testing with floating point numbers, we have to be aware that there may be some inaccuracy, as we discussed earlier.  
-
-(Recall our discussion of what happens when you multiple `math.sqrt(2.0)` by itself.  Here, its probably overkill since we aren't using any irrational numbers, but it is still safer to always use some way of approximating equality when dealing with floating point.)
-
-You can click the plus to open a dropdown showing what your entire file should look like at this point:
-
-<div id="info" data-role="collapsible" data-collapsed="true" markdown="1">
-
-## Contents of `convert.py` so far
-
-```
-import pytest
-
-def fToC(fTemp):
-    return fTemp - 32
-
-def cToF(cTemp):
-    return cTemp + 32
-    
-def test_fToC_freezing():
-   assert fToC(32.0)==pytest.approx(0.0) 
-
-def test_cToF_freezing():
-   assert cToF(0.0)==pytest.approx(32.0) 
-
-def test_fToC_boiling():
-   assert fToC(212.0)==pytest.approx(100.0) 
-
-def test_cToF_boiling():
-   assert cToF(100.0)==pytest.approx(212.0) 
+1. The name of each test cases function must start with `test_` or end with `_test`.
+2. Each one ends (typically) with a line of code that starts with the keyword `assert`, followed by a boolean expression.
+   * If the expression is `True`, the test case <em>passes</em>
+   * If the expression if `False`, the test case <em>fails</em>
+3. Each test case function must have a different name (hence: `test_perimRect_1`, `test_perimRect_2`, `test_perimRect_3`, etc.)  They don't have to be consecutive numbers&mdash;we could use `_a`, `_b`, `_c` or anything really, as long as they are all different.
 
 ```
 
+def test_perimRect_1():
+   assert perimRect(4,5)==18
 
-</div>
+def test_perimRect_2():
+   assert perimRect(7,3)==20
 
-After entering this, save the file and use "Run Module" to make sure there are no error messages (red output in the Python Shell Window.).  If not, then you are ready for the next step.
-            
-# Step 5: Running the test cases
-        
-Running the test cases requires us to go <em>outside of IDLE</em> back to the terminal shell prompt.  
-
-Your current directory needs to be the same one that your convert.py file is stored in.    That should be `~/cs8/lab02`, but if it isn't, then fix things so that the `convert.py` file is in that directory, and you are in that directory.   If you need help, ask for assistance.
-
-You should be able to type the `ls` command  (or on Windows, `dir`) at the terminal shell prompt and see the `convert.py` file listed:
+def test_perimRect_3():
+   assert perimRect(2.1,4.3)==pytest.approx(12.8)
 
 ```
-your-prompt-here $ ls
-convert.py
-your-prompt-here $ 
+
+Finally, run the code, and ensure that you don't have any syntax errors
+in your Python code.
+
+# Step 7: Test your code by hand
+
+Because I want to be sure that you continue to practice the skill,
+test your code by hand first.
+
+That is, select "Run Module" in IDLE, and then type in a few function calls
+at the Python Shell Prompt.   Here are a few:
+
+```
+>>> perimRect(4,5)
+-42.0
+>>> perimRect(7,3)
+-42.0
+>>> 
 ```
 
-When that's the case, try this command:
+Ok, so that's sort of pointless as long as we haven't fixed the function yet.  The point
+is that
+* you need to know how to check the value of a function call by typing it in.
+* you need to see that right now, the function *always* returns -42.0, no matter what.
+
+There is a reason for that.  We call this a "stub value".  It returns the wrong answer
+*on purpose* so that we can check that all of the tests fail.   We want to see all of
+the tests fail, THEN see all of the tests pass.  That's the general idea.
+
+* We want so see them *all fail* when the function is wrong
+* Then if they *pass* when the function is right, we *trust* the test.
+
+# Step 8: Run pytest on the file so far
+
+As a reminder, you run pytest OUTSIDE of idle, at the regular terminal
+prompt.
+
+You may find it helpful to bring up a second terminal window and use
 
 ```
-python3 -m pytest convert.py
+cd ~/cs8/{{page.num}}
 ```
 
-You should see output like this.  It may be a little overwhelming at first, but don't let it intimidate you. Once you know what you are looking for, it is very easy to read.    After the output, there is a guide to understanding it.
+to get into the correct directory.  Then use:
 
-
-```text
-169-231-175-204:lab02 pconrad$ python3 -m pytest convert.py
-==================================== test session starts ====================================
-platform darwin -- Python 3.6.2, pytest-3.2.1, py-1.4.34, pluggy-0.4.0
-rootdir: /Users/pconrad/github/ucsb-cs8/Lecture5_0816/lab02, inifile:
-collected 4 items                                                                            
-
-convert.py ..FF
-
-========================================= FAILURES ==========================================
-_____________________________________ test_fToC_boiling _____________________________________
-
-    def test_fToC_boiling():
->      assert fToC(212.0)==pytest.approx(100.0)
-E      assert 180.0 == 100.0 ± 1.0e-04
-E       +  where 180.0 = fToC(212.0)
-E       +  and   100.0 ± 1.0e-04 = <function approx at 0x1026c40d0>(100.0)
-E       +    where <function approx at 0x1026c40d0> = pytest.approx
-
-convert.py:16: AssertionError
-_____________________________________ test_cToF_boiling _____________________________________
-
-    def test_cToF_boiling():
->      assert cToF(100.0)==pytest.approx(212.0)
-E      assert 132.0 == 212.0 ± 2.1e-04
-E       +  where 132.0 = cToF(100.0)
-E       +  and   212.0 ± 2.1e-04 = <function approx at 0x1026c40d0>(212.0)
-E       +    where <function approx at 0x1026c40d0> = pytest.approx
-
-convert.py:19: AssertionError
-============================ 2 failed, 2 passed in 0.03 seconds =============================
-169-231-175-204:lab02 pconrad$ 
+```
+python3 -m pytest {{page.num}}.py
 ```
 
-Ok, let's now break down this output.
+You should see three test failures. If you do, then you ready to fix the code so that it works, which is the next step.
 
-# Step 6: Understanding the output of pytest
+(If you need a refresher on how to interpret
+the output of `pytest`, refer back to [lab01](/lab/lab01/])
 
-Here's how to understand `pytest` output. 
 
-1. <b>Get the big picture first from the <tt>convert.py ..FF</tt> line</b>. 
-
-   Look for a line near the beginning that has the name of your file, followed by a list of either dots, 
-   letter 'E' or letter 'F' characters, like this one:
-
-   ```
-   convert.py ..FF
-   ```
-   
-   In this case, the `.` characters are tests that passed.  If you have four tests, the ideal thing you'd want to see is <tt>convert.py&nbsp;....</tt> which means that four tests for <tt>convert.py</tt> all passed. 
-   
-   Instead, here, we see `..FF`, which means we had two test failures.   Later in the output, we'll see more detail about
-   each of those failures.
-   
-2. <b>Understand the overall structure of the output.</b>
-
-   The rest of the output will be divided into sections, one for each
-   failure.  Here is what it look like with the
-   details taken out so that you can see the big picture more easily:
-   
-
-   ```text
-   ==================================== test session starts ====================================
-   (blah blah here that you can ignore)
-   
-   convert.py ..FF
-   ========================================= FAILURES ==========================================
-   _____________________________________ test_fToC_boiling _____________________________________
-
-   ...
-   (details about the first test case failure are here)
-   ...
-   
-   _____________________________________ test_cToF_boiling _____________________________________
-
-   ...
-   (details about the second test case failure are here)
-   ...
-   
-   ========================= 2 failed, 2 passed in 0.03 seconds =============================
-   ```
-   
-   Note that the last line gives us a nice summary: `2 failed, 2 passed in 0.03 seconds`.   We now know that 
-   we need to focus on the two failures.   And the headers tell us which test cases failed, namely `test_fToC_boiling`
-   and `test_cToF_boiling`.   So let's focus on those next, by first looking in detail at the first one:
- 
-3. <b>Focus in on the first test case failure.</b>
- 
-   Let's focus just on the detailed output for the first test case failure,
-   `test_fToC_boiling`.  What does all of the detailed output mean?
-
-   <style>
-   div.explain-pytest table * td:first-of-type { width: 35em; font-size: 90%; }
-   </style>
-   
-   In general, its a breakdown of why the assertion turned out to be false, showing every step in the calculation.  Let's break it down one line at a time:
-   
-   <div class="explain-pytest">
-   
-   | line of output | meaning |
-   |----------------|----------|
-   | `def test_fToC_boiling():` |  first line of the failing test case |
-   |`E      assert 180.0 == 100.0 ± 1.0e-04` | This is the assertion that turned out not to be true |
-   |`E       +  where 180.0 = fToC(212.0)` | This tells us why `180.0` was on the left hand side of the `==`.  It was the result of computing `ftoC(212.0)` |
-   |`E       +  and   100.0 ± 1.0e-04 = <function approx at 0x1026c40d0>(100.0)` | This tells us why `100.0 ± 1.0e-04` was on the right hand side of the `==`.  It shows the expected value (`100.0`) and the tolerance (` ± 1.0e-04`).
-   |`E       +    where <function approx at 0x1026c40d0> = pytest.approx` | This tells us that `pytest.approx` was used to calculate the tolerance. |
-   | &nbsp; | &nbsp; |
-   |`convert.py:16: AssertionError` | This shows which line in the file `convert.py` had the failed assertion, namely, line 16.  That helps us find the error faster if we are dealing with a large file of code.|
-   
-   </div>
-
-   If we look at this, we can see that amidst all of the clutter is the
-   crucial fact that `fToC(212.0)` returned `180.0` when what we were
-   expecting was `100.0`, with a tolerance of `± 1.0e-04`.
-            
-# Step 7: Fixing the code
+# Step 9: Fixing the code for `perimRect`
 
 So, if you have failing test cases, the thing to do is fix the code so
 that the test cases pass.
 
-To do that you'll need to correct the forumla.
+Of course the formula for the perimiter of a rectangle with length $$ l $$ and width $$ w $$ is, in math notation: $$ p = 2l + 2w $$.   But you'll have to convert that into Python, and use the variables `length` and `width` to get it to work properly.   
 
-Keep in mind that in Python:
+Once you have the code correct, try testing both using interactive testing as well as by running `pytest`.
 
-* The `*` symbol is used for multiplication.  In algebra, we can write
-  `1.8x` to mean `1.8` multiplied by `x`, however, this does not work
-  in Python.  In Python you must write `1.8 * x` if you want to
-  multiply the variable `x` by 1.8.
+# Step 10: Submit your partially completed work to submit.cs
 
-* The `+` and `-` symbols are used for addition and subtraction
+You are by no means finished with this lab.   But, we want to encourage you to make
+a submission to submit.cs now anyway.  Here is why:
 
-* The `/` symbol is used for division, e.g '9/5' means nine
-  divided by five.  
+1.  It will be a way that you can share your work in progress with your pair partner.
+    Both of you will be able to login to submit.cs and access the file you uploaded.
+    
+    That way, if later on, one of you is unavailable, the other can continue the work.
 
-Also, the order of operations in Python is that multiplication and
-division are done before addition and subtraction. Some examples: 
+2.  It provides a backup copy of your work in case something goes wrong with your
+    computer or your CSIL account.
+    
+3.  It provides a staging ground for you to move your file between your laptop and CSIL.
 
-* If `x` is 5, then `x + 2 * 3` gives us 11, not 21.  The
-  multiplication is perfomed before the addition.
-
-* If `x` is 16, then `x - 6 / 2` gives us 13, not 5.  The division is
-  performed before the subtraction.
-
-* If you want to force the addition or subtraction to be done first,
-  you must use parentheses, e. g. `(x + 2) * 3` or `(x - 6) / 2`
-
-When you replace `return ftemp - 32.0` with the correct formula for
-converting a Fahrenheit temperature to Celsius, you should leave out
-the comment that says `# TODO: Fix this line of code `.
-
-You'll also want to replace the similar line in the cToF function.
-
-When you have the test cases passing, try running the pytest command again&mdash;remembering that:
-
-* it <b>must be done from the terminal shell</b>, NOT the Python shell.
-* the current working directory of that terminal session must be
-   the directory/folder where your `convert.py` file is located
-
-```
-python3 -m pytest convert.py
-```
-
-When you see four passing tests, your output will look like this. Also, the last line will be a pleasant shade of green instead of an angry looking red.
-
-```
-169-231-175-204:lab02 pconrad$ python3 -m pytest convert.py
-======================== test session starts =========================
-platform darwin -- Python 3.6.2, pytest-3.2.1, py-1.4.34, pluggy-0.4.0
-rootdir: /Users/pconrad/github/ucsb-cs8/Lecture5_0816/lab02, inifile:
-collected 4 items                                                     
-
-convert.py ....
-
-====================== 4 passed in 0.01 seconds ======================
-169-231-175-204:lab02 pconrad$ 
-```
-
-At that point, you are ready to submit your work to submit.cs
-
-# Step 8: Submit your `convert.py` file to submit.cs
+4.  You also will be able to see some progress towards completion of the lab&mdash;
+    partial credit for completion of this step.
 
 To submit your file to submit.cs, you can visit this page:
 
 <https://submit.cs.ucsb.edu/form/project/{{page.submit_cs_pnum}}/submission>
 
-Navigate to that page, and upload your `convert.py` file.
+Navigate to that page, and upload your `{{page.num}}` file.
 
 Or, if you are working on the ECI/CSIL/lab linux systems, you can also submit at the command line with this command, provided you are in the correct folder/diretory:
 
+<tt>~submit/submit -p {{page.submit_cs_pnum}} {{page.num}}.py</tt>
 
-<tt>~submit/submit -p {{page.submit_cs_pnum}} convert.py</tt>
+If you have done the steps so far, you should be able to earn 40/100 points:
+
+* 20 for having a python file that compiles called `{{page.num}}.py`
+* 10 for passing the test cases that you yourself put into the file (you get to see these);
+* 10 more for passing instructor supplied test cases (these, you do not get to see,
+   but in this particular case, they are exactly the same as the ones you were given to
+   type in.)
+
+Once you've submitted and you see that you have 25/100 points, you are ready to
+continue with the rest of the lab.
+
+# Step 11: Read these instructions about how the rest of the lab will work
+
+In each of the steps that remain, you will add an additional function definition,
+and some test cases.
+
+You should try to make the function pass the test cases that you put in.
+
+In some cases you'll be given the test cases.  In other cases, you have to supply
+these test cases yourself.
+
+At each step, you should first try to get the test cases to pass by running
+pytest at the Unix command line as shown.
+
+* Please do this BEFORE submitting to submit.cs
+* Please DO NOT submit to submit.cs without testing locally first
+
+Once you see that they are passing, THEN submit a version to submit.cs to see
+if you also pass the instructor test cases for that step.
+
+If you do, proceed to the next function definition and set of test cases.
+
+If you pass your own tests, but NOT the instructor supplied tests, then try to
+see if you can figure out why.  Is there some case that you did not consider?
+The problems may have hints.
+
+You can also ask questions on Piazza. This is a good situation to use a "private
+post" to the instructors.  We can see your submissions on submit.cs,
+so you don't have to share your code with us--just tell us your name, which lab you are
+working on, and which step you need a hint for with instructor tests not passing.
+
+Once you understand all how this is going to work, you are ready to start coding
+the additional functions.
+
+# Step 12: Write an `areaRect` function and some test cases for it
+
+Now, add the definition of a function called `areaRect`.
+
+It should have two parameters, length and width, and return the area.
+
+Although it is tempting to write the function correctly from the start,
+since the definition is SO easy, I encourage you to follow the practice
+of initially putting in a stub such as the following, so that you can
+"test the test":
+
+```
+   return -999
+```
+
+In addition, define three test cases.
+
+The code for the first two test cases should look like this:
+
+```
+
+def test_areaRect_1():
+   assert areaRect(3,4)==12
+
+def test_areaRect_2():
+   assert areaRect(0.5,0.4)==pytest.approx(0.2)
 
 
-The first time you use this method, it will ask for your email address: use your full umail address (e.g. `cgaucho@umail.ucsb.edu`).  For password, use the password that you enter for the submit.cs system.    You may save these credentials if you don't want to have to type them in every time.
+```
 
+The third test case should be one that you come up with yourself. The restrictions are that it must be:
+
+* a function called `test_areaRect_3`
+* it should have an `assert` statement
+* the assert keyword should be followed by a call to `areaRect` with some other argument values, different from the ones in the first two test cases, followed by a test for equality operator `==`, and the value that you expect `areaRect` to return for those argument values
+
+Please write this third test case.
+
+Then:
+
+* test your code with "Run Module" to make sure it compiles ok (i.e. no red error messages)
+* use `python3 -m pytest {{page.num}}.py -k areaRect` to run just the test cases for the `areaRect` function (there should be three of them, and three skipped test cases)
+* they should all fail (because you have a stub value, -999)
+* finally, replace the code in the function definition for areaRect with the correct code, and see all the tests pass.
+
+Then, submit to submit.cs again, and you should see that you get 20  more points toward
+your maximum possible score of 100.
+
+
+# Step 13: Write an `isString` function and some test cases for it
+
+Here is an example of a function that tests whether something is a list or not.
+
+
+```
+def isList(x):
+   """
+   returns True if argument is of type list, otherwise False
+   """
+   
+   return ( type(x) == list )   # True if the type of x is a list
+```
+
+Your job is to write a similar function that takes a parameter `x` and returns
+`True` if `x` is a string (type `str` in Python), and returns `False` if it is
+not a string.
+
+Here's a stub for that function.  Add it into your {{page.num}}.py file.
+
+```
+def isString(x):
+   """
+   returns True if argument is of type str, otherwise False
+   """
+   
+   return "stub" 
+
+
+```
+
+And here are three test cases. Add those also:
+
+```
+def test_isString_1():
+   assert isString("UCSB")
+
+def test_isString_2():
+   assert not isString(42)
+
+def test_isString_3():
+   assert not isString(["UCSB"])
+```
+
+Then, add two more test cases, following the examples above. Those
+test cases should be functions named `test_isString_4` and
+`test_isString_5`.  One of those should check something that you think
+*is* a string, and one more that you think checks something that is
+*NOT* a string.   Try to come up with different test cases than the ones given.
+
+Finally, go through all the same steps that you did before:
+
+* make sure the file compiles ok
+* test with `pytest` and see the tests fail
+* fix the function and see the `pytest` tests pass
+
+As a reminder, you can use `-k blah` to run only the tests that have `blah` in their name&mdash;for example, for this step, you'd use:
+
+```
+python3 -m pytest {{page.num}}.py -k isString
+```
+
+Then finally, try submitting to submit.cs and see if you get the credit for the tests for this function.  You should be able to get up to 80/100 at this step.  When you do, keep going&mdash;you are almost at the finish line.
+
+
+# Step 14: Write an `isNumber` function and some test cases for it
+
+Our last function is one called `isNumber` that should take a parameter `x` and return
+`True` if the value `x` refers to is either of type `int` or of type `float`.  In any other case, it should return `False`.
+
+You should write the function definition, and you should write exactly five test cases,
+with function names:
+
+* `test_isNumber_1`
+* `test_isNumber_2`
+* `test_isNumber_3`
+* `test_isNumber_4`
+* `test_isNumber_5`
+
+Follow the model from earlier.
+
+Test your code with:
+
+```
+python3 -m pytest lab03.py -k isNumber
+```
+
+Then test your code by submitting to submit.cs.
+
+
+# Step 15: See perfect score on submit.cs; profit.
+
+At this point, you should see that you have a perfect 100 points on submit.cs, and
+you are finished with the lab!
 
