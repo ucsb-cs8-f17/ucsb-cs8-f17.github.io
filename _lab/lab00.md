@@ -5,7 +5,7 @@ ready: true
 desc: "Getting Started"
 assigned: 2017-10-03 8:00:00.00-7
 due: 2017-10-07 17:00:00.00-7
-submit_cs_pnum: 767
+submit_cs_pnum: 824
 ---
 
 
@@ -45,7 +45,7 @@ If you ever forget the password to your ECI/CSIL account, you can reset it here:
 
 If your account doesn't work, ask a TA for assistance.
 
-Phelps 3525 is only available during your weekly scheduled discussion section and during Fall 2017, on Tuesdays 1-3:30pm, and Wednesdays 3-5pm.  
+Phelps 3525 is only available during your weekly scheduled discussion section and during Fall 2017, on Tuesdays 1-2:00pm, and Wednesdays 8-1pm.  
 
 At other times during the week, you can work in CSIL, the &quot;Computer Science Instructional Lab&quot;.
 
@@ -184,7 +184,7 @@ We will save the file under the name `hello.py`&mdash;it is important that is ha
 That's it!   Now, you can also add, on the first line, a *comment* with your name, and information about the course, for example:
 
 ```python
-# Chris Gaucho, for CMPSC 8, Summer 2017
+# Chris Gaucho, for CMPSC 8, Fall 2017
 print ('Hello, World!')
 ```
 
@@ -216,7 +216,7 @@ Otherwise, to create your submit.cs account, please take the following steps:
 1. Click on the "Create User" button, and enter your Umail address.
 1. Check your umail for a message with additional instructions—follow the instruction in the email to select a password and activate your account.
 1. Go back to the website: https://submit.cs.ucsb.edu and login with your account.
-1. Select "Join Class", and click on the link for CS8_m17
+1. Select "Join Class", and click on the link for CS8_f17
 
 At that point, you should be good to go.
 
