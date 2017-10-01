@@ -10,10 +10,10 @@ date: 2017-08-08 09:30:00.00-7:00
 
 |   Week |  Date   |  Topics |
 |--------|-------- | ------- |
-|    01   | M 10/02 |  Introduction to the course, Python interactive shell, read-eval-print|
+|    01   | M 10/02 |  Introduction to the course, get excited about CS, Python interactive shell, read-eval-print|
 |         | W 10/04 |  Python data types (int, float, list tuple) and functions |
-|    02   | M 10/09 |  Testing with pytest, Python variables, objects, Assignment, Print vs return (lab01 and lab02) |
-|         | W 10/11 |  Turtle Graphics:  more on functions (lab03)|
+|    02   | M 10/09 |  Testing with pytest, Stub functions, Python variables, objects, strings, assignment, Print vs return (lab01 and lab02) |
+|         | W 10/11 |  Turtle Graphics:  more on functions - planning out algorithms (lab03)|
 |    03   | M 10/16 |  Remote log in via ssh, Boolean expressions, conditionals if-else|
 |         | W 10/18 |  Creating your own modules, interactive programs, command line arguments (needed for lab04), Mutable vs Immutable |
 |    04   | M 10/23 |  Midterm Review  |
