@@ -67,6 +67,10 @@ collections:
     output: true
     permalink: /labWIP/:path/
     last_before: false
+  lectureWIP:
+    output: true
+    permalink: /lectureWIP/:path/
+    last_before: false
   exam:
     output: true
     permalink: /exam/:path/
