@@ -9,7 +9,7 @@ Basic Facts
 
 * **Course Web Site**: <http://ucsb-cs8.github.io>
 * **Instructor**:  [Diba Mirza](http://www.cs.ucsb.edu/~dmirza)
-   * Email is pconrad@cs.ucsb.edu, BUT please use Piazza for course related communication.
+   * Email is diba@ucsb.edu, BUT please use Piazza for course related communication.
 * **Lecture**: MW 12:30pm-1:45pm MUSIC LLCH, ATTENDANCE REQUIRED.
 * **TAs**:  {{site.ta_list_full}} (contact via Piazza.com)
 * **Lab** (50 minute discussion section) Tuesdays 8am, 9am , 10am , 11am , noon, 1pm - Phelps 3525, ATTENDANCE REQUIRED.                                         
