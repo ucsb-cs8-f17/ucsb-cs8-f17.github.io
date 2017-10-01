@@ -3,8 +3,8 @@ layout: lab
 num: lab02
 ready: false
 desc: "More functions with test cases"
-assigned: 2017-10-10 09:30:00.00-7
-due: 2017-10-17 14:00:00.00-7
+assigned: 2017-10-10 08:00:00.00-7
+due: 2017-10-17 17:00:00.00-7
 submit_cs_pnum: 826
 ---
 

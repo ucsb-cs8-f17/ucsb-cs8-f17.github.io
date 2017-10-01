@@ -3,8 +3,8 @@ layout: lab
 num: lab04
 ready: false
 desc: "input, scripts, command line arguments"
-assigned: 2017-10-17 11:00:00.00-7
-due: 2017-10-24 17:00:00.00-7
+assigned: 2017-10-24 8:00:00.00-7
+due: 2017-10-31 17:00:00.00-7
 submit_cs_pnum: 828 
 submmit_cs_class: 93
 ---

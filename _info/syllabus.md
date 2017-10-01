@@ -8,12 +8,18 @@ Basic Facts
 -----------
 
 * **Course Web Site**: <http://ucsb-cs8.github.io>
-* **Instructor**:  [Phill Conrad](http://www.cs.ucsb.edu/~pconrad)
+* **Instructor**:  [Diba Mirza](http://www.cs.ucsb.edu/~dmirza)
    * Email is pconrad@cs.ucsb.edu, BUT please use Piazza for course related communication.
-* **Lecture**: TWR 9:30pm-10:50am Psych 1924, ATTENDANCE REQUIRED.
+* **Lecture**: MW 12:30pm-1:45pm MUSIC LLCH, ATTENDANCE REQUIRED.
 * **TAs**:  {{site.ta_list_full}} (contact via Piazza.com)
-* **Lab** (80 minute discussion section) Friday 11am, 12:30pm, 2pm or 3:30pm Phelps 3525, ATTENDANCE REQUIRED.                                         
-* Office Hours: See: <http://www.cs.ucsb.edu/~pconrad/ofchrs>  
+* **Lab** (50 minute discussion section) Tuesdays 8am, 9am , 10am , 11am , noon, 1pm - Phelps 3525, ATTENDANCE REQUIRED.                                         
+* Office Hours: See: [Dr. Mirza and CS 8 staff office hours calendar](https://calendar.google.com/calendar/embed?src=ucsb.edu_760irs3sq39ukkker6l89gaf4g%40group.calendar.google.com&ctz=America/Los_Angeles")
+
+
+# Required Resources
+
+* Textbook: "Introduction to Computing Using Python" - Ljubomir Perkovic, 2nd edition
+* iclicker remote for in class participation (purchase at the book store)
 
 Official UCSB Catalog Description
 ---------------------------------
@@ -35,15 +41,16 @@ Introduction to computer program development for students with little to no prog
 * You are permitted one sheet of notes on exams—details later on the syllabus.
 * Collaboration is only permitted when specifically allowed for—otherwise, you must do your own work.
    * On most homework assignments  you may collaborate with at most one other person (who must be named).
-* Attendance is required at all lectures and labs (discussion sections) and is checked via homework submission or in-class assignments.
-   * <strong>You</strong>, yourself, must hand in your own homework in class.  You may not turn in homework on behalf of another student, or ask someone else to turn in yours.
-   * I recognize that some absences (e.g. minor illnesses, mishaps, etc.) are unavoidable.  Litigating whether each of these is "excused" or not isn't a good use of anyone's time, so instead we just drop the lowest four grades from everyone's homework/in-class assignment grades.  In this way, absenses (or failure to turn in homework) does not unduly penalize your grade unless it becomes excessive.
+* Attendance is required at all lectures and labs (discussion sections) and is checked via participation using the iclickers
+  * I recognize that some absences (e.g. minor illnesses, mishaps, etc.) are unavoidable.  Litigating whether each of these is "excused" or not isn't a good use of anyone's time, so instead we just drop the lowest four grades from everyone's homework/in-class assignment grades.  In this way, absenses (or failure to turn in homework) does not unduly penalize your grade unless it becomes excessive.
+* <strong>You</strong> must turn in your homework using the homework mailbox for CS8 located in the copy room on the second floor of HFH building
+
+
 
 You may NOT: 
 
 * Turn in homework on a day other than when it is due (early or late)
 * Have someone else turn in your homework for you (that will be considered academic dishonesty).
-* Leave homework in a mailbox or slide it under a door
 * Drop it off with the instructor to be graded later.
 
 ## What this course is about 
@@ -190,8 +197,9 @@ A+ grades: These may be awarded to the very best performing students in the clas
 
 | Grade Item                                                                   | Percentage of Final Grade |
 |------------------------------------------------------------------------------|---------------------------|
-| Midterm 2                                                                    | 35 %                      |
-| Final                                                                        | 35 %                      |
+| Midterm (2)                                                                    | 20 %                      |
+| Lab Exams  (2)                                                                 | 20 %| 
+| Final                                                                        | 30 %                      |
 | Labs (typically closed source, some open source), Hwks, In Class Assignments | 30 %                      |
 
 
@@ -276,7 +284,7 @@ posted. If you wait until the last office hours opportunity during the
 two week window, and you are not able to be seen (e.g. because of a
 long line of students), then you lose the right to appeal your grade.
 
-</div>
+
 
 <div style="page-break-before:always;">
 &nbsp;

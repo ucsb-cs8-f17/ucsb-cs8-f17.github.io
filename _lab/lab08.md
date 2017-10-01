@@ -3,8 +3,8 @@ layout: lab
 num: lab08
 ready: false
 desc: "Recursion and fractals with turtle"
-assigned: 2016-11-07 09:30:00.00-7
-due: 2016-11-14 15:45:00.00-7
+assigned: 2017-11-28 8:00:00.00-7
+due: 2017-12-04 17:00:00.00-8
 ---
 
 ## To do: Fill out the section on recursively drawing a rectangle - it should build on lab03, set up submit.cs and correct submission instructions
@@ -249,12 +249,12 @@ Here are some pictures for inspiration:
 </p>
 
 
-## Submission
+# Submission
 
 
 Great job working through {{page.num}}! 
 
-### Navigate to the page for submitting {{page.num}}
+## Navigate to the page for submitting {{page.num}}
 
 The page for submitting {{page.num}} is here: <https://submit.cs.ucsb.edu/form/project/{{page.submit_cs_pnum}}/submission>
 

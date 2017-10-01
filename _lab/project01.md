@@ -3,10 +3,12 @@ layout: lab
 num: project01
 ready: false
 desc: "Turtle Graphics: Scene from a forest"
-assigned: 2017-10-17 11:00:00.00-7
-due: 2017-10-31 17:00:00.00-7
+assigned: 2017-10-20 11:00:00.00-7
+due: 2017-11-03 17:00:00.00-7
 submit_cs_pnum: 774
 ---
+
+# To do : rewrite section on "Take a detour into random numbers" not to use tilt angles for darwTriangle, set up submit.cs
 
 Goal
 ====
@@ -17,45 +19,7 @@ The goal of this exercise is to draw a forest scene from basic shape primitives 
 What you'll be drawing
 ----------------------
 
-You'll be writing functions to produce two basic shapes: a rectangle and a triangle. Each function takes parameters that specify the size, orientation, pen color, and fill color of that shape. This will allow us to create more interesting drawings later on. The function definitions are given below:
-
--   `drawRectangle(width, height, tilt, penColor, fillColor)`
--   `drawTriangle(base, height, tilt, penColor, fillColor)`
-
-
-The output produced when each function is callled with specific parameter values is shown in the following figure.
-
-![basicShapes](basicShapes.png){:height="400px"}
-
-The above drawings are the result of calling either <code>drawRectangle()</code> or <code>drawTriangle()</code>. In each drawing, the turtle stamp shoes the initial location and heading of the turtle right before the corresponding function is called. For example the top left drawing is the output of the following line of code, when the turtle is at the top left corner:
-
-```
-drawRectangle( width = 50, height = 100, tilt = 0, penColor = "red", fillColor = "")
-```
-
-The subsequent three drawings on the same row are the output of repeatedly moving the turtle to the right, and calling the <code>drawRectangle()</code> function changing the tilt, penColor and fillColor. The function calls and parameter values to produce these drawings are given below:
-
-
-```
-drawRectangle( width = 50, height = 100, tilt = 20, penColor = "green", fillColor = "yellow")
-...
-drawRectangle( width = 50, height = 100, tilt = 60, penColor = "blue", fillColor = "blue")
-...
-drawRectangle( width = 50, height = 100, tilt = 90, penColor = "red", fillColor = "red")
-
-```
-
-Similarly, the drawings on the next row are the result of repeatedly calling **<code>drawTriangle()</code>** with the following parameter values:
-
-|   <code>base</code>   |  <code>height</code>     |   <code>penColor</code> |  <code>fillColor</code> |   
-|-----------------------|-------------------------| ------------------------| ----------------------- |
-|   50                  |   100                   |  <code> "red" </code>  |  <code> ""</code>       |
-|   50                  |   100                   |  <code> "green" </code>|  <code> "yellow"</code> |
-|   50                  |   100                   |  <code> "red"</code>   |  <code> "red"</code>    |
-|   50                  |   100                   |  <code> "blue"</code>  |  <code> "blue"</code>   |
-
-
-Once you have implemented the above basic shape primitives, you will use them as building blocks to create the following forest scene!
+In this lab you will use the basic shapes that you created in lab03 as building blocks to create the following forest scene!
 
 ![forestScene](forestScene.png){:height="400px"}
 
@@ -74,7 +38,7 @@ If you don't recall the commands, you may refer to any of the previous labs
 
 ## Step 2: Open `idle3` and create <tt>{{page.num}}.py</tt>
 
-Open up `idle3` and select the menu option `File => New File` to create a new file.
+Open up `idle3` and select the menu option `File => New File` to create a new file. Save this file as {{page.num}}.py
 
 In this file, put this code (but put your name instead of "your name goes here")
 
@@ -84,7 +48,7 @@ import turtle
 import math 
 
 if __name__=="__main__":
-  t = turtle.Turtle()
+  print('Inside main of project01.py')
 
 </pre>
 
@@ -100,85 +64,37 @@ here: [All about `if __name__=="__main__":`](https://ucsb-cs8.github.io/ptopics/
 
 You can name your turtle anything you like; I used `t` because it's short to type.
 
-Optionally, you can make your turtle look like a turtle by putting this line in your `__main__` block also:
+
+Save this, and run it.   You should see 'Inside main of project01.py' printed to screen. Don't set up the turtle in this file. We will reuse the turtle setup from lab03.
+
+
+
+## Step 3: Create a basicShapes module from your lab03.py
+
+* Make a copy of your code from lab03 and rename it as basicShapes.py:
 
 ```
-  t.shape("turtle")
+cp ~/cs8/lab03/lab03.py ~/cs8/project01/basicShapes.py
 ```
 
-So the whole main block looks like this:
+* Modify the code in basicShapes.py so that you can import the code as a model. Apply the concepts that you learned in lab04 about making your own modules using the `if __name__=="__main__": ` clause. Here are some hints:
+
+- In basicShapes.py, keep all the statements that relate to importing modules and setting up the turtle outside the `if __name__=="__main__:" at the top of the file:
 
 ```
-if __name__=="__main__":
-  t = turtle.Turtle()
-  t.shape("turtle")
-
-```
-
-Save this, and run it.   You should see a turtle appear.
-
-
-## Step 3: Create and implement the functions for the basic shapes - rectangle and triangle
-
-In your <tt>{{page.num}}.py</tt> file, write the skeleton of <code> drawRectangle() </code> and <code> drawTriangle()</code> as shown below. You will need some of the trigonometric functions provided in that math module to implement <code> drawTriangle()</code>. In order to use that module, add a line to import it at the top of the file. To learn more about the math module refer [the Python documentation on the module](https://docs.python.org/3/library/math.html) and scroll down to the section on trigonometric functions.
-
-```
+import turtle
 import math
-
-def drawRectangle(width, height, tilt, penColor, fillColor):
-    """
-    draw a rectangle with a given width, height, penColor and fillColor,
-    with the current location of the turtle being the 
-    lower left corner, and the bottom side tilted by an angle tilt (specified in degrees)
-    relative to the horizontal axis. Use a turtle called t to create the drawing
-    """
-
-    # Insert code to draw the rectangle
-    
-def drawTriangle(base, height, tilt, penColor, fillColor):
-    """
-    draw a triangle with a given base, height, penColor and fillColor,
-    with the current location of the turtle being the 
-    lower left corner, and the bottom side tilted by an angle tilt (specified in degrees)
-    relative to the horizontal axis. Use a turtle called t to create the drawing
-    """
-
-    # Insert code to draw the rectangle
-  
-def testRectangle():
-    
-    drawRectangle( 50, 100, 0, "red", "") 
-
-    # Move the turtle right by 200 units without leaving a trail
-    t.seth(0)   # Set the absolute heading of the turtle to 0 degrees (pointing east)
-    t.up()     
-    t.forward(200) # Move the turtle forward by 200 units 
-    t.down()
-
-    drawRectangle( 50, 100, 20, "green", "yellow") 
-
-    # Move the turtle right by 200 units without leaving a trail
-    t.seth(0)   # Set the absolute heading of the turtle to 0 degrees (pointing east)
-    t.up()     
-    t.forward(200) 
-    t.down()
-
-   
-
-testRectangle()
+t = turtle.Turtle()
+t.shape("turtle")
+t.speed(0)
+t.width(4)
 ```
+- Put all other code that is not within a function definition in the `if __name__=="__main__:" 
 
-* Read the test code provided in testRectangle(). Refer to the [turtle documentation](https://docs.python.org/3.6/library/turtle.html) to understand any commands that may be new to you. In particular, note that you can use the t.forward() command to move the turle forward relative to its current location in the direction that it is currently pointing. Similarly, the commands t.left() and t.right() rotate the turtle in the anticlockwise or clockwise directions respectively. These are commands that you may use as alternatives to the goto() command in your implementation of the drawRectangle() and drawTriangle() functions. 
+* Now you are ready to import basicShapes as a module and use the functions that you implemented there - specifically: `drawRectangle()` and `drawTriangle()`
 
-* On a piece of paper draw the output that you expect to get for a correct implementaion of the drawRectangle() function, when the above code is executed. You may refer to the drawings and information on the top of this page.
+* In Idle, open {{page.num}}.py and 
 
-* Implement the drawRectangle() function and run your code until you get the expected output for the provided test code.
-
-* Add more test cases to the testRectangle() function until you arrive at a general enough implementation
-
-* Repeat the above process to implememt and test your drawTriangle() function. 
-
-With these basic primitives, you are now ready to make something more interesting! Refer back to the forest scene that you are working towards. Which functions do you think you should implement next? Try to write the definitions of these functions before reading the next section.
 
 ## Step 4: Draw a tree
 
@@ -399,7 +315,7 @@ Navigate to that page, and upload your `{{page.num}}.py` file.
 If you are working on the ECI/CSIL/lab linux systems, you can also submit at the command line with this command:
 
 ```
-~submit/submit ~/cs8/{{page.num}}/{{page.num}}.py
+~submit/submit -p {{page.submit_cs_pnum}} ~/cs8/{{page.num}}/{{page.num}}.py
 ```
 
 It will ask for your email address: use your full umail address (e.g. `cgaucho@umail.ucsb.edu`).  For password, use the password that you enter for the submit.cs system.    You may save these credentials if you don't want to have to type them in every time.
@@ -413,4 +329,4 @@ Refresh that page, and you should get one that indicates with either red, or gre
 
 If you got all green, and 10 points, then your submission was accepted---but to emphasize, for this week, the other 90 points will be assigned by a human grader.   You'll be notified of that grade [via Gauchospace](https://gauchospace.ucsb.edu).
 
-Created by Diba Mirza
+Created by Diba Mirza, thanks to Phill Conrad for his inputs

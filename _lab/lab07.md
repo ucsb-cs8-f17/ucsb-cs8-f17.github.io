@@ -3,8 +3,8 @@ layout: lab
 num: lab07
 ready: false
 desc: "Scrabble word finder: Python lists, dictionaries and file I/O"
-assigned: 2017-10-31 11:00:00.00-7
-due: 2017-11-07 17:00:00.00-7
+assigned: 2017-11-21 8:00:00.00-7
+due: 2017-11-28 17:00:00.00-8
 submit_cs_pnum: 830
 ---
 
@@ -111,9 +111,9 @@ So, how did our program know which letter combinations were valid words?......We
 
 \(^_^)/, you're finished!  Now have fun and experiment with the word finder ;-).
 
-## Submission
+# Submission
 
-### Navigate to the page for submitting {{page.num}}
+## Navigate to the page for submitting {{page.num}}
 
 The page for submitting {{page.num}} is here: <https://submit.cs.ucsb.edu/form/project/{{page.submit_cs_pnum}}/submission>
 

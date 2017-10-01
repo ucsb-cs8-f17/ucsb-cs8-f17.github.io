@@ -3,7 +3,7 @@ layout: lab
 num: lab03
 ready: false
 desc: "Turtle Graphics: Basic shapes"
-assigned: 2017-10-17 11:00:00.00-7
+assigned: 2017-10-17 8:00:00.00-7
 due: 2017-10-24 17:00:00.00-7
 submit_cs_pnum: 827
 ---
@@ -530,4 +530,4 @@ Refresh that page, and you should get one that indicates with either red, or gre
 
 If you got all green, and 10 points, then your submission was accepted---but to emphasize, for this week, the other 90 points will be assigned by a human grader.   You'll be notified of that grade [via Gauchospace](https://gauchospace.ucsb.edu).
 
-Created by Diba Mirza, thanks to Phill Conrad for his valuable inputs!
+Created by Diba Mirza

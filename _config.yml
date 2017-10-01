@@ -33,7 +33,9 @@ cal_dates: >
   {"label":"Last day to Add with code","date":"2017-10-18" },
   {"label":"Drop w/ Full Refund","date":"2017-10-04" },
   {"label":"Drop Deadline (no W grade)","date":"2017-10-18" },
-  {"label":"Univ Holiday", "date":"2017-10-19" },
+  {"label":"Univ Holiday: Veterans Day", "date":"2017-11-10" },
+  {"label":"Univ Holiday: Happy Thanksgiving", "date":"2017-11-23" },
+  {"label":"Univ Holiday: Happy Thanksgiving", "date":"2017-11-24" },
   {"label":"Grade Option Change Deadline", "date":"2017-11-17" },    
   {"label":"Last day of instructions", "date":"2017-12-08" }      
   ]
