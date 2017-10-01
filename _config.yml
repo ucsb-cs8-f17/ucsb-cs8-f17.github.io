@@ -113,6 +113,12 @@ defaults:
   - 
     scope:
       path: ""
+      type: lectureWIP
+    values:
+      layout: lecture
+  - 
+    scope:
+      path: ""
       type: lab
     values:
       layout: lab
