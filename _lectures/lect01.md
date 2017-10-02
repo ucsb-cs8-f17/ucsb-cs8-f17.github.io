@@ -37,11 +37,7 @@ f(x) = x<sup>2</sup>
 Also called the Python Shell Prompt
 
 ```
-login as: pconrad
-pconrad@csil-01.cs.ucsb.edu's password:
-Last login: Mon Aug  7 15:29:19 2017 from 98.188.150.204
--bash-4.3$
--bash-4.3$ python3
+
 Python 3.4.3 (default, Aug  9 2016, 15:36:17)
 [GCC 5.3.1 20160406 (Red Hat 5.3.1-6)] on linux
 Type "help", "copyright", "credits" or "license" for more information.
@@ -74,6 +70,6 @@ Note that `**` is right associative, not left associative.
 
 # IDLE and Python
 
-The syllabus is here:  <https://ucsb-cs8-m17.github.io/info/syllabus/>
+The syllabus is here:  <https://ucsb-cs8-f17.github.io/info/syllabus/>
 
 
