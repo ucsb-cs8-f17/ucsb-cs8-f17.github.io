@@ -10,7 +10,7 @@ date: 2017-08-08 09:30:00.00-7:00
 
 (a review of part of the syllabus)
 
-Abstractions and notation: three, index.
+Abstractions and notation: 
 
 An index takes in as input a topic, and gives us back a page number.
 
