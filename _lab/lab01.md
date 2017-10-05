@@ -513,7 +513,7 @@ To submit your file to submit.cs, you can visit this page:
 
 Navigate to that page, and upload your `convert.py` file.
 
-Or, if you are working on the ECI/CSIL/lab linux systems, you can also submit at the command line with this command, provided you are in the correct folder/diretory:
+Or, if you are working on the ECI/CSIL/lab linux systems, you can also submit at the command line with this command, provided you are in the correct folder/directory:
 
 
 <tt>~submit/submit -p {{page.submit_cs_pnum}} convert.py</tt>
