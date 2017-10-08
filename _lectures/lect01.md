@@ -7,27 +7,7 @@ date: 2017-08-08 09:30:00.00-7:00
 ---
 
 
-[Link to lecture slides](https://drive.google.com/file/d/0BxIvQwpl4ococnZTc29FT3RPSGs/view?usp=sharing)
-
-Slides cover the following:
-
-* What is Computer Science and why should you care?
-* Logistics of the course
-
-
-(a review of part of the syllabus)
-
-Abstractions and notation: 
-
-An index takes in as input a topic, and gives us back a page number.
-
-A Point-of-Sale bar code scanner at a store checkout maps a barcode, to info about the item (description and price).
-
-A FUNCTION in general, takes in an input (or a set of inputs) and gives us back a value.
-
-In math, for example, 
-
-f(x) = x<sup>2</sup>
+[Link to lecture slides](https://drive.google.com/drive/folders/0BxIvQwpl4ocoRy1Pa041SThLUFU?usp=sharing)
 
 
 
