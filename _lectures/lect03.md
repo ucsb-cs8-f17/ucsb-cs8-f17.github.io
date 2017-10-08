@@ -5,7 +5,11 @@ ready: true
 date: 2017-10-09 12:30:00.00-7:00
 ---
 
-# Code from today's lecture
+
+[Link to all code written in lecture](https://github.com/ucsb-cs8-f17/cs8-f17-lecture-code)
+
+
+[Link to lecture slides and peer instruction questions](https://drive.google.com/drive/folders/0BxIvQwpl4ocoRy1Pa041SThLUFU?usp=sharing)
 
 
 # lab01 and lab02
