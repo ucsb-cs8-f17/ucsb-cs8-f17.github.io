@@ -20,5 +20,9 @@ date: 2017-10-04 12:30:00.00-7:00
    
 # Python Data Types
 
-`int`, `float`, `str`, `list`, `tuple`, `dict`
+* Integer: `int`
+* Float : `float`
+* String: `str`
+* List: `list` 
+* Tuple: `tuple`
 
