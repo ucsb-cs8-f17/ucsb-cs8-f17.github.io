@@ -109,7 +109,7 @@ We could have also used the statement <code>import basicShapes</code> to import 
 
 ## Step 4: Draw a tree
 
-Using only the two functions available in `basicShapes.py`, we will create the essential elements of our forest scene in code: functions to draw a tree and a hut. Once we do that, drawing the forest boils down to making repeated calls to these two functions and moving the turtle to a new spot in between function calls. We'll start with writing a function to darw a tree. 
+Using only the two functions available in `basicShapes.py`, we will create the essential elements of our forest scene in code: functions to draw a tree and a hut. Once we do that, drawing the forest boils down to making repeated calls to these two functions and moving the turtle to a new spot in between function calls. We'll start with writing a function to draw a tree. 
 
 
 ### Write the stub function and test code
@@ -128,7 +128,7 @@ def drawTree(height, color):
 
 ```
 
-* Copy the above code and place it right after the import statement in your project01.py file.
+* Copy the above code and place it right after the statement `from basicShapes import *` in your project01.py file.
 * In the spirit of Test Driven Development (TDD) style of developing your code, think about how you would test your `drawTree()` function. Its natural to inspect the output visually, making sure your tree "looks right" with the expected shape and color. However it may be harder to tell if its drawn with the correct dimensions. To check that write a function `checkTreeHeight()` that helps you visually inspect if your tree is drawn with the specified height by drawing it alongside a rectangle of the same height. Below is one possible implementation of the `checkTreeHeight()` function:
 
 ```

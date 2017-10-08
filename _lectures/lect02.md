@@ -1,11 +1,10 @@
 ---
 num: "Lecture 2"
-desc: "Python data and functions"
-ready: false
-date: 2017-08-09 09:30:00.00-7:00
+desc: "Python data types"
+ready: true
+date: 2017-10-04 12:30:00.00-7:00
 ---
 
-# Code from today's lecture
 
 
 # Questions and Answers
@@ -13,12 +12,6 @@ date: 2017-08-09 09:30:00.00-7:00
 * Q: Installing Python?
 * A: Visit http://python.org/download
 
-# lab00 and lab01
-
-* lab00 is now ready for you to work on it.
-* Eventually, we'll explain how to work on labs on your own computer.
-   * If you want a head start on that, come to office hours with your laptop, and we'll go over it with you.
-* For now, if you want to work on it before Tuesday lab
    
 # Python Data Types
 
@@ -50,13 +43,13 @@ print(x)
 '''
 
 ''' Some Python Data Types
-    - int: Integers representing non-decimal values
-    - float: Floating point number representing a decimal (fractional) value
+    - int: Integers representing non-fractional number values e.g. -100, 0, 1, 20 ...
+    - float: Floating point number representing fractional value e.g. 1.34, -1.1.4, ...
     - string - Represents a collection of characters
         - Ex: 'A', 'a', '1', ' ', '-'
     - Note: 3 and 3.0 are considered different types!
-        - 3 is an integer (non-decimal value)
-        - 3.0 is a float (decimal value, even if the decimal is 0)
+        - 3 is an integer (non-fractional value)
+        - 3.0 is a float (fractional value, even if the digit after the decimal point is 0)
     - Python automatically knows what type these numbers are based on its value.
 
 x = 1
@@ -81,7 +74,7 @@ print(x)
 '''
 ''' Indexing strings and substrings
     - In a string, we can extract certain pieces from it.
-    - This is also known as "parsing" a string
+    - This is also known as "slicing" a string
     - Positions in a string start at index 0
 
 schoolName = "UCSB"
