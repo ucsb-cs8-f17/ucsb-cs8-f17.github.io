@@ -1,11 +1,18 @@
 ---
 num: "Lecture 1"
 desc: "Orientation to the course"
-ready: false
+pdfurl: /lectures/pdf/lect1.pdf
+ready: true
 date: 2017-08-08 09:30:00.00-7:00
 ---
 
-# Abstractions and Algorithms
+
+[Link to lecture slides](https://drive.google.com/file/d/0BxIvQwpl4ococnZTc29FT3RPSGs/view?usp=sharing)
+
+Slides cover the following:
+
+* What is Computer Science and why should you care?
+* Logistics of the course
 
 
 (a review of part of the syllabus)

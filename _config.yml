@@ -115,6 +115,50 @@ defaults:
       path: ""
       type: lectureWIP
     values:
+      layout: lectcure
+  - 
+    scope:
+      path: ""
+      type: lectureWIP
+    values:
+      layout: lecture
+  - 
+    scope:
+      path: ""
+      type: lab
+    values:
+      layout: lab
+  - 
+    scope:
+      path: ""
+      type: exam
+    values:
+      layout: exam_info
+  - 
+    scope:
+      path: ""
+      type: teams
+    values:
+      layout: teams
+  - 
+    scope:
+      path: ""
+      type: info
+    values:
+      layout: info
+  -
+    scope:
+      path: "syllabus.md"
+      type: info
+    values:
+      layout: handout
+
+
+  - 
+    scope:
+      path: ""
+      type: lectureWIP
+    values:
       layout: lecture
   - 
     scope:

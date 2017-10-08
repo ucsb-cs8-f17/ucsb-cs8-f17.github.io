@@ -8,12 +8,18 @@ due: 2017-11-09 20:00:00.00-8
 submit_cs_pnum: 774
 ---
 
-# To do : rewrite section on "Take a detour into random numbers" not to use tilt angles for darwTriangle, set up submit.cs
+# To do : rewrite section on "Take a detour into random numbers" not to use tilt angles for drawTriangle, set up submit.cs
 
 Goal
 ====
 
-The goal of this exercise is to draw a forest scene from basic shape primitives that you will implement using turtle graphics. The key idea to learn how to use functions as building blocks in more complex compositions. You will also learn about using repetition and randomization in your code to create interesting outcomes.
+The goal of this exercise is to draw a forest scene from basic shape primitives that you implemented in lab03 using turtle graphics. The key learning goals are:
+
+* using functions as building blocks in more complex compositions 
+* using loops to perform repetitive tasks while keeping your code DRY (Don't repeat yourself)
+* using randomization to create variety and controlled chaos in your drawings
+* applying concepts learned in lab04 to creating and using your own modules
+
 
 
 What you'll be drawing
@@ -44,8 +50,6 @@ In this file, put this code (but put your name instead of "your name goes here")
 
 <pre>
 # {{page.num}}.py, your name goes here
-import turtle
-import math 
 
 if __name__=="__main__":
   print('Inside main of project01.py')
@@ -77,7 +81,7 @@ Save this, and run it.   You should see 'Inside main of project01.py' printed to
 cp ~/cs8/lab03/lab03.py ~/cs8/project01/basicShapes.py
 ```
 
-* Modify the code in basicShapes.py so that you can import the code as a model. Apply the concepts that you learned in lab04 about making your own modules using the `if __name__=="__main__": ` clause. Here are some hints:
+* Modify the code in basicShapes.py so that you can import the code as a module. Apply the concepts that you learned in lab04 about making your own modules using the `if __name__=="__main__": ` clause. Here are some hints:
 
 - In basicShapes.py, keep all the statements that relate to importing modules and setting up the turtle outside the `if __name__=="__main__:" at the top of the file:
 
@@ -89,49 +93,78 @@ t.shape("turtle")
 t.speed(0)
 t.width(4)
 ```
-- Put all other code that is not within a function definition in the `if __name__=="__main__:" 
+- Put all other code that is not part of a function definition in the `if __name__=="__main__: clause" 
 
-* Now you are ready to import basicShapes as a module and use the functions that you implemented there - specifically: `drawRectangle()` and `drawTriangle()`
+* Now you are ready to import basicShapes as a module and use its functions: `drawRectangle()` and `drawTriangle()`
 
-* In Idle, open {{page.num}}.py and 
+* In Idle, open {{page.num}}.py and import your basicShapes module by adding the following line to the top of the file:
+
+```
+from basicShapes import *
+```
+
+We could have also used the statement <code>import basicShapes</code> to import the code in the file basicShapes.py. In the first case if you were to call a function written within the basicShapes module, you may refer to it simply by its name e.g. `drawRectangle(100, 200, 10, "red", "yellow")`, while with the latter import statement you must use the name of the module each time followed by the dot operator in addition to the function name e.g.: `basicShapes.drawRectangle(...)`
+
 
 
 ## Step 4: Draw a tree
 
-Now that we have our basic shapes (the rectangle and the triangle), we are in a position to create the essential elements of our forest scene in code - functions to draw a tree and a hut. Once we do that, drawing the forest boils down to making repeated calls to these two functions and moving the turtle to a new spot in between function calls. We'll start with the tree because it has a more regular structure. 
+Using only the two functions available in `basicShapes.py`, we will create the essential elements of our forest scene in code: functions to draw a tree and a hut. Once we do that, drawing the forest boils down to making repeated calls to these two functions and moving the turtle to a new spot in between function calls. We'll start with writing a function to darw a tree. 
 
-Define a 'drawTree()' function to draw a tree.  A general 'drawTree()' function should allow the user to specify the height and color of the tree as captured in the following function definition.  
+
+### Write the stub function and test code
+
+Define a 'drawTree()' function as shown below
 
 ```
 def drawTree(height, color):
     
     ''' 
-    This function draws a tree with a specific height and color, with the bottom of the bark at the current location of the turtle. The bark of the tree is always brown. All other parameters such as the width of the tree and the length of the bark are chosen so that the tree is well proportioned. The tree top is composed of three triangles stacked on top of each other.
+    This function draws a tree of a given height that consists of a rectangular brown bark and a top comprised of three triangles of a given color stacked on top of each other.
+    The bottom left corner of the bark should be at current location of the turtle making no assumptions about the orientation of the turtle.
+    After drawing the tree the turtle should be returned to its original position and oriented at 0 degrees 
+    All other parameters such as the width of the tree and the length of the bark must be chosen so that the tree is well proportioned. 
     '''
 
 ```
 
-Copy the above code and place it right after your implementation for `drawTriangle`. Now write a function `testdrawTree()` with some test code to test your implentation of `drawTree()`. Below is some initial test code:
+* Copy the above code and place it right after the import statement in your project01.py file.
+* In the spirit of Test Driven Development (TDD) style of developing your code, think about how you would test your `drawTree()` function. Its natural to inspect the output visually, making sure your tree "looks right" with the expected shape and color. However it may be harder to tell if its drawn with the correct dimensions. To check that write a function `checkTreeHeight()` that helps you visually inspect if your tree is drawn with the specified height by drawing it alongside a rectangle of the same height. Below is one possible implementation of the `checkTreeHeight()` function:
 
 ```
-def testdrawTree():
+def checkTreeHeight():
     t.up()
     t.goto(0,-400)
     t.down()
     drawRectangle(200, 200, 0 , "red","")
+    t.seth(0)
     drawTree(200, "green")
+
+
+if __name__=="__main__":
+  checkTreeHeight()
 ```
-The above code helps you visually inspect if the your tree is of the specified height by drawing it alongside a rectangle of the same height. When you run this code with a correct implementation of drawTree() should see that the top of the tree coincides with the top side of the rectangle as shown in the following output:
+
+
+If you ran the above code with a correct implementation of `drawTree()` function you should see that the top of the tree coincides with the top side of the rectangle as shown in the following output:
 
 ![testTree](testTree.png){:height="200px"}
 
 Note that there are aspects of the tree that are not specified for you such as the width of the tree, the width and height of the bark, and the spacing between the three triangles that make up the tree top. You should make decisions on these aspects relative to the height of the tree so that a taller tree is wider and has a thicker and taller bark.
 
-Now go ahead and implement your drawTree() function. Add more code to the testdrawTree() function to draw at least two well-proportioned trees of different heights at two different locations.  
+### Plan out your tree
+
+As always, its good practice to plan out your tree. Use this work sheet to make decisions about the unspecified aspects of the tree and plan out how you would draw it. [TO DO: Make a worksheet to plan the tree] 
+
+
+### Implement your `drawTree()` function
+
+
+Now go ahead and implement your `drawTree()` function. As you do so, add more code to the checkTreeHeight() function to draw at least two well-proportioned trees of different heights at two different locations.  
 
 ## Step 5: Draw a row of trees - repetition made easy with loops
 
-We would now like to go from drawing one tree to many trees, which will essentially become our forest. To begin define the function `drawForest()` as below:
+We would now like to go from drawing one or two trees to many trees, which will eventually become our forest. To begin define the function `drawForest()` as below:
 
 ```
 def drawForest():
@@ -139,29 +172,36 @@ def drawForest():
     Draws a collection of trees placed at random locations within a rectangular region
     '''
 ```
-Start by drawing three trees of the same height in a row. One way of doing is this is to repeat a block of code to move the turtle to a specific spot and then call the drawTree() function as shown below:
+
+Getting to a solution is an iterative process. Attempt a simpler version of the `drawForest()` function that would help you progress towards a final solution. Its up to you to define 'a simpler version of the forest'. I might start by making a forest that comprises of just three trees of the same height placed in a row with equal spacing between the trees. For now, follow along because this simpler solution is a good segway to learning a very important programming concept: loops
+
+
+One way of drawing a row of trees that are equidistant from each other is to repeat a block of code that moves the turtle to a specific spot and then calls the `drawTree()` function. This is shown below:
 
 ```
 # Move the turtle to location (-200, -100) and draw a tree  
 t.up()
 t.goto(-200, -100)  
+t.seth(0)
 t.down()
 drawTree(200, "green")
 
 # Move the turtle to location (0, -100) and draw another tree
 t.up()
-t.goto(0, -100)  
+t.seth(0)
+t.forward(200)
 t.down()
 drawTree(200, "green")
 
 # Move the turtle to location (200, -100) and draw the third tree
 t.up()
-t.goto(200, 100)  
+t.seth(0)
+t.forward(200) 
 t.down()
 drawTree(200, "green")
 
 ```
-However a better way of doing the same thing is to use a for loop as demonstrated below:
+A (better) alternative is to use a for loop as shown below:
 
 ```
 for i in range(3):
