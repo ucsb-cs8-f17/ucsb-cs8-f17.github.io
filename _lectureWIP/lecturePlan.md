@@ -12,7 +12,7 @@ date: 2017-08-08 09:30:00.00-7:00
 |--------|-------- | ------- |
 |    01   | M 10/02 |  Introduction to the course, get excited about CS, Python interactive shell, read-eval-print|
 |         | W 10/04 |  Python data types (int, float, string, list, tuple: more in depth with first three, specially strings)  |
-|    02   | M 10/09 |  Boolean expressions, Basics of functions and variables, testing with pytest, stub functions, Python variables, objects, strings, assignment, print vs return (lab01 and lab02) |
+|    02   | M 10/09 |   Basics of functions and variables, Boolean expressions, testing with pytest, stub functions, Python objects, assignment, print vs return (lab01 and lab02) |
 |         | W 10/11 |  Turtle Graphics:  more on functions - planning out algorithms (lab03)|
 |    03   | M 10/16 |  Conditionals if-else, remote log in via ssh, |
 |         | W 10/18 |  Creating your own modules, interactive programs, command line arguments (needed for lab04), Mutable vs Immutable |
