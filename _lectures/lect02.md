@@ -5,6 +5,7 @@ ready: true
 date: 2017-10-04 12:30:00.00-7:00
 ---
 
+# Resources from lecture
 
 [Link to all code written in lecture](https://github.com/ucsb-cs8-f17/cs8-f17-lecture-code)
 
