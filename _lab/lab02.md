@@ -431,7 +431,7 @@ Follow the model from earlier.
 Test your code with:
 
 ```
-python3 -m pytest lab03.py -k isNumber
+python3 -m pytest lab02.py -k isNumber
 ```
 
 Then test your code by submitting to submit.cs.
