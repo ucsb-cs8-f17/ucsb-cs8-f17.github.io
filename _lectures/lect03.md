@@ -11,7 +11,7 @@ date: 2017-10-09 1:30:00.00-7:00
 
 * [Link to lecture slides and peer instruction questions](https://drive.google.com/drive/folders/0BxIvQwpl4ocoRy1Pa041SThLUFU?usp=sharing)
 
-* [Guidelines for using peer instruction in CS8 - thanks to Dan Zingaro](https://drive.google.com/file/d/0BxIvQwpl4ocoX2ZpUjJDZW52Wlk/view?usp=sharing)
+* [Guidelines for using peer instruction - thanks to Dan Zingaro](https://drive.google.com/file/d/0BxIvQwpl4ocoX2ZpUjJDZW52Wlk/view?usp=sharing)
 
 # Announcements
 
