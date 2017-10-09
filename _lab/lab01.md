@@ -84,7 +84,7 @@ We are going to use the Python prompt in the next step anyway, so just stay
 at the Python prompt.  (Or if you need to get out of Python, use CTRL-D to return
 to the Unix shell prompt.)
 
-# Step 1: Warmup--experiencing floating point inaccuracy
+# Step 0: Warmup--experiencing floating point inaccuracy
 
 If you are not already at the Python prompt, bring up a terminal window, and just type `python3`.  This should give you the Python Shell Prompt (`>>>`) where you can type in some expressions and see the resulting values.
 
