@@ -135,7 +135,7 @@ Then, copy this function definition into your
 ```
 def perimRect(length,width):
    """
-   Compute perimiter of rectangle
+   Compute perimeter of rectangle
    """
    return -42.0 # stub  @@@ replace this stub with the correct code @@@
 
