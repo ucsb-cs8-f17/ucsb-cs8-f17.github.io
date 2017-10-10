@@ -44,7 +44,7 @@ Once you do, you may continue.
 
 To register your pair in submit.cs, navigate to the page for this assignment:
 
-<https://submit.cs.ucsb.edu/class/85>
+<https://submit.cs.ucsb.edu/p/825>
 
 You should see a {{page.num}} link.  Click that.
 
