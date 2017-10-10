@@ -20,6 +20,7 @@ In this lab, you'll practice:
 # Step 0: Install pytest for your account (or on your machine)
 
 This lab is one that you may find you need to do on the CSIL machines.
+It's important to differentiate between the Python shell `>>>` vs the terminal `$`. 
 
 It is probably the case that `pytest` is not installed for your version
 of Python3.  You can check by typing `python3` at the Terminal prompt
@@ -37,6 +38,8 @@ File "", line 1, in ImportError: No module named 'pytest'
 >>>
 [cgaucho@csil-12 ~]$ pip3 install --user pytest
 ```
+
+In order to exit the python shell in terminal press Ctrl+D or type exit() in order to return to the normal terminal. 
 
 To install it, type this command into the terminal session
 (the Unix Terminal prompt) to install pytest for your CSIL account:
