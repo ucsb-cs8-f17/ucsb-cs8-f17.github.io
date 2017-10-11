@@ -102,7 +102,7 @@ Its usually too messy to test your functions by repeatedly calling them in the p
 * Step 1: Write a few examples of the function call
 * Step 2: Write the type contract which specifies what type of inputs the function accepts and what type of insputs it returns
 * Step 3: Write a stub function (only the header and a return statement that returns the right type, no implementation)
-* Step 4: Using the examples of the function call from step 1, write test code that checks for equality between the expected output of the function and what it actually returned by the function for a specific set of inputs
+* Step 4: Using the examples of the function call from step 1, write test code that checks for equality between the expected output of the function and what it actually returned by the function for a specific set of inputs. For our example problem if you don't have a solution that works for all points in 2D, try to solve the 1D problem first and slowly progress towards a solution
 * Step 5: Run the test code and see it fail
 * Step 6: Add code to your function to pass the test cases, run the code and modify until the test cases pass
 * Step 7: Repeat Steps 4 - 6 until you feel confident about your implementation
