@@ -13,7 +13,7 @@ Goal
 ====
 
 The goal of this exercise is to practice with Turtle Graphics in
-Python by producing somewhere between two and four Python functions
+Python by producing somewhere between three and six Python functions
 that use Turtle Graphics to make particular shapes.
 
 (You'll understand the reasons its "between three and six" in a
