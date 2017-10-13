@@ -1,6 +1,6 @@
 ---
 num: "Lecture 4"
-desc: "Python functions, testing with pytest"
+desc: "Python Modules and turtle graphics"
 ready: true
 date: 2017-10-11 1:30:00.00-7:00
 ---
