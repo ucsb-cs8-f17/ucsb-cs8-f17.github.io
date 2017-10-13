@@ -16,7 +16,7 @@ date: 2017-10-11 1:30:00.00-7:00
 
 # Learning Goals
 * Modules - how to use them and look up documentation
-* Designing functions that are READABLE, REUSABLE and DRY
+* Designing functions that are READABLE, REUSABLE and DRY (loops)
 
 #Turtle Graphics: Formal introduction to modules  
 
