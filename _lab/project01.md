@@ -1,7 +1,7 @@
 ---
 layout: lab
 num: project01
-ready: false
+ready: true
 desc: "Turtle Graphics: Scene from a forest"
 assigned: 2017-10-20 11:00:00.00-7
 due: 2017-11-09 20:00:00.00-8
