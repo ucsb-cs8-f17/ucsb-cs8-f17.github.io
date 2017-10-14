@@ -153,7 +153,7 @@ Note that there are aspects of the tree that are not specified for you such as t
 
 ### Plan out your tree
 
-As always, its good practice to plan out your tree. Use this work sheet to make decisions about the unspecified aspects of the tree and plan out how you would draw it. [TO DO: Make a worksheet to plan the tree] 
+As always, its good practice to plan out your tree. As you may have noticed your tree is entirely made up of triangles and rectangles which you have already implemented as functions. In your code you will need the coordinates at which you have to draw each of the triangles and rectangles and their respective parameters. Also some of the parameters o fyour tree (like its width) is left for you to decide. Use [this worksheet](/hwk/ic02/) to make decisions about the unspecified aspects of the tree and plan out the grid locations that are important to drawing your tree.
 
 
 ### Implement your `drawTree()` function
