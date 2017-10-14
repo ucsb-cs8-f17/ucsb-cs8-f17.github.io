@@ -5,10 +5,9 @@ ready: false
 desc: "Turtle Graphics: Scene from a forest"
 assigned: 2017-10-20 11:00:00.00-7
 due: 2017-11-09 20:00:00.00-8
-submit_cs_pnum: 774
+submit_cs_pnum: 856
 ---
 
-# To do : rewrite section on "Take a detour into random numbers" not to use tilt angles for drawTriangle, set up submit.cs
 
 Goal
 ====
@@ -109,7 +108,7 @@ We could have also used the statement <code>import basicShapes</code> to import 
 
 ## Step 4: Draw a tree
 
-Using only the two functions available in `basicShapes.py`, we will create the essential elements of our forest scene in code: functions to draw a tree and a hut. Once we do that, drawing the forest boils down to making repeated calls to these two functions and moving the turtle to a new spot in between function calls. We'll start with writing a function to draw a tree. 
+Using only the two functions available in `basicShapes.py`, we will create the essential elements of our forest scene in code: a function to draw a tree and another to draw a hut. Once we do that, drawing the forest boils down to making repeated calls to these two functions and moving the turtle to a new spot in between function calls. We'll start with writing a function to draw a tree. 
 
 
 ### Write the stub function and test code
@@ -173,10 +172,10 @@ def drawForest():
     '''
 ```
 
-Getting to a solution is an iterative process. Attempt a simpler version of the `drawForest()` function that would help you progress towards a final solution. Its up to you to define 'a simpler version of the forest'. I might start by making a forest that comprises of just three trees of the same height placed in a row with equal spacing between the trees. For now, follow along because this simpler solution is a good segway to learning a very important programming concept: loops
+Getting to a solution is an iterative process. Attempt a simpler version of the `drawForest()` function that would help you progress towards a final solution. Its up to you to define 'a simpler version of the forest'. I might start by making a forest that comprises of just three trees of the same height placed in a row with equal spacing between them. For now, follow along because this simpler solution is a good segway to learning a very important programming concept: loops
 
 
-One way of drawing a row of trees that are equidistant from each other is to repeat a block of code that moves the turtle to a specific spot and then calls the `drawTree()` function. This is shown below:
+One way of drawing a row of trees that are equally spaced from each other is to repeat a block of code that moves the turtle to a specific spot and then calls the `drawTree()` function. Recall that we did a similar thing with rectangles in lecture. This is shown below:
 
 ```
 # Move the turtle to location (-200, -100) and draw a tree  
@@ -225,9 +224,9 @@ Start by writing a simple for loop to draw triangles along a circle. This code d
 
 ```
 
-def randomPlay():
+def regularPlay():
     '''
-    Experiments with the random module
+    A circle of triangles
     '''
     t.pensize(10)
     for i in range(36):
@@ -237,21 +236,17 @@ def randomPlay():
         y = radius*math.sin(i*10*math.pi/180)
         t.goto(x,y)
         t.down()
-        tilt = 10*i
-        drawTriangle(50, 50, tilt, "black", "red")
+        drawTriangle(50, 50, "black", "red")
 
-randomPlay()
+regularPlay()
 ```
 
-When you run the above code, you will find a very regular arrangement of triangles along a circle as shown below. Read the code to understand why its producing this output. Note that both the location and tilt of each triangle is dependent on the value of our loop variable (i). 
+When you run the above code, you should find a very regular arrangement of triangles along a circle as shown below. Read the code to understand why its producing this output. Note that the location of each triangle is dependent on the value of our loop variable `i`. 
 
 ![circleOfTris](circleOfTris.png){:height="200px"}
 
-We will now introduce the use of random numbers into this code by selecting the tilt of each triangle to be a random number between 0 and 90 degrees. To do this replace the line `tilt = 10*i` by `tilt = random.randint(0, 90)`. Then run the code. You should see a drawing similar to the one below, although not exactly the same!
 
-![randTilt](randTilt.png){:height="200px"}
-
-We will next use the random module to randomize two other aspects of our drawing: the location of each triangle and its color. Previously, we drew all our triangles along a circle of radius 200. This time we will introduce a small random perturbation in that value by adding a random number between -50 and 50 to the radius in every iteration of the for loop. The line of code that does that is:
+We will next use the random module to randomize two aspects of our drawing: the location of each triangle and its color. Previously, we drew all our triangles along a circle of radius 200. This time we will introduce a small random perturbation in that value by adding a random number between -50 and 50 to the radius in every iteration of the for loop. The line of code that does that is:
 
 ```
  radius = 200 + random.randint(-50, 50)
@@ -261,11 +256,11 @@ We will next use the random module to randomize two other aspects of our drawing
 The second modification we will make is to select the color of each triangle at random from a list of colors. The following two lines of code defines our color choices and then selects one color from this list at random.
 
 ```
-shadesOfGreen =["#006400", "#556b2f", "#8fbc8f", "#2e8b57", "#3cb371", "#20b2aa", "#32cd32"] 
-color = random.choice(shadesOfGreen)
+shadesOfGreen =["#006400", "#556b2f", "#8fbc8f", "#2e8b57", "#3cb371", "#20b2aa", "#32cd32"] # A list of color codes for different shades of green
+color = random.choice(shadesOfGreen) # select one of the elements of the list at random
 ```
 
-The list `shadesOfGreen` defines a list of color codes for different shades of green. The next line selects one of the elements of this list at random. The following code incorporates these new elements.
+Now copy the following function into your file, read it and then run it
 
 ```
 def randomPlay():
@@ -282,15 +277,14 @@ def randomPlay():
         y = radius*math.sin(i*10*math.pi/180)
         t.goto(x,y)
         t.down()
-        tilt = 0
         color = random.choice(shadesOfGreen)
-        drawTriangle(50, 50, tilt, "black", color)
+        drawTriangle(50, 50, "black", color)
 ``` 
-The output of the code is shown in the figure below. Try changing the limits to the random.randint() function and rerun the code, and observe the outcome. Notice how you can control the level of randomness in your drawings using this simple strategy.
+The output of the code is shown in the figure below. Try changing the limits to the random.randint() function and re-run the code, and observe the outcome. Notice how you can control the level of randomness in your drawings using this simple strategy.
 
 ![randLoc](randLoc.png){:height="200px"}
 
-Apply what you have learned in this section to complete your `drawForest()` function. Your forest should contain anywhere between 10 and 15 trees of different sizes and different shades of green placed randomly along a horizontal line.
+Apply what you have learned in this section to complete your `drawForest()` function. Your forest should contain anywhere between 10 and 15 trees of different sizes and different shades of green placed randomly along a narrow horizontal region.
 
 ## Step 7: Draw a hut, then a village
 
@@ -318,18 +312,23 @@ When testing these functions, comment out all calls to previous functions. This 
 Finally, put all the elements that you have implemented to draw the final scene. 
 When you are finished, ask a TA or instructor to look it over and give you some feedback on it.  
 
+## Step 9: Make it your own! 
+
+We have 10 points reserved for you to add new elements to your forest and get creative. Define new functions to your file and call them in the `if __name__=="__main__" block to make te forest scene your own!!
+
+
 It should be structured in a way that there is 
 
 1. A single file called <tt>{{page.num}}.py</tt>
 2. Code at the top of the <tt>{{page.num}}.py</tt> file that sets up a turtle
-3. Next, function defintions for each of the basic shapes, test code for the basic shapes, `drawTree()`, `testdrawTree()`, `drawForest()`, `drawHut()`, and `drawVillage()`
+3. Next, function defintions for each of the basic shapes, test code for the basic shapes, `drawTree()`, `checkTreeHeight()`, `drawForest()`, `drawHut()`, and `drawVillage()` and any other functions that you like to add.
 4. Finally, code that calls those functions to draw the forest scene.  That code should be in a block that starts with `if __name__=="__main__":` as explained later in the lab.
 
 
 If your code meets all those criteria, you should be in good shape to submit it.
 
 
-## Step 9: Submitting via submit.cs
+## Step 10: Submitting via submit.cs
 
 Note that this week, although we are using submit.cs, it is NOT the case that the grade you get from submit.cs is your final grade for the assignment.
 
