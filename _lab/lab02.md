@@ -340,7 +340,7 @@ Then:
 
 * test your code with "Run Module" to make sure it compiles ok (i.e. no red error messages)
 * use `python3 -m pytest {{page.num}}.py -k areaRect` to run just the test cases for the `areaRect` function (there should be three of them, and three skipped test cases)
-* they should all fail (because you have a stub value, -999)
+* some should  fail (because you have a stub value, -999)
 * finally, replace the code in the function definition for areaRect with the correct code, and see all the tests pass.
 
 Then, submit to submit.cs again, and you should see that you get 20  more points toward
@@ -400,7 +400,7 @@ test cases should be functions named `test_isString_4` and
 Finally, go through all the same steps that you did before:
 
 * make sure the file compiles ok
-* test with `pytest` and see the tests fail
+* test with `pytest` and see some of the tests fail
 * fix the function and see the `pytest` tests pass
 
 As a reminder, you can use `-k blah` to run only the tests that have `blah` in their name&mdash;for example, for this step, you'd use:
