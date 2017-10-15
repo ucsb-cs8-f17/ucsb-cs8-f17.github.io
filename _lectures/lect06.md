@@ -22,7 +22,7 @@ date: 2017-10-18 12:30:00.00-7:00
 This lecture will cover topics related to [lab04](/lab/lab04/) and [project01](/lab/project01/)
 * Reusing code in a file by importing it as a module
 * Writing an interactive program using input and print
-* Using the if __name__=="__main__": idiom
+* Using the if `__name__=="__main__":` idiom
 * Using the random module: specifically the random.randint() and random.choice() methods (needed for project01)
 * Using command line arguments (e.g. sys.argv) (if time permits)
 
