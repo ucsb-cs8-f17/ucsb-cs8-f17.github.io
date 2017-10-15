@@ -33,7 +33,7 @@ The output produced when each function is callled with specific parameter values
 
 ![basicShapes](basicShapes.png){:height="400px"}
 
-The above drawings are the result of calling either <code>drawRectangle()</code> or <code>drawTriangle()</code>. In each drawing, the turtle stamp shoes the initial location and heading of the turtle right before the corresponding function is called. For example the top left drawing is the output of the following line of code, when the turtle is at the top left corner:
+The above drawings are the result of calling either <code>drawRectangle()</code> or <code>drawTriangle()</code>. In each drawing, the turtle stamp shows the initial location and heading of the turtle right before the corresponding function is called. For example the top left drawing is the output of the following line of code, when the turtle is at the top left corner:
 
 ```
 drawRectangle( width = 50, height = 100, tilt = 0, penColor = "red", fillColor = "")
@@ -61,7 +61,7 @@ Similarly, the drawings on the next row are the result of repeatedly calling **<
 |   50                  |   100/8                   |  <code> "blue"</code>  |  <code> "blue"</code>   |
 
 
-In a later lab, we will use these functions to create more interesting drawings. 
+In Project 1, we will use these functions to create more interesting drawings. 
 
 # The programming part
 
@@ -126,7 +126,7 @@ Save this, and run it.   You should see a turtle appear. The turtle is not movin
 
 ## Step 3: Create a function for drawing a rectangle
 
-Next, you are going to define a function to draw a rectangle. Your final function will be names drawRectangle() but before you implement that we will implement a couple of different versions of that function with simpler specifications. 
+Next, you are going to define a function to draw a rectangle. Your final function will be names drawRectangle() but before you implement that, we will implement a couple of different versions of that function with simpler specifications. 
 
 Below is the first version of the function. It doesn't take any parameters, instead it draws a rectangle with a fixed width (50), a fixed height (100), a fixed orientation (0 degrees with respect to the x-axis). To write the code we should first come up with a plan, a sequence of steps or algorithm (CS speak). Here is a very simple algorithm: Orient the turtle to point right at 0 degrees with respect to the x-axis. Move the turtle forward by 50 units, turn the turtle left by 90 degrees, move the turtle forward by 100 units, turn left 90 degrees, move forward by 50 units, turn left by 90, move forward by 100...(we are repeating ourselves, but that's fine for now. In later labs we will express the same algorithm in a more concise way). Here is the code that does what we just described: 
 
@@ -153,7 +153,7 @@ function call should NOT be indented, just as shown in the example below.
 
 Try running it and see if the rectangle looks ok.  Change the first line: `t.seth(0)` to `t.seth(90)`. Save and run your code again. What changed? 
 
-We will now update our `drawRectangle_1()` to draw a rectangle with a green boundary and yellow interior. To do that write the following statement before the very first line in the body of the function:
+We will now update our `drawRectangle_1()` to draw a rectangle with a green boundary and yellow interior. To do that, write the following statement before the very first line in the body of the function:
 
 ```
   t.color("green", "yellow") # Sets the pen color to green and fill color to yellow
@@ -293,7 +293,7 @@ def drawRectangle(width, height, tilt, penColor, fillColor):
 Write the above code below the previous function definitions. You may use the code for any of the previous versions as a starting point, although one of those versions is easier to extend to case where you want to draw a rectangle at given orientation. So, think through your algorithm for the general case and select the starting implementation that is the easiest to build on.
 
 
-Next we want to draw two rectangles at different locations. To make sure that you can do that change the function call
+Next we want to draw two rectangles at different locations. To make sure that you can do that, change the function call
 at the bottom of the file from something like this:
 
 ```
@@ -341,7 +341,7 @@ drawTwoRectangles()  # call the function to draw two rectangles of different siz
 
 ```
 
-When you run the code you should see the following output, with the rectangles very close but not touching: 
+When you run the code, you should see the following output, with the rectangles very close but not touching: 
 
 ![twoRects](twoRects.png){:height="200px"}
 
@@ -349,7 +349,7 @@ If you get the above output, then you are ready to move to the next step.
 
 ## Step 5: Add the function to draw an isosceles triangle
 
-Now we are going to add two other functions: drawTriangle() and drawTwoTriangles(). The first  function should draw an [isosceles triangle](https://en.wikipedia.org/wiki/Isosceles_triangle) given the base, height, pen color and fill color. The base of the triangle should be along the x-axis as shown in the figure on top of this page. For the drawTriangle function, you will need the trigonometric functiosn in the Python math module. Add a line to import the math module at the top of the file.
+Now we are going to add two other functions: drawTriangle() and drawTwoTriangles(). The first  function should draw an [isosceles triangle](https://en.wikipedia.org/wiki/Isosceles_triangle) given the base, height, pen color and fill color. The base of the triangle should be along the x-axis as shown in the figure on top of this page. For the drawTriangle function, you will need the trigonometric functions in the Python math module. Add a line to import the math module at the top of the file.
 
 Keep the code that has the actual function calls *at the bottom* of the file.  The order should be:
 
@@ -384,7 +384,7 @@ Keep the code that has the actual function calls *at the bottom* of the file.  T
       # Code for drawing two rectangles is here
 
    def drawTriangle(base, height, penColor, fillColor):
-      # Code for drawTriangle is here, indented...
+      # Code for drawTriangle is here
 
    def drawTwoTriangles():
       # Code to draw two isosceles triangles of different sizes and colors
@@ -528,6 +528,6 @@ Once you upload it, you should get a page that shows your submission is pending.
 
 Refresh that page, and you should get one that indicates with either red, or green, whether the test cases for your code passed or failed.
 
-If you got all green, and 10 points, then your submission was accepted---but to emphasize, for this week, the other 90 points will be assigned by a human grader.   You'll be notified of that grade [via Gauchospace](https://gauchospace.ucsb.edu).
+If you got all green, and 10 points, then your submission was accepted---but to emphasize, for this week, the other 90 points will be assigned by a human grader.   You'll be notified of that grade [via Gauchospace](https://gauchospace.ucsb.edu).
 
 Created by Diba Mirza
