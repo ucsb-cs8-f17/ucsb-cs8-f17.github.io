@@ -13,11 +13,11 @@ date: 2017-10-16 12:30:00.00-7:00
 
 * [Guidelines for using peer instruction - thanks to Dan Zingaro](https://drive.google.com/file/d/0BxIvQwpl4ocoX2ZpUjJDZW52Wlk/view?usp=sharing)
 
-#Announcements:
+# Announcements:
 * Upcoming lab- Tuesday 10/17: Drawing basic shapes using turtle - [lab03](/lab/lab03/)
 * In class assignment [ic02](/hwk/ic02/) - worksheets will be given out during Tuesday labs. Complete and submit in lab. If you don't submit in lab, bring to Wed lecture and submit next week in lab.This is a companion worksheet for project01. Please read lab03, project01 and this worksheet before coming to the Tuesday labs
 
-#Topics
+# Topics
 * Remote Login via ssh
 * Boolean expressions
 * Conditionals if-else
