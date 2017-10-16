@@ -35,6 +35,19 @@ Password reset for CSIL accounts:
 
 <https://accounts.engr.ucsb.edu>
 
+If you get this error:
+
+```
+_tkinter.TclError: no display name and no $DISPLAY environment variable
+```
+
+then either:
+
+* (a) you forgot the `-X` on the `ssh -X` command OR
+* (b) you lost the X11 part of your connection (disconnect and start over), OR
+* (c) you didn't install XQuartz on Mac
+
+
 # Other topics
 
 * Boolean expressions
