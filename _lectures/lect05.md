@@ -52,6 +52,10 @@ then either:
 * (c) you didn't install XQuartz on Mac
 
 
+# The `if __name__ == "__main__"` block
+
+<https://ucsb-cs8.github.io/ptopics/main_blocks/>
+
 # Other topics
 
 * Boolean expressions
