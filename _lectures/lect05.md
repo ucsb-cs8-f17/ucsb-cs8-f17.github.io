@@ -19,6 +19,20 @@ date: 2017-10-16 12:30:00.00-7:00
 
 # Topics
 * Remote Login via ssh
+
+## For Mac OS
+
+* Install XQuartz from https://www.xquartz.org/
+
+* Use this, but substitute YOUR username in place of username, and any number from 01 to 48
+   in place of 04:
+
+```
+ssh -X username@csil-04.cs.ucsb.edu
+```
+
+# Other topics
+
 * Boolean expressions
 * Conditionals if-else
 * Review of for loops
