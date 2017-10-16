@@ -20,6 +20,10 @@ date: 2017-10-16 12:30:00.00-7:00
 # Topics
 * Remote Login via ssh
 
+* <https://ucsb-cs8.github.io/topics/csil_via_macos/>
+
+* <https://ucsb-cs8.github.io/topics/csil_via_windows/>
+
 ## For Mac OS
 
 * Install XQuartz from https://www.xquartz.org/
