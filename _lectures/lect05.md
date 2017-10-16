@@ -31,6 +31,10 @@ date: 2017-10-16 12:30:00.00-7:00
 ssh -X username@csil-04.cs.ucsb.edu
 ```
 
+Password reset for CSIL accounts:
+
+<https://accounts.engr.ucsb.edu>
+
 # Other topics
 
 * Boolean expressions
