@@ -327,6 +327,11 @@ It should be structured in a way that there is
 
 If your code meets all those criteria, you should be in good shape to submit it.
 
+## EXTRA CREDIT OPPORTUNITY
+With this project you have the opportunity to earn 10 points of extra credit by creating a non-trivial object to add to your scene. 
+This can be anything you can come up with and draw using the turtle. Some examples include: a flower, a robot, etc. Feel free to use any functions inside [the Python documentation on the turtle module](https://docs.python.org/3/library/turtle.html)
+
+Do not ask the TAs or tutors what is consider "non-trivial" because whether you earn the extra credit or not is subjective to your grader. Overall, if it's more than just a basic shape then you will receive the points. 
 
 ## Step 10: Submitting via submit.cs
 
@@ -366,6 +371,6 @@ Once you upload it, you should get a page that shows your submission is pending.
 
 Refresh that page, and you should get one that indicates with either red, or green, whether the test cases for your code passed or failed.
 
-If you got all green, and 10 points, then your submission was accepted---but to emphasize, for this week, the other 90 points will be assigned by a human grader.   You'll be notified of that grade [via Gauchospace](https://gauchospace.ucsb.edu).
+If you got all green, and 10 points, then your submission was accepted---but to emphasize, for this week, the other 90 points will be assigned by a human grader.  If you receive the extra credit points then you will receive an additional 10 points. You'll be notified of that grade [via Gauchospace](https://gauchospace.ucsb.edu).
 
 Created by Diba Mirza, thanks to Phill Conrad for his inputs
