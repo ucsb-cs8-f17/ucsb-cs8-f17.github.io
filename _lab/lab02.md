@@ -442,3 +442,4 @@ Then test your code by submitting to submit.cs.
 At this point, you should see that you have a perfect 100 points on submit.cs, and
 you are finished with the lab!
 
+EDIT: You will only see 20/20 points. The remaining 80 points will be graded by the TAs and final scores will be posted on Gauchospace. 
