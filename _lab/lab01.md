@@ -510,6 +510,9 @@ At that point, you are ready to submit your work to submit.cs
 
 # Step 8: Submit your `convert.py` file to submit.cs
 
+EDIT: You will only see 20/20 points. The remaining 80 points will be graded by the TAs and final scores will be posted on Gauchospace. 
+
+
 To submit your file to submit.cs, you can visit this page:
 
 <https://submit.cs.ucsb.edu/form/project/{{page.submit_cs_pnum}}/submission>
