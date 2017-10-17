@@ -285,9 +285,8 @@ def drawRectangle(width, height, tilt, penColor, fillColor):
     Use a turtle called t to create the drawing
     """
 
-    # Insert code to draw the rectangle
-
-    drawRectangle(50, 100, 0, "red","")
+# Insert code to draw the rectangle
+drawRectangle(50, 100, 0, "red","")
 ```
 
 Write the above code below the previous function definitions. You may use the code for any of the previous versions as a starting point, although one of those versions is easier to extend to case where you want to draw a rectangle at given orientation. So, think through your algorithm for the general case and select the starting implementation that is the easiest to build on.
