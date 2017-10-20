@@ -40,7 +40,7 @@ In particular, the following is NOT OK:
 That is a joint effort, but it is NOT pair programming.
 
 
-## What this lab is about
+## What this lab is about?
 
 In this lab, we begin to move in the direction of writing real Python programs
 that resemble the ones created by professional software developers to
@@ -79,7 +79,7 @@ Here's a bit more detail about each of these:
    programmers to <em>create their own modules</em> and import them.
 
    In fact, in this lab, we are going to take the functions you wrote
-   for [lab01](/lab/lab01) in the file `convert.py` and import those
+   for [lab01](/lab/lab01/){:data-ajax="false"} in the file `convert.py` and import those
    so that they can be reused in this lab.  Since those functions already
    have test cases, and those test cases are passing, we have confidence
    that we can build software on top of those functions.
