@@ -1,10 +1,10 @@
 ---
 layout: lab
 num: project01
-ready: true
+ready: false
 desc: "Turtle Graphics: Scene from a forest"
 assigned: 2017-10-20 11:00:00.00-7
-due: 2017-11-09 20:00:00.00-8
+due: 2017-11-27 20:00:00.00-8
 submit_cs_pnum: 856
 ---
 
