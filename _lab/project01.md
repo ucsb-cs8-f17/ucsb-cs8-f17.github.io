@@ -65,9 +65,6 @@ I realize it's a strange looking line of code&mdash;if you haven't already
 seen it before in lecture or another lab, you can find an explanation of it
 here: [All about `if __name__=="__main__":`](https://ucsb-cs8.github.io/ptopics/main_blocks/).
 
-You can name your turtle anything you like; I used `t` because it's short to type.
-
-
 Save this, and run it.   You should see 'Inside main of project01.py' printed to screen. Don't set up the turtle in this file. We will reuse the turtle setup from lab03.
 
 
@@ -82,7 +79,7 @@ cp ~/cs8/lab03/lab03.py ~/cs8/project01/basicShapes.py
 
 * Modify the code in basicShapes.py so that you can import the code as a module. Apply the concepts that you learned in lab04 about making your own modules using the `if __name__=="__main__": ` clause. Here are some hints:
 
-- In basicShapes.py, keep all the statements that relate to importing modules and setting up the turtle outside the `if __name__=="__main__:" at the top of the file:
+- In basicShapes.py, keep all the statements that relate to importing modules and setting up the turtle *outside* the `if __name__=="__main__:" at the top of the file:
 
 ```
 import turtle
