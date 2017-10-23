@@ -14,7 +14,6 @@ date: 2017-10-18 12:30:00.00-7:00
 * [Guidelines for using peer instruction - thanks to Dan Zingaro](https://drive.google.com/file/d/0BxIvQwpl4ocoX2ZpUjJDZW52Wlk/view?usp=sharing)
 
 # Announcements:
-* Project01 is now available: [project01 writeup](/lab/project01/). Due in 3 weeks
 * Midterm01 is next week during lecture. For more information see the [Midterm 1 page](/exam/e01/)
 
 # Topics
