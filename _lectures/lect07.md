@@ -2,7 +2,7 @@
 num: "Lecture 7"
 desc: "Midterm Review"
 ready: true
-date: 2017-10-18 12:30:00.00-7:00
+date: 2017-10-23 12:30:00.00-7:00
 ---
 
 # Resources from lecture
@@ -19,7 +19,7 @@ date: 2017-10-18 12:30:00.00-7:00
 
 # Midterm Topics
 
-* Python numeric data types and expressions: int, float
+* Python numeric data types and expressions: int, float, bool
 * Other types of data: str, list and tuple 
 * Python objects and classes, and the use of class constructors to create new objects
 * Variables and assignment
@@ -31,7 +31,7 @@ date: 2017-10-18 12:30:00.00-7:00
 * Turtle graphics
 * for loops
 * Writing an interactive program using input and print
-* Using Python modules and creating your own using the if `__name__=="__main__":` idiom
+* Using Python modules and creating your own module using the if `__name__=="__main__":` idiom
 
 
 
