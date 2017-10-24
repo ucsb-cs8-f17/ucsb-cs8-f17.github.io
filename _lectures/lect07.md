@@ -24,7 +24,7 @@ date: 2017-10-23 12:30:00.00-7:00
 * Python objects and classes, and the use of class constructors to create new objects
 * Variables and assignment
 * Python functions - difference between function definition and function call
-* difference between print vs return
+* Difference between print vs return
 * Ability to generalize a given function and trace through code involving functions
 * Local vs. global variables
 * Designing functions the test driven approach and the use of stub functions 
