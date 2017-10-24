@@ -105,7 +105,7 @@ Here's a bit more detail about each of these:
 
    Most real world users of software don't work with a system such
    as the Python prompt.  In real software input values are usually provided
-   through a mobile app, a web form, a graphical user interface (GUI).
+   through a mobile app, a web form, or a graphical user interface (GUI).
 
    In old-school console apps, though, which is what intro students usually
    learn first, there are two ways of providing input.
@@ -412,7 +412,7 @@ ImportError: No module named convert
 
 If you see the second thing (the error message), it suggests that you ran `idle3` from some directory other than your `~/cs8/{{page.num}}` directory where your `convert.py` program is located.
 
-If you see the error, do this to get back on track (otherwise, just go on to th next step):
+If you see the error, do this to get back on track (otherwise, just go on to the next step):
 
 * Quit `idle3`
 * make sure that your `{{page.num}}.py` and your `convert.py` are both in your `~/cs8/{{page.num}}` folder
