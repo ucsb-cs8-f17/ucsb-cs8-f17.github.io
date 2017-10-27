@@ -116,9 +116,14 @@ Define a 'drawTree()' function as shown below
 def drawTree(height, color):
     
     ''' 
-    This function draws a tree of a given height that consists of a rectangular brown bark and a top comprised of three triangles of a given color stacked on top of each other.
-    The bottom left corner of the bark should be at current location of the turtle making no assumptions about the orientation of the turtle.
-    After drawing the tree the turtle should be returned to its original position and oriented at 0 degrees 
+    This function draws a tree of a given height that consists of a rectangular brown bark and
+    a top comprised of three triangles of a given color stacked on top of each other.
+    
+    The bottom left corner of the bark should be at current location of the turtle making no assumptions
+    about the orientation of the turtle.
+    
+    After drawing the tree the turtle should be returned to its original position and oriented at 0 degrees.
+    
     All other parameters such as the width of the tree and the length of the bark must be chosen so that the tree is well proportioned. 
     '''
 
@@ -214,7 +219,11 @@ The for loop runs the block of code inside it three times. Run it and you'll fin
 ## Step 6: Take a detour into random numbers
 
 In this step you will use the [python random module](https://docs.python.org/3/library/random.html) to add an artistic touch to your drawings.
-Although drawing all the trees in a straight line is a good first attempt at creating the forest, its not very realistic. So, your next goal is to place the trees at random locations that are roughly along a horizontal line. As a warm up try out the exercises below that demonstrate the use of the random module with the `drawTriangle()` function that you implemented earlier. 
+To use the random module, add this line of code beneath the other `import` statements at the top of your file:
+```
+import random
+```
+Although drawing all the trees in a straight line is a good first attempt at creating the forest, it's not very realistic. So, your next goal is to place the trees at random locations that are roughly along a horizontal line. As a warm up try out the exercises below that demonstrate the use of the random module with the `drawTriangle()` function that you implemented earlier. 
 
 
 Start by writing a simple for loop to draw triangles along a circle. This code does not involve randomization.
@@ -233,6 +242,7 @@ def regularPlay():
         y = radius*math.sin(i*10*math.pi/180)
         t.goto(x,y)
         t.down()
+        t.seth(0)
         drawTriangle(50, 50, "black", "red")
 
 regularPlay()
