@@ -285,6 +285,7 @@ def randomPlay():
         t.goto(x,y)
         t.down()
         color = random.choice(shadesOfGreen)
+        t.seth(0)
         drawTriangle(50, 50, "black", color)
 ``` 
 The output of the code is shown in the figure below. Try changing the limits to the random.randint() function and re-run the code, and observe the outcome. Notice how you can control the level of randomness in your drawings using this simple strategy.
