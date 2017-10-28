@@ -19,7 +19,7 @@ The goal of this project is to draw a forest scene from basic shape primitives t
 * using randomization to create variety and controlled chaos in your drawings
 * applying concepts learned in lab04 to create and use your own modules
 
-*pair programming is STRONGLY recommended for this project*
+*pair programming is recommended for this project, but not mandatory*
 
 What you'll be drawing
 ----------------------
