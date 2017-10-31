@@ -1,7 +1,7 @@
 ---
 layout: lab
 num: lab05
-ready: false
+ready: true
 desc: "Accumulator Pattern, more TDD practice"
 assigned: 2017-10-31 8:00:00.00-7
 due: 2017-11-07 17:00:00.00-8
