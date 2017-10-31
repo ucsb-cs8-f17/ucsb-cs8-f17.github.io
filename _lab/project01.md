@@ -159,7 +159,7 @@ def drawTree(height, color):
 ```
 def checkTreeHeight():
     t.up()
-    t.goto(0,-400)
+    t.goto(0,-200)
     t.down()
     drawRectangle(200, 200, 0 , "red","")
     t.seth(0)
