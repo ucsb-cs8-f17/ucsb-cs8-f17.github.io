@@ -1,6 +1,6 @@
 ---
-num: "Lecture 8"
-desc: "Conditionals if-else, iterating through lists and strings using for loops"
+num: "Lecture 9"
+desc: "Searching through lists, accumulator pattern, 2d-lists, for and while loops"
 ready: true
 date: 2017-10-30 12:30:00.00-7:00
 ---
@@ -13,17 +13,16 @@ date: 2017-10-30 12:30:00.00-7:00
 
 * [Guidelines for using peer instruction - thanks to Dan Zingaro](https://drive.google.com/file/d/0BxIvQwpl4ocoX2ZpUjJDZW52Wlk/view?usp=sharing)
 
-# Announcements:
-* Project01 has been released: [project01 writeup](/lab/project01/). Please start early
 
 
 # Topics
 
-* Looking ahead to this week: tips for project01
-* Boolean expressions (review)
-* Boolean operators: and, or, not
-* Conditional statements: if -else
-* iterating through lists and strings using for loops
+* Searching through lists
+* Accumulator pattern: sum, product
+* While loops
+* Syntax errors and exceptions
+* Mutable vs immutable
+* Nested for loops and 2d lists
 
 
 
