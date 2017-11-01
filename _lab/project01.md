@@ -141,10 +141,14 @@ In your` project01.py` define a 'drawTree()' function as shown below
 def drawTree(height, color):
     
     ''' 
-    This function draws a tree of a given height that consists of a rectangular brown bark and a top comprised of three triangles of a given color stacked on top of each other.
-    The bottom left corner of the bark (or the bottom left corner of the rectangle that the tree fits in), should be the current location of the turtle. Make no assumptions about the orientation of the turtle.
+    This function draws a tree of a given height that consists of a rectangular brown bark 
+    and a top comprised of three triangles of a given color stacked on top of each other.
+    The bottom left corner of the bark (or the bottom left corner of the rectangle that the tree fits in), 
+    should be the current location of the turtle. 
+    Make no assumptions about the orientation of the turtle.
     After drawing the tree the turtle should be returned to its original position and oriented at 0 degrees 
-    All other parameters such as the width of the tree and the length of the bark must be chosen so that the tree is well proportioned: a taller tree is wider and has a thicker and taller bark.
+    All other parameters such as the width of the tree and the length of the bark 
+    must be chosen so that the tree is well proportioned: a taller tree is wider and has a thicker and taller bark.
     '''
 
 ```
@@ -159,7 +163,7 @@ def drawTree(height, color):
 ```
 def checkTreeHeight():
     t.up()
-    t.goto(0,-400)
+    t.goto(0,-200)
     t.down()
     drawRectangle(200, 200, 0 , "red","")
     t.seth(0)
