@@ -2,7 +2,7 @@
 layout: lab
 num: project01-checkpoint
 ready: true
-desc: "Turtle Graphics: Scene from a forest"
+desc: "Project 01: Scene from a forest - Checkpoint"
 assigned: 2017-10-27 11:00:00.00-7
 due: 2017-11-02 17:00:00-07:00
 submit_cs_pnum: 865

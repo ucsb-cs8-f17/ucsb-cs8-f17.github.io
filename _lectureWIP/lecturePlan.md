@@ -18,9 +18,9 @@ date: 2017-08-08 09:30:00.00-7:00
 |         | W 10/18 |  Creating your own modules, interactive programs, command line arguments (needed for lab04), Mutable vs Immutable |
 |    04   | M 10/23 |  Midterm Review  |
 |         | W 10/25 | Midterm 1: Functions, Turtle, Python data types , pytest, Boolean expressions and conditional statements  |
-|    05   | M 10/30 |  Accumulator pattern and for loops, index vs value   (lab 5 and lab06)    |
-|         | W 11/01 | Using the random module, more on strings, while loops     |
-|    06   | M 11/06 |    Python Lists, local vs global and the call stack   (lab07) |
+|    05   | M 10/30 | Boolean expressions, logical and relational operators    |
+|         | W 11/01 |  Accumulator pattern and for loops, index vs value , while loops  (lab 5 and lab06)     |
+|    06   | M 11/06 |  Sequence loop patterns, Python Lists  2D lists, nested loops, errors and exceptions, local vs global and the call stack   (lab07) |
 |         | W 11/08 |    Python dictionaries   (lab07)  |
 |    07   | M 11/13 |     Midterm review    |
 |         | W 11/15 | Midterm 2         |

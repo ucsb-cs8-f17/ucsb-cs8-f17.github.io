@@ -1,6 +1,6 @@
 ---
 num: "Lecture 9"
-desc: "Searching through lists, accumulator pattern, 2d-lists, for and while loops"
+desc: "Searching through lists, accumulator pattern, for and while loops"
 ready: true
 date: 2017-11-01 12:30:00.00-7:00
 ---
@@ -22,7 +22,7 @@ date: 2017-11-01 12:30:00.00-7:00
 * While loops
 * Multiway if else statements
 * Mutable vs immutable
-* Nested for loops and 2d lists
+
 
 
 
