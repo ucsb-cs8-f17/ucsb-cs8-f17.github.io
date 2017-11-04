@@ -1,8 +1,8 @@
 ---
-num: "Lecture 9"
-desc: "More for loops: Searching through lists, accumulator pattern"
+num: "Lecture 10"
+desc: "More on accumulator pattern, while loops"
 ready: true
-date: 2017-11-01 12:30:00.00-7:00
+date: 2017-11-06 12:30:00.00-7:00
 ---
 
 # Resources from lecture
@@ -17,10 +17,11 @@ date: 2017-11-01 12:30:00.00-7:00
 
 # Topics
 
-* Iteration patterns: Loop iteration, counter iteration and when to use each
 * Searching through lists
 * Accumulator pattern: sum, product
-
+* While loops
+* Multiway if else statements
+* Mutable vs immutable
 
 
 
