@@ -1,6 +1,6 @@
 ---
 num: "Lecture 10"
-desc: "More on accumulator pattern, while loops"
+desc: "More on accumulator pattern, while loops, 2D lists and nested loops"
 ready: true
 date: 2017-11-06 12:30:00.00-7:00
 ---
@@ -17,12 +17,15 @@ date: 2017-11-06 12:30:00.00-7:00
 
 # Topics
 
-* Searching through lists
-* Accumulator pattern: sum, product
-* While loops
+* Loop patterns: iteration, counter, accumulator, sequence: Learn to implement each loop pattern and identify which pattern is the best match for a given problem
+
+* Accumulator pattern (more examples)
+* While loops and games
+* 2D lists and nested loops
+
+If time permits:
 * Multiway if else statements
 * Mutable vs immutable
-
 
 
 

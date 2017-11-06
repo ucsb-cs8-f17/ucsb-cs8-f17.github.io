@@ -19,12 +19,12 @@ date: 2017-08-08 09:30:00.00-7:00
 |    04   | M 10/23 |  Midterm Review  |
 |         | W 10/25 | Midterm 1: Functions, Turtle, Python data types , pytest, Boolean expressions and conditional statements  |
 |    05   | M 10/30 | Boolean expressions, logical and relational operators    |
-|         | W 11/01 |  Accumulator pattern and for loops, index vs value , while loops  (lab 5 and lab06)     |
-|    06   | M 11/06 |  Sequence loop patterns, Python Lists  2D lists, nested loops, errors and exceptions, local vs global and the call stack   (lab07) |
-|         | W 11/08 |    Python dictionaries   (lab07)  |
-|    07   | M 11/13 |     Midterm review    |
+|         | W 11/01 |  Accumulator pattern and for loops, index vs value  (lab 5 and lab06)     |
+|    06   | M 11/06 |  Sequence loop patterns, Python 2D lists, nested loops, errors and exceptions, while loops  (lab07) |
+|         | W 11/08 |    Reading and writing to files   (move h7 out to later )|
+|    07   | M 11/13 |     Midterm review : local vs global and the call stack , tracing functions, index vs value   |
 |         | W 11/15 | Midterm 2         |
-|    08   | M 11/20 |   Reading and writing to files      |
+|    08   | M 11/20 |    Python dictionaries   (lab07)    |
 |         | W 11/22 |   Number conversions and unix file permissions      |
 |    09   | M 11/27 |   Recursion  (lab08)    |
 |         | W 11/29 |   More recursion  (lab08)   |
