@@ -91,21 +91,21 @@ So, how did our program know which letter combinations were valid words?......We
 
 4. scrabbleWords(myLetters) - NO return (just prints a formatted list and writes to file).  Here you will call upon your "helper functions" created in steps 1-3 to form a list of all the words (from wordlist.txt) that can be formed from the set of letters contained in myLetters. 
 
-* Create a Python list of words from wordlist.txt and name it wordList.  You will want to call helper function createWordList.
+* Create a Python list of words from wordlist.txt and name it `wordList`.  You will want to call helper function `createWordList`.
 
-* Create a list of all the words that we can make with myLetters by looping through every word in wordList and checking if it can be made with myLetters - name this list myWords.  You will want to call helper function canWeMakeIt.
+* Create a list of all the words that we can make with `myLetters` by looping through every word in `wordList` and checking if it can be made with `myLetters` - name this list `myWords`.  You will want to call helper function `canWeMakeIt`.
 
-* Create a dictionary of letter:pointValue pairs - name it letterPoints.  The image below shows the Scrabble point value for each letter, but note that your dictionary keys should be the lower case letters.
+* Create a dictionary of letter:pointValue pairs - name it `letterPoints`.  The image below shows the Scrabble point value for each letter, but note that your dictionary keys should be the lower case letters.
 
 ![letter points](scrabble_letters.png){:height="200px"}
 
-* Create a list of tuples consisting of (pointValue, word) pairs by looping through the list myWords and getting the point value for each word - name this list of tuples pointWordList.  To calculate pointValue, you will want to call helper function getWordPoints.
+* Create a list of tuples consisting of (pointValue, word) pairs by looping through the list `myWords` and getting the point value for each word - name this list of tuples `pointWordList`.  To calculate pointValue, you will want to call helper function `getWordPoints`.
 
-* Sort pointWordList in descending order.  Now, you can use the list method sort() to sort the tuples according to their first entry, pointValue.  But sort() arranges a list in ascending order by default....can you think of a way to reverse this?
+* Sort `pointWordList` in descending order.  Now, you can use the list method sort() to sort the tuples according to their first entry, pointValue.  But sort() arranges a list in ascending order by default....can you think of a way to reverse this?
 
-* Print all the words followed by their point value.  Format the output so that your word is left justified in a field of width 4 more than the number of letters in myLetters, and the point value follows immediately afterwards.  You can do this with the format string method by carefully forming the '{...}' string first.  Hint: Use string concatenation with str(len(myLetters) + 4).
+* Print all the words followed by their point value.  Format the output so that your word is left justified in a field of width 4 more than the number of letters in `myLetters`, and the point value follows immediately afterwards.  You can do this with the format string method by carefully forming the '{...}' string first.  Hint: Use string concatenation with str(len(myLetters) + 4).
 
-* Write the same text as your formatted screen output from Part 5 to a text file.  Name the file the string of letters contained in myLetters followed by .txt.  So in my example where I call scrabbleWords('buoni'), the file that is created is buoni.txt.  Note that every time you want to write to a new line, you will need to include the newline character '\n' in your file.write() statement.  You can see what the output should look like in the example here: buoni.txt.  Do not download this file, but simply verify that when you run your program you produce this same file.
+* Write the same text as your formatted screen output from Part 5 to a text file.  Name the file the string of letters contained in `myLetters` followed by .txt.  So in my example where I call scrabbleWords('buoni'), the file that is created is buoni.txt.  Note that every time you want to write to a new line, you will need to include the newline character '\n' in your file.write() statement.  You can see what the output should look like in the example here: buoni.txt.  Do not download this file, but simply verify that when you run your program you produce this same file.
 
  
 
