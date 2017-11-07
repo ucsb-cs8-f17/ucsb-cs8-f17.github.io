@@ -200,8 +200,8 @@ A+ grades: These may be awarded to the very best performing students in the clas
 | Midterm (2)                                                                    | 20 %                      |
 | Lab Exams  (2)                                                                 | 20 %| 
 | Final                                                                        | 30 %                      |
-| Labs (typically closed source, some open source), Hwks, In Class Assignments | 30 %                      |
-
+| Labs (typically closed source, some open source), Hwks, In Class Assignments | 28 %                      |
+| Labs (typically closed source, some open source), Hwks, In Class Assignments | 2 %  
 
 
 <div style="page-break-before:always;">
