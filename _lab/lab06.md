@@ -1,14 +1,19 @@
 ---
 layout: lab
 num: lab06
-ready: false
+ready: true
 desc: "min/max, index vs. value"
 assigned: 2017-11-07 8:00:00.00-7
 due: 2017-11-09 17:00:00.00-8
 submit_cs_pnum: 830
 ---
 
-To do: Add a new bit for students to submit test cases
+## Mid-quarter evaluations (10 points)
+
+Please complete this anonymous evaluation during your lab section on the lab computers.
+[Evaluation form](https://goo.gl/forms/Sq20AbSNdGfvb3bO2)
+
+The form will take 10 minutes of your time. You must show the final screen of the form to a TA/tutor to get credit for filling the form
 
 ## You may pair or work alone on this lab.
 
