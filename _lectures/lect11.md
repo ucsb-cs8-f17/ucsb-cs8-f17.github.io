@@ -20,7 +20,7 @@ date: 2017-11-06 12:30:00.00-7:00
 * Reading and writing to files
 * Processing information in text files
 
-
+And don't forget to always look on [the Bright Side of Life](https://www.youtube.com/watch?v=X_-q9xeOgG4)
 
 
 
