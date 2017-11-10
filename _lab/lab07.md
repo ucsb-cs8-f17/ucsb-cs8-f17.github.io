@@ -35,7 +35,7 @@ This is done following the steps you have performed in lab00.
 * Step 2: Create a directory in your cs8 directory named {{page.num}}. 
 * Step 3: Start IDLE
 
-The terminal command for this is idle3.  When you have the IDLE window up, you are ready for some programming! 
+The terminal command for this is "idle3 &".  When you have the IDLE window up, you are ready for some programming! 
 
  
 ## What to program?
@@ -68,38 +68,38 @@ So, how did our program know which letter combinations were valid words?......We
 
 ### Functions to Implement:
 
-1. createWordList(filename) - return L
-2. canWeMakeIt(myWord, myLetters) - return True or False
-3. getWordPoints(myWord, letterPoints) - return points
-4. scrabbleWords(myLetters) - NO return (just prints a formatted list and writes to file)
+1. **createWordList(filename)** - return L
+2. **canWeMakeIt(myWord, myLetters)** - return True or False
+3. **getWordPoints(myWord, letterPoints)** - return points
+4. **scrabbleWords(myLetters)** - NO return (just prints a formatted list and writes to file)
 
  
 
 ### Function Details:
 
-1. createWordList(filename) - return L.  Write a function which reads the file filename and returns a list L containing all the words in the file.  Note that the last character of every line of the file is the invisible "new line" character '\n' and needs to be sliced off.
+1. **createWordList(filename)** - return L.  Write a function which reads the file `filename` and returns a list `L` containing all the words in the file.  Note that the last character of every line of the file is the invisible "new line" character '\n' and needs to be sliced off. 
 
  
 
-2. canWeMakeIt(myWord, myLetters) - return True or False.  Write a function which answers the question: Can I form the word myWord from the string of letters myLetters?  The function should return a boolean True or False.  Converting myLetters to a list and using the pop() or remove() method may come in handy.
+2. **canWeMakeIt(myWord, myLetters)** - return True or False.  Write a function which answers the question: Can I form the word `myWord` from the string of letters `myLetters`?  The function should return a boolean True or False.  Converting `myLetters` to a list and using the pop() or remove() method may come in handy. You do not need to use all the letters in `myLetters`. Try to write an algorithm on paper first before attempting to write the code. Think about the list functions at your disposal and the tools you've learned up till now.
 
  
 
-3. getWordPoints(myWord, letterPoints) - return points.  Write a function that calculates and returns the total point value of myWord given the Python dictionary object letterPoints which consists of letter:pointValue pairs.  Note that you do not need to create the letterPoints dictionary in this step - it is a parameter to our function and will be created in part 4.
+3. **getWordPoints(myWord, letterPoints)** - return points.  Write a function that calculates and returns the total point value of `myWord` given the Python dictionary object `letterPoints` which consists of letter:pointValue pairs.  Note that you do not need to create the `letterPoints` dictionary in this step - it is a parameter to our function and will be created in part 4.
 
- 
+### Puting it all together: 
 
-4. scrabbleWords(myLetters) - NO return (just prints a formatted list and writes to file).  Here you will call upon your "helper functions" created in steps 1-3 to form a list of all the words (from wordlist.txt) that can be formed from the set of letters contained in myLetters. 
+**scrabbleWords(myLetters)** - NO return (just prints a formatted list and writes to file).  Here you will call upon your "helper functions" created in steps 1-3 to form a list of all the words (from wordlist.txt) that can be formed from the set of letters contained in myLetters. 
 
-* Create a Python list of words from wordlist.txt and name it `wordList`.  You will want to call helper function `createWordList`.
+* Create a Python list of words from wordlist.txt and name it `wordList`.  You will want to call helper function `createWordList()`.
 
-* Create a list of all the words that we can make with `myLetters` by looping through every word in `wordList` and checking if it can be made with `myLetters` - name this list `myWords`.  You will want to call helper function `canWeMakeIt`.
+* Create a list of all the words that we can make with `myLetters` by looping through every word in `wordList` and checking if it can be made with `myLetters` - name this list `myWords`.  You will want to call helper function `canWeMakeIt()`.
 
-* Create a dictionary of letter:pointValue pairs - name it `letterPoints`.  The image below shows the Scrabble point value for each letter, but note that your dictionary keys should be the lower case letters.
+* Create a dictionary of letter:pointValue pairs - name it `letterPoints`.  The image below shows the Scrabble point value for each letter, but note that your dictionary keys should be the lower case letters. You should also add the apostrophe since some of the words in the text contain it. Give it a value of 0. 
 
 ![letter points](scrabble_letters.png){:height="200px"}
 
-* Create a list of tuples consisting of (pointValue, word) pairs by looping through the list `myWords` and getting the point value for each word - name this list of tuples `pointWordList`.  To calculate pointValue, you will want to call helper function `getWordPoints`.
+* Create a list of tuples consisting of (pointValue, word) pairs by looping through the list `myWords` and getting the point value for each word - name this list of tuples `pointWordList`.  To calculate pointValue, you will want to call helper function `getWordPoints()`.
 
 * Sort `pointWordList` in descending order.  Now, you can use the list method sort() to sort the tuples according to their first entry, pointValue.  But sort() arranges a list in ascending order by default....can you think of a way to reverse this?
 
