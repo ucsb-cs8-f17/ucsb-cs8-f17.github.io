@@ -81,21 +81,26 @@ So, how did our program know which letter combinations were valid words?......We
 
  
 
-2. **canWeMakeIt(myWord, myLetters)** - return True or False.  Write a function which answers the question: Can I form the word `myWord` from the string of letters `myLetters`?  The function should return a boolean True or False.  Converting `myLetters` to a list and using the pop() or remove() method may come in handy. You do not need to use all the letters in `myLetters`. Try to write an algorithm on paper first before attempting to write the code. Think about the list functions at your disposal and the tools you've learned up till now.
-
+2. **canWeMakeIt(myWord, myLetters)** - return True or False.  Write a function which answers the question: Can I form the word `myWord` from the string of letters `myLetters`?  The function should return a boolean True or False.  Converting `myLetters` to a list and using the pop() or remove() method may come in handy. You do not need to use all the letters in `myLetters`. It's possible that `myLetters` will contain multiples of the same letters. In the example above if myLetters = "buoni"  and myWord="boon" it should return False. Try to write an algorithm on paper first before attempting to write the code. Think about the list functions at your disposal and the tools you've learned up till now.
  
 
-3. **getWordPoints(myWord, letterPoints)** - return points.  Write a function that calculates and returns the total point value of `myWord` given the Python dictionary object `letterPoints` which consists of letter:pointValue pairs.  Note that you do not need to create the `letterPoints` dictionary in this step - it is a parameter to our function and will be created in part 4.
+3. **getWordPoints(myWord, letterPoints)** - return points.  Write a function that calculates and returns the total point value of `myWord` given the Python dictionary object `letterPoints` which consists of letter:pointValue pairs.  Note that you do not need to create the `letterPoints` dictionary in this step - it is a parameter to our function and will be created in `scrabbleWords()`.
+
+4. **outputWordPointPairs(pointWordList, myLetters, toFile)** - NO return (just prints a formatted list or writes it to file).
+
+* When `toFile` is ```False```,  print all the words followed by their point value.  Format the output so that your word is left justified in a field of width 4 more than the number of letters in `myLetters`, and the point value follows immediately afterwards.  You can do this with the format string method by carefully forming the '{...}' string first.  Hint: Use string concatenation with str(len(myLetters) + 4).
+
+* If `toFile` is ```True```, write the same text as your formatted screen output from above to a text file.  Name the file the string of letters contained in `myLetters` followed by .txt.  So in the example above with scrabbleWords("buoni"), the file that is created is buoni.txt.  Note that every time you want to write to a new line, you will need to include the newline character '\n' in your file.write() statement.  You can see what the output should look like in the example here: buoni.txt.  Do not download this file, but simply verify that when you run your program you produce this same file.
 
 ### Puting it all together: 
 
-**scrabbleWords(myLetters)** - NO return (just prints a formatted list and writes to file).  Here you will call upon your "helper functions" created in steps 1-3 to form a list of all the words (from wordlist.txt) that can be formed from the set of letters contained in myLetters. 
+**scrabbleWords(myLetters)** - NO return (just prints a formatted list and writes to file).  Here you will call upon your "helper functions" created in steps 1-4 to form a list of all the words (from wordlist.txt) that can be formed from the set of letters contained in myLetters. 
 
 * Create a Python list of words from wordlist.txt and name it `wordList`.  You will want to call helper function `createWordList()`.
 
 * Create a list of all the words that we can make with `myLetters` by looping through every word in `wordList` and checking if it can be made with `myLetters` - name this list `myWords`.  You will want to call helper function `canWeMakeIt()`.
 
-* Create a dictionary of letter:pointValue pairs - name it `letterPoints`.  The image below shows the Scrabble point value for each letter, but note that your dictionary keys should be the lower case letters. You should also add the apostrophe since some of the words in the text contain it. Give it a value of 0. 
+* Create a dictionary of letter:pointValue pairs - name it `letterPoints`.  The image below shows the Scrabble point value for each letter, but note that your dictionary keys should be the lower case letters. You should  add the **apostrophe symbol (`'`)** since some of the words in the text contain it. **Give it a value of 0.**
 
 ![letter points](scrabble_letters.png){:height="200px"}
 
@@ -103,13 +108,66 @@ So, how did our program know which letter combinations were valid words?......We
 
 * Sort `pointWordList` in descending order.  Now, you can use the list method sort() to sort the tuples according to their first entry, pointValue.  But sort() arranges a list in ascending order by default....can you think of a way to reverse this?
 
-* Print all the words followed by their point value.  Format the output so that your word is left justified in a field of width 4 more than the number of letters in `myLetters`, and the point value follows immediately afterwards.  You can do this with the format string method by carefully forming the '{...}' string first.  Hint: Use string concatenation with str(len(myLetters) + 4).
+* Call your `outputWordPointPairs()` to output to print your formatted string output to terminal. And then make a second call to `outputWordPointPairs()` to output to a .txt file named after the string in `myLetters`. 
 
-* Write the same text as your formatted screen output from Part 5 to a text file.  Name the file the string of letters contained in `myLetters` followed by .txt.  So in my example where I call scrabbleWords('buoni'), the file that is created is buoni.txt.  Note that every time you want to write to a new line, you will need to include the newline character '\n' in your file.write() statement.  You can see what the output should look like in the example here: buoni.txt.  Do not download this file, but simply verify that when you run your program you produce this same file.
 
- 
+### What lab07.py should look like
 
-\(^_^)/, you're finished!  Now have fun and experiment with the word finder ;-).
+```
+#!/usr/bin/env python3
+
+import sys
+"other import statements"
+
+def createWordList(filename)
+
+def canWeMakeIt(myWord, myLetters)
+
+def getWordPoints(myWord, letterPoints)
+
+def outputWordPointPairs(pointWordList, myLetters, toFile)
+
+def scrabbleWords(myLetters)
+
+if __name__=="__main__":
+  if len(sys.argv) >= 2:
+	scrabbleWords(sys.argv[1])
+  else:
+    print("Invalid input please try again")
+
+```
+
+# Running the final product
+
+Just like in lab04, in order to run the program from the terminal you need to include the shebang as the very first line of the file. 
+
+```
+#!/usr/bin/env python3
+```
+
+After doing so, make lab07.py an executable by typing the following into the terminal.
+
+```
+chmod u+x lab07.py
+```
+
+Now you can run the program from terminal by typing or other similar commands:
+
+```
+./lab07.py buoni 
+```
+
+Make sure you have this main function at the bottom of the file for this to work.
+
+```
+if __name__=="__main__":
+  if len(sys.argv) >= 2:
+	scrabbleWords(sys.argv[1])
+  else:
+    print("Invalid input please try again")
+```
+
+you're finished!  Now have fun and experiment with the word finder ;-).
 
 # Submission
 
