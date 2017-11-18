@@ -71,7 +71,8 @@ So, how did our program know which letter combinations were valid words?......We
 1. **createWordList(filename)** - return L
 2. **canWeMakeIt(myWord, myLetters)** - return True or False
 3. **getWordPoints(myWord, letterPoints)** - return points
-4. **scrabbleWords(myLetters)** - NO return (just prints a formatted list and writes to file)
+4. **outputWordPointPairs(pointWordList, myLetters, toFile)** - NO return (just prints a formatted list or writes it to file).
+5. **scrabbleWords(myLetters)** - NO return (just calls other functions)
 
  
 
@@ -94,7 +95,7 @@ So, how did our program know which letter combinations were valid words?......We
 
 ### Puting it all together: 
 
-**scrabbleWords(myLetters)** - NO return (just prints a formatted list and writes to file).  Here you will call upon your "helper functions" created in steps 1-4 to form a list of all the words (from wordlist.txt) that can be formed from the set of letters contained in myLetters. 
+**scrabbleWords(myLetters)** - NO return (just calls the helper functions above).  Here you will call upon your "helper functions" created in steps 1-4 to form a list of all the words (from wordlist.txt) that can be formed from the set of letters contained in myLetters. 
 
 * Create a Python list of words from wordlist.txt and name it `wordList`.  You will want to call helper function `createWordList()`.
 
