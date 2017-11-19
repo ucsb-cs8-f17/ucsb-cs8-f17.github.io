@@ -1,8 +1,8 @@
 ---
-num: "Lecture 11"
-desc: "Working data and files"
+num: "Lecture 12"
+desc: "Dictionaries and formatted strings"
 ready: true
-date: 2017-11-06 12:30:00.00-7:00
+date: 2017-11-20 12:30:00.00-7:00
 ---
 
 # Resources from lecture
@@ -16,7 +16,9 @@ date: 2017-11-06 12:30:00.00-7:00
 
 
 # Topics
-* Reading and writing to files
-* Processing information in text files
 
-And don't forget to always look on [the Bright Side of Life](https://www.youtube.com/watch?v=X_-q9xeOgG4)
+* Python Dictionaries
+* Practice: Reading from input files and creating different data structures in programs (lists, dictionaries and so on)
+* String formatting
+* Running Python programs on the command prompt: the shebang and sys.argv
+* Overview of lab07

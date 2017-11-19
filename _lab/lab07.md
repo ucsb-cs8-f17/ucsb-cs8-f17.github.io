@@ -109,7 +109,10 @@ So, how did our program know which letter combinations were valid words?......We
 
 * Call your `outputWordPointPairs()` to output to print your formatted string output to terminal. And then make a second call to `outputWordPointPairs()` to output to a .txt file named after the string in `myLetters`.
 
-To demonstrate what each function is supposed to do write test code for each using pytest before you start coding up the functions. The submit system will only give you a partial score (similar to lab exam 01. We will show the outcome of some of the instructor test cases but not all!)
+## Write test code in lab07_student_tests.py
+We **strongly** recommend that you write test code using pytest for each of the above functions along with the implementation of that function. This is a way of demonstrating that you understand what each function is supposed to do. Put your test code in lab07_student_test.py and submit it along with your lab07.py
+
+Note that the submit system will only give you a partial score (similar to lab exam 01). We will show the outcome of some of the instructor test cases but not all!
 
 ### What lab07.py should look like
 
@@ -134,8 +137,6 @@ def outputWordPointPairs(pointWordList, myLetters, toFile):
 def scrabbleWords(myLetters):
   #Your code
 
-### Test code for each of the above functions
-
 if __name__=="__main__":
   if len(sys.argv) >= 2:
 	scrabbleWords(sys.argv[1])
@@ -143,6 +144,31 @@ if __name__=="__main__":
     print("Invalid input please try again")
 
 ```
+### What lab07_student_tests.py should look like
+
+```
+from lab07 import createWordList
+
+def test_createWordList_0():
+  #Your test code
+
+
+def test_createWordList_1():
+....
+
+
+from lab07 import canWeMakeIt
+
+def test_canWeMakeIt_0():
+  assert(canWeMakeIt('ape',['p', 'a', 'e']) == True)
+
+def test_canWeMakeIt_1():
+  assert(canWeMakeIt('ape',['p', 'a', 'e', 'l']) == True)
+
+...
+
+```
+
 
 # Running the final product
 
@@ -169,7 +195,7 @@ Make sure you have this main function at the bottom of the file for this to work
 ```
 if __name__=="__main__":
   if len(sys.argv) >= 2:
-	scrabbleWords(sys.argv[1])
+	  scrabbleWords(sys.argv[1])
   else:
     print("Invalid input please try again")
 ```
@@ -188,7 +214,7 @@ Navigate to that page, and upload your `{{page.num}}.py` file.
 
 If you are working on the ECI/CSIL/lab linux systems, you can also submit at the command line with this command:
 
-<tt>~submit/submit -p {{page.submit_cs_pnum}} ~/cs8/{{page.num}}/{{page.num}}.py</tt>
+<tt>~submit/submit -p {{page.submit_cs_pnum}} ~/cs8/{{page.num}}/{{page.num}}.py lab07_student_tests.py</tt>
 
 Notes on using the command line version of submit:
 
@@ -196,6 +222,6 @@ Notes on using the command line version of submit:
 
 * The first time you use the `~submit/submit ...` command (or every time if you choose not to save your credentials) you will be asked for your email address: use your full umail address (e.g. `cgaucho@umail.ucsb.edu`).  For password, use the password that you enter for the submit.cs system.    You may save these credentials if you don't want to have to type them in every time.
 
-* Note that if you try to upload a file with a name that does not match EXACTLY the name `{{page.num}}.py`, the system will not allow you to do it.   Once you upload it, you should get a page that shows your submission is pending.  Refresh that page, and you should get one that indicates with either red, or green, whether the test cases for your code passed or failed.
+* Note that if you try to upload files with names that do not match EXACTLY the names `{{page.num}}.py` and `lab07_student_tests.py` the system will not allow you to do it.   Once you upload it, you should get a page that shows your submission is pending.  Refresh that page, and you should get one that indicates with either red, or green, whether the test cases for your code passed or failed.
 
 Thanks to Matt Buoni for this lab!
