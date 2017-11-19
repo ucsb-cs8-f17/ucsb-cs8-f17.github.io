@@ -99,7 +99,7 @@ So, how did our program know which letter combinations were valid words?......We
 
 * Create a list of all the words that we can make with `myLetters` by looping through every word in `wordList` and checking if it can be made with `myLetters` - name this list `myWords`.  You will want to call helper function `canWeMakeIt()`.
 
-* Create a dictionary of letter: pointValue pairs - name it `letterPoints`.  The image below shows the Scrabble point value for each letter, but note that your dictionary keys should be the lower case letters. Any character that is not shown in this image has a point value of 0. You don't have to add 0 point keys to your dictionary, rather make sure that your `getWordPoints` uses a point value of 0 if a letter is not in the provided dictionary.  
+* Create a dictionary of letter: pointValue pairs - name it `letterPoints`.  The image below shows the Scrabble point value for each letter, but note that your dictionary keys should be the lower case letters. Any character that is not shown in this image has a point value of 0. You don't have to add 0 point keys to your dictionary, rather make sure that your `getWordPoints` uses a point value of 0 if a letter is not in the provided dictionary.
 ![letter points](scrabble_letters.png){:height="200px"}
 
 * Create a list of tuples consisting of (pointValue, word) pairs by looping through the list `myWords` and getting the point value for each word - name this list of tuples `pointWordList`.  To calculate pointValue, you will want to call helper function `getWordPoints()`.
@@ -109,7 +109,15 @@ So, how did our program know which letter combinations were valid words?......We
 * Call your `outputWordPointPairs()` to output to print your formatted string output to terminal. And then make a second call to `outputWordPointPairs()` to output to a .txt file named after the string in `myLetters`.
 
 ## Write test code in lab07_student_tests.py
-We **strongly** recommend that you write test code using pytest for each of the above functions along with the implementation of that function. This is a way of demonstrating that you understand what each function is supposed to do. Put your test code in lab07_student_test.py and submit it along with your lab07.py
+You must write test code using pytest for the following functions: * * `createWordList(filename)`
+* `canWeMakeIt(myWord, myLetters)`
+* `getWordPoints(myWord, letterPoints)`
+
+Write the test code before you implement the functions. This is a way of demonstrating that you understand what each function is supposed to do.
+
+You should test the other two functions manually, although you are welcome to write test code for them as well.
+
+Put your test code in lab07_student_test.py and submit it along with your lab07.py
 
 Note that the submit system will only give you a partial score (similar to lab exam 01). We will show the outcome of some of the instructor test cases but not all!
 
@@ -146,6 +154,8 @@ if __name__=="__main__":
 ### What lab07_student_tests.py should look like
 
 ```
+#!/usr/bin/env python3
+import pytest
 from lab07 import createWordList
 
 def test_createWordList_0():
@@ -159,13 +169,22 @@ def test_createWordList_1():
 from lab07 import canWeMakeIt
 
 def test_canWeMakeIt_0():
-  assert(canWeMakeIt('ape',['p', 'a', 'e']) == True)
+  assert(canWeMakeIt('ape','pae') == True)
 
 def test_canWeMakeIt_1():
-  assert(canWeMakeIt('ape',['p', 'a', 'e', 'l']) == True)
-
+  assert(canWeMakeIt('ape','paels') == True)
+  
 ...
+from lab07 import getWordPoints
+letterPoints = {'a':1, 'b':3, 'c':3, 'd':2, 'e':1, 'f':4,\
+                'g':2, 'h':4, 'i':1, 'j':8, 'k':5, 'l':1,\
+                'm':3, 'n':1, 'o':1, 'p':3, 'q':10, 'r':1,\
+                's':1, 't':1, 'u':1, 'v':4,  'w':4, 'x':8,\
+                'y':4, 'z':10}
 
+def test_getWordPoints_0():
+  assert(getWordPoints('ape',letterPoints) == 5)
+...
 ```
 
 
