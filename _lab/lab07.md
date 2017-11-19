@@ -63,6 +63,7 @@ i        1
 
 So, how did our program know which letter combinations were valid words?......We have to specify a file of words, which you can find here: [wordlist.txt](wordlist.txt){:data-ajax="false"} .  This file must be downloaded (right click and "save as") and put into your {{page.num}} directory before you begin, so do that now.  Note that this file contains a fairly complete list of English words, so beware that there may be some expletive and/or raunchy words - please don't hold me personally responsible if you are offended.  Perhaps this will be motivation for some of you to complete the assignment.  
 
+You can choose to start from scratch or use the starter code we have provided here: <https://github.com/ucsb-cs8-f17/lab07-starter-code.git>
 
 
 ### Functions to Implement:
@@ -83,11 +84,13 @@ So, how did our program know which letter combinations were valid words?......We
 2. **canWeMakeIt(myWord, myLetters)** - return True or False.  Write a function which answers the question: Can I form the word `myWord` from the string of letters `myLetters`?  The function should return a boolean True or False.  Converting `myLetters` to a list and using the pop() or remove() method may come in handy. You do not need to use all the letters in `myLetters`. It's possible that `myLetters` will contain multiples of the same letters. In the example above if myLetters = "buoni"  and myWord="boon" it should return False. Try to write an algorithm on paper first before attempting to write the code. Think about the list functions at your disposal and the tools you've learned up till now.
 
 
-3. **getWordPoints(myWord, letterPoints)** - return points.  Write a function that calculates and returns the total point value of `myWord` given the Python dictionary object `letterPoints` which consists of letter:pointValue pairs. If a character in `myWord` is not a key in teh provided dictionary then its score value is 0. Note that you do not need to create the `letterPoints` dictionary in this step - it is a parameter to our function and will be created in `scrabbleWords()`.
+3. **getWordPoints(myWord, letterPoints)** - return points.  Write a function that calculates and returns the total point value of `myWord` given the Python dictionary object `letterPoints` which consists of letter:pointValue pairs. If a character in `myWord` is not a key in the provided dictionary then its score value is 0. Note that you do not need to create the `letterPoints` dictionary in this step - it is a parameter to our function and will be created in `scrabbleWords()`.
 
 4. **outputWordPointPairs(pointWordList, myLetters, toFile)** - NO return (just prints a formatted list or writes it to file).
 
-* When `toFile` is ```False```,  print all the words followed by their point value.  Format the output so that your word is left justified in a field of width 4 more than the number of letters in `myLetters`, and the point value follows immediately afterwards.  You can do this with the format string method by carefully forming the '{...}' string first.  Hint: Use string concatenation with str(len(myLetters) + 4).
+* Write a function which will output the (pointValue, word) pairs in pointWordList to the shell or to a file depending on the bool value `toFile`
+
+* When `toFile` is ```False```,  print all the words followed by their point value.  Format the output so that your word is left justified in a field of width 4 more than the number of letters in `myLetters`, and the point value follows immediately afterwards.  You can do this with the format string method by carefully forming the '{...}' string first.  Hint: Use string concatenation with `str(len(myLetters) + 4)`.
 
 * If `toFile` is ```True```, write the same text as your formatted screen output from above to a text file.  Name the file the string of letters contained in `myLetters` followed by .txt.  So in the example above with scrabbleWords("buoni"), the file that is created is buoni.txt.  Note that every time you want to write to a new line, you will need to include the newline character '\n' in your file.write() statement.  You can see what the output should look like in the example here: [buoni.txt](buoni.txt){:data-ajax="false"} .  Do not download this file, but simply verify that when you run your program you produce this same file.
 
@@ -109,6 +112,7 @@ So, how did our program know which letter combinations were valid words?......We
 * Call your `outputWordPointPairs()` to output to print your formatted string output to terminal. And then make a second call to `outputWordPointPairs()` to output to a .txt file named after the string in `myLetters`.
 
 ## Write test code in lab07_student_tests.py
+
 You must write test code using pytest for the following functions: * * `createWordList(filename)`
 * `canWeMakeIt(myWord, myLetters)`
 * `getWordPoints(myWord, letterPoints)`
@@ -118,6 +122,7 @@ Write the test code before you implement the functions. This is a way of demonst
 You should test the other two functions manually, although you are welcome to write test code for them as well.
 
 Put your test code in lab07_student_test.py and submit it along with your lab07.py
+This test code is worth some amount of points for this lab. We recommend writing at least 3-5 test cases per function, but feel free to write more until you're confident with your solution.
 
 Note that the submit system will only give you a partial score (similar to lab exam 01). We will show the outcome of some of the instructor test cases but not all!
 
@@ -173,7 +178,7 @@ def test_canWeMakeIt_0():
 
 def test_canWeMakeIt_1():
   assert(canWeMakeIt('ape','paels') == True)
-  
+
 ...
 from lab07 import getWordPoints
 letterPoints = {'a':1, 'b':3, 'c':3, 'd':2, 'e':1, 'f':4,\
