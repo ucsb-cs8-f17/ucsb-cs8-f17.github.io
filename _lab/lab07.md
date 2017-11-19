@@ -176,9 +176,6 @@ from lab07 import canWeMakeIt
 def test_canWeMakeIt_0():
   assert(canWeMakeIt('ape','pae') == True)
 
-def test_canWeMakeIt_1():
-  assert(canWeMakeIt('ape','paels') == True)
-
 ...
 from lab07 import getWordPoints
 letterPoints = {'a':1, 'b':3, 'c':3, 'd':2, 'e':1, 'f':4,\
