@@ -109,7 +109,7 @@ So, how did our program know which letter combinations were valid words?......We
 
 * Call your `outputWordPointPairs()` to output to print your formatted string output to terminal. And then make a second call to `outputWordPointPairs()` to output to a .txt file named after the string in `myLetters`.
 
-Note that you must test each of the above functions using pytest. The submit system will only give you a partial score (similar to lab exam 01. We will show the outcome of some of the instructor test cases but not all!)
+To demonstrate what each function is supposed to do write test code for each using pytest before you start coding up the functions. The submit system will only give you a partial score (similar to lab exam 01. We will show the outcome of some of the instructor test cases but not all!)
 
 ### What lab07.py should look like
 
