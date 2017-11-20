@@ -1,6 +1,6 @@
 ---
-num: "Lecture 12"
-desc: "Midterm 2 review"
+num: "Lecture 13"
+desc: "Dictionaries and formatted strings"
 ready: true
 date: 2017-11-20 12:30:00.00-7:00
 ---
@@ -17,4 +17,9 @@ date: 2017-11-20 12:30:00.00-7:00
 
 # Topics
 
-* In class exercises: [ic03](/hwk/ic03/) [ic04](/hwk/ic04/)
+* Python Dictionaries
+* Practice: Reading from input files and creating different data structures in programs (lists, dictionaries and tuples)
+* Learn additional list methods - sort, and how to use the method to sort in descending order
+* String formatting
+* Running Python programs on the command prompt: the shebang and sys.argv
+* Overview of lab07

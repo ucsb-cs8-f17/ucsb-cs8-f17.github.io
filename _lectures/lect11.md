@@ -2,7 +2,7 @@
 num: "Lecture 11"
 desc: "Working data and files"
 ready: true
-date: 2017-11-06 12:30:00.00-7:00
+date: 2017-11-08 12:30:00.00-7:00
 ---
 
 # Resources from lecture
