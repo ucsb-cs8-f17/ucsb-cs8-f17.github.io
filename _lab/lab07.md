@@ -228,7 +228,7 @@ you're finished!  Now have fun and experiment with the word finder ;-).
 
 The page for submitting {{page.num}} is here: <https://submit.cs.ucsb.edu/form/project/{{page.submit_cs_pnum}}/submission>
 
-Navigate to that page, and upload your `{{page.num}}.py` file.
+Navigate to that page, and upload your `{{page.num}}.py` and `lab07_student_tests.py` files.
 
 # Submission from CSIL command line
 
