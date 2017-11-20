@@ -18,7 +18,7 @@ date: 2017-11-20 12:30:00.00-7:00
 # Topics
 
 * Python Dictionaries
-* Practice: Reading from input files and creating different data structures in programs (lists, dictionaries and so on)
+* Practice: Reading from input files and creating different data structures in programs (lists, dictionaries and tuples)
 * String formatting
 * Running Python programs on the command prompt: the shebang and sys.argv
 * Overview of lab07
