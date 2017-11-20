@@ -103,6 +103,7 @@ You can choose to start from scratch or use the starter code we have provided he
 * Create a list of all the words that we can make with `myLetters` by looping through every word in `wordList` and checking if it can be made with `myLetters` - name this list `myWords`.  You will want to call helper function `canWeMakeIt()`.
 
 * Create a dictionary of letter: pointValue pairs - name it `letterPoints`.  The image below shows the Scrabble point value for each letter, but note that your dictionary keys should be the lower case letters. Any character that is not shown in this image has a point value of 0. You don't have to add 0 point keys to your dictionary, rather make sure that your `getWordPoints` uses a point value of 0 if a letter is not in the provided dictionary.
+
 ![letter points](scrabble_letters.png){:height="200px"}
 
 * Create a list of tuples consisting of (pointValue, word) pairs by looping through the list `myWords` and getting the point value for each word - name this list of tuples `pointWordList`.  To calculate pointValue, you will want to call helper function `getWordPoints()`.
@@ -113,7 +114,8 @@ You can choose to start from scratch or use the starter code we have provided he
 
 ## Write test code in lab07_student_tests.py
 
-You must write test code using pytest for the following functions: * * `createWordList(filename)`
+You must write test code using pytest for the following functions: 
+* `createWordList(filename)`
 * `canWeMakeIt(myWord, myLetters)`
 * `getWordPoints(myWord, letterPoints)`
 
