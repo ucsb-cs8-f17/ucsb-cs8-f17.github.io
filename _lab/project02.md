@@ -3,7 +3,7 @@ layout: lab
 num: project02
 ready: false
 desc: "Create a really cool map of the United States!"
-assigned: 2017-11-21 11:00:00.00-7
+assigned: 2017-11-27 11:00:00.00-7
 due: 2017-12-08 17:00:00.00-8
 submit_cs_pnum: 774
 ---
@@ -24,11 +24,11 @@ The goals for this lab are:
 
 * Step 0:  Choose your partner
 * Step 1: Log on & bring up a terminal window
-* Step 2: Create a directory in your cs8 directory named {{page.num}}. 
+* Step 2: Create a directory in your cs8 directory named {{page.num}}.
 * Step 3: Start IDLE
 * Step 4: Download the cTurtle.py module, [cTurtle.py](cTurtle.py){:data-ajax="false"}, in your home directory or in some other directory in your Python path.
 
- 
+
 ## What to program?
 
 In this lab assignment, you will be reading some data files (already pre-processed from their raw form found on the internet) in order to create a map of the lower 48 States as seen in the figure above.  There are 3 files that you will be working with:
@@ -111,7 +111,7 @@ GA,FL,AL,TN,NC,SC
 
 Go ahead and download these files into your {{page.num}} directory now.
 
- 
+
 
 ## Functions to Implement:
 
@@ -120,7 +120,7 @@ Go ahead and download these files into your {{page.num}} directory now.
 3. createStateColorDict() - return D
 4. drawLower48Map() - NO return (draws a map and writes to file)
 
- 
+
 
 ## Function Details:
 
@@ -151,17 +151,17 @@ should be the first 3 key:value pairs entered into D.
 
 should be the first 6 key:value pairs entered into D when building it.
 
- 
+
 
 NOTES:
 
 1) Again, be careful that cities with spaces in their names, like fort rucker,al, are treated the same as cities without spaces, like auburn,al.  To handle this, for each line of the file, split it into a list, L.  Now L[0] is the city's latitude and L[1] is the city's longitude.  Everything from L[2] to the end L[-1] are the words of the city's name.  You will want to join these words together with spaces in between to form the city's full name.
 
-2) The values in this dictionary are tuples containing latitude (North) and negative longitude (West) angles as their 0th and 1st items.  By making the longitude negative, cities further west will have more negative longitudes that we will use for the x-coordinate in the cTurtle drawing. 
+2) The values in this dictionary are tuples containing latitude (North) and negative longitude (West) angles as their 0th and 1st items.  By making the longitude negative, cities further west will have more negative longitudes that we will use for the x-coordinate in the cTurtle drawing.
 
 3) Finally, strings like '32.67' will need to be converted to an float type.
 
- 
+
 
 * createStateColorDict() - return D.  Write a function which opens and reads (and closes when finished) file stateAdj.txt and returns a dictionary of stateAbbreviation : colorNumber associated key:value pairs.  For example,
 
@@ -175,7 +175,7 @@ NOTES:
 
 should be the first 5 key:value pairs entered into D when building it.
 
- 
+
 
 NOTES:
 
@@ -185,11 +185,11 @@ NOTES:
 
 3) You may (or may not) find list slicing helpful during this step.
 
- 
 
-* drawLower48Map() - NO return (draws a map and writes to file). 
 
- 
+* drawLower48Map() - NO return (draws a map and writes to file).
+
+
 
 ## Preliminary parts:
 
@@ -201,9 +201,9 @@ NOTES:
 
 4) Create a list of 4 colors (your choice) to use to draw the city dots on your map, and name it colorList.  Remember that cTurtle colors can be specified either as strings or (r, g, b) tuples.
 
-5) Find minimum and maximum latitude and longitude values over all the cities in cityLatLonDict.  There are many ways to do this, and you are free to choose.  One way is to build two lists of the latitude and longitude values, respectively.  Then use the built-in Python functions min and max.  These min and max values will be used to setWorldCoordinates for the turtle map you will draw next. 
+5) Find minimum and maximum latitude and longitude values over all the cities in cityLatLonDict.  There are many ways to do this, and you are free to choose.  One way is to build two lists of the latitude and longitude values, respectively.  Then use the built-in Python functions min and max.  These min and max values will be used to setWorldCoordinates for the turtle map you will draw next.
 
- 
+
 
 ## Turtle drawing parts:
 
@@ -213,19 +213,19 @@ NOTES:
 
 So let's elaborate a bit....As we loop through the cities in cityLatLonDict (or sortedCityList), we will want to answer the question: Is this city in cityPopDict?  If it is, then the population value can be used to set a dotSize = 4 + math.ceil(math.sqrt(population/50000)).  If the city is not in cityPopDict, then it either has less than 100000 people or it was written differently between the two raw text files from which these data sets were derived.  For example, in the latLon data set, Colorado Springs, CO is written as Colo Springs, CO.  We would need some form of artificial intelligence to catch all such possibilities (maybe an advanced area to explore ;-)).  Regardless, we set a dotSize = 4 in this case.
 
-You might be wondering how to get a city's color index from stateColorDict.  Well, we need to extract the state abbreviation from the city name.  Can you think of how to do that based on the format of all city names?  For example, 'new york,ny', 'los angeles,ca', 'chicago,il', etc. 
+You might be wondering how to get a city's color index from stateColorDict.  Well, we need to extract the state abbreviation from the city name.  Can you think of how to do that based on the format of all city names?  For example, 'new york,ny', 'los angeles,ca', 'chicago,il', etc.
 
- 
+
 
 ## File writing part:
 
 9) Once you have succeeded at having your turtle draw the US city map, then do one more thing.  Write the output to a file (called 'output.txt') with 6 columns.  Let the 6 columns be: i) city name, ii) latitude, iii) longitude, iv) population (if known, otherwise leave blank), v) dot size, and vi) dot color.  Be sure to add the newline character ('\n') at the end of each line.  Provide a header line for your output file which indicates the data for each column.  Left justify each column in a field width of i) 30 characters, ii) - vi) 15 characters.  Here is my [output.txt](output.txt){:data-ajax="false"} - yours should look the same except sorting and my last column of distance from Santa Barbara is not required.
 
- 
+
 
 Once you have finished the lab, sit back and admire your work.  Show a friend what you have created, and think about all the possibilities of cool things you can do if you continue to learn more computer science!
 
- 
+
 
 ## Challenge extensions (Optional) (if time permits and you are curious):
 
@@ -233,7 +233,7 @@ A1.  Can you make your cities appear from west to east instead of randomly?  Or 
 
 A2. You may notice that most maps of the US have a curvature to them so that Washington and Maine appear higher than Minnesota, for example.  This provides a way to visualize the curvature of the earth and represent land areas more accurately on a two-dimensional map, and is an example of what is called a [cartographic projection](https://en.wikipedia.org/wiki/List_of_map_projections).  Can you think of how you might modify your map to create such an effect?
 
- 
+
 
 
 
@@ -269,7 +269,7 @@ If you are working on the ECI/CSIL/lab linux systems, you can also submit at the
 It will ask for your email address: use your full umail address (e.g. `cgaucho@umail.ucsb.edu`).  For password, use the password that you enter for the submit.cs system.    You may save these credentials if you don't want to have to type them in every time.
 
 
-Note that if you try to upload a file with a name that does not match EXACTLY the name `{{page.num}}.py`, the system will not allow you to do it. 
+Note that if you try to upload a file with a name that does not match EXACTLY the name `{{page.num}}.py`, the system will not allow you to do it.
 
 Once you upload it, you should get a page that shows your submission is pending.
 
