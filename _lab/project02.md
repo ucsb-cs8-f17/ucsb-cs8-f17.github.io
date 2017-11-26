@@ -88,7 +88,7 @@ Your tree will be personalized by the aesthetic choices you make about
 
 Your tree is planted on the ground and should grow upward.
 
-## Draw a few trees
+## Draw a few trees (20 pts)
 
 Implement a function `drawForest()` with the following signature:
 
