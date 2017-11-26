@@ -2,7 +2,7 @@
 layout: lab
 num: project01
 ready: true
-desc: "Turtle Graphics: Scene from a forest"
+desc: "Project-01 Turtle Graphics: Scene from a forest"
 assigned: 2017-10-27 11:00:00.00-7
 due: 2017-11-17 20:00:00.00-8
 submit_cs_pnum: 856
@@ -14,7 +14,7 @@ submit_cs_pnum: 856
 
 The goal of this project is to draw a forest scene from basic shape primitives that you implemented in lab03 using turtle graphics. The key learning goals are:
 
-* using functions as building blocks in more complex compositions 
+* using functions as building blocks in more complex compositions
 * using loops to perform repetitive tasks while keeping your code DRY (Don't repeat yourself)
 * using randomization to create variety and controlled chaos in your drawings
 * applying concepts learned in lab04 to create and use your own modules
@@ -45,7 +45,7 @@ To create this scene you will implement the following functions:
 # Checkpoint deadline (20 pts out of 100 points)
 
 *You must complete the `drawTree()` function and submit it on or before Nov 2 at 5pm*
-Submit both `basicShapes.py` and `project01.py` to [project-01-checkpoint](https://submit.cs.ucsb.edu/form/project/865/submission) on submit.cs 
+Submit both `basicShapes.py` and `project01.py` to [project-01-checkpoint](https://submit.cs.ucsb.edu/form/project/865/submission) on submit.cs
 
 
 # The programming part
@@ -97,7 +97,7 @@ cp ~/cs8/lab03/lab03.py ~/cs8/project01/basicShapes.py
 * If you were not able to finish lab03.py, you use our solution available at this link:
 [lab03-solution](https://github.com/ucsb-cs8-f17/cs8-lab03-solution)
 
-* Modify the code in basicShapes.py so that you can import the code as a module. Apply the concepts that you learned in lab04 about making your own modules using the `if __name__=="__main__": ` idiom. If you don't know what this idiom does or why we are using it STOP and ask a tutor or TA 
+* Modify the code in basicShapes.py so that you can import the code as a module. Apply the concepts that you learned in lab04 about making your own modules using the `if __name__=="__main__": ` idiom. If you don't know what this idiom does or why we are using it STOP and ask a tutor or TA
 
 Here are some hints:
 
@@ -111,7 +111,7 @@ t.shape("turtle")
 t.speed(0)
 t.width(4)
 ```
-- Put all other code that is not part of a function definition or import or turtle setup in the `if __name__=="__main__: clause" 
+- Put all other code that is not part of a function definition or import or turtle setup in the `if __name__=="__main__: clause"
 
 * Now you are ready to import basicShapes as a module and use its functions: `drawRectangle()` and `drawTriangle()`
 
@@ -120,7 +120,7 @@ t.width(4)
 ```
 import basicShapes
 ```
-OR 
+OR
 
 ```
 from basicShapes import *
@@ -139,24 +139,24 @@ In your` project01.py` define a 'drawTree()' function as shown below
 
 ```
 def drawTree(height, color):
-    
-    ''' 
-    This function draws a tree of a given height that consists of a rectangular brown bark 
+
+    '''
+    This function draws a tree of a given height that consists of a rectangular brown bark
     and a top comprised of three triangles of a given color stacked on top of each other.
-    The bottom left corner of the bark (or the bottom left corner of the rectangle that the tree fits in), 
-    should be the current location of the turtle. 
+    The bottom left corner of the bark (or the bottom left corner of the rectangle that the tree fits in),
+    should be the current location of the turtle.
     Make no assumptions about the orientation of the turtle.
-    After drawing the tree the turtle should be returned to its original position and oriented at 0 degrees 
-    All other parameters such as the width of the tree and the length of the bark 
+    After drawing the tree the turtle should be returned to its original position and oriented at 0 degrees
+    All other parameters such as the width of the tree and the length of the bark
     must be chosen so that the tree is well proportioned: a taller tree is wider and has a thicker and taller bark.
     '''
 
 ```
 
 
-* In the spirit of Test Driven Development (TDD) style of developing your code, think about how you would test your `drawTree()` function. 
+* In the spirit of Test Driven Development (TDD) style of developing your code, think about how you would test your `drawTree()` function.
 
-* Its natural to inspect the output visually, making sure your tree "looks right" with the expected shape and color. However it may be harder to tell if its drawn with the correct dimensions. 
+* Its natural to inspect the output visually, making sure your tree "looks right" with the expected shape and color. However it may be harder to tell if its drawn with the correct dimensions.
 
 * To check that write a function `checkTreeHeight()` that helps you visually inspect if your tree is drawn with the specified height by drawing it beside a rectangle of the same height. Below is one possible implementation of the `checkTreeHeight()` function:
 
@@ -206,7 +206,7 @@ Your algorithm should be similar but more complete. Write your algorithm as comm
 
 * Your final task is to convert your algorithm to Python code. This means writing python instructions that perform what each step in your algorithm describes. For example, "go to the location of the bottom left corner of the bark" will translate to `t.goto(x,y)`, where `(x, y)` is the lcoation of the bottom left corner of the bark relative to the start position of the turtle. Retain your algorithm as comments in your code
 
-* Test your implementation drawing at least two well-proportioned trees of different heights at two different locations. This code should be part of `checkTreeHeight()` 
+* Test your implementation drawing at least two well-proportioned trees of different heights at two different locations. This code should be part of `checkTreeHeight()`
 
 
 ***** Once you are done with the `drawTree()`, make the check point submission to [project-01-checkpoint](https://submit.cs.ucsb.edu/form/project/865/submission) on submit.cs ******
@@ -217,7 +217,7 @@ We would now like to go from drawing one or two trees to many trees, which will 
 
 ```
 def drawForest():
-    ''' 
+    '''
     Draws a collection of trees placed at random locations within a rectangular region
     '''
 ```
@@ -250,7 +250,7 @@ drawTree(200, "green")
 # Move the turtle to location (200, -100) and draw the third tree
 t.up()
 t.seth(0)
-t.forward(200) 
+t.forward(200)
 t.down()
 drawTree(200, "green")
 
@@ -274,7 +274,7 @@ Notice that when writing the for loop, we first identified what code needs to be
 
 Drawing all the trees in a straight line is a good first attempt at creating the forest, its not very realistic. So, your next goal is to place the trees at random locations that are roughly along a horizontal line. Hint: use the [python random module](https://docs.python.org/3/library/random.html).
 
-The next section is a warmup for working with the random module. 
+The next section is a warmup for working with the random module.
 
 ## Step 6: Take a detour into random numbers
 
@@ -303,7 +303,7 @@ def regularPlay():
 regularPlay()
 ```
 
-When you run the above code, you should find a very regular arrangement of triangles along a circle as shown below. Read the code to understand why its producing this output. Note that the location of each triangle is dependent on the value of our loop variable `i`. 
+When you run the above code, you should find a very regular arrangement of triangles along a circle as shown below. Read the code to understand why its producing this output. Note that the location of each triangle is dependent on the value of our loop variable `i`.
 
 ![circleOfTris](circleOfTris.png){:height="200px"}
 
@@ -329,8 +329,8 @@ def randomPlay():
     '''
     Experiments with the random module
     '''
-    shadesOfGreen =["#006400", "#556b2f", "#8fbc8f", "#2e8b57", "#3cb371", "#20b2aa", "#32cd32"] 
-    
+    shadesOfGreen =["#006400", "#556b2f", "#8fbc8f", "#2e8b57", "#3cb371", "#20b2aa", "#32cd32"]
+
     t.pensize(10)
     for i in range(36):
         t.up()
@@ -341,7 +341,7 @@ def randomPlay():
         t.down()
         color = random.choice(shadesOfGreen)
         drawTriangle(50, 50, "black", color)
-``` 
+```
 The output of the code is shown in the figure below. Try changing the limits to the random.randint() function and re-run the code, and observe the outcome. Notice how you can control the level of randomness in your drawings using this simple strategy.
 
 ![randLoc](randLoc.png){:height="200px"}
@@ -350,7 +350,7 @@ Apply what you have learned in this section to complete your `drawForest()` func
 
 ## Step 7: Draw a hut, then a village
 
-Define a function to draw a hut with fixed dimensions, composed of only rectangles. 
+Define a function to draw a hut with fixed dimensions, composed of only rectangles.
 
 ```
 def drawHut():
@@ -371,7 +371,7 @@ When testing these functions, comment out all calls to previous functions. This 
 
 ## Step 8: Put it all together
 
-Finally, put all the elements that you have implemented to draw the final scene. 
+Finally, put all the elements that you have implemented to draw the final scene.
 When you are finished, ask a TA or instructor to look it over and give you some feedback on it.  
 
 
@@ -385,12 +385,12 @@ Your code in 'project01.py` should be structured as follows:
 
 If your code meets all those criteria, you should be in good shape to submit it.
 
-## Step 9 (OPTIONAL EXTRA CREDIT OPPORTUNITY) Make it your own! 
+## Step 9 (OPTIONAL EXTRA CREDIT OPPORTUNITY) Make it your own!
 
-With this project you have the opportunity to earn 10 points of extra credit by creating a non-trivial object to add to your scene. 
+With this project you have the opportunity to earn 10 points of extra credit by creating a non-trivial object to add to your scene.
 This can be anything you can come up with and draw using the turtle. Some examples include: a flower, a robot, etc. Feel free to use any functions inside [the Python documentation on the turtle module](https://docs.python.org/3/library/turtle.html)
 
-Do not ask the TAs or tutors what is consider "non-trivial" because whether you earn the extra credit or not is subjective to your grader. Overall, if it's more than just a basic shape then you will receive the points. 
+Do not ask the TAs or tutors what is consider "non-trivial" because whether you earn the extra credit or not is subjective to your grader. Overall, if it's more than just a basic shape then you will receive the points.
 
 ## Step 10: Submitting via submit.cs
 
@@ -424,7 +424,7 @@ If you are working on the ECI/CSIL/lab linux systems, you can also submit at the
 It will ask for your email address: use your full umail address (e.g. `cgaucho@umail.ucsb.edu`).  For password, use the password that you enter for the submit.cs system.    You may save these credentials if you don't want to have to type them in every time.
 
 
-Note that if you try to upload a file with a name that does not match EXACTLY the name `{{page.num}}.py`, the system will not allow you to do it. 
+Note that if you try to upload a file with a name that does not match EXACTLY the name `{{page.num}}.py`, the system will not allow you to do it.
 
 Once you upload it, you should get a page that shows your submission is pending.
 

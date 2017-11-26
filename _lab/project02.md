@@ -1,280 +1,201 @@
 ---
 layout: lab
 num: project02
-ready: false
-desc: "Create a really cool map of the United States!"
+ready: true
+desc: "Project-02 Fractal art: Spirals, trees and snowflakes"
 assigned: 2017-11-27 11:00:00.00-7
-due: 2017-12-08 17:00:00.00-8
-submit_cs_pnum: 774
+due: 2017-12-08 20:00:00.00-8
+submit_cs_pnum: 856
 ---
 
-## Goals for this lab
 
-The goals for this lab are:
+## Goal
 
-* practice processing text files to extract useful data from them
-* practice using data within a Python program to do something interesting
-* more practice with Python dictionaries, lists and tuples
-* more practice with formatting strings and writing to a file
-* create a really cool map of cities within the United States (lower 48, or "mainland" as Hawaiians say)!
+In you final lab you implemented recursive functions. It is time for you to start showing off your skills visually. In this project you will create some very cool fractal art, which is based on internal self-similarity. This project has a extra credit component where you can create a scene of your own choosing using the functions you implemented in the project.
 
-![map of US](lower48TurtleMap.png){:height="400px"}
+Just like the previous project this assignment is out of 100 and have 10 points worth of extra credit. Note that there is no checkpoint for this assignment.
 
-## Getting staretd
+# Getting started
 
-* Step 0:  Choose your partner
+
 * Step 1: Log on & bring up a terminal window
+This is done following the steps you have performed in lab00.
 * Step 2: Create a directory in your cs8 directory named {{page.num}}.
-* Step 3: Start IDLE
-* Step 4: Download the cTurtle.py module, [cTurtle.py](cTurtle.py){:data-ajax="false"}, in your home directory or in some other directory in your Python path.
+* Step 3: Bring up idle and create two new files called `recursiveDrawings.py` in your ~/cs8/{{page.num}} directory.
+* Step 4: For each of the programming exercises in this lab come up with a solution outline by discussing with your partner. Don't be in a hurry to start coding unless you have a fairly clear idea of a solution strategy.
 
 
-## What to program?
+## Draw a spiral...using recursion (10 pts)
+In the file `recursiveDrawings.py` add a stub for the spiral function which has the following signature.
 
-In this lab assignment, you will be reading some data files (already pre-processed from their raw form found on the internet) in order to create a map of the lower 48 States as seen in the figure above.  There are 3 files that you will be working with:
-
-[pop3.txt](pop3.txt){:data-ajax="false"} - a text file with lines of rank, city name, population for all us cities having population greater than 100000 (276 cities total).  Here is a sample of the first 20 lines of this file:
-
-```
-1 new york,ny 8391881
-2 los angeles,ca 3831868
-3 chicago,il 2851268
-4 houston,tx 2257926
-5 phoenix,az 1593659
-6 philadelphia,pa 1547297
-7 san antonio,tx 1373668
-8 san diego,ca 1306300
-9 dallas,tx 1299542
-10 san jose,ca 964695
-11 detroit,mi 910921
-12 san francisco,ca 815358
-13 jacksonville,fl 813518
-14 indianapolis,in 807584
-15 austin,tx 786386
-16 columbus,oh 769332
-17 fort worth,tx 727577
-18 charlotte,nc 709441
-19 memphis,tn 676640
-20 boston,ma 645169
+```python
+ spiral(initialLength, angle, multiplier)
 ```
 
-[latLon3.txt](latLon3.txt){:data-ajax="false"} - a text file with lines of latitude (North), longitude (West), city name for all locations with major airports.  Here is a sample of the first several lines of this file:
+The function takes as arguments
+* an initialLength of the spiral's first line segment,
 
+* an angle specifying the angle (in degrees) formed by neighboring segments, and
+
+* a multiplier indicating how each segment changes in size from the previous one.
+
+For example, the following are example screenshots from the call spiral(100, 90, 0.9) and spiral(1, -45, 1.1), respectively:
+
+
+<p align="center">
+
+![alt-Spiral-1](/lab/images/spiral1.gif){:height="200px" width="200px"} ![alt-Spiral-2](/lab/images/spiral2.gif){:height="200px" width="200px"}
+
+</p>
+
+
+In the figure on the left the spiral is generated outside-in. This means it starts with initialLength 100 pixels. It turns right by 90 degrees to draw a successive segment whose length is 0.9 times that of the previous one. In the figure on the right, the spiral grows inside-out. It starts from the center with initialLength 1 pixel. Each iteration the line turns left by 45 degree and draw a segment whose length is 1.1 times longer.
+
+Note the spiral function is computed inside-out, or outside-in, depending on the multiplier, therefore the base case varies. The spiral should stop drawing when it has reached a side length of less than 1 pixel (if multiplier<1) or greater than 200 pixels (if multiplier>1).
+
+Implement the function and use it to draw an interesting spiral of your own.  
+
+*Help!  Stack Overflow!  Do not be alarmed if you find you are getting stack overflow errors when you try to run the "growing spiral" example above.  This error is caused by an infinite recursion.  I.e. a recursion that never hits its base case.  Not sure why?  This is a perfect time to practice some of those debugging skills you learned above.  :)  Ask a tutor if you need help.*
+
+##  Grow a Tree (20 pts)
+
+Next, you will write the tree function.  It has the following signature:
+
+```python
+ def tree(trunkLength, height)
 ```
-33.58 85.85 anniston,al
-32.67 85.44 auburn,al
-33.57 86.75 birmingham,al
-32.90 87.25 centreville,al
-31.32 85.45 dothan,al
-31.28 85.72 fort rucker,al
-33.97 86.09 gadsden,al
-34.65 86.77 huntsville,al
-32.38 86.37 maxwell afb,al
-30.68 88.25 mobile,al
-30.63 88.07 mobile aeros,al
-32.30 86.40 montgomery,al
-34.75 87.62 muscle shoal,al
-32.34 86.99 selma,al
-31.87 86.02 troy,al
-33.23 87.62 tuscaloosa,al
-32.17 110.88 davis-m afb,az
-33.68 112.08 deer valley,az
-31.45 109.60 douglas,az
-```
+The function takes as arguments:
 
-[stateAdj.txt](stateAdj.txt){:data-ajax="false"} - a text file with lines alternating between state adjacency lists (in 2-letter abbreviated format), and an integer between 0 and 3 which when colored according to that integer guarantees no two adjacent states are the same color.  Here is a sample of the first several lines of this file:
+* a trunkLength which is the length of the main trunk of the tree, and
+* the height indicating the number of levels of branching of the tree.
+For example, the following is an example screenshot from the call to tree(200, 4):
 
-```
-AK
-1
-AL,MS,TN,GA,FL
-0
-AR,MO,TN,MS,LA,TX,OK
-0
-AZ,CA,NV,UT,CO,NM
-3
-CA,OR,NV,AZ
-2
-CO,WY,NE,KS,OK,NM,AZ,UT
-2
-CT,NY,MA,RI
-2
-DC,MD,VA
-2
-DE,MD,PA,NJ
-0
-FL,AL,GA
-1
-GA,FL,AL,TN,NC,SC
-2
-```
+<p align="center">
+![Tree](/lab/images/tree.gif){:height="200px" width="200px"}
+</p>
 
-Go ahead and download these files into your {{page.num}} directory now.
+The tree "grows" from the ground from the current location of the turtle, with initial length of the first trunk 200 pixels. At the end of the first segment, the trunk forks into two directions. The forked trunk in each direction has a shorter length and continues to fork at the end, until the tree has forked 4 times.
 
+Think about the base case and its recursive steps before implementing the function.
 
+Your tree will be personalized by the aesthetic choices you make about
 
-## Functions to Implement:
+* the number of branches at each fork (anything greater than 1 is OK),
 
-1. createCityPopDict() - return D
-2. createCityLatLonDict() - return D
-3. createStateColorDict() - return D
-4. drawLower48Map() - NO return (draws a map and writes to file)
+* the exact angle of branching,
 
+* the reduction of trunkLength in sub-branches.
 
+Your tree is planted on the ground and should grow upward.
 
-## Function Details:
+## Draw a few trees
 
-* createCityPopDict() - return D.  Write a function which opens and reads (and closes when finished) file pop3.txt and returns a dictionary of city : pop associated key:value pairs.  For example,
+Implement a function `drawForest()` with the following signature:
 
-'new york,ny' : 8391881
-'los angeles,ca' : 3831868
-'chicago,il' : 2851268
-
-should be the first 3 key:value pairs entered into D.
-
- NOTES:
-
- 1) Be careful that cities with spaces in their names, like new york,ny, are treated the same as cities without spaces, like chicago,il.  To handle this, for each line of the file, split it into a list, L.  Now L[0] is the city's rank and L[-1] is the city's population.  Everything in between (starting with L[1] and ending at L[-2]) are the words of city's name.  You will want to join these words together with spaces in between to form the city's full name.
-
- 2) Strings like '8391881' will need to be converted to int type.
-
-* createCityLatLonDict() - return D.  Write a function which opens and reads (and closes when finished) file latlon3.txt and returns a dictionary of city : latlon associated key:value pairs.  For example,
-
-```
-'anniston,al' : (33.58, -85.85)
-'auburn,al' : (32.67, -85.44)
-'birmingham,al' : (33.57,- 86.75)
-'centreville,al' : (32.90, -87.25)
-'dothan,al' : (31.32, -85.45)
-'fort rucker,al' : (31.28, -85.72)
+```python
+def forest( n, limits):
 ```
 
-should be the first 6 key:value pairs entered into D when building it.
+the function takes the following parameters
+* the number of trees to draw: `n`
+* a list of two tuples, limits: [(xmin, ymin), (xmax, ymax)].
 
+Your function should draw `n` trees at random locations whose trunks originate within a bounding box whose lower left coordinate is (limits[0][0], limits[0][1]) and upper right coordinate is (limits[1][0], limits[1][1])
 
+To draw the forest, call your `tree()` function in a for loop. You have to choose the trunkLength and height of your trees appropriately.
 
-NOTES:
+Note that your trees don't have to look the same. Vary the trunkLength and height of your trees to create interesting variations.
 
-1) Again, be careful that cities with spaces in their names, like fort rucker,al, are treated the same as cities without spaces, like auburn,al.  To handle this, for each line of the file, split it into a list, L.  Now L[0] is the city's latitude and L[1] is the city's longitude.  Everything from L[2] to the end L[-1] are the words of the city's name.  You will want to join these words together with spaces in between to form the city's full name.
+This function should use for loops instead of recursion.
 
-2) The values in this dictionary are tuples containing latitude (North) and negative longitude (West) angles as their 0th and 1st items.  By making the longitude negative, cities further west will have more negative longitudes that we will use for the x-coordinate in the cTurtle drawing.
+## Extra credit: Create Snowflakes ... in Santa Barbara! (8 pts extra credit)
 
-3) Finally, strings like '32.67' will need to be converted to an float type.
+Christmas is approaching and we need snowflakes in Santa Barbara. By completing this exercise you will not only add to the festivities   but also prove that you are now very skilled at creating fractals using recursions.
 
+In this exercise you will create the following snowflake structure (a.k.a. Koch Snowflake).
 
+<p align="center">
+![](/lab/images/Von_Koch_curve.gif)
+</p>
 
-* createStateColorDict() - return D.  Write a function which opens and reads (and closes when finished) file stateAdj.txt and returns a dictionary of stateAbbreviation : colorNumber associated key:value pairs.  For example,
+As the animation shows, the Koch snowflake begins with an equilateral triangle; at each stage, the middle third of each line segment is replaced by a pair of line segments that together with the replaced segment, form an equilateral triangle; then the replacement will be performed again on all the component line segments of the newly created shape, over and over.
 
-```
-'ak' : 1
-'al' : 0
-'ar' : 0
-'az' : 3
-'ca' : 2
-```
+We will draw the Koch Snowflake by first defining the snowflake function with the following signature:
 
-should be the first 5 key:value pairs entered into D when building it.
-
-
-
-NOTES:
-
-1) The list of adjacent states following the first state abbreviation are not actually used in the function, so disregard them.  For example, on line 3 we have AL,MS,TN,GA,FL but yet we never use ,MS,TN,GA,FL.
-
-2) We want our state abbreviations to be lower cased in our dictionary.
-
-3) You may (or may not) find list slicing helpful during this step.
-
-
-
-* drawLower48Map() - NO return (draws a map and writes to file).
-
-
-
-## Preliminary parts:
-
-1) Create a city : pop dictionary and name it cityPopDict.  Do this by calling your helper function createCityPopDict.
-
-2) Create a city : latlon dictionary and name it cityLatLonDict.  Do this by calling your helper function createCityLatLonDict.
-
-3) Create a stateAbbreviation : colorNumber dictionary and name it stateColorDict.  Do this by calling your helper function createStateColorDict.
-
-4) Create a list of 4 colors (your choice) to use to draw the city dots on your map, and name it colorList.  Remember that cTurtle colors can be specified either as strings or (r, g, b) tuples.
-
-5) Find minimum and maximum latitude and longitude values over all the cities in cityLatLonDict.  There are many ways to do this, and you are free to choose.  One way is to build two lists of the latitude and longitude values, respectively.  Then use the built-in Python functions min and max.  These min and max values will be used to setWorldCoordinates for the turtle map you will draw next.
-
-
-
-## Turtle drawing parts:
-
-6) Create a Turtle object (matthew ?) to do some drawing.  After creating, use the min and max latitude and longitude coordinates to setWorldCoordinates.  You can get fancy if you wish and leave a little space (I prefer about 10%) on the sides, top and bottom so that cities aren't drawn right on the edge of the cTurtle window.  I also like to hide the turtle when creating the map using Turtle method .ht().
-
-7) Loop through the cities in cityLatLonDict and have matthew draw a dot at each city's (lon, lat) coordinates, where longitude (lon) is the x-coordinate and latitude (lat) is the y-coordinate of the city.  The area of the dot should be roughly proportional to the population of the city (if available), and the color of the dot should be the color from colorList corresponding to the state's color index defined in stateColorDict.  You can also sort the cities in some way if you feel so inclined, but not required.  If you sort, you will need to create a list of tuples sortedCityList from dictionary cityLatLonDict.  The 0 item of each tuple should be the sorting parameter (for example, a simple approximation from distance (in miles) from Santa Barbara is d = 70*math.sqrt((lat - 34.4)**2 + 0.58*(lon - 119.8)**2)) ), and the 1 item should be the city name.  This gives a cool effect of having your cities plotted radiating away from Santa Barbara!
-
-So let's elaborate a bit....As we loop through the cities in cityLatLonDict (or sortedCityList), we will want to answer the question: Is this city in cityPopDict?  If it is, then the population value can be used to set a dotSize = 4 + math.ceil(math.sqrt(population/50000)).  If the city is not in cityPopDict, then it either has less than 100000 people or it was written differently between the two raw text files from which these data sets were derived.  For example, in the latLon data set, Colorado Springs, CO is written as Colo Springs, CO.  We would need some form of artificial intelligence to catch all such possibilities (maybe an advanced area to explore ;-)).  Regardless, we set a dotSize = 4 in this case.
-
-You might be wondering how to get a city's color index from stateColorDict.  Well, we need to extract the state abbreviation from the city name.  Can you think of how to do that based on the format of all city names?  For example, 'new york,ny', 'los angeles,ca', 'chicago,il', etc.
-
-
-
-## File writing part:
-
-9) Once you have succeeded at having your turtle draw the US city map, then do one more thing.  Write the output to a file (called 'output.txt') with 6 columns.  Let the 6 columns be: i) city name, ii) latitude, iii) longitude, iv) population (if known, otherwise leave blank), v) dot size, and vi) dot color.  Be sure to add the newline character ('\n') at the end of each line.  Provide a header line for your output file which indicates the data for each column.  Left justify each column in a field width of i) 30 characters, ii) - vi) 15 characters.  Here is my [output.txt](output.txt){:data-ajax="false"} - yours should look the same except sorting and my last column of distance from Santa Barbara is not required.
-
-
-
-Once you have finished the lab, sit back and admire your work.  Show a friend what you have created, and think about all the possibilities of cool things you can do if you continue to learn more computer science!
-
-
-
-## Challenge extensions (Optional) (if time permits and you are curious):
-
-A1.  Can you make your cities appear from west to east instead of randomly?  Or perhaps in order of their state abbreviation alphabetically?
-
-A2. You may notice that most maps of the US have a curvature to them so that Washington and Maine appear higher than Minnesota, for example.  This provides a way to visualize the curvature of the earth and represent land areas more accurately on a two-dimensional map, and is an example of what is called a [cartographic projection](https://en.wikipedia.org/wiki/List_of_map_projections).  Can you think of how you might modify your map to create such an effect?
-
-
-
-
-
-## Submitting via submit.cs
-
-Note that this week, although we are using submit.cs, it is NOT the case that the grade you get from submit.cs is your final grade for the assignment.
-
-The grade on submit.cs is just a PART of your grade--you will get 10
-points for basically submitting *anything* that is a valid Python
-program that has the name <tt>{{page.num}}.py</tt>.
-
-However, the other 90 points for this lab will come from an instructor
-or TA doing a manual inspection of your code to see if it complies
-with the requirements listed above.
-
-If you want reassurance that your code is in good shape, you may ask a
-TA or instructor to look it over during office hours or lab.
-
-To submit your code, use:
-
-### Navigate to the page for submitting {{page.num}}
-
-The page for submitting {{page.num}} is here: <https://submit.cs.ucsb.edu/form/project/{{page.submit_cs_pnum}}/submission>
-
-Navigate to that page, and upload your `{{page.num}}.py` file.
-
-If you are working on the ECI/CSIL/lab linux systems, you can also submit at the command line with this command:
-
-```
-~submit/submit -p {{page.submit_cs_pnum}} ~/cs8/{{page.num}}/{{page.num}}.py
+```python
+snowflake(sideLength, levels)
 ```
 
-It will ask for your email address: use your full umail address (e.g. `cgaucho@umail.ucsb.edu`).  For password, use the password that you enter for the submit.cs system.    You may save these credentials if you don't want to have to type them in every time.
+which takes as arguments:
+* a sideLength of the initial equilateral triangle, and
+
+* the levels indicating the number of recursive levels performed to create the final snowflake.
+
+Observe that the base case is simply an equilateral triangle with side length equal to sideLength. Each increment of level replaces the middle third of all of the snowflake's sides with a "bump" that is, itself, a smaller equilateral triangle.
+
+Hint: It might be useful to write a helper function with the following signature:
+
+```python
+snowflakeSide(sideLength, levels)
+```
+
+The above functions should draw just one side of the underlying equilateral triangle -- along with all of its squiggles or bumps, recursively!
+
+All of the recursion will then be in snowflakeSide. So, first try creating snowflakeSide and make sure that it works and draws a single side of the snowflake curve at the appropriate level of recursion. Once snowflakeSide works, then your snowflake function will call snowflakeSide three times, with appropriate angles between them.
+
+Again, in this strategy, all of the recursion occurs in snowflakeSide. Remember that if levels is zero, then snowflakeSide should produce a single line segment (this will be the base case of the recursion);
+otherwise, snowflakeSide needs to call itself four times; and,
+keep in mind that you're only creating one of the three sides of the snowflake!
+Here are images of four steps (after three levels of recursions) of the overall Koch curve's progression:
+
+<p align="center">
+![](/lab/images/360px-KochFlake.gif)
+</p>
+
+Test your implementation by calling snowflake(280, 4); you should get the following snowflake:
+
+<p align="center">
+![](/lab/images/Koch_280_4.gif)
+</p>
 
 
-Note that if you try to upload a file with a name that does not match EXACTLY the name `{{page.num}}.py`, the system will not allow you to do it.
+Drawing the snowflake is challenging. If you have completed this exercise consider it a major accomplishment!! Congratulations!!!
 
-Once you upload it, you should get a page that shows your submission is pending.
+## Draw a scene (Required) (20 pts + 2 pts of extra credit)
 
-Refresh that page, and you should get one that indicates with either red, or green, whether the test cases for your code passed or failed.
+Define a function named `scene` that takes no parameters and makes a scenery by calling all the functions that you have implemented so far: `spiral`, `forest`, and/or `snowflake`.
 
-If you got all green, and 10 points, then your submission was accepted---but to emphasize, for this week, the other 90 points will be assigned by a human grader.   You'll be notified of that grade [via Gauchospace](https://gauchospace.ucsb.edu).
+Your scene should have more than one instance of each shape. You scene must have a forest of trees and some snow that may be a combination of calls to `spiral` and `snowflake`.
 
-Thnaks to Matt Buoni for this lab
+
+Call your `scene` function within a `if __name__==__main__:` clause and it should do all the work for you.
+
+Extra credit (2 pts): Get creative with your scene by reusing the functions you have already implemented in interesting ways or writing enhanced versions of the functions. For example you may write a new tree function named `decorativeTree` that uses the spiral within the tree function to make it more decorative.
+
+Take a snapshot of your final scene and save it as a jpg or png file. You will need to upload this on **gauchospace** along with you code
+
+## Submit on gauchospace
+
+Go to gauchospace and navigate to the project02 assignment. Upload two files:
+
+* a picture of your final scene
+* your code `recursiveDrawings.py`
+
+Make sure that your code runs without any errors. Code that produces errors will not be graded.
+
+You do not need to submit your project on submit.cs
+
+Here is a breakdown of the points for this project02
+* Uploaded the two required files on gauchospace: 10 points
+* Code executes without errors:   10 points
+* All calls to functions are within the `if __name__ ==__main__:`clause: 10 pts
+* Scene contains at least one spiral: 10 points
+* Scene contains at least one tree: 20 points
+* Scene contains at least three different trees: 20 points
+* `scene` function makes appropriate calls to other functions to draw the final scene: 20 pts
+* Extra credit:
+  * Koch snowflake correctly implemented and used in the scene (8 pts)
+  * Creative reuse of functions already implemented in design of scene and/or use of enhanced functions in scene: (2 pts)  
+
+
+Diba Mirza
