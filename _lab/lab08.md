@@ -7,22 +7,12 @@ assigned: 2017-11-28 8:00:00.00-7
 due: 2017-12-04 17:00:00.00-8
 ---
 
-# Learning Goals
-
-In this lab you will practice:
-* writing parameterized functions
-* developing test code  
-* solving problems using recursion.
-
-
-Your learning goals are:
-
+## Learning Goals
+* Solve problems using recursion
 * Determine the base case and recursive step in a recursive solution.
-* Implement the recursive solution in Python.
 * Learn to reason about your program, and justify its correctness.
 * Find and fix errors in simple Python functions.
 * Reason about the quality and completeness of test cases.
-* (Optional practice) Use geometry and turtle graphics to draw fractals in Python.
 
 ## Getting started
 
