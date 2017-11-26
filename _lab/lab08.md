@@ -15,6 +15,7 @@ submit_cs_pnum: 904
 * Find and fix errors in simple Python functions.
 * Reason about the quality and completeness of test cases.
 
+This lab may be done individually or in pairs
 ## Getting started
 
 * Step 1: Log on & bring up a terminal window
