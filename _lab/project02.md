@@ -15,6 +15,9 @@ In you final lab you implemented recursive functions. It is time for you to star
 
 Just like the previous project this assignment is out of 100 and have 10 points worth of extra credit. Note that there is no checkpoint for this assignment.
 
+This project may be done individually or in pairs. If you are working with a pair indicate the name of both partners on top of each submission file.
+
+
 # Getting started
 
 
