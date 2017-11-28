@@ -72,11 +72,11 @@ Now, implement your `recProduct()` function. Once you have that, its time to tes
 For example check that your program does the following:
 
 ```
-recProduct(0,5)` returns 0
+`recProduct(0,5)` returns 0
 
-recProduct(1,5)` returns 5
+`recProduct(1,5)` returns 5
 
-recProduct(-1,5)` returns -5
+`recProduct(-1,5)` returns -5
 ```
 <div style="width:80%; margin-left:auto; margin-right:auto; background-color: #efe; border: 5px inset #3f3;" markdown="1">
 
@@ -91,7 +91,7 @@ python3 -m pytest {{page.num}}_student_tests.py
 If you have LOTS of tests in your file, and you ONLY want to run some of them, you can use -k string to run ONLY the tests that contain a certain string. For example, suppose you want to focus ONLY on the tests for recProduct. You can run:
 
 ```
-python3 -m pytest`{{page.num}}_student_tests.py -k recProduct
+python3 -m pytest {{page.num}}_student_tests.py -k recProduct
 ```
 
 Change recProduct to any function that you want, and only the tests that contain that string will be run. The others will be “de-selected”.
