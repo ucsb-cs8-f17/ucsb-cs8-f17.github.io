@@ -71,13 +71,13 @@ Now, implement your `recProduct()` function. Once you have that, its time to tes
 
 For example check that your program does the following:
 
-```
+
 `recProduct(0,5)` returns 0
 
 `recProduct(1,5)` returns 5
 
 `recProduct(-1,5)` returns -5
-```
+
 <div style="width:80%; margin-left:auto; margin-right:auto; background-color: #efe; border: 5px inset #3f3;" markdown="1">
 
 ## A Useful tip from lab06
