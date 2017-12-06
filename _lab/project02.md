@@ -4,7 +4,7 @@ num: project02
 ready: true
 desc: "Project-02 Fractal art: Spirals, trees and snowflakes"
 assigned: 2017-11-27 11:00:00.00-7
-due: 2017-12-08 20:00:00.00-8
+due: 2017-12-10 17:00:00.00-8
 submit_cs_pnum: 856
 ---
 
